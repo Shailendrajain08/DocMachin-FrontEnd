@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: docmachinebackendbeta
+  name: docmachinebackendbeta
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docmachinebackendbeta
+  template:
+    metadata:
+      labels:
+        app: docmachinebackendbeta
+    spec:
+      containers:
+      - image: gcr.io/root-booking-369711/doc-machine-backend:v3.0.1
+        imagePullPolicy: Always
+        name: doc-machine-backend
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        ports:
+        - containerPort: 3000
+        env:
+        - name: deployment
+          value: beta
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: docmachinebackendbeta
+  name: docmachinebackendbeta
+  namespace: default
+spec:
+  ports:
+  - port: 3002
+    protocol: TCP
+    targetPort: 3000
+    nodePort: 30002
+  selector:
+    app: docmachinebackendbeta
+  sessionAffinity: None
+  type: NodePort

@@ -1,0 +1,1768 @@
+<script async src="//jsfiddle.net/g7mvaosL/embed/"></script>
+<div class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+        <!-- <div class="container1" id="myDiv">
+  <div class="tip">
+    <p >Edit Proforma invoice/ Purchase Order</p>
+  </div>
+  <div class="tipright">
+    <div class="tip1">
+    <img src="../../../assets/idea.png" style="height: 30px;width: 30px; margin-left: 1150px; margin-top: -5px;">
+    <p style="color:#49A2D7;font-weight: 400;font-size: 13px;font-family: Europa; margin-left: 3px;">Page Tips <span>
+      <img src="../../../assets/Rectangle-7.png" style="height: 20px; width: 1px; color: #EAEDF3;"></span></p>
+    <img src="../../../assets/cross.png" style="height: 20px; width: 20px; margin-left: 5px;" class="close" onclick="document.getElementById('myDiv').style.display='none'" alt="">
+    </div>
+  </div>
+ </div> -->
+
+
+        <h3 class="heading" *ngIf='docu == "pipo"'>New Proforma invoice/ Purchase Order</h3>
+        <h3 class="heading" *ngIf='docu == "boe"'>Upload Bill Of Entry</h3>
+        <h3 class="heading" *ngIf='docu == "sb"'>Upload Shipping Bill</h3>
+        <h3 class="heading" *ngIf='docu == "debitNote"'>Upload debitNote</h3>
+        <h3 class="heading" *ngIf='docu == "irAdvice"'>Upload Forex Advice Documnet</h3>
+        <h3 class="heading" *ngIf='docu == "creditNote"'>Upload creditNote</h3>
+        <h3 class="heading" *ngIf='docu == "insuranceCopy"'>Upload Insurance Copy</h3>
+        <h3 class="heading" *ngIf='docu == "lcCopy"'>Upload LC Copy</h3>
+        <h3 class="heading" *ngIf='docu == "agreement"'>Upload Master service agreement</h3>
+        <h3 class="heading" *ngIf='docu == "tryPartyAgreement"'>Upload Tri Party Document</h3>
+        <h3 class="heading" *ngIf='docu == "opinionReport"'>Upload Opinion Report</h3>
+        <h3 class="heading" *ngIf='docu == "swiftCopy"'>Upload Swift Copy Document</h3>
+        <h3 class="heading" *ngIf='docu == "EBRC"'>Upload Export Realisation certificate</h3>
+        <h3 class="heading" *ngIf='docu == "blCopyref"'>Bill lodgement reference number and advice copy</h3>
+        <h3 class="heading" *ngIf='docu == "blCopy"'>Airway / BLCopy</h3>
+        <h3 class="heading" *ngIf='docu == "commercial"'>Commercial Invoice</h3>
+        <h3 class="heading" *ngIf='docu == "billOfExchange"'>Bill of Exchange</h3>
+        <h3 class="heading" *ngIf='docu == "destruction"'>Destruction certificate</h3>
+        <h3 class="heading" *ngIf='docu == "packingList"'>Packing List Document</h3>
+
+        <h3 class="heading" *ngIf='docu != "pipo" && docu != "boe" && docu != "sb" && docu != "irAdvice" &&  docu != "debitNote" && docu !="lcCopy" && docu !="insuranceCopy" && docu !="creditNote" && docu !="agreement" && docu !="opinionReport" && docu !="tryPartyAgreement" && docu !="swiftCopy" && docu !="EBRC" && docu !="blCopyref" && docu != "blCopy" && docu !="commercial" && docu !="billOfExchange" && docu !="destruction" && docu !="packingList"'>Upload Document</h3>
+        <div *ngIf='docu != "pipo" && docu != "boe" && docu != "sb" ' style="margin-bottom: 20px;">
+            <p style="color: rgb(0, 0, 0);margin-left: 40px">
+                Choose the type of document
+            </p>
+            <select [(ngModel)]="documentType1" (change)="selectPipo($event.target.value)" style=" margin-bottom: 3%; margin-left: 40px" name="" id="">
+      <option value="">Document Type</option>
+      <option value="import" >Import</option>
+      <option value="export">Export</option>
+
+    </select>
+
+
+            <p *ngIf='documentType1 == "import" || documentType1 == "export"' style="color: rgb(0, 0, 0); margin-left: 40px;">
+                Now you selected {{documentType1}}, select Type of {{documentType1}} document in the following dropdown
+
+            </p>
+            <select *ngIf='documentType1 == "import"' [(ngModel)]="documentType" style=" margin-bottom: 3%; margin-left: 40px" name="" id="">
+      <option value="">Document Type</option>
+
+      <option value="boe">BOE</option>
+      <option value="PO">PO</option>
+      <option value="PI">PI</option>
+      <option value="tryPartyAgreement">Tri Party Document</option>
+      <option value="debitNote">Debit Note</option>
+      <option value="creditNote">Credit Note</option>
+      <option value="blCopy">BL Copy / Airway</option>
+      <option value="agreement">Agreement</option>
+      <option value="opinionReport">Opinion Report</option>
+      <option value="lcCopy">LC Copy</option>
+      <option value="insuranceCopy">Insurance Copy</option>
+      <option value="deliveryOrder">Delivery Order</option>
+      <option value="commercial">Commercial Invoice</option>
+      <option value="billOfExchange">Bill Of Exchange</option>
+      <option value="destruction">Destruction Certificate</option>
+      <option value="packingList">Packing List Documents</option>
+
+    </select>
+            <!-- trial drop down +<div *ngIf='documentType1 == "export"' [(ngModel)]="documentType" style=" margin-bottom: 3%; margin-left: 40px" >
+      <div class="customDropdown" style="width: 300px; border: 1px solid #C6CBD4; flex-direction:row; ">
+        <span style="color: #323e4a !important; min-width: 250px;">Document Type</span>
+        <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+          <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+        </span>
+        <div class="dropdown-content" style="min-width:200px; margin-right:-26px;">
+          <a style="min-width:100%;" value="sb">Shipping Bill</a>
+          <a style="min-width:100%;">PO</a>
+        </div>
+      </div>
+    </div> -->
+            <select *ngIf='documentType1 == "export"' [(ngModel)]="documentType" style=" margin-bottom: 3%; margin-left: 40px" name="" id="">
+      <option value="">Document Type</option>
+
+      <option value="sb">Shipping Bill</option>
+      <option value="PO">PO</option>
+      <option value="PI">PI</option>
+      <option value="tryPartyAgreement">Tri Party Document</option>
+      <option value="debitNote">Debit Note</option>
+      <option value="creditNote">Credit Note</option>
+      <option value="blCopy">Airway / BL Copy</option>
+      <option value="agreement">Agreement</option>
+      <option value="opinionReport">Opinion Report</option>
+      <option value="lcCopy">LC Copy</option>
+      <option value="insuranceCopy">Insurance Copy</option>
+      <option value="deliveryOrder">Delivery Order</option>
+      <option value="irAdvice">Inward Remittance Advice</option>
+      <option value="swiftCopy">SwiftCopy</option>
+      <option value="EBRC">EBRC</option>
+      <option value="blCopyref">Bill lodgement refno & advice copy</option>
+      <option value="commercial">Commercial Invoice</option>
+      <option value="billOfExchange">Bill Of Exchange</option>
+      <option value="destruction">Destruction Certificate</option>
+      <option value="packingList">Packing List Documents</option>
+     </select>
+
+            <div *ngIf='documentType == "PI" && documentType1 == "import" || documentType == "PO" && documentType1 == "import"'>
+                <div style="display: flex; align-items: center; margin-left: 23px !important; ">
+                    <label style="flex-direction:row; font-size: 20px; color: #303030; margin-right: 50px !important; "> Beneficiary
+        Name*</label>
+                    <div class="customDropdown" style="width: 300px; border: 1px solid #C6CBD4; flex-direction:row; ">
+                        <span style="color: black !important; min-width: 250px;">{{beneValue}}</span>
+                        <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+          <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+        </span>
+                        <div class="dropdown-content" style="min-width:200px; margin-right:-26px;">
+                            <a style="min-width:100%;" *ngFor="let bene of benneDetail" (click)='clickBene(bene.beneName)'>{{bene.beneName}}</a>
+                            <!-- <a style="border: 1px solid #EAEDF3;min-width:100%;" (click)="open(content)">Add New Beneficiary</a> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <label *ngIf='documentType == "PI" && documentType1 == "export" || documentType == "PO" && documentType1 == "export"' style="flex-direction:row; font-size: 16px; color: #303030;margin-left: 35px !important; margin-top: -22px;  ">Buyer’s
+            Name*</label>
+            <div *ngIf='documentType == "PI" && documentType1 == "export" || documentType == "PO" && documentType1 == "export"'>
+                <div style="display: flex; align-items: center; margin-left: 23px;">
+
+                    <div class="customDropdown" style="width: 200px; margin-left: 18px; margin-bottom: 10px; flex-direction:row; ">
+                        <span style="color: Black !important; min-width: 150px;">{{buyerValue}}</span>
+                        <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+                  <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+                </span>
+                        <div class="dropdown-content" style="min-width:200px; margin-right:-26px;">
+                            <a style="min-width:100%;" *ngFor="let buyer of buyerDetail" (click)='clickBuyer(buyer.buyerName)'>{{buyer.buyerName}}</a>
+                            <!-- <a style="min-width:100%;border-top: 0.5px solid #C6CBD4;" (click)="open1(content1)">Add New Buyer</a> -->
+                        </div>
+                    </div>
+
+                    <!-- <select style="border: 1px solid #C6CBD4;
+                        color: black;
+                        padding: 4px;
+                        font-weight: 100 ; margin-left:20px; font-size: 14px; border-radius: 2px;">
+                            <option >{{buyerValue}}</option>
+                            <option *ngFor="let buyer of buyerDetail" (click)='clickBuyer(buyer.buyerName)'>{{buyer.buyerName}}</option>
+                            <option ><a style="border: 1px solid #EAEDF3;min-width:100%;" (click)="open1(content1)">Add New Buyer</a></option>
+                </select> -->
+                </div>
+
+                <br>
+                <div style="display: flex; align-items: center; margin-left: 23px;">
+                    <label style="flex-direction:row; font-size: 16px; margin-left: 13px; color: #303030;margin-right: 14px !important; ">Choose
+                  Commodity</label>
+                    <div class="customDropdown" style="width: 300px; flex-direction:row;">
+                        <span style="color: Black !important; min-width: 150px;">Choose Commodity</span>
+                        <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+                    <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+                  </span>
+                        <div class="dropdown-content" style="min-width:200px; margin-right:-26px;">
+                            <a style="min-width:100%;" *ngFor="let buyer of commodity" (click)='clickComo(buyer.como)'>{{buyer.como}}</a>
+                        </div>
+                    </div>
+
+                    <!-- <select style="border: 1px solid #C6CBD4;
+                        color: black;
+                        padding: 4px;
+                        font-weight: 100 ; margin-left:20px; font-size: 14px; border-radius: 2px;">
+                            <option >Choose Commodity</option>
+                            <option *ngFor="let buyer of commodity" (click)='clickComo(buyer.como)'>{{buyer.como}}</option>
+               </select> -->
+                </div>
+
+
+                <div style="margin-left: 250px;">
+                    <p *ngFor='let data of comoData; let i = index' class="arrayData">
+                        {{data}} <i style="float: right; margin-top: 5px; margin-bottom: 5px; margin-left: 10px;" (click)='removeComo(i)' class="fas fa-times"></i>
+                    </p>
+                </div>
+
+
+            </div>
+            <div *ngIf='documentType'>
+                <div *ngIf='documentType != "PI" && documentType != "PO"' style="display: flex; align-items: center; margin-left: 30px;">
+
+                    <div *ngIf='documentType == "boe"'>
+                        <label style="flex-direction:row; font-size: 16px; color: #303030;margin-left: -19px; margin-right: 14px;">Select PI/PO*</label>
+                        <div class="customDropdown" style="width: 300px; flex-direction:row; ">
+                            <span style="color: black !important; min-width: 150px;">{{pipoValue}}</span>
+                            <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+                    <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+                  </span>
+                            <div class="dropdown-content" style="min-width: 200px; margin-right: -26px">
+                                <div *ngFor="let pipo of pipolist" (click)="clickPipo('PI', pipo.pi_poNo, pipo.benneName)">
+                                    <a *ngIf="pipo.file == 'import'">{{ pipo.pi_poNo }}-{{ pipo.benneName }}</a
+                  >
+                                </div>
+
+                                 <!-- <p style="border: 1px solid #EAEDF3;" (click)="open(content)"><a>Add New Beneficiary</a></p> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf='documentType == "sb"'>
+                            <div style="display: flex; align-items: center; margin-left: 23px;">
+                                <label style="flex-direction:row; font-size: 16px; color: #303030; margin-left: -19px; margin-right: 14px;">Select PI/PO*</label>
+                                <div class="customDropdown" style="width: 300px; flex-direction:row; ">
+                                    <span style="color: black !important; min-width: 150px;">{{pipoValue}}</span>
+                                    <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+                    <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+                  </span>
+                                    <div class="dropdown-content" style="min-width: 200px; margin-right: -26px">
+                                        <div *ngFor="let bene of pipolist" (click)="clickPipo('PI', bene, bene.buyerName)">
+                                            <a style="min-width: 100%" *ngIf="bene.file == 'export'">
+                      PI-{{ bene.pi_poNo }}-{{ bene.buyerName }}</a
+                    >
+                                    </div>
+                                     <!-- <p style="border: 1px solid #EAEDF3;" (click)="open(content)"><a>Add New Beneficiary</a></p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf='documentType != "sb" && documentType != "boe" && documentType != "PO" && documentType != "PI" '>
+                                <label style="flex-direction:row; font-size: 16px; color: #303030; margin-left: 5px;">Select PI/PO*</label>
+                                <div class="customDropdown" style="width: 300px; margin-bottom: 10px; margin-left: 10px; flex-direction:row; ">
+                                    <span style="color: black !important; min-width: 150px;">{{pipoValue}}</span>
+                                    <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+                    <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+                  </span>
+                                    <div class="dropdown-content" style="min-width: 200px; margin-right: -26px">
+                                        <div *ngFor="let pipo of pipolist">
+                                            <a style="min-width: 100%" *ngIf="pipo.file == 'export'" (click)="clickPipo('PI', pipo, pipo.buyerName)">
+                    {{ pipo.pi_poNo }}-{{ pipo.buyerName }}</a
+                  >
+                  <a
+                    style="min-width: 100%"
+                    *ngIf="pipo.file == 'import'"
+                    (click)="clickPipo('PI', pipo, pipo.benneName)"
+                  >
+                    {{ pipo.pi_poNo }}-{{ pipo.benneName }}</a
+                  >
+                                </div>
+                                 <!-- <p style="border: 1px solid #EAEDF3;" (click)="open(content)"><a>Add New Beneficiary</a></p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-left: 35px;" *ngIf='documentType != "PI" && documentType != "PO"'>
+
+                                <button *ngFor='let data of arrayData; let i = index' class="arrayData">
+                        {{data}} <i style="float: right; margin-top: 5px; margin-bottom: 5px; margin-left: 10px;;" (click)='removePipo(i)' class="fas fa-times"></i>
+                    </button>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div *ngIf='docu == "boe"'>
+                        <div style="display: flex; align-items: center; margin-left: 23px;">
+                            <label style="flex-direction:row; font-size: 20px; color: #303030; margin-right: 50px;">Select PI/PO*</label>
+                            <div class="customDropdown" style="width: 300px; flex-direction:row;">
+                                <span style="color: black !important; min-width: 150px;">{{pipoValue}}</span>
+                                <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+              <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+            </span>
+                                <div class="dropdown-content" style="min-width: 200px; margin-right: -26px">
+                                    <div *ngFor="let pipo of pipolist" (click)="clickPipo('PI', pipo, pipo.benneName)">
+                                        <a *ngIf="pipo.file == 'import'">
+                PI-{{ pipo.pi_poNo }}-{{ pipo.benneName }}</a
+              >
+                        </div>
+                         <!-- <p style="border: 1px solid #EAEDF3;" (click)="open(content)"><a>Add New Beneficiary</a></p> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div *ngIf='docu == "sb" && file == "export"' style="margin-bottom: -15px;">
+                            <div style="display: flex; align-items: center; margin-left: 30px;">
+                                <label style="flex-direction:row; font-size: 20px; color: #303030; margin-right: 30px;">Select PI/PO*</label>
+                                <div class="customDropdown" style="width: 300px; border: 1px solid #C6CBD4; flex-direction:row;">
+                                    <span style="color: #323e4a !important; min-width: 150px;">{{pipoValue}}</span>
+                                    <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+          <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+        </span>
+                                    <div class="dropdown-content" style="margin-top: -2px; min-width: 200px">
+                                        <div *ngFor="let pipo of pipolist" (click)="clickPipo('PI', pipo, pipo.buyerName)">
+                                            <a style="min-width: 100%" *ngIf="pipo.file == 'export'">
+                PI-{{ pipo.pi_poNo }}-{{ pipo.buyerName }}</a
+              >
+                        </div>
+                         <!-- <p style="border: 1px solid #EAEDF3;" (click)="open(content)"><a>Add New Beneficiary</a></p> -->
+                                        </div>
+                                    </div>
+                                </div> <br>
+
+                                <!-- <div *ngIf="documentType1 == 'export' && documentType === 'debitNote'">
+              <input class="pinput" name="ttDate" type="text" placeholder="Debit Note">
+
+          </div> -->
+
+                            </div>
+                            <div *ngIf='docu == "sb" || docu == "boe"' style="margin-left: 185px;">
+
+                                <p *ngFor='let data of arrayData; let i = index' class="arrayData">
+                                    {{data}} <i style="float: right; margin-top: 5px; margin-bottom: 5px; margin-left: 10px;" (click)='removePipo(i)' class="fas fa-times"></i>
+                                </p>
+
+                            </div>
+
+                            <div *ngIf='docu == "pipo" && file =="import"'>
+                                <div style="display: flex; align-items: center; margin-left: 23px;">
+                                    <label style="flex-direction:row; font-size: 20px; color: #303030; margin-right: 50px !important; ">Beneficiary
+            Name*</label>
+                                    <div class="customDropdown" style="width: 300px; flex-direction:row; ">
+                                        <span style="color: black !important; max-width: 250px;">{{beneValue}}</span>
+                                        <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+              <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+            </span>
+                                        <div class="dropdown-content" style="min-width:200px; margin-right:-26px;">
+                                            <a style="min-width:100%;" *ngFor="let bene of benneDetail" (click)='clickBene(bene.beneName)'>{{bene.beneName}}</a>
+                                            <!-- <a style="min-width:100%; border-top: 2px solid #e5e7ec;" (click)="open(content)">Add New Beneficiary</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div style="margin-top: 40px; margin-left: 33px;">
+                                    <span style="color: #303030; font-size: 20px; margin-left: -6px;">Choose the type of document *</span>
+                                    <div style="display: flex; align-items: center;">
+                                        <input style="flex-direction:row;" type="radio" id="options1" class="circular_input" [(ngModel)]="documentType" value="PI">
+                                        <label style="flex-direction:row;" class="label1" for="male">Proforma Invoice</label>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <input type="radio" style="flex-direction:row;" id="options2" class="circular_input" [(ngModel)]="documentType" value="PO">
+                                        <label class="label1" style="flex-direction:row;" for="female">Purchase Order</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf='docu == "pipo" && file =="export"'>
+                                <div style="display: flex; align-items: center; margin-left: 30px;">
+                                    <label style="flex-direction:row; font-size: 20px; color: #303030; margin-left: -11.4px;">Buyer’s
+        Name*</label>
+                                    <div class="customDropdown" style="width: 200px; margin-left: 18px; margin-bottom: 10px;z-index: auto !important;">
+                                        <span style="color: black !important; min-width: 150px; z-index: 1;">{{buyerValue}}</span>
+                                        <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+          <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+        </span>
+                                        <div class="dropdown-content" style="min-width:200px; margin-right:-26px;">
+                                            <div *ngFor="let buyer of buyerDetail" (click)='clickBuyer(buyer.buyerName)'><a style="min-width:100%;">{{buyer.buyerName}}</a></div>
+                                            <div style=" min-width:100%;" (click)="open1(content1)"><a style="min-width:100%; border-top: 0.5px solid #C6CBD4;">Add New Buyer</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- <select style="border: 1px solid #C6CBD4;
+                        color: black;
+                        padding: 4px;
+                        font-weight: 100 ; margin-right: 5px; font-size: 14px; border-radius: 2px;">
+                            <option >{{buyerValue}}</option>
+                            <option *ngFor="let buyer of buyerDetail" (click)='clickBuyer(buyer.buyerName)'>{{buyer.buyerName}}</option>
+                            <option ><div style="border: 1px solid #EAEDF3; min-width:100%;" (click)="open1(content1)"><a style="min-width:100%;">Add New Buyer</a></div></option>
+                </select> -->
+                                </div>
+                                <br>
+                                <div style="display: flex; align-items: center; margin-left: 30px;">
+                                    <label style="flex-direction:row; font-size: 20px; color: #303030;  margin-left: -11.4px;">Choose
+        Commodity</label>
+                                    <div class="customDropdown" style="width: 200px; margin-left: 18px; margin-bottom: 10px; flex-direction:row; z-index: auto !important;">
+                                        <span style="min-width:100%;" style="color: black !important; min-width: 150px;">Choose Commodity</span>
+                                        <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+          <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+        </span>
+                                        <div class="dropdown-content" style="min-width:200px; margin-right:-26px;">
+                                            <div *ngFor="let buyer of commodity" (click)='clickComo(buyer.como)'><a style="min-width:100%;">{{buyer.como}}</a></div>
+                                        </div>
+                                    </div>
+                                    <!-- <select style="border: 1px solid #C6CBD4;
+                        color: black;
+                        padding: 4px;
+                        font-weight: 100 ; margin-right: 5px; font-size: 14px; border-radius: 2px;">
+                            <option >Choose Commodity</option>
+                            <option *ngFor="let buyer of commodity"><div (click)='clickComo(buyer.como)'><a style="min-width:100%;"></a></div>{{buyer.como}}</option>
+               </select> -->
+                                </div>
+
+                                <div style="margin-left: 250px;">
+                                    <p *ngFor='let data of comoData; let i = index' class="arrayData">
+                                        {{data}} <i style="float: right; margin-top: 5px; margin-bottom: 5px; margin-left: 10px;" (click)='removeComo(i)' class="fas fa-times"></i>
+                                    </p>
+                                </div>
+
+
+                                <div style="margin-top: 40px; margin-left: 28px;">
+                                    <span style="color: #303030; font-size: 20px;">Choose the type of document *</span>
+                                    <div style="display: flex; align-items: center;">
+                                        <input style="flex-direction:row;" type="radio" id="options1" class="circular_input" [(ngModel)]="documentType" value="PI">
+                                        <label style="flex-direction:row;" class="label1" for="male">Proforma Invoice</label>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <input type="radio" style="flex-direction:row;" id="options2" class="circular_input" [(ngModel)]="documentType" value="PO">
+                                        <label class="label1" style="flex-direction:row;" for="female">Purchase Order</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf='docu == "debitNote" && file =="export"'></div>
+                            <div *ngIf='docu == "irAdvice" && file =="export"'></div>
+
+
+                            <div *ngIf="documentType === 'sb'" class="form" method="POST">
+                                <input (error)="onUploadError($event)" (init)="onUploadInit($event)" (success)="onUploadSuccess($event)" (sending)="submit($event)" *ngIf="type === 'directive' && pipoSelect === true" [dropzone]="config" class="dropzone dropzone-container" id="dropzone"
+                                />
+                                <i class="fas fa-file-upload"></i>
+                                <h5>Drag and Drop files here</h5>
+                                <p>Files Supported: PDF, XSLS, Image, Scanner</p>
+                                <button type="submit">Choose File</button>
+                                <p>Maximum Size: 5MB</p>
+                            </div>
+                            <div *ngIf="documentType === 'boe' " class="form" method="POST">
+                                <input (error)="onUploadError($event)" (init)="onUploadInit($event)" (success)="onUploadSuccess($event)" (sending)="submit($event)" *ngIf="type === 'directive' && pipoSelect === true" [dropzone]="config2" class="dropzone dropzone-container" id="dropzone"
+                                />
+                                <i class="fas fa-file-upload"></i>
+                                <h5>Drag and Drop files here</h5>
+                                <p>Files Supported: PDF, XSLS, Image, Scanner</p>
+                                <button type="submit">Choose File</button>
+                                <p>Maximum Size: 5MB</p>
+                            </div>
+
+
+                            <div *ngIf="documentType === 'irAdvice'" class="form" method="POST">
+                                <input (error)="onUploadError($event)" (init)="onUploadInit($event)" (success)="onUploadSuccess($event)" (sending)="submit($event)" *ngIf="type === 'directive' && pipoSelect === true" [dropzone]="config3" class="dropzone dropzone-container" id="dropzone"
+                                />
+                                <i class="fas fa-file-upload"></i>
+                                <h5>Drag and Drop files here to upload</h5>
+                                <p>Files Supported: PDF, XSLS, Image, Scanner</p>
+                                <button type="submit">Choose File</button>
+                                <p>Maximum Size: 5MB</p>
+                            </div>
+
+                            <div *ngIf="documentType === 'PI' || documentType === 'PO' " class="form" method="POST">
+                                <input (error)="onUploadError($event)" (init)="onUploadInit($event)" (success)="onUploadSuccess($event)" (sending)="submit($event)" *ngIf="type === 'directive'" [dropzone]="config1" class="dropzone dropzone-container" id="dropzone" />
+                                <i class="fas fa-file-upload"></i>
+                                <h5>Drag and Drop files here</h5>
+                                <p>Files Supported: PDF, XSLS, Image, Scanner</p>
+                                <button type="submit">Choose File</button>
+                                <p>Maximum Size: 5MB</p>
+                            </div>
+
+                            <div *ngIf=" documentType === 'tryPartyAgreement' || documentType === 'debitNote' || documentType === 'creditNote' || documentType === 'blCopy' || documentType === 'agreement' || documentType === 'opinionReport' ||documentType === 'swiftCopy' || documentType === 'lcCopy' || documentType === 'insuranceCopy' || documentType === 'deliveryOrder' || documentType === 'tryPartyAgreement'|| documentType === 'EBRC' || documentType === 'blCopyref' || documentType === 'commercial' || documentType === 'billOfExchange' || documentType === 'destruction' || documentType === 'packingList'"
+                                class="form" method="POST">
+                                <input (error)="onUploadError($event)" (init)="onUploadInit($event)" (success)="onUploadSuccess($event)" (sending)="submit($event)" *ngIf="type === 'directive' && pipoSelect === true" [dropzone]="config1" class="dropzone dropzone-container" id="dropzone"
+                                />
+                                <i class="fas fa-file-upload"></i>
+                                <h5>Drag and Drop files here</h5>
+                                <p>Files Supported: PDF, XSLS, Image, Scanner</p>
+                                <button type="submit">Choose File</button>
+                                <p>Maximum Size: 5MB</p>
+                            </div>
+                            <div class="progressbar" *ngIf="uploading">
+                                <!-- <p class="processheading">Invoice-001</p> -->
+                                <div class="meter">
+                                    <span [style.width]="width + '%'"></span>
+                                </div>
+                            </div>
+                            <div style="margin-left: 30px; margin-top: 30px" *ngIf="override && sbNo">
+                                <h1 style="font-size: 20px">
+                                    This SB Number is already exist, Do you want to override the changes?
+                                </h1>
+                                <button (click)="onOverride()" style="margin-right: 5px">Yes</button>
+                                <button [routerLink]="['/home/view-document/sb']">No</button>
+                            </div>
+                            <div style="margin-left: 30px; margin-top: 30px" *ngIf="override && boeNumber">
+                                <h1 style="font-size: 20px">
+                                    This BOE Number is already exist, Do you want to override the changes?
+                                </h1>
+                                <button (click)="onOverride()" style="margin-right: 5px">Yes</button>
+                                <button [routerLink]="['/home/dashboard']">No</button>
+                            </div>
+                            <div style="margin-left: 30px; margin-top: 30px" *ngIf="override && billNo">
+                                <h1 style="font-size: 20px">
+                                    This Forex Bill Number is already exist, Do you want to override the changes?
+                                </h1>
+                                <button (click)="onOverride()" style="margin-right: 5px">Yes</button>
+                                <button [routerLink]="['/home/inward-remittance-advice']">No</button>
+                            </div>
+
+
+                            <!-- <div style="margin-top: 100px; width: 70%;">
+
+       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div> -->
+                            <form class="" *ngIf="sbNo && !override" #values="ngForm" (ngSubmit)="onSubmit(values)">
+                                <div class="field" style="width:84%;margin-left:31px">
+                                    <table class="field-table">
+                                        <tr class="field-heading">
+                                            <td>AD BILL NUMBER</td>
+                                            <td>SB NUMBER*</td>
+                                            <td>SB DATE</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input [(ngModel)]="res.adBillNo" class="input" type="text" name="adBillNo" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="res.sbno" class="input" type="text" name="sbno" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="res.sbdate" class="input" type="date" name="sbdate" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="sub-table">
+                                    <div class="sb1">
+                                        <tr class="form-wrapper">
+                                            <p class="sh1">SB DETAILS</p>
+                                            <td class="full-input border1">
+                                                <label for="portCode">PORT CODE</label><input [(ngModel)]="res.portCode" class="smalll-input" type="text" name="portCode" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="ieccode">IEC CODE</label><input [(ngModel)]="res.ieccode" class="smalll-input" type="text" name="ieccode" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="iecName">IEC NAME</label><input [(ngModel)]="res.iecName" class="smalll-input" type="text" name="iecName" />
+                                            </td>
+                                            <br />
+                                            <td class="full-input border1">
+                                                <label for="adCode">AD CODE</label><input [(ngModel)]="res.adCode" class="smalll-input" type="text" name="adCode" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="leodate">LEO DATE</label><input [(ngModel)]="res.leodate" class="smalll-input" type="date" name="leodate" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="processingStaus">PROCESSING STATUS</label><input [(ngModel)]="res.processingStaus" class="smalll-input" type="text" name="processingStaus" />
+                                            </td>
+                                            <br />
+
+                                            <p class="sh1">FOB and FREIGHT</p>
+                                            <td class="full-input border1">
+                                                <label for="fobCurrency">FOB CURRENCY</label><input [(ngModel)]="res.fobCurrency" class="smalll-input" type="text" name="fobCurrency" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="fobValue">FOB VALUE</label><input [(ngModel)]="res.fobValue" class="smalll-input" type="text" name="fobValue" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="realizedFobValue">REALIZED FOB VALUE</label><input [(ngModel)]="res.realizedFobValue" class="smalll-input" type="text" name="realizedFobValue" />
+                                            </td>
+                                            <br />
+                                            <td class="full-input border1">
+                                                <label for="equivalentFobValue">EQUIVALENT FOB VALUE</label><input [(ngModel)]="res.equivalentFobValue" class="smalll-input" type="text" name="equivalentFobValue" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="freightCurrency">FREIGHT CURRENCY</label><input [(ngModel)]="res.freightCurrency" class="smalll-input" type="text" name="freightCurrency" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="realizedFreightValue">FREIGHT VALUE</label><input [(ngModel)]="res.realizedFreightValue" class="smalll-input" type="text" name="realizedFreightValue" />
+                                            </td>
+                                            <br />
+                                            <p class="sh1">INSURANCE</p>
+                                            <td class="full-input border2">
+                                                <label for="insuranceCurrency">INSURANCE CURRENCY</label><input [(ngModel)]="res.insuranceCurrency" class="smalll-input" type="text" name="insuranceCurrency" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="insuranceValue">INSURANCE VALUE</label><input [(ngModel)]="res.insuranceValue" class="smalll-input" type="text" name="insuranceValue" />
+                                            </td>
+                                            <td class="full-input border1">
+                                                <label for="realizedInsuranceValue">INSURANCE VALUE</label><input [(ngModel)]="res.realizedInsuranceValue" class="smalll-input" type="text" name="realizedInsuranceValue" />
+                                            </td>
+                                            <br />
+                                            <p class="sh1">Additional</p>
+                                            <td class="full-input border2">
+                                                <label for="bankingCharges">BANKING CHARGES</label><input [(ngModel)]="res.bankingCharges" class="smalll-input" type="text" name="bankingCharges" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="expectedPaymentlastdate">PAYMENT LAST DATE</label><input [(ngModel)]="res.expectedPaymentlastdate" class="smalll-input" type="date" name="expectedPaymentlastdate" />
+                                            </td>
+                                            <td class="full-input border1">
+                                                <label for="AddedDate">ADDED DATE</label><input [(ngModel)]="res.AddedDate" class="smalll-input" type="date" name="AddedDate" />
+                                            </td>
+                                            <br />
+                                            <td class="full-input border2">
+                                                <label for="modifiedDate">MODIFIED DATE</label><input [(ngModel)]="res.modifiedDate" class="smalll-input" type="date" name="modifiedDate" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="exporterLocationCode">EXPORTER LOCATION CODE</label><input [(ngModel)]="res.exporterLocationCode" class="smalll-input" type="text" name="exporterLocationCode" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="countryOfFinaldestination">COUNTRY OF FINAL DESTINATION</label><input [(ngModel)]="res.countryOfFinaldestination" class="smalll-input" type="text" name="countryOfFinaldestination" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="consigneeName">CONSIGNEE NAME</label><input [(ngModel)]="res.consigneeName" class="smalll-input" type="text" name="consigneeName" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="exchangeRate">EXCHANGE RATE</label><input [(ngModel)]="res.exchangeRate" class="smalll-input" type="text" name="exchangeRate" />
+                                            </td>
+                                            <br />
+                                            <br />
+                                            <!-- <p class="sh1">Bene Details</p>
+          <td class="full-input border2">
+            <label for="bankingCharges">Bene Name</label><select name="beneName" ngModel>
+              <option value="">Select Bene Name</option>
+              <option *ngFor="let bene of benneDetail" [value]="bene.beneName">
+                {{ bene.beneName }}
+              </option>
+            </select>
+          </td> -->
+
+
+                                        </tr>
+                                    </div>
+                                    <div class="sb2">
+                                        <iframe [src]="publicUrl" width="100%" height="700px" style="margin-left: -150px;"> </iframe>
+                                    </div>
+                                </div>
+
+                                <div style="float: left; width: 73%; margin-left: 20px">
+                                    <div>
+                                        <div class="tabbed">
+                                            <input *ngFor="let obj of res.invoices; let i = index" [attr.data-index]="i" type="radio" id="{{ i + 1 }}" name="css-tabs" checked />
+
+                                            <ul class="tabs">
+                                                <li class="tab" *ngFor="let obj of res.invoices; let i = index" [attr.data-index]="i">
+                                                    <label for="{{ i + 1 }}">Invoice {{ i + 1 }}</label>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content form-wrapper" *ngFor="let obj of res.invoices; let i = index" [attr.data-index]="i">
+                                                <td class="full-input border1">
+                                                    <label for="mawbno">INVOICE NO</label><input [(ngModel)]="obj.invoiceno" class="smalll-input" type="text" name="invoiceno{{ i + 1 }}" />
+                                                </td>
+                                                <td class="full-input border2">
+                                                    <label for="mawbno">AMOUNT</label><input [(ngModel)]="obj.amount" class="smalll-input" type="text" name="amount{{ i + 1 }}" />
+                                                </td>
+                                                <td class="full-input border3">
+                                                    <label for="mawbno">CURRENCY</label><input [(ngModel)]="obj.currency" class="smalll-input" type="text" name="currency{{ i + 1 }}" />
+                                                </td>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <form *ngIf="boeNumber && !override" class="" #values="ngForm" (ngSubmit)="onSubmitBoe(values)">
+                                <div class="field">
+                                    <table class="field-table">
+                                        <tr class="field-heading">
+                                            <td>BOE Number*</td>
+                                            <td>BOE Date</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input [(ngModel)]="res.boeNumber" class="input2" type="text" name="boeNumber" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="res.boeDate" class="input2" type="date" name="boeDate" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="sub-table">
+                                    <div class="sb1">
+                                        <tr class="form-wrapper">
+                                            <p class="sh1">SB DETAILS</p>
+                                            <td class="full-input border1">
+                                                <label for="origin">ORIGIN</label><input [(ngModel)]="res.origin" class="smalll-input" type="text" name="origin" />
+                                            </td>
+                                            <td class="full-input border1">
+                                                <label for="dischargePort">DISCHARGE PORT</label><input [(ngModel)]="res.dischargePort" class="smalll-input" type="text" name="dischargePort" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="iecCode">IEC CODE</label><input [(ngModel)]="res.iecCode" class="smalll-input" type="text" name="iecCode" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="iecName">IEC NAME</label><input [(ngModel)]="res.iecName" class="smalll-input" type="text" name="iecName" />
+                                            </td>
+                                            <br />
+                                            <td class="full-input border1">
+                                                <label for="adCode">AD CODE</label><input [(ngModel)]="res.adCode" class="smalll-input" type="text" name="adCode" />
+                                            </td>
+                                            <td class="full-input border1">
+                                                <label for="adBillNo">AD BILL CODE</label><input [(ngModel)]="res.adBillNo" class="smalll-input" type="text" name="adBillNo" />
+                                            </td>
+
+                                            <p class="sh1">INVOICE DETAILS</p>
+                                            <td class="full-input border1">
+                                                <label for="invoiceNumber">INVOICE NO</label><input [(ngModel)]="res.invoiceNumber" class="smalll-input" type="text" name="invoiceNumber" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="invoiceAmount">INVOICE AMOUNT</label><input [(ngModel)]="res.invoiceAmount" class="smalll-input" type="text" name="invoiceAmount" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="currency">CURRENCY</label><input [(ngModel)]="res.currency" class="smalll-input" type="text" name="currency" />
+                                            </td>
+                                            <br />
+                                            <td class="full-input border1">
+                                                <label for="settledAmount">SETTELED AMOIUNT</label><input [(ngModel)]="res.settledAmount" class="smalll-input" type="text" name="settledAmount" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="status">STATUS</label><input [(ngModel)]="res.status" class="smalll-input" type="text" name="status" />
+                                            </td>
+                                            <br />
+
+                                            <p class="sh1">FOB and FREIGHT</p>
+                                            <td class="full-input border2">
+                                                <label for="freightAmount">FREIGHT AMOUNT</label><input [(ngModel)]="res.freightAmount" class="smalll-input" type="text" name="freightAmount" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="freightCurrency">FREIGHT CURRENCY</label><input [(ngModel)]="res.freightCurrency" class="smalll-input" type="text" name="freightCurrency" />
+                                            </td>
+                                            <br />
+
+                                            <p class="sh1">INSURANCE</p>
+                                            <td class="full-input border2">
+                                                <label for="insuranceAmount">INSURANCE AMOUNT</label><input [(ngModel)]="res.insuranceAmount" class="smalll-input" type="text" name="insuranceAmount" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="insuranceCurrency">INSURANCE CURRENCY</label><input [(ngModel)]="res.insuranceCurrency" class="smalll-input" type="text" name="insuranceCurrency" />
+                                            </td>
+
+                                            <p class="sh1">DISCOUNT</p>
+                                            <td class="full-input border2">
+                                                <label for="discountAmount">DISCOUNT AMOUNT</label><input [(ngModel)]="res.discountAmount" class="smalll-input" type="text" name="discountAmount" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="discountCurrency">DISCOUNT CURRENCY</label><input [(ngModel)]="res.discountCurrency" class="smalll-input" type="text" name="discountCurrency" />
+                                            </td>
+                                            <br />
+
+                                            <p class="sh1">MISCELLANEOUS</p>
+                                            <td class="full-input border2">
+                                                <label for="miscellaneousAmount">MISCELLANEOUS AMOUNT</label><input [(ngModel)]="res.miscellaneousAmount" class="smalll-input" type="text" name="miscellaneousAmount" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="miscellaneousCurrency">MISCELLANEOUS CURRENCY</label><input [(ngModel)]="res.miscellaneousCurrency" class="smalll-input" type="text" name="miscellaneousCurrency" />
+                                            </td>
+
+                                            <p class="sh1">COMMISSION</p>
+                                            <td class="full-input border2">
+                                                <label for="commissionAmount">COMMISSION AMOUNT</label><input [(ngModel)]="res.commissionAmount" class="smalll-input" type="text" name="commissionAmount" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="commissionCurrency">COMMISSION CURRENCY</label><input [(ngModel)]="res.commissionCurrency" class="smalll-input" type="text" name="commissionCurrency" />
+                                            </td>
+
+                                            <br />
+                                            <!-- <p class="sh1">Bene Details</p>
+          <td class="full-input border2">
+            <label for="bankingCharges">Bene Name</label><select name="beneName" ngModel>
+              <option value="">Select Bene Name</option>
+              <option *ngFor="let bene of benneDetail" [value]="bene.beneName">
+                {{ bene.beneName }}
+              </option>
+            </select>
+          </td> -->
+                                        </tr>
+                                    </div>
+                                    <div class="sb2">
+                                        <iframe [src]="publicUrl" width="100%" height="700px" style="margin-left: -150px;"> </iframe>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <!-- Forex Advice Bill -->
+
+
+                            <form class="" *ngIf="billNo && !override" #values="ngForm" (ngSubmit)="onSubmitIrAdvice(values)">
+                                <div class="field">
+                                    <table class="field-table">
+                                        <tr class="field-heading">
+                                            <td>FOREX ADVICE DETAILS</td>
+                                            <td>PARTY NAME</td>
+                                            <td>TT AMOUNT</td>
+                                        </tr>
+                                        <tr style="margin-left: -10%;">
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="billNo" [(ngModel)]="res.billNo" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="partyName" [(ngModel)]="res.partyName" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="amount" [(ngModel)]="res.amount" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table">
+                                    <div class="sb1">
+                                        <tr class="form-wrapper">
+                                            <p class="sh1">FOREX ADVICE DETAILS</p>
+                                            <!-- <td class="full-input border1" style="width: 206px;">
+    <label for="location">Shipping Bill</label>
+    <select name="sbNo" ngModel placeholder="Location">
+          <option value="">Select SB Number</option>
+          <option *ngFor="let sb of item5" [value]="sb.sbno">
+            {{ sb.sbno }}
+          </option>
+        </select>
+</td> -->
+                                            <td class="full-input border1">
+                                                <label for="iecName">TT Date</label><input [(ngModel)]="res.date" class="smalll-input" type="text" name="date" />
+                                            </td>
+
+                                            <td class="full-input border2">
+                                                <label for="leodate">Recieved Date</label><input [(ngModel)]="res.recievedDate" class="smalll-input" type="text" name="recievedDate" />
+                                            </td>
+                                            <td class="full-input border3">
+                                                <label for="processingStaus">Commission</label><input [(ngModel)]="res.commision" class="smalll-input" type="text" name="commision" />
+                                            </td>
+                                            <br />
+                                            <td class="full-input border1">
+                                                <label for="fobValue">Conversion Date</label><input [(ngModel)]="res.conversionDate" class="smalll-input" type="text" name="conversionDate" />
+                                            </td>
+                                            <td class="full-input border2">
+                                                <label for="processingStaus">Exchange Rate</label><input [(ngModel)]="res.exchangeRate" class="smalll-input" type="text" name="exchangeRate" />
+                                            </td>
+                                            <br />
+                                            <td class="full-input border1" style="width: 206px;">
+                                                <label for="location">Location</label>
+                                                <select name="location" ngModel placeholder="Location">
+                                    <option value="">Select Location</option>
+                                    <option *ngFor="let bene of location" [value]="bene.loc">
+                                      {{ bene.loc }}
+                                    </option>
+                                  </select>
+                                            </td>
+                                            <td class="full-input border2" style="width: 206px;">
+                                                <label for="location">Commodity</label>
+                                                <select name="commodity" ngModel>
+                                    <option value="">Select commodity</option>
+                                    <option *ngFor="let como of commodity" [value]="como.como">
+                                      {{ como.como }}
+                                    </option>
+                                  </select>
+                                            </td>
+
+                                            <td class="full-input border2" style="width: 206px;">
+                                                <label for="location">Origin</label>
+                                                <select name="origin" ngModel>
+                                    <option value="">Select Origin</option>
+                                    <option *ngFor="let ori of origin" [value]="ori">
+                                      {{ ori }}
+                                    </option>
+                                  </select>
+                                            </td>
+
+                                        </tr>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <!---     --->
+                            <form *ngIf="pIpO && !override" class="" [formGroup]="piPoForm" (ngSubmit)="onSubmitPipo()">
+                                <!----------      "-->
+                                <div style="
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        margin-left: 2%;
+      " class="field">
+                                    <table style="width: 70%" class="field-table">
+                                        <tr class="field-heading">
+                                            <td>PI/PO NUMBER*</td>
+
+                                            <td>DATE</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input class="form-control input2" type="text" formControlName="pi_poNo" />
+                                            </td>
+
+                                            <td>
+                                                <input class="form-control input2" type="date" type="date" data-date="" data-date-format="DD MMMM YYYY" value="" formControlName="date" style="width: 7100% 0%" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table">
+                                    <div style="padding: 2% 0" class="sb1">
+                                        <tr style="width: 100%" class="form-wrapper">
+                                            <div style="margin-left: 18px; margin-bottom: 10px;">
+
+                                                <span style="font-size: 16px; color: #606670;margin-left: -8px; margin-bottom: 5px;">Invoice Amount</span> <br>
+                                                <input class="inputAmount" type="text" formControlName="amount" style="padding-left: 10px; margin-left: -5px;" />
+                                            </div>
+
+
+                                            <td *ngFor="let course of getCourses(piPoForm); let i = index" style="width: 206px; height: 76px; margin-bottom: 4%; margin-right: 20px; margin-left: 8px;" class="full-input border3">
+                                                <label for="iecName" style="text-align: left;">Currency</label><input class="form-control smalll-input" type="text" formControlName="currency" [(ngModel)]="currencyName[i]" (input)="searchCurrency($any($event.target).value,i)"
+                                                />
+                                                <div *ngIf='toggle1' class="currencydrop" style="margin-left: 50px;width: 75px ; padding-left: 5px;
+                              background: white;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;z-index: 1;
+                              border-radius: 6px;transform: translate(-14px, 4px);">
+                                                    <table *ngIf='y == i'>
+                                                        <tr *ngFor="let currencyName of jsondata1 " (click)="currencyClick(currencyName.value,i)">
+                                                            {{currencyName.value}}</tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+
+
+
+                                            <td style="width: 206px; height: 76px; margin-bottom: 4%; margin-right: 20px; margin-left: 8px;" class="full-input border1">
+                                                <label for="invoiceNumber">Incoterm</label><input class="form-control smalll-input" type="text" formControlName="incoterm" />
+                                            </td>
+                                            <td style="width: 206px; height: 76px; margin-bottom: 4%; margin-right: 20px; margin-left: 8px;" class="full-input border2">
+                                                <label for="invoiceAmount">Last Day Of Shipment</label><input class="form-control smalll-input" type="date" formControlName="lastDayShipment" placeholder="dd/mm/yyyy" />
+                                            </td>
+
+                                            <td style="width: 206px; height: 76px; margin-bottom: 4%; margin-right: 20px; margin-left: 8px;" class="full-input border1">
+                                                <label for="settledAmount">PC Ref No</label><input class="form-control smalll-input" type="text" formControlName="pcRefNo" />
+                                            </td>
+                                            <td style="width: 206px; height: 76px; margin-bottom: 4%; margin-right: 20px; margin-left: 8px;" class="full-input border1">
+                                                <label for="settledAmount">Due Date</label><input class="form-control smalll-input" type="date" formControlName="dueDate" placeholder="dd/mm/yyyy" />
+                                            </td> <br>
+                                            <td class="full-input border2" style="width: 206px; height: 76px; margin-bottom: 4%; margin-right: 20px; margin-left: 8px;">
+                                                <label for="location">Location</label><select formControlName="location" class="form-control smalll-input" ngModel>
+              <option value="">Select Location</option>
+              <option *ngFor="let bene of location" [value]="bene.loc">
+                {{ bene.loc }}
+              </option>
+            </select>
+                                            </td>
+
+
+                                            <br>
+                                            <span style="color: #303030; font-size: 20px; margin-left: 8px; margin-top: 20px;">Payment Terms*</span>
+                                            <div formArrayName="paymentTerm">
+
+                                                <div *ngFor="let course of getCourses(piPoForm); let i = index" [formGroupName]="i" style="display: flex; padding:1">
+                                                    <div style="flex-direction:row; margin-right: 20px;margin-left: 14px;">
+                                                        <span style="color: #707683; font-size: 14px;">Date</span> <br>
+                                                        <input formControlName="date" type="date" style="outline: none; border: 1px solid #DEDEDE; width: 130px;height: 40px; border-radius: 5px; font-size: 12px;
+                    color: #A5AAB3; padding-left: 5px;">
+                                                    </div>
+
+                                                    <div *ngIf='documentType1 == "import"' style="flex-direction:row; margin-right: 20px; border-radius: 5px;">
+                                                        <span style="color: #707683; font-size: 14px;">Type</span> <br>
+                                                        <select formControlName="type" style="outline: none; border: none; background: #f9f8f8;margin-left: -16px; width: 200px; border-radius: 5px; height: 40px; ">
+                    <option id="aaa" value="" style="border: none;">Select</option>
+                    <option value="Advance Payment" >Advance Payment</option>
+                    <option value="Letter of Credit" >Letter of Credit</option>
+                    <option value="Collection Bill" >Collection Bill</option>
+                    <option value="Direct Import">Direct Import</option>
+                  </select>
+                                                    </div>
+                                                    <!-- <div *ngIf='documentType1 == "import"'
+                style="flex-direction:row; margin-right: 20px; border-radius: 5px;">
+                <label style="flex-direction:row; font-size: 20px; color: #303030; margin-right: 50px;">Type</label>
+                <div class="customDropdown" style="width: 300px; border: 1px solid #C6CBD4; flex-direction:row; ">
+                  <span style="color: #323e4a !important; min-width: 150px;">{{payment}}</span>
+                  <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+                    <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+                  </span>
+                  <div class="dropdown-content" style="min-width:200px; margin-right:-26px;">
+                    <a style="min-width:100%;" (click)="clickpay'Advance Payment')">Advance Payment</a>
+                    <a style="min-width:100%;">Letter of Credit</a>
+                    <a style="min-width:100%;">Collection Billt</a>
+                    <a style="min-width:100%;">Direct Importt</a>
+
+                    <!-- <p style="border: 1px solid #EAEDF3;" (click)="open(content)"><a>Add New Beneficiary</a></p>
+</div>
+</div>
+</div> -->
+                                                    <div *ngIf='documentType1 =="export"' style="flex-direction:row; margin-right: 20px; border-radius: 5px;">
+                                                        <span style="color: #707683; font-size: 14px;">Type</span> <br>
+                                                        <select name="" formControlName="type" style="outline: none; border: 1px solid #DEDEDE; width: 160px;height: 40px; border-radius: 5px; font-size: 12px;
+                                    color:black;padding-left: 5px;">
+                  <option id="aaa" value="" style="border: none;">Select</option>
+                    <option value="Advance Payment" >Advance Payment</option>
+                    <option value="Letter of Credit">Letter of Credit</option>
+                    <option value="Collection Bill" >Collection Bill</option>
+                    <option value="Direct Import">Direct Dispatch</option>
+                  </select>
+                                                    </div>
+                                                    <div style="flex-direction:row;border-radius: 5px; margin-right: 20px;">
+                                                        <span style="color: #707683; font-size: 14px;">Currency</span> <br>
+                                                        <input formControlName="description" [(ngModel)]="currencyName1[i]" (input)="searchCurrency1($any($event.target).value,i)" style="outline: none; border: 1px solid #DEDEDE; width: 120px;height: 40px; border-radius: 5px; font-size: 12px;
+                    color: #A5AAB3;padding-left: 5px;">
+                                                        <div *ngIf='toggle2' class="currencydrop" style="margin-left: 50px;width: 75px ; padding-left: 5px;
+                    position: relative;background: white;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;z-index: 1;
+                    border-radius: 6px;transform: translate(-14px, 4px);">
+                                                            <table *ngIf='z == i'>
+                                                                <tr *ngFor="let currencyName1 of jsondata1" (click)=currencyClick1(currencyName1.value,i)>
+                                                                    {{currencyName1.value}}</tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div style="flex-direction:row; margin-right: 20px; border-radius: 5px;">
+                                                        <span style="color: #707683; font-size: 14px; text-align: center;">Amount</span> <br>
+                                                        <input formControlName="amount" style="outline: none; border: 1px solid #DEDEDE; width: 120px;height: 40px; border-radius: 5px; font-size: 12px;
+                                    color: #A5AAB3;padding-left: 5px; ">
+
+                                                    </div>
+
+
+                                                    <a *ngIf='i>0' (click)='removeAddress(i)'><i style="margin-top: 30px; " class="fas fa-times"></i></a>
+
+                                                </div>
+                                            </div>
+                                            <div class="row col-md-12" style="margin-top: 10px; margin-bottom: 10px;">
+                                                <span (click)="onAddCourse(piPoForm)" style="font-size: 12px; color: #303030; margin-left: 12px;"><i style="font-size: 14px;"
+                  class="fas fa-plus-circle"></i> Add New
+                Row </span>
+                                            </div>
+                                        </tr>
+                                    </div>
+
+                                    <div class="sb2">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px" style="margin-left: -150px;"> </iframe>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- Third Party Input File -->
+
+                            <form *ngIf="tryPartyAgreement && !override" class="" #values="ngForm" (ngSubmit)="onSubmitThird(values)">
+
+                                <div style="
+              width: 82%;
+              display: flex;
+              justify-content: center;
+              margin-left: 3%;
+            " class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+                                            <td>Tri Party Number*</td>
+
+                                            <td>Tri Party Amount</td>
+
+                                            <td>Currency</td>
+                                        </tr>
+                                        <tr style="margin-left: -10%;">
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="triPartyAgreementNumber" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="triPartyAgreementAmount" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="currency" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <!-- <div style="padding: 5% 0" class="sb1">
+                  Select PI/PO number to link
+                  <div class="form-check" *ngFor="let item of item3; let i = index;">
+                      <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" (change)="changeCheckbox(item.pi_poNo)">
+            {{item.pi_poNo}}
+          </label>
+                  </div> <br>
+              </div> -->
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- Credit Note Input File -->
+
+                            <form *ngIf="creditNote && !override" class="" #values="ngForm" (ngSubmit)="onSubmitCredit(values)">
+
+                                <div style="
+            width: 82%;
+            display: flex;
+            justify-content: center;
+            margin-left: 3%;
+          " class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+
+                                            <td>Credit Note Number*</td>
+
+                                            <td>Credit Note Amount</td>
+
+                                            <td>Currency
+                                                <td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="creditNoteNumber" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="creditNoteAmount" />
+                                            </td>
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="currency" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- swift-copy Input file -->
+                            <form *ngIf="swiftCopy && !override" class="" #values="ngForm" (ngSubmit)="onSubmitSwift(values)">
+
+                                <div style="
+            width: 82%;
+            display: flex;
+            justify-content: center;
+            margin-left: 3%;
+          " class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+                                            <td>Swift Copy Number*</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="swiftcopyNumber" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <!-- blcopyref Input file -->
+                            <form *ngIf="blCopyref && !override" class="" #values="ngForm" (ngSubmit)="onSubmitblcopyref(values)">
+
+                                <div style="
+            width: 82%;
+            display: flex;
+            justify-content: center;
+            margin-left: 3%;
+          " class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+                                            <td>BlCopyRef Number*</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="blcopyrefNumber" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- Airway / BL Copy -->
+                            <form *ngIf="blCopy && !override" class="" #values="ngForm" (ngSubmit)="onSubmitblCopy(values)">
+
+                                <div style="
+          width: 82%;
+          display: flex;
+          justify-content: center;
+          margin-left: 3%;
+        " class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+                                            <td>Airway / BlCopy Number*</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="airwayBlCopyNumber" />
+                                            </td>
+                                            <td style="width: 206px" *ngFor="let pipo of pipolist; let i=index">
+                                                <!-- <label for="location">Shipping Bill</label> -->
+                                                <div>
+                                                    <div *ngIf="matchSelectedPipo(pipo,this.pipoArr)">
+                                                        <select class="form-control input2" name="sbNo" ngModel placeholder="Location">
+                    <option value="">Select SB Number for PI-{{pipo.pi_poNo}}</option>
+                    <option *ngFor="let sb of pipoDataService.getShippingBills(pipo._id); let i=index" [value]="sb._id">
+                      {{ sb.sbno }}
+                    </option>
+                  </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- Commercial Invoice -->
+                            <form *ngIf="commercial && !override" class="" #values="ngForm" (ngSubmit)="onSubmitCommercial(values)">
+
+                                <div style="
+        width: 82%;
+        display: flex;
+        justify-content: center;
+        margin-left: 3%;
+      " class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+                                            <td>Commercial Invoice Number*</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="commercialNumber" />
+                                            </td>
+                                            <td style="width: 206px" *ngFor="let pipo of pipolist; let i=index">
+                                                <!-- <label for="location">Shipping Bill</label> -->
+                                                <div>
+                                                    <div *ngIf="matchSelectedPipo(pipo,this.pipoArr)">
+                                                        <select class="form-control input2" name="sbNo" ngModel placeholder="Location">
+                    <option value="">Select SB Number for PI-{{pipo.pi_poNo}}</option>
+                    <option *ngFor="let sb of pipoDataService.getShippingBills(pipo._id); let i=index" [value]="sb._id">
+                      {{ sb.sbno }}
+                    </option>
+                  </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- Bill Of Exchange -->
+                            <form *ngIf="billOfExchange && !override" class="" #values="ngForm" (ngSubmit)="onSubmitBillExchange(values)">
+
+                                <div style="
+width: 82%;
+display: flex;
+justify-content: center;
+margin-left: 3%;
+" class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+                                            <td>Bill Of Exchange Number*</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="billExchangeNumber" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- destruction certificate -->
+                            <form *ngIf="destruction && !override" class="" #values="ngForm" (ngSubmit)="onSubmitDestruction(values)">
+
+                                <div style="
+width: 82%;
+display: flex;
+justify-content: center;
+margin-left: 3%;
+" class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+                                            <td>Destruction Certificate Number*</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="destructionNumber" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- Other Documents -->
+                            <form *ngIf="packingList && !override" class="" #values="ngForm" (ngSubmit)="onSubmitPackingList(values)">
+
+                                <div style="
+width: 82%;
+display: flex;
+justify-content: center;
+margin-left: 3%;
+" class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+                                            <td>Packing List Number*</td>
+                                            <td>Packing List Amount</td>
+                                            <td>Currency
+                                                <td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="packingListNumber" />
+                                            </td>
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="packingListAmount" />
+                                            </td>
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="currency" />
+                                            </td>
+                                            <td style="width: 206px" *ngFor="let pipo of pipolist; let i=index">
+                                                <!-- <label for="location">Shipping Bill</label> -->
+                                                <div>
+                                                    <div *ngIf="matchSelectedPipo(pipo,this.pipoArr)">
+                                                        <select class="form-control input2" name="sbNo" ngModel placeholder="Location">
+                    <option value="">Select SB Number for PI-{{pipo.pi_poNo}}</option>
+                    <option *ngFor="let sb of pipoDataService.getShippingBills(pipo._id); let i=index" [value]="sb._id">
+                      {{ sb.sbno }}
+                    </option>
+                  </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- EBRC Input file -->
+                            <form *ngIf="EBRC && !override" class="" #values="ngForm" (ngSubmit)="onSubmitEbrc(values)">
+
+                                <div style="
+            width: 82%;
+            display: flex;
+            justify-content: center;
+            margin-left: 3%;
+          " class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+                                            <td>EBRC Number*</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="swiftcopyNumber" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- Debit Note Input File -->
+
+                            <form *ngIf="debitNote && !override" class="" #values="ngForm" (ngSubmit)="onSubmitDebit(values)">
+
+                                <div style="
+  width: 82%;
+  display: flex;
+  justify-content: center;
+  margin-left: 3%;
+" class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+
+                                            <td>Debit Note Number*</td>
+
+                                            <td>Debit Note Amount</td>
+
+                                            <td>Currency
+                                                <td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="debitNoteNumber" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="totalDebitAmount" />
+                                            </td>
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="currency" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- Insurance Document Input File -->
+
+                            <form *ngIf="insuranceCopy && !override" class="" #values="ngForm" (ngSubmit)="onSubmitInsurance(values)">
+
+                                <div style="
+width: 82%;
+display: flex;
+justify-content: center;
+margin-left: 3%;
+" class="field">
+                                    <table style="width:82%" class="field-table">
+                                        <tr class="field-heading">
+
+                                            <td>Insurance Number*</td>
+
+                                            <td>Insurance Amount</td>
+
+                                            <td>Currency</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="insuranceNumber" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="insuranceAmount" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="currency" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- Letter of Credit LC Input File -->
+
+                            <form *ngIf="lcCopy && !override" class="" #values="ngForm" (ngSubmit)="onSubmitLetterLC(values)">
+
+                                <div style="
+width: 82%;
+display: flex;
+justify-content: center;
+margin-left: 3%;
+" class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+
+                                            <td>Letter Of Credit Number*</td>
+
+                                            <td>Letter Of Credit Amount</td>
+
+                                            <td>Currency</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="letterOfCreditNumber" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="letterOfCreditAmount" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="currency" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- Master Service Input File -->
+
+                            <form *ngIf="agreement && !override" class="" #values="ngForm" (ngSubmit)="onSubmitMasterService(values)">
+
+                                <div style="
+width: 82%;
+display: flex;
+justify-content: center;
+margin-left: 3%;
+" class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+
+                                            <td>Master Service Number*</td>
+
+                                            <td>Master Service Amount</td>
+
+                                            <td>Currency</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="masterServiceNumber" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="masterServiceAmount" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="currency" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <!-- Letter of Opinion Report Input File -->
+
+                            <form *ngIf="opinionReport && !override" class="" #values="ngForm" (ngSubmit)="onSubmitOpinionReport(values)">
+
+                                <div style="
+width: 82%;
+display: flex;
+justify-content: center;
+margin-left: 3%;
+" class="field">
+                                    <table style="width: 82%" class="field-table">
+                                        <tr class="field-heading">
+
+                                            <td>Opinion Report Number*</td>
+
+                                            <td>Opinion Report Amount</td>
+
+                                            <td>Currency</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input ngModel class="form-control input2" type="text" name="opinionReportNumber" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="opinionReportAmount" />
+                                            </td>
+
+                                            <td>
+                                                <input ngModel class="form-control input2" style="width: 7100% 0%" name="currency" />
+                                            </td>
+                                            <td><button type="submit" class="button">Submit</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="sub-table2">
+                                    <div class="sb3">
+                                        <iframe [src]="piPoUrl" width="100%" height="700px"> </iframe>
+                                    </div>
+                                </div>
+
+                            </form>
+
+
+                            <ng-template #content let-modal>
+
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row no-gutter">
+                                            <!-- The image half -->
+                                            <!-- <div class="col-md-6 d-none d-md-flex bg-image"></div> -->
+
+
+                                            <!-- The content half -->
+                                            <div class="col-md-7 bg-dark">
+                                                <div class="login d-flex py-5" style="padding: 0px !important;">
+                                                    <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button> -->
+                                                    <!-- Demo content-->
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-lg-10 col-xl-7 mrg">
+                                                                <h6 class="display-5">Create New Beneficiary/ Customer</h6>
+                                                                <form [formGroup]="loginForm" (ngSubmit)="onSubmitBene()" class="form11">
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Name</label>
+                                                                        <input formControlName="beneName" placeholder="Beneficiary/ Customer name" required="" class="form-control rounded-pill pinput">
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Address</label>
+                                                                        <input formControlName="beneAdrs" placeholder="Ex: street address, City. PIN" required="" class="form-control rounded-pill password password1 pinput">
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Bank Name</label>
+                                                                        <input formControlName="beneBankName" id="password1" type="" placeholder="Ex: 23489234324" required="" class="form-control rounded-pill pinput">
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Account No</label>
+                                                                        <input formControlName="beneAccNo" id="password1" type="" placeholder="Ex: 23489234324" required="" class="form-control rounded-pill pinput">
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">IBAN</label>
+                                                                        <p class="sl">* Mandatory for remittances to Middle-East countries and Europe</p>
+                                                                        <input formControlName="iban" id="password1" type="" placeholder="Ex: 238923 23423423" required="" class="form-control rounded-pill pinput">
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Beneficiary’s bank’s (any one) SWIFT code**</label>
+                                                                        <input formControlName="beneBankSwiftCode" type="" placeholder="Ex: 1234566" required="" class="form-control rounded-pill pinput">
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Beneficiary’s bank’s address including country</label>
+                                                                        <input formControlName="beneBankAdress" id="inputEmail" type="text" placeholder="Ex: street address, City. PIN" required="" class="form-control rounded-pill email pinput">
+                                                                    </div>
+
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Intermediary Bank details (if applicable) SWIFT code**</label>
+                                                                        <input formControlName="interBankSwiftCode" placeholder="Ex: CC/OD/PC/PCFC/EBRD/BP/EEFC-USD/EUR/GBP/CHF/JPY ETC" required="" class="form-control rounded-pill pinput">
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Intermediary Bank Name (if any)</label>
+                                                                        <input formControlName="interBankName" id="inputEmail" type="text" placeholder="Ex: Western union" required="" class="form-control rounded-pill pinput">
+                                                                    </div>
+
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Sort Code</label>
+                                                                        <input formControlName="sortCode" placeholder="Ex: ESEIEC." required="" class="form-control rounded-pill pinput">
+                                                                    </div>
+
+                                                                    <button type="submit" class="btn11" (click)="modal.dismiss('Cross click')">Create</button>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End -->
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </ng-template>
+                            <ng-template #content1 let-modal>
+
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row no-gutter">
+                                            <!-- The image half -->
+                                            <!-- <div class="col-md-6 d-none d-md-flex bg-image"></div> -->
+
+
+                                            <!-- The content half -->
+                                            <div class="col-md-7 bg-dark">
+                                                <div class="login d-flex py-5" style="padding: 0px !important;">
+                                                    <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+                                                    <!-- Demo content-->
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-lg-10 col-xl-7 mrg">
+                                                                <h6 class="display-5">Create New Buyer’s</h6>
+                                                                <form [formGroup]="buyerForm" (ngSubmit)="onSubmitBuyer()" class="form11">
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Name</label>
+                                                                        <input formControlName="buyerName" placeholder="Buyer Name" required="" class="form-control rounded-pill pinput">
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="plable">Address</label>
+                                                                        <input formControlName="buyerAdrs" placeholder="Ex: street address, City. PIN" required="" class="form-control rounded-pill password password1 pinput">
+                                                                    </div>
+                                                                    <button type="submit" class="btn11">Create</button>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End -->
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </ng-template>
+
+    </main>
+
+    </div>

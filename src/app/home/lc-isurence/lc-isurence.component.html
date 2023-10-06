@@ -1,0 +1,819 @@
+<div style="margin-left: 0px" class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+        <div *ngIf="showInvoice && !outTog" class="table_top">
+            <div style="
+          width: 100%;
+          border-right: 0.5px solid rgba(0, 0, 0, 0.2);
+          height: 100%;
+          padding-top: 2.3%;
+        ">
+                <p class="bcw" style="
+            font-size: '14px';
+            float: left;
+            margin-left: 50px;
+            font-weight: 500;
+          ">
+                    All Documents
+                </p>
+            </div>
+            <!----style="height: 35px; font-weight: 400"-->
+
+            <div style="width: 100%; font-weight: 300; padding-left: 1%">
+                <span style="font-weight: 400">People colaborated</span>
+            </div>
+            <div style="width: 100%; padding-right: 4%">
+                <span *ngFor="let data of item1 | slice: 0:3; let i = index" style="float: right; margin-right: 3%"><img
+            class="image" src="./assets/images/cc1d1196dbafb374fe2d91e177dc16f8517532d6.png" height="30px"
+            width="30px" /></span>
+                <!-------style="padding-left: 1%" class="pc1"-->
+            </div>
+        </div>
+        <div style="
+        display: flex;
+        flex-direction: rows;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0.8%;
+        padding-left: 1%;
+        padding-bottom: 0.8%;
+        /*border: 0.5px solid rgba(0, 0, 0, 0.2);*/
+        margin-left: 40px;
+        width: 85%;
+      " *ngIf="!showInvoice && !outTog">
+            <div style="display: flex; align-items: center">
+                <h3 class="heading1">LC Insurance/ <span>{{ file }}</span></h3>
+            </div>
+
+            <div class="dropdown">
+                Date:
+                <select name="subject" id="subject">
+          <option value="" selected="selected">Today</option>
+        </select> Type:
+                <select name="topic" id="topic">
+          <option value="" selected="selected">All</option>
+        </select>
+            </div>
+            <div style="padding-top: 0.7%">
+                <button class="upload-button" [routerLink]="['/home/upload']">
+          Upload New
+        </button>
+            </div>
+        </div>
+
+        <div class="analytics" *ngIf="!outTog">
+            <div *ngIf="!showInvoice" style="width: 100%" class="analytics-side">
+                <div style="width: 100%" class="row">
+                    <div style="width: 100%; margin: 0 -1.5%" *ngIf="!showInvoice" class="col-12 mb-lg padding">
+                        <section style="width: 100%; margin-left: 0" class="widget pb-0 box-shadow">
+                            <div style="margin: 0 -2%" class="widget-body p-0 support table-wrapper">
+                                <table style="width: 100%" class="table table-striped mb-0">
+                                    <thead style="width: 100%">
+                                        <tr class="text-muted table-heading">
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th scope="col"><span class="pl-3">DATE</span></th>
+                                            <th scope="col">PI/PO No.</th>
+                                            <th scope="col">INVOICE NUMBER</th>
+                                            <th scope="col">COMPANY NAME</th>
+                                            <th scope="col">UPLOADED BY</th>
+                                            <th scope="col">AMOUNT</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-dark">
+                                        <tr class="table-row" *ngFor="let data of item1; let i = index" (click)="
+                        getInvoices(data, i) && getTransactions(data.pi_poNo)
+                      ">
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th class="pl-4 fw-normal">{{ data.date }}</th>
+                                            <td class="sb-no">{{ data.pi_poNo }}</td>
+                                            <td>
+                                                Invoice-<span *ngFor="let data1 of data.invoices; let i = index">
+                          0{{ i + 1 }},
+                        </span>
+                                            </td>
+                                            <td>Random Company</td>
+                                            <td>
+                                                <img class="image" src="./assets/images/cc1d1196dbafb374fe2d91e177dc16f8517532d6.png" height="30px" width="30px" /><img class="image image2" src="./assets/images/cc1d1196dbafb374fe2d91e177dc16f8517532d6.png"
+                                                    height="30px" width="30px" /> Lindsey Stroud
+                                            </td>
+                                            <td>{{data.amount}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="showInvoice" class="p-8 bc" style="padding-left: 0.8%">
+                <div class="side_document_list">
+                    <!---class="col-12 mb-lg ph-38"-->
+                    <div id="profile" class="profile_class" *ngFor="let data of item1; let i = index" [ngClass]="lastIndex == i ? 'activeBtn' : ''" (click)="getInvoices(data, i) && getTransactions(data.pi_poNo)">
+                        <!----------class="row p-2 bb hhu"-->
+                        <div class="" style="display: flex">
+                            <!-----------class="ph-10 fl"-->
+                            <img class="image" src="./assets/images/cc1d1196dbafb374fe2d91e177dc16f8517532d6.png" height="30px" width="30px" /><img class="image image2" src="./assets/images/cc1d1196dbafb374fe2d91e177dc16f8517532d6.png" height="30px" width="30px"
+                            />
+                        </div>
+                        <div class="" style="width: 100%; padding: 3%">
+                            <!-----class="fr pt-2"-->
+                            <span class="fl fs16">{{ data.pi_poNo }}</span><span class="fr fs12" style="float: 'right'">
+                {{ data.sbdate }}</span>
+                            <p class="fs14">Continental carriers pvt ltd</p>
+                        </div>
+                    </div>
+                    <div id="profile" class="" *ngFor="let data of item2; let i = index" (click)="getInvoices(data,i)">
+                        <!------class="row p-2 bb hhu"-->
+                        <div class="ph-10 fl">
+                            <img class="image" src="./assets/images/cc1d1196dbafb374fe2d91e177dc16f8517532d6.png" height="30px" width="30px" /><img class="image image2" src="./assets/images/cc1d1196dbafb374fe2d91e177dc16f8517532d6.png" height="30px" width="30px"
+                            />
+                        </div>
+
+                        <div class="">
+                            <!-------class="fr pt-2"-->
+                            <span class="fl fs16">{{ data.pi_poNo }} </span><span class="fr fs12" style="float: 'right'">
+                {{ data.boeDate }}</span>
+                            <p class="fs14">Continental carriers pvt ltd</p>
+                        </div>
+                    </div>
+                    <div id="profile" class="" *ngFor="let data of item2; let i = index" (click)="getInvoices(data,i)">
+                        <!------class="row p-2 bb hhu"-->
+                        <div class="ph-10 fl">
+                            <img class="image" src="./assets/images/cc1d1196dbafb374fe2d91e177dc16f8517532d6.png" height="30px" width="30px" /><img class="image image2" src="./assets/images/cc1d1196dbafb374fe2d91e177dc16f8517532d6.png" height="30px" width="30px"
+                            />
+                        </div>
+
+                        <div class="">
+                            <!-------class="fr pt-2"-->
+                            <span class="fl fs16">{{ data.boeNumber }} </span><span class="fr fs12" style="float: 'right'">
+                {{ data.boeDate }}</span>
+                            <p class="fs14">Continental carriers pvt ltd</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- People collaborated -->
+
+                <!-- Invoices -->
+                <div class="invoices_tab">
+                    <div class="invoices_inner">
+                        <div class="tabbed">
+                            <input [attr.data-index]="1" type="radio" id="1" name="css-tabs" checked />
+                            <input [attr.data-index]="2" type="radio" id="2" name="css-tabs" />
+                            <input [attr.data-index]="3" type="radio" id="3" name="css-tabs" />
+                            <ul class="tabs">
+                                <div>
+                                    <ul class="tabs">
+                                        <li class="tab" [attr.data-index]="1">
+                                            <label for="1">Details</label>
+                                        </li>
+                                        <li class="tab" [attr.data-index]="2">
+                                            <label for="2">Additional Documents</label>
+                                        </li>
+                                        <li (click)="toggleStep1()" class="tab" [attr.data-index]="3">
+                                            <label for="3">Transaction and Task</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </ul>
+
+                            <!---------------------DETAILS------------------->
+                            <div class="tab-content form-wrapper" [attr.data-index]="1">
+                                <!--------            *ngIf="selectedRow.sbno"-->
+                                <div class="inner_tab_content">
+                                    <!--------------style="display: none" -->
+                                    <div style="
+                      background-color: white;
+                      width: 100%;
+                      height: 100vh;
+                      padding-right: 60px;
+                    ">
+                                        <div class="serial_detail">
+                                            <span style="
+                          width: 100%;
+                          float: 'right';
+                          font-size: '14px';
+                          margin-top: 18.77px;
+                          color: black;
+                        ">SB NUMBER:&emsp;{{ selectedRow.pi_poNo }}</span>
+                                        </div>
+                                        <div class="invoice_head">
+                                            <div style="width: 100%">
+                                                <span style="
+                            width: 65%;
+                            float: 'left';
+                            font-size: '20px';
+                            font-weight: 500;
+                          ">PI/PO DETAILS</span>
+                                            </div>
+                                            <div style="width: 100%">
+                                                <span style="
+                            float: 'right';
+                            font-weight: 500;
+                            font-size: '14px';
+                            color: black;
+                          ">SHIPPING BILL DATE:&emsp;{{
+                          selectedRow.sbdate
+                          }}</span>
+                                            </div>
+                                            <!-- <div>SP Number:&emsp;{{ selectedRow.sbno }}</div>
+                                                                <div>SP Date:&emsp;{{ selectedRow.sbdate }}</div>-->
+                                        </div>
+                                        <div class="row" style="width: 100%">
+                                            <div class="col-12 mb-lg padding" style="width: 100%">
+                                                <section style="
+                            padding-left: 45px;
+                            display: grid;
+                            grid-template-columns: 33% 33% 33%;
+                            margin-top: 3%;
+                          " class="widget pb-0 box-shadow">
+                                                    <!-- <div class="widget-body p-0 support table-wrapper "
+                                                        style="overflow: hidden !important;">
+                                                        <table class="table table-striped mb-0">
+                                                            <thead>
+                                                                <tr class="text-muted table-heading fs12">
+                                                                    <th class="rect"><img
+                                                                            src="./assets/Rectangle-13.png"></th>
+                                                                    <th scope="col"><span class=" pl-3">Serial
+                                                                            Number</span></th>
+                                                                    <th scope="col">Invoice Number</th>
+                                                                    <th scope="col">Invoice Amount</th>
+                                                                    <th scope="col">Currency</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="text-dark">
+                                                                <tr class="table-row fs12"
+                                                                    *ngFor="let data of selectedRow.invoices">
+                                                                    <th class="rect"><img
+                                                                            src="./assets/Rectangle-13.png"></th>
+                                                                    <th class="pl-4 fw-normal">{{data.sno}}</th>
+                                                                    <td class="sb-no">{{data.invoiceno}}</td>
+                                                                    <td>{{data.amount}}</td>
+                                                                    <td>{{data.currency}}</td>
+
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div> -->
+
+                                                    <div style="
+                              width: 85%;
+                              margin-bottom: 24px;
+                              border-radius: 8px;
+                              box-shadow: 4px 4px 8px 4px #eeeefa;
+
+                              border-left: 3px solid #e7845f;
+                            ">
+                                                        <div style="
+                                height: 100px;
+                                padding-top: 5%;
+                                padding-bottom: 17px;
+                                padding-left: 3%;
+                              ">
+                                                            <label style="
+                                  color: #72768a !important;
+                                  font-size: 102%;
+                                ">PI/PO NO.</label>
+                                                            <p style="
+                                  margin-left: 5%;
+                                  color: #000000;
+                                  font-size: 102%;
+                                ">
+                                                                {{ selectedRow.pi_poNo }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div style="
+                              width: 85%;
+                              margin-bottom: 24px;
+                              border-radius: 8px;
+                              box-shadow: 4px 4px 8px 4px #eeeefa;
+                              border-left: 3px solid #5fe6e7;
+                            ">
+                                                        <div style="
+                                height: 100px;
+                                padding-top: 14px;
+                                padding-bottom: 17px;
+                                padding-left: 3%;
+                              ">
+                                                            <label style="
+                                  color: #72768a !important;
+                                  font-size: 102%;
+                                ">Benne Name</label>
+                                                            <p style="
+                                  margin-left: 5%;
+                                  color: #000000;
+                                  font-size: 102%;
+                                ">
+                                                                {{ selectedRow.benneName }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div style="
+                              width: 85%;
+                              margin-bottom: 24px;
+                              border-radius: 8px;
+                              box-shadow: 4px 4px 8px 4px #eeeefa;
+                              border-left: 3px solid #e7845f;
+                            ">
+                                                        <div style="
+                                height: 100px;
+                                padding-top: 14px;
+                                padding-bottom: 17px;
+                                padding-left: 3%;
+                              ">
+                                                            <label style="
+                                  color: #72768a !important;
+                                  font-size: 102%;
+                                ">Currency</label>
+                                                            <p style="
+                                  margin-left: 5%;
+                                  color: #000000;
+                                  font-size: 102%;
+                                ">
+                                                                {{ selectedRow.currency }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div style="
+                              width: 85%;
+                              margin-bottom: 24px;
+                              border-radius: 8px;
+                              box-shadow: 4px 4px 8px 4px #eeeefa;
+                              border-left: 3px solid #e7845f;
+                            ">
+                                                        <div style="
+                                height: 100px;
+                                padding-top: 14px;
+                                padding-bottom: 17px;
+                                padding-left: 3%;
+                              ">
+                                                            <label style="
+                                  color: #72768a !important;
+                                  font-size: 102%;
+                                ">Amount</label>
+                                                            <p style="
+                                  margin-left: 5%;
+                                  color: #000000;
+                                  font-size: 102%;
+                                ">
+                                                                {{ selectedRow.amount }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div style="
+                              width: 85%;
+                              margin-bottom: 24px;
+                              border-radius: 8px;
+                              box-shadow: 4px 4px 8px 4px #eeeefa;
+                              border-left: 3px solid #5fe6e7;
+                            ">
+                                                        <div style="
+                                height: 100px;
+                                padding-top: 14px;
+                                padding-bottom: 17px;
+                                padding-left: 3%;
+                              ">
+                                                            <label style="
+                                  color: #72768a !important;
+                                  font-size: 102%;
+                                ">LEO DATE</label>
+                                                            <p style="
+                                  margin-left: 5%;
+                                  color: #000000;
+                                  font-size: 102%;
+                                ">
+                                                                {{ selectedRow.incoterm }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div style="
+                              width: 85%;
+                              margin-bottom: 24px;
+                              border-radius: 8px;
+                              box-shadow: 4px 4px 8px 4px #eeeefa;
+                              border-left: 3px solid #e7845f;
+                            ">
+                                                        <div style="
+                                height: 100px;
+                                padding-top: 14px;
+                                padding-bottom: 17px;
+                                padding-left: 3%;
+                              ">
+                                                            <label style="
+                                  color: #72768a !important;
+                                  font-size: 102%;
+                                ">Last Day Of Shipment</label>
+                                                            <p style="
+                                  margin-left: 5%;
+                                  color: #000000;
+                                  font-size: 102%;
+                                ">
+                                                                {{ selectedRow.lastDayShipment }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div style="
+                              width: 85%;
+                              margin-bottom: 24px;
+                              border-radius: 8px;
+                              box-shadow: 4px 4px 8px 4px #eeeefa;
+                              border-left: 3px solid #e7845f;
+                            ">
+                                                        <div style="
+                                height: 100px;
+                                padding-top: 14px;
+                                padding-bottom: 17px;
+                                padding-left: 3%;
+                              ">
+                                                            <label style="
+                                  color: #72768a !important;
+                                  font-size: 102%;
+                                ">Payment Term</label>
+                                                            <p style="
+                                  margin-left: 5%;
+                                  color: #000000;
+                                  font-size: 102%;
+                                ">
+                                                                {{ selectedRow.paymentTerm }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div style="
+                              width: 85%;
+                              margin-bottom: 24px;
+                              border-radius: 8px;
+                              box-shadow: 4px 4px 8px 4px #eeeefa;
+                              border-left: 3px solid #5fe6e7;
+                            ">
+                                                        <div style="
+                                height: 100px;
+                                padding-top: 14px;
+                                padding-bottom: 17px;
+                                padding-left: 3%;
+                              ">
+                                                            <label style="
+                                  color: #72768a !important;
+                                  font-size: 102%;
+                                ">PC Ref No.</label>
+                                                            <p style="
+                                  margin-left: 5%;
+                                  color: #000000;
+                                  font-size: 102%;
+                                ">
+                                                                {{ selectedRow.pcRefNo }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div style="
+                              width: 85%;
+                              margin-bottom: 24px;
+                              border-radius: 8px;
+                              box-shadow: 4px 4px 8px 4px #eeeefa;
+                              border-left: 3px solid #e7845f;
+                            ">
+                                                        <div style="
+                                height: 100px;
+                                padding-top: 14px;
+                                padding-bottom: 17px;
+                                padding-left: 3%;
+                              ">
+                                                            <label style="
+                                  color: #72768a !important;
+                                  font-size: 102%;
+                                ">Due Date</label>
+                                                            <p style="
+                                  margin-left: 5%;
+                                  color: #000000;
+                                  font-size: 102%;
+                                ">
+                                                                {{ selectedRow.dueDate }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="selectedRow.boeNumber" style="width: 98%; background-color: 'white'">
+                                        <div style="width: 100%; margin-top: 10px">
+                                            <span style="width: 35%; float: 'right'; font-size: '14px'">BOE NUMBER:&emsp;{{
+                        selectedRow.boeNumber }}</span>
+                                        </div>
+                                        <div style="width: 100%">
+                                            <span style="
+                          width: 65%;
+                          float: 'left';
+                          font-size: '16px';
+                          margin-top: 20px;
+                          padding-left: 25px;
+                        ">SB DETAILS</span>
+                                            <span style="width: 35%; float: 'right'; font-size: '14px'">BOE DATE:&emsp;{{ selectedRow.boeDate
+                        }}</span>
+                                            <!-- <div>SP Number:&emsp;{{ selectedRow.sbno }}</div>
+                                                                  <div>SP Date:&emsp;{{ selectedRow.sbdate }}</div>-->
+                                        </div>
+                                        <div class="row" style="width: 100%">
+                                            <div class="col-12 mb-lg padding" style="width: 100%">
+                                                <section class="widget pb-0 box-shadow">
+                                                    <tr class="form-wrapper1">
+                                                        <td class="full-input border1">
+                                                            <label for="dischargePort">DISCHARGE PORT</label><input [(ngModel)]="selectedRow.dischargePort" class="smalll-input" type="text" name="dischargePort" />
+                                                        </td>
+                                                        <td class="full-input border2">
+                                                            <label for="iecCode">IEC CODE</label><input [(ngModel)]="selectedRow.iecCode" class="smalll-input" type="text" name="iecCode" />
+                                                        </td>
+                                                        <td class="full-input border3">
+                                                            <label for="iecName">IEC NAME</label><input [(ngModel)]="selectedRow.iecName" class="smalll-input" type="text" name="iecName" />
+                                                        </td>
+                                                        <br />
+                                                        <td class="full-input border1">
+                                                            <label for="adCode">AD CODE</label><input [(ngModel)]="selectedRow.adCode" class="smalll-input" type="text" name="adCode" />
+                                                        </td>
+
+                                                        <p class="sh1">INVOICE DETAILS</p>
+                                                        <td class="full-input border1">
+                                                            <label for="invoiceNumber">INVOICE NO</label><input [(ngModel)]="selectedRow.invoiceNumber" class="smalll-input" type="text" name="invoiceNumber" />
+                                                        </td>
+                                                        <td class="full-input border2">
+                                                            <label for="invoiceAmount">INVOICE AMOUNT</label><input [(ngModel)]="selectedRow.invoiceAmount" class="smalll-input" type="text" name="invoiceAmount" />
+                                                        </td>
+                                                        <td class="full-input border3">
+                                                            <label for="currency">CURRENCY</label><input [(ngModel)]="selectedRow.currency" class="smalll-input" type="text" name="currency" />
+                                                        </td>
+                                                        <br />
+                                                        <td class="full-input border1">
+                                                            <label for="settledAmount">SETTELED AMOIUNT</label><input [(ngModel)]="selectedRow.settledAmount" class="smalll-input" type="text" name="settledAmount" />
+                                                        </td>
+                                                        <td class="full-input border2">
+                                                            <label for="status">STATUS</label><input [(ngModel)]="selectedRow.status" class="smalll-input" type="text" name="status" />
+                                                        </td>
+                                                        <br />
+
+                                                        <p class="sh1">FOB and FREIGHT</p>
+                                                        <td class="full-input border2">
+                                                            <label for="freightAmount">FREIGHT AMOUNT</label><input [(ngModel)]="selectedRow.freightAmount" class="smalll-input" type="text" name="freightAmount" />
+                                                        </td>
+                                                        <td class="full-input border3">
+                                                            <label for="freightCurrency">FREIGHT CURRENCY</label><input [(ngModel)]="selectedRow.freightCurrency" class="smalll-input" type="text" name="freightCurrency" />
+                                                        </td>
+                                                        <br />
+
+                                                        <p class="sh1">INSURANCE</p>
+                                                        <td class="full-input border2">
+                                                            <label for="insuranceAmount">INSURANCE AMOUNT</label><input [(ngModel)]="selectedRow.insuranceAmount" class="smalll-input" type="text" name="insuranceAmount" />
+                                                        </td>
+                                                        <td class="full-input border3">
+                                                            <label for="insuranceCurrency">INSURANCE CURRENCY</label><input [(ngModel)]="selectedRow.insuranceCurrency" class="smalll-input" type="text" name="insuranceCurrency" />
+                                                        </td>
+
+                                                        <p class="sh1">DISCOUNT</p>
+                                                        <td class="full-input border2">
+                                                            <label for="discountAmount">DISCOUNT AMOUNT</label><input [(ngModel)]="selectedRow.discountAmount" class="smalll-input" type="text" name="discountAmount" />
+                                                        </td>
+                                                        <td class="full-input border3">
+                                                            <label for="discountCurrency">DISCOUNT CURRENCY</label><input [(ngModel)]="selectedRow.discountCurrency" class="smalll-input" type="text" name="discountCurrency" />
+                                                        </td>
+                                                        <br />
+
+                                                        <p class="sh1">MISCELLANEOUS</p>
+                                                        <td class="full-input border2">
+                                                            <label for="miscellaneousAmount">MISCELLANEOUS AMOUNT</label><input [(ngModel)]="selectedRow.miscellaneousAmount" class="smalll-input" type="text" name="miscellaneousAmount" />
+                                                        </td>
+                                                        <td class="full-input border3">
+                                                            <label for="miscellaneousCurrency">MISCELLANEOUS CURRENCY</label><input [(ngModel)]="selectedRow.miscellaneousCurrency" class="smalll-input" type="text" name="miscellaneousCurrency" />
+                                                        </td>
+
+                                                        <p class="sh1">COMMISSION</p>
+                                                        <td class="full-input border2">
+                                                            <label for="commissionAmount">COMMISSION AMOUNT</label><input [(ngModel)]="selectedRow.commissionAmount" class="smalll-input" type="text" name="commissionAmount" />
+                                                        </td>
+                                                        <td class="full-input border3">
+                                                            <label for="commissionCurrency">COMMISSION CURRENCY</label><input [(ngModel)]="selectedRow.commissionCurrency" class="smalll-input" type="text" name="commissionCurrency" />
+                                                        </td>
+                                                    </tr>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!----------------ADD A DOCUMENT ----------------------------------------->
+                            <div class="tab-content form-wrapper" [attr.data-index]="2" style="
+                  height: 100vh;
+                  padding-left: 20px;
+                  padding-top: 4%;
+                  background-color: white;
+                  width: 97%;
+                ">
+                                <div class="form" method="POST">
+                                    <input class="dropzone dropzone-container" id="dropzone" />
+                                    <div class="form_inner">
+                                        <p>Drag a document here</p>
+                                        <p>or</p>
+                                        <button type="submit">Select</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="
+                  height: 100vh;
+                  overflow: hidden;
+                  padding: 4% 0;
+                  background-color: white;
+                " class="tab-content form-wrapper" [attr.data-index]="3">
+                                <div style="width: 105%">
+                                    <div style="width: 98%; background-color: 'white'">
+                                        <div class="row" style="width: 100%">
+                                            <div class="col-12 mb-lg padding" style="width: 100%">
+                                                <!----------------------------TRANSACTION & TASKS  ---------------------------->
+                                                <div style="width: 100%" class="transaction_tab" *ngIf="!step1">
+                                                    <section style="
+                              display: flex;
+                              justify-content: space-between;
+                              margin-bottom: 4%;
+                            " class="widget pb-0 box-shadow">
+                                                        <div>
+                                                            <span class="at" style="
+                                  border-right: 1px solid black;
+                                  color: #49a2d7;
+                                ">All Transaction</span>
+                                                            <span class="at">Tasks</span>
+                                                        </div>
+                                                        <div style="height: 100%">
+                                                            <span class="ctb" (click)="onNewTrans()">Create New Transaction</span>
+                                                        </div>
+                                                    </section>
+                                                    <table class="table table-striped mb-0">
+                                                        <thead>
+                                                            <tr class="text-muted table-heading">
+                                                                <th scope="col">Date</th>
+                                                                <th scope="col">Detail</th>
+                                                                <th scope="col">Status</th>
+                                                                <th scope="col">Download</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="text-dark">
+                                                            <tr *ngFor="let task of allTransactions" class="table-row" (click)="viewTask(task)">
+                                                                <th class="pl-4 fw-normal">
+                                                                    {{ task.transactionDate }}
+                                                                </th>
+                                                                <td class="sb-no">Submitted to Yes bank</td>
+                                                                <td *ngIf="task.completed === true">
+                                                                    Completed
+                                                                </td>
+                                                                <td *ngIf="task.completed === false">
+                                                                    Pending
+                                                                </td>
+
+                                                                <td>Download & Share icon</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <!------------------------------TRANSACTION TASK ENDS----------------->
+
+                                                <div class="radio1" *ngIf="step1" style="
+                            margin-left: 10px;
+                            padding: 4% 0;
+                            padding-left: 3%;
+                          ">
+                                                    <p class="stp1">Setup: 1</p>
+                                                    <p class="stp2">Create Transaction:</p>
+                                                    <p class="stp3">Select a bank*</p>
+
+                                                    <input type="radio" id="options1" class="circular_input" [(ngModel)]="myRadio" value="yesBank">
+                                                    <label class="label1" for="male">Yes Bank</label><br />
+                                                    <input type="radio" id="options2" class="circular_input" [(ngModel)]="myRadio" value="axisBank">
+                                                    <label class="label1" for="female">Axis Bank</label><br />
+                                                    <input type="radio" name="bank" value="Any Bank" class="circular_input" />
+                                                    <label class="label1" for="female">Any Bank</label><br />
+
+                                                    <!--------------OTIONS ---------------->
+                                                    <!-- <div>
+                            <div>
+                              <p>Select Type of Import Remittance</p>
+                              <select name="" id="">
+                                <option value="Advance Remittance">
+                                  Advance Remittance
+                                </option>
+                                <option value="Direct Remittance">
+                                  Direct Remittance
+                                </option>
+                              </select>
+                            </div>
+                            <div>
+                              <p>Details of drawal of Foreign Exchange</p>
+                              <select name="" id="">
+                                <option value="Telegraphic Transfer">
+                                  Telegraphic Transfer
+                                </option>
+                                <option value="Demand Draft">
+                                  Demand Draft
+                                </option>
+                              </select>
+                            </div>
+                          </div> -->
+                                                    <div style="
+                              display: flex;
+                              width: 100%;
+                              margin-top: 5%;
+                              justify-content: left;
+                            ">
+                                                        <button (click)="showThisPdf1(selectedRow.pi_poNo)" class="opt" style="margin-right: 1%">
+                              Generate Document
+                            </button>
+                                                        <button class="opt">Assign Task</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf='outTog'>
+            <h3 class="heading">Create LC Issuance/ {{file}} - Step 1 - Create transaction</h3>
+            <div style="display: flex; align-items: center; margin-left: 67px;">
+                <label style="flex-direction:row; font-size: 20px; color: RGB(48, 48, 48); margin-right: 30px;">Select
+          PIPO*</label>
+                <div class="customDropdown" style="flex-direction:row; ">
+                    <span style="color: #323e4a !important; min-width: 150px;">{{pipoValue}}</span>
+                    <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+            <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+          </span>
+                    <div class="dropdown-content" style="margin-top: -2px;">
+                        <p *ngFor="let bene of item1" (click)='clickPipo("PI",bene.pi_poNo,bene.benneName, bene.amount  )'>
+                            <a> PI-{{bene.pi_poNo}}-{{bene.benneName}}</a>
+                        </p>
+                        <!-- <p style="border: 1px solid #EAEDF3;" (click)="open(content)"><a>Add New Beneficiary</a></p> -->
+                    </div>
+                </div>
+                <div *ngIf='alertToggle' style="color: red;">
+                    You can't add PI/PO with different Beneficiary Name
+                </div>
+            </div>
+            <div style="margin-left: 224px;">
+
+                <p *ngFor='let data of arrayData; let i = index' class="arrayData">
+                    {{data}} <i style="float: right; margin: 4px 10px;" (click)='removePipo(i)' class="fas fa-times"></i>
+                </p>
+
+            </div>
+
+            <div style=" margin-left: 67px; margin-top: 30px;">
+                <p style="font-size: 20px; color: RGB(96, 102, 112); font-weight: 400;">Invoice Amount in USD (Amount mentioned while uploading Proforma Invoice)</p>
+                <div *ngFor="let bene of pipoArr; let i = index" style="display: flex; margin-bottom: 20px;">
+                    <div style="margin-right: 20px;">
+                        <label>Invoice Number</label>
+                        <span style="font-size: 14px; padding: 5px; border: 1px solid rgb(107, 107, 107); border-radius: 20px;">{{bene}}</span>
+
+                    </div>
+                    <div style="margin-right: 20px;">
+                        <label>Total Amount</label>
+                        <span style="font-size: 14px; padding: 5px; border: 1px solid rgb(107, 107, 107); border-radius: 20px;">{{amountArray[i]}}</span>
+
+                    </div>
+                    <div style="margin-right: 20px;">
+                        <label>Balance</label>
+                        <span style="font-size: 14px; padding: 5px; border: 1px solid rgb(107, 107, 107); border-radius: 20px;">{{amountArray[i]}}</span>
+
+                    </div>
+                    <div style="margin-right: 20px;">
+                        <label>LC Amount</label>
+                        <input type="text" name="" id="" style="font-size: 14px; padding: 5px; border: 1px solid rgb(107, 107, 107); border-radius: 20px; width:100px; margin-top: -2px;" (input)='amountFun($any($event.target).value, i)'>
+                    </div>
+
+                </div>
+
+                Total Amout
+                <p style="border: 1px solid RGBA(0, 0, 0, 0.05); height: 37px; border-radius: 20px; width: 40%; color: RGB(165, 170, 179); padding: 5px; ">
+                    {{amount}} <span style="float: right;">USD</span></p>
+            </div>
+
+
+            <div style=" margin-left: 67px; margin-top: 30px;">
+                <p style="color: RGB(74, 74, 74); font-size: 14px;">Select a bank*</p>
+
+                <input type="radio" id="options1" class="circular_input" [(ngModel)]="myRadio" value="yesBank">
+                <label class="label1" for="male">Yes Bank</label><br />
+                <input type="radio" id="options2" class="circular_input" [(ngModel)]="myRadio" value="axisBank">
+                <label class="label1" for="female">Axis Bank</label><br />
+                <input type="radio" name="bank" value="Any Bank" class="circular_input" />
+                <label class="label1" for="female">Any Bank</label><br />
+            </div>
+
+            <button style="width: 70px; height: 30px; border: none; background-color: #49a2d7; outline: none; color: white; margin-left: 70px; border-radius: 20px; margin-top: 20px;" (click)='showThisPdf1("aa")'>
+        Next </button>
+        </div>
+    </main>
+</div>

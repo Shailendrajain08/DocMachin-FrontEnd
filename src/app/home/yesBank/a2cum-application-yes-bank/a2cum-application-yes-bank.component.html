@@ -1,0 +1,1608 @@
+<div class="content-wrap">
+    <main id="content" class="content table-padding bc" role="main">
+
+
+        <div id="mainId" class="bc" *ngIf="!done && checking == 'no'">
+            <div>
+                <div style="text-align: center;">
+
+                    <span style="border-bottom: 2px solid black;"><b>APPLICATION & FORM A2 FOR NON IMPORT
+                            PAYMENT</b></span>
+                </div>
+                <div style="text-align: right">
+                    <p>Date: <span style="width: 60px; outline: none; border-bottom: 1px solid black;"
+                            contenteditable="true"></span></p>
+                </div>
+                <p style="display: table; width: 240px">
+
+                    To <br />
+                    The Manager <br>
+                    YES Bank Limited <br>
+                    <span style="width: 60px; outline: none; border-bottom: 1px solid black;"
+                        contenteditable="true"></span>Branch Address
+
+
+                </p>
+                <p>
+                    We authorize the bank to remit as per the details specified below:
+                </p>
+                <table>
+                    <tr>
+                        <td style="width: 50%;">Details of Exchange (Mention “TT” in case of <br>
+                            Telegraphic Transfer or “DD” in case of Demand Draft”)</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td style="width: 50%;">Name of the Remitter</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true">{{applicant.fullName}}</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Remitter’s Customer ID</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Transaction Currency</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Transaction Amount</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Transaction Amount In words</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;" rowspan="4"> <span style="font-size: 16px;">Purpose of
+                                Remittance</span><br>
+                            (For details refer Annexure II)
+                            In case the payment belongs to import of services and falls under
+                            the purpose group no (02, 03, 05, 06, 07, 08, 09, 10, 11, 15, 16 or
+                            17) then mandatory to mention the name of the country providing
+                            ultimate services</td>
+                        <td style="width: 50%;">Purpose Gr. Number:<span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Purpose Code <span style="width: 200px; outline: none;"
+                                contenteditable="true">{{file}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Purpose Description:<span style="outline: none;"
+                                contenteditable="true">{{details}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Name of the Country (providing ultimate services): <br><span
+                                style="width: 100px; outline: none; border-bottom: 1px solid black;"
+                                contenteditable="true"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Beneficiary Name</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true">{{benneDetail.beneName}}</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Beneficiary Address</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;" contenteditable="true">{{
+                                benneDetail.beneAdrs }}</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Beneficiary Country <br>
+                            (in case of Telegraphic Transfer)</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true">India</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Beneficiary’s Bank Name <br>
+                            (in case of Telegraphic Transfer)</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true">{{benneDetail.beneBankName}}</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Beneficiary’s A/c Number <br>
+                            (in case of Telegraphic Transfer)</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true">{{benneDetail.beneAccNo}}</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Beneficiary’s Bank Address <br>
+                            (in case of Telegraphic Transfer)</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true">{{benneDetail.beneBankAdress}}</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Beneficiary Bank’s SWIFT Code</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true">{{benneDetail.beneBankSwiftCode}}</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Beneficiary Bank’s IBAN <br>
+                            (Mandatory for remittances to Middle-East countries and Europe)</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true">{{benneDetail.iban}}</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Beneficiary Bank’s Sort Code <br>
+                            (Mandatory for remittances to Middle-East countries and Europe)</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Beneficiary Bank’s BSB <br>
+                            (Mandatory for remittances to Australia)</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">Correspondent Bank charges borne by: <br>
+                            Mention BEN in case charges are to the account of
+                            Beneficiary, or Mention REM if charges are to the
+                            account of Remitter</td>
+                        <td style="width: 50%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                </table>
+                <p>
+                    * Charges shall be to the account of Beneficiary (BEN) if no option is selected
+                </p>
+
+                <b>Intermediary Bank Details</b>
+                <table>
+                    <tr>
+                        <td style="width: 40%;">SWIFT Code</td>
+                        <td style="width: 60%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 40%;">Intermediary Bank Name (if any)</td>
+                        <td style="width: 60%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 40%;">Description of Services</td>
+                        <td style="width: 60%;"><span style="width: 200px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                </table>
+                <p>
+                    Details of Forward Contract(s), if any, booked against this payment is/are as follows:
+                </p>
+                <table>
+                    <tr>
+                        <td style="width: 200px;">Account No</td>
+                        <td style="width: 200px;">Currency</td>
+                        <td style="width: 200px;">Amount to be debited</td>
+                        <td style="width: 200px;">Charges to be collected <br>
+                            from (Mention “YES”)</td>
+                    </tr>
+                    <tr>
+                        <td style="height: 30px;"><span style="width: 100px; outline: none;"
+                                contenteditable="true"></span></td>
+                        <td style="height: 30px;"><span style="width: 100px; outline: none;"
+                                contenteditable="true"></span></td>
+                        <td style="height: 30px;"><span style="width: 100px; outline: none;"
+                                contenteditable="true"></span></td>
+                        <td style="height: 30px;"><span style="width: 100px; outline: none;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                </table>
+                <p>
+                    <b>Documents enclosed</b> <br>
+                    [ ] Self attested copy of Invoice / Contract / Demand <br>
+                    [ ] Form 15 CA & CB (if applicable) <br>
+                    [ ] Other documents as per the purpose of remittance. Please specify <span
+                        style="width: 200px; outline: none; border-bottom: 1px solid black;"
+                        contenteditable="true"></span>
+                </p>
+                <p>
+                    <b>DECLARATION – CUM – UNDERTAKING</b> <br>
+                    I/we also declare that the transaction does not have linkage with any Specially Designated Nationals
+                    and Blocked Persons
+                    (SDN)/countries listed under OFAC/ UN sanctions and or any other sanctions / restrictions placed by
+                    Government /
+                    Multilateral institutions or any other country in any manner. If the transaction involves linkage
+                    with any Specially
+                    Designated Nationals and Blocked Persons (SDN)/countries listed under OFAC / UN sanctions and or any
+                    other sanction
+                    / restrictions placed by Government / Multilateral institutions or any other country in any manner
+                    in any manner, I/we
+                    undertake not to hold YES Bank Limited responsible for any of its action or inaction in respect of
+                    such transactions and
+                    also
+                    indemnify YES Bank for any loss which needs to be incurred as a result of handling such
+                    transactions. <br>
+                    The Customer hereby agrees to indemnify and hold harmless the Bank and each of its officers,
+                    directors, employees,
+                    agents,
+                    attorneys, to the fullest extent permitted by applicable law, for all liabilities, obligations,
+                    losses, damages,
+                    penalties, claims,
+                    actions, judgments, suits, costs, expenses and disbursements incurred by any of them as a result of,
+                    or arising out of,
+                    or in
+                    any way related to, or by reason of, litigation or other proceeding (whether or not the Bank is a
+                    party thereto) related
+                    to the
+                    entering into and/or performance of the Transaction (including due to claims by a third party),
+                    and/or as a result of
+                    any
+                    breach by the Customer of its representations and undertakings as contained herein. <br>
+                    I/We hereby declare that the transaction the details of which are specifically mentioned in this
+                    request letter does not
+                    involve, and is not designed for the purpose of any contravention or evasion of the provisions of
+                    the FEMA Act 1999 or
+                    of
+                    any rules, regulation, notification, direction or order made there under. I /We also hereby agree
+                    and undertake to give
+                    such information/documents as will reasonably satisfy you about this transaction in terms of the
+                    above declaration. I/We
+                    also understand that if I/We refuse to comply with any such requirement or make only unsatisfactory
+                    compliance
+                    therewith, the bank shall refuse in writing to undertake the transaction and shall if it has reason
+                    to believe that any
+                    contravention/evasion is contemplated by me/us report the matter to Reserve Bank of India.. I/We
+                    further declare that
+                    the undersigned has/have the authority to give this declaration and undertaking on behalf of the
+                    company.
+                </p>
+                <p>
+                    I/We declare that: <br>
+                    * (1) The total amount of foreign exchange purchased from or remitted through, all sources in India
+                    during this calendar
+                    year including this application is within USD <span
+                        style="width: 100px; outline: none; border-bottom: 1px solid black;"
+                        contenteditable="true"></span> (USD <span
+                        style="width: 200px; outline: none; border-bottom: 1px solid black;"
+                        contenteditable="true"></span>
+                    <span style="width: 200px; outline: none; border-bottom: 1px solid black;"
+                        contenteditable="true"></span>only) the annual limit prescribed by Reserve Bank of India for the
+                    said purpose. <br>
+                    * (2) Foreign exchange purchased from you is for the purpose indicated above. <br>
+                    * (Strike out whichever is not applicable) <br> <br>
+                    Yours faithfully, <br>
+                    For <span style="width: 200px; outline: none; border-bottom: 1px dotted black;"
+                        contenteditable="true"></span>
+                </p>
+                <p>
+                    <span style="border-bottom: 1px solid black;">For office use, to be filled by Yes bank
+                        official:</span>
+                    Certificate by the Authorized Dealer: <br>
+                    This is to certify that the remittance is not being made by/to ineligible entities and that the
+                    remittance is in
+                    conformity with the
+                    instructions issued by the Reserve Bank from time to time under the Scheme. <br>
+                    Name and designation of the authorized official:<span
+                        style="width: 200px; outline: none; border-bottom: 1px solid black;"
+                        contenteditable="true"></span> <br>
+                    Signature: <span style="width: 200px; outline: none; border-bottom: 1px solid black;"
+                        contenteditable="true"></span> Stamp and seal: <span
+                        style="width: 200px; outline: none; border-bottom: 1px solid black;"
+                        contenteditable="true"></span> <br>
+                    Date and Place: <span style="width: 200px; outline: none; border-bottom: 1px solid black;"
+                        contenteditable="true"></span>
+                </p>
+                <p>
+                    ------------------------------------------------------------------------------------------------------------------------
+                    <b>Annexure – II: Purpose codes for Reporting</b> <br>
+                    Remitter should put a tick () against an appropriate purpose code
+                </p>
+                <table style="width: 100%">
+                    <thead style="width: 100%">
+                        <tr>
+                            <td scope="col" style="width: 2%; color: black;">Gr No.</td>
+                            <td scope="col" style="width: 15%; color: black;">Purpose Group Name</td>
+                            <td scope="col" style="width: 2%; color: black;">Tick</td>
+                            <td scope="col" style="width: 13%; color: black;">Purpose code</td>
+                            <td scope="col" style="width: 60%; color: black;">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="18" style="vertical-align: top !important;">00</td>
+                            <td class="pl-4 fw-normal" rowspan="5" style="vertical-align: top !important;">Capital
+                                Account</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0017'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="columH sb-no" (click)="purposeClick('S0017')">S0017</td>
+                            <td class="columH" (click)="purposeClick('S0017')">Acquisition of
+                                non-produced non-financial assets
+                                (Purchase of intangible
+                                assets like
+                                patents, copyrights, trademarks etc., land acquired by government, use
+                                of natural
+                                resources) – Government</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0019'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0019')">S0019</td>
+                            <td class="columH" (click)="purposeClick('S0019')">Acquisition of
+                                non-produced non-financial assets
+                                (Purchase of intangible
+                                assets like
+                                patents, copyrights, trademarks etc., use of natural resources) –
+                                Non-Government</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0026'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0026')">S0026</td>
+                            <td class="columH" (click)="purposeClick('S0026')">Capital transfers (
+                                Guarantees payments, Investment Grand
+                                given by the
+                                government/international organization, exceptionally large Non-life
+                                insurance
+                                claims) – Government</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0027'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0027')">S0027</td>
+                            <td class="columH" (click)="purposeClick('S0027')">Capital transfers (
+                                Guarantees payments, Investment Grand
+                                given by the
+                                Non-
+                                government, exceptionally large Non-life insurance claims) –
+                                Non-Government</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0099'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0099')">S0099</td>
+                            <td class="columH" (click)="purposeClick('S0099')">Other capital payments
+                                not included elsewhere</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td class="pl-4 fw-normal" rowspan="3" style="vertical-align: top !important;">Foreign
+                                Direct <br>
+                                Investments
+                            </td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0006'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0006')">S0006</td>
+                            <td class="columH" (click)="purposeClick('S0006')">Repatriation of Foreign
+                                Direct Investment made by
+                                overseas Investors in India – in
+                                equity shares</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0007'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0007')">S0007</td>
+                            <td class="columH" (click)="purposeClick('S0007')">Repatriation of Foreign
+                                Direct Investment in made by
+                                overseas Investors India – in
+                                debt instruments</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0008'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0008')">S0008</td>
+                            <td class="columH" (click)="purposeClick('S0008')">Repatriation of Foreign
+                                Direct Investment made by
+                                overseas Investors in India – in
+                                real estate</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td class="pl-4 fw-normal" rowspan="2" style="vertical-align: top !important;">Foreign
+                                Portfolio <br>
+                                Investments</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0009'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0009')">S0009</td>
+                            <td class="columH" (click)="purposeClick('S0009')">Repatriation of Foreign
+                                Portfolio Investment made by
+                                overseas Investors in India – in
+                                equity shares</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0010'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0010')">S0010</td>
+                            <td class="columH" (click)="purposeClick('S0010')">Repatriation of Foreign
+                                Portfolio Investment made by
+                                overseas Investors in India – in
+                                debt instruments</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td class="pl-4 fw-normal" rowspan="1" style="vertical-align: top !important;">External
+                                Commercial <br>
+                                Borrowings</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0012'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0012')">S0012</td>
+                            <td class="columH" (click)="purposeClick('S0012')">Repayment of long &
+                                medium term loans with original
+                                maturity above one year
+                                received from Non-Residents</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td class="pl-4 fw-normal" rowspan="1" style="vertical-align: top !important;">Short Terms
+                                Loans
+                            </td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0013'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0013')">S0013</td>
+                            <td class="columH" (click)="purposeClick('S0013')">Repayment of short term
+                                loans with original maturity up
+                                to one year received from
+                                Non-Residents</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td class="pl-4 fw-normal" rowspan="3" style="vertical-align: top !important;">Banking
+                                Capital
+                            </td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0014'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0014')">S0014</td>
+                            <td class="columH" (click)="purposeClick('S0014')">Repatriation of
+                                Non-Resident Deposits (FCNR (B)/NR (E)/RA
+                                etc.)</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0015'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0015')">S0015</td>
+                            <td class="columH" (click)="purposeClick('S0015')">Repayment of loans &
+                                overdrafts taken by Ads on their own
+                                account</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0016'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0016')">S0016</td>
+                            <td class="columH" (click)="purposeClick('S0016')">Sale of foreign currency
+                                against another foreign currency
+                            </td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td class="pl-4 fw-normal" rowspan="1" style="vertical-align: top !important;">Financial
+                                Derivatives and
+                                Others
+                            </td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0020'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0020')">S0020</td>
+                            <td class="columH" (click)="purposeClick('S0020')">Payments made on account
+                                of margin payments, premium
+                                payment and settlement
+                                amount etc. under Financial derivative transactions.</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td class="pl-4 fw-normal" rowspan="2" style="vertical-align: top !important;">External
+                                Assistance
+                            </td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0024'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0024')">S0024</td>
+                            <td class="columH" (click)="purposeClick('S0024')">External Assistance
+                                extended by India e.g. Loans and
+                                advances extended by India to
+
+                                Foreign governments under various agreements</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0025'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0025')">S0025</td>
+                            <td class="columH" (click)="purposeClick('S0025')">Repayments made on
+                                account of External Assistance
+                                received by India</td>
+                        </tr>
+
+
+                        <tr class="table-row">
+                            <td rowspan="6" style="vertical-align: top !important;">01</td>
+                            <td class="pl-4 fw-normal" rowspan="6" style="vertical-align: top !important;">Imports</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0101'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="columH sb-no" (click)="purposeClick('S0101')">S0101</td>
+                            <td class="columH" (click)="purposeClick('S0101')">Advance Payment against
+                                import made to countries other
+                                than Nepal and Bhutan</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0102'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0102')">S0102</td>
+                            <td class="columH" (click)="purposeClick('S0102')">Payments towards Imports
+                                – settlement of invoice other
+                                than Nepal and Bhutan</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0103'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0103')">S0103</td>
+                            <td class="columH" (click)="purposeClick('S0103')">Imports by diplomatic
+                                missions other than Nepal and
+                                Bhutan</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0104'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0104')">S0104</td>
+                            <td class="columH" (click)="purposeClick('S0104')">Intermediary
+                                trade/transit trade i.e. third country
+                                export passing through India</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0108'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0108')">S0108</td>
+                            <td class="columH" (click)="purposeClick('S0108')">Goods acquired under
+                                merchanting / Payment against import
+                                leg of merchanting
+                                trade</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0109'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0109')">S0109</td>
+                            <td class="columH" (click)="purposeClick('S0109')">Payments made for Imports
+                                from Nepal and Bhutan if any
+                            </td>
+                        </tr>
+
+
+                        <tr class="table-row">
+                            <td rowspan="23" style="vertical-align: top !important;">02</td>
+                            <td class="pl-4 fw-normal" rowspan="23" style="vertical-align: top !important;">Transport
+                            </td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0201'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="columH sb-no" (click)="purposeClick('S0201')">S0201</td>
+                            <td class="columH" (click)="purposeClick('S0201')">Payments for surplus
+                                freight/passenger fare by foreign
+                                shipping companies
+                                operating in India</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0202'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0202')">S0202</td>
+                            <td class="columH" (click)="purposeClick('S0202')">Payment for operating
+                                expenses of Indian shipping
+                                companies operating abroad</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0203'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0203')">S0203</td>
+                            <td class="columH" (click)="purposeClick('S0203')">Freight on imports –
+                                Shipping companies</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0204'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0204')">S0204</td>
+                            <td class="columH" (click)="purposeClick('S0204')">Freight on exports –
+                                Shipping companies</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0205'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0205')">S0205</td>
+                            <td class="columH" (click)="purposeClick('S0205')">Operational
+                                leasing/Rental of Vessels (with crew)
+                                –Shipping companies</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0206'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0206')">S0206</td>
+                            <td class="columH" (click)="purposeClick('S0206')">Booking of passages
+                                abroad – Shipping companies
+                            </td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0207'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0207')">S0207</td>
+                            <td class="columH" (click)="purposeClick('S0207')">Payments for surplus
+                                freight/passenger fare by foreign
+                                Airlines companies
+                                operating in India</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0208'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0208')">S0208</td>
+                            <td class="columH" (click)="purposeClick('S0208')">Operating expenses of
+                                Indian Airlines companies operating
+                                abroad</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0209'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0209')">S0209</td>
+                            <td class="columH" (click)="purposeClick('S0209')">Freight on imports –
+                                Airlines companies</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0210'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0210')">S0210</td>
+                            <td class="columH" (click)="purposeClick('S0210')">Freight on exports –
+                                Airlines companies</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0211'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0211')">S0211</td>
+                            <td class="columH" (click)="purposeClick('S0211')">Operational leasing /
+                                Rental of Vessels (with crew) –
+                                Airline companies
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0212'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0212')">S0212</td>
+                            <td class="columH" (click)="purposeClick('S0212')">Booking of passages
+                                abroad – Airlines companies</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0214'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0214')">S0214</td>
+                            <td class="columH" (click)="purposeClick('S0214')">Payments on account of
+                                stevedoring, demurrage, port
+                                handling charges etc.
+                                (Shipping Companies)</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0215'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0215')">S0215</td>
+                            <td class="columH" (click)="purposeClick('S0215')">Payments on account of
+                                stevedoring, demurrage, port
+                                handling charges etc. (Airlines
+                                Companies)</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0216'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0216')">S0216</td>
+                            <td class="columH" (click)="purposeClick('S0216')">Payments for Passenger –
+                                Shipping companies</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0217'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0217')">S0217</td>
+                            <td class="columH" (click)="purposeClick('S0217')">Other payments by
+                                Shipping companies
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0218'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0218')">S0218</td>
+                            <td class="columH" (click)="purposeClick('S0218')">Payments for Passenger –
+                                Airlines companies</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0219'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0219')">S0219</td>
+                            <td class="columH" (click)="purposeClick('S0219')">Other payments by
+                                Airlines companies
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0220'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0220')">S0220</td>
+                            <td class="columH" (click)="purposeClick('S0220')">Payments on account of
+                                freight under other modes of
+                                transport (Internal waterways,
+                                Roadways, Railways, Pipeline transports and others)</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0221'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0221')">S0221</td>
+                            <td class="columH" (click)="purposeClick('S0221')">Payments on account of
+                                passenger fare under other modes
+                                of transport (Internal
+                                waterways, Roadways, Railways, Pipeline transports and others)</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0222'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0222')">S0222</td>
+                            <td class="columH" (click)="purposeClick('S0222')">Postal & Courier services
+                                by Air</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0223'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0223')">S0223</td>
+                            <td class="columH" (click)="purposeClick('S0223')">Postal & Courier services
+                                by Sea</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0224'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0224')">S0224</td>
+                            <td class="columH" (click)="purposeClick('S0224')">Postal & Courier services
+                                by others
+                            </td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="1" style="vertical-align: top !important;">03</td>
+                            <td class="pl-4 fw-normal" rowspan="1" style="vertical-align: top !important;">Travel</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0301'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0301')">S0301</td>
+                            <td class="columH" (click)="purposeClick('S0301')">Business travel</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="2" style="vertical-align: top !important;">05</td>
+                            <td class="pl-4 fw-normal" rowspan="2" style="vertical-align: top !important;">Construction
+                                Services</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0501'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0501')">S0501</td>
+                            <td class="columH" (click)="purposeClick('S0501')">Construction of projects
+                                abroad by Indian companies
+                                including import of goods at
+
+                                project site abroad</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0502'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0502')">S0502</td>
+                            <td class="columH" (click)="purposeClick('S0502')">Cost of construction etc.
+                                of projects executed by foreign
+                                companies in India.
+                            </td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="9" style="vertical-align: top !important;">06</td>
+                            <td class="pl-4 fw-normal" rowspan="9" style="vertical-align: top !important;">Insurance and
+                                Pension
+                                Services</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0601'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0601')">S0601</td>
+                            <td class="columH" (click)="purposeClick('S0601')">Life Insurance premium
+                                except term insurance</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0602'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0602')">S0602</td>
+                            <td class="columH" (click)="purposeClick('S0602')">Freight insurance –
+                                relating to import & export of goods
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0605'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0605')">S0605</td>
+                            <td class="columH" (click)="purposeClick('S0605')">Auxiliary services
+                                including commission on insurance</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0607'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0607')">S0607</td>
+                            <td class="columH" (click)="purposeClick('S0607')">Insurance claim
+                                Settlement of non-life insurance; and
+                                life insurance (only term
+                                insurance)</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0608'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0608')">S0608</td>
+                            <td class="columH" (click)="purposeClick('S0608')">Life insurance settlement
+                                of Claims</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0609'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0609')">S0609</td>
+                            <td class="columH" (click)="purposeClick('S0609')">Standardized guarantee
+                                services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0610'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0610')">S0610</td>
+                            <td class="columH" (click)="purposeClick('S0610')">Premium of pension funds
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0611'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0611')">S0611</td>
+                            <td class="columH" (click)="purposeClick('S0611')">Periodic pension
+                                entitlements e.g. monthly quarterly or
+                                yearly payments of pension
+                                amounts by Indian Pension Fund Companies
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0612'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0612')">S0612</td>
+                            <td class="columH" (click)="purposeClick('S0612')">Invoking of standardized
+                                guarantees
+                            </td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="3" style="vertical-align: top !important;">07</td>
+                            <td class="pl-4 fw-normal" rowspan="3" style="vertical-align: top !important;">Financial
+                                Services</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0701'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0701')">S0701</td>
+                            <td class="columH" (click)="purposeClick('S0701')">Financial intermediation,
+                                except investment banking -
+                                Bank charges, collection
+                                charges, LC charges etc.</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0702'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0702')">S0702</td>
+                            <td class="columH" (click)="purposeClick('S0702')">Investment banking –
+                                brokerage, under writing commission
+                                etc.</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0703'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0703')">S0703</td>
+                            <td class="columH" (click)="purposeClick('S0703')">Auxiliary services –
+                                charges on operation & regulatory
+                                fees, custodial services,
+                                depository services etc.</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="9" style="vertical-align: top !important;">08</td>
+                            <td class="pl-4 fw-normal" rowspan="9" style="vertical-align: top !important;">
+                                Telecommunication,
+                                Computer & Information
+                                Services</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0801'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0801')">S0801</td>
+                            <td class="columH" (click)="purposeClick('S0801')">Hardware
+                                consultancy/implementation</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0802'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0802')">S0802</td>
+                            <td class="columH" (click)="purposeClick('S0802')">Software
+                                consultancy/implementation</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0803'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0803')">S0803</td>
+                            <td class="columH" (click)="purposeClick('S0803')">Data base, data
+                                processing charges</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0804'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0804')">S0804</td>
+                            <td class="columH" (click)="purposeClick('S0804')">Repair and maintenance of
+                                computer and software</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0805'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0805')">S0805</td>
+                            <td class="columH" (click)="purposeClick('S0805')">News agency services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0806'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0806')">S0806</td>
+                            <td class="columH" (click)="purposeClick('S0806')">Other information
+                                services- Subscription to newspapers,
+                                periodicals</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0807'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0807')">S0807</td>
+                            <td class="columH" (click)="purposeClick('S0807')">Off-site software imports
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0808'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0808')">S0808</td>
+                            <td class="columH" (click)="purposeClick('S0808')">Telecommunication
+                                services including electronic mail
+                                services and voice mail
+                                services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0809'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0809')">S0809</td>
+                            <td class="columH" (click)="purposeClick('S0809')">Satellite services
+                                including space shuttle and rockets
+                                etc.</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="2" style="vertical-align: top !important;">09</td>
+                            <td class="pl-4 fw-normal" rowspan="2" style="vertical-align: top !important;">Charges for
+                                the use of
+                                intellectual property (not
+                                included elsewhere)</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0901'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0901')">S0901</td>
+                            <td class="columH" (click)="purposeClick('S0901')">Franchises services.</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S0902'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S0902')">S0902</td>
+                            <td class="columH" (click)="purposeClick('S0902')">Payment for use, through
+                                licensing arrangements, of
+                                produced originals or
+                                prototypes (such as manuscripts and films), patents, copyrights,
+                                trademarks and
+                                industrial processes etc</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="21" style="vertical-align: top !important;">10</td>
+                            <td class="pl-4 fw-normal" rowspan="21" style="vertical-align: top !important;">Other
+                                Business Services</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1002'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1002')">S1002</td>
+                            <td class="columH" (click)="purposeClick('S1002')">Trade related services –
+                                commission on exports / imports
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1003'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1003')">S1003</td>
+                            <td class="columH" (click)="purposeClick('S1003')">Operational leasing
+                                services (other than financial
+                                leasing) without operating crew,
+                                including charter hire- Airlines companies</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1004'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1004')">S1004</td>
+                            <td class="columH" (click)="purposeClick('S1004')">Legal services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1005'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1005')">S1005</td>
+                            <td class="columH" (click)="purposeClick('S1005')">Accounting, auditing,
+                                book-keeping services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1006'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1006')">S1006</td>
+                            <td class="columH" (click)="purposeClick('S1006')">Business and management
+                                consultancy and public relations
+                                services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1007'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1007')">S1007</td>
+                            <td class="columH" (click)="purposeClick('S1007')">Advertising, trade fair
+                                service</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1008'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1008')">S1008</td>
+                            <td class="columH" (click)="purposeClick('S1008')">Research & Development
+                                services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1009'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1009')">S1009</td>
+                            <td class="columH" (click)="purposeClick('S1009')">Architectural services
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1010'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1010')">S1010</td>
+                            <td class="columH" (click)="purposeClick('S1010')">Agricultural services
+                                like protection against insects &
+                                disease, increasing of harvest
+                                yields, forestry services.</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1011'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1011')">S1011</td>
+                            <td class="columH" (click)="purposeClick('S1011')">Payments for maintenance
+                                of offices abroad</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1013'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1013')">S1013</td>
+                            <td class="columH" (click)="purposeClick('S1013')">Environmental Services
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1014'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1014')">S1014</td>
+                            <td class="columH" (click)="purposeClick('S1014')">Engineering Services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1015'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1015')">S1015</td>
+                            <td class="columH" (click)="purposeClick('S1015')">Tax consulting services
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1016'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1016')">S1016</td>
+                            <td class="columH" (click)="purposeClick('S1016')">Market research and
+                                public opinion polling service</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1017'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1017')">S1017</td>
+                            <td class="columH" (click)="purposeClick('S1017')">Publishing and printing
+                                services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1018'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1018')">S1018</td>
+                            <td class="columH" (click)="purposeClick('S1018')">Mining services like
+                                on–site processing services analysis
+                                of ores etc.</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1020'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1020')">S1020</td>
+                            <td class="columH" (click)="purposeClick('S1020')">Commission agent services
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1021'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1021')">S1021</td>
+                            <td class="columH" (click)="purposeClick('S1021')">Wholesale and retailing
+                                trade services.</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1022'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1022')">S1022</td>
+                            <td class="columH" (click)="purposeClick('S1022')">Operational leasing
+                                services (other than financial
+                                leasing) without operating crew,
+                                including charter hire- Shipping companies</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1023'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1023')">S1023</td>
+                            <td class="columH" (click)="purposeClick('S1023')">Other Technical Services
+                                including scientific/space
+                                services.</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1099'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1099')">S1099</td>
+                            <td class="columH" (click)="purposeClick('S1099')">Other services not
+                                included elsewhere</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="6" style="vertical-align: top !important;">11</td>
+                            <td class="pl-4 fw-normal" rowspan="6" style="vertical-align: top !important;">Personal,
+                                Cultural &
+                                Recreational services</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1101'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1101')">S1101</td>
+                            <td class="columH" (click)="purposeClick('S1101')">Audio-visual and related
+                                services like Motion picture and
+                                video tape production,
+                                distribution and projection services.</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1103'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1103')">S1103</td>
+                            <td class="columH" (click)="purposeClick('S1103')">Radio and television
+                                production, distribution and
+                                transmission services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1104'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1104')">S1104</td>
+                            <td class="columH" (click)="purposeClick('S1104')">Entertainment services
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1105'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1105')">S1105</td>
+                            <td class="columH" (click)="purposeClick('S1105')">Museums, library and
+                                archival services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1106'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1106')">S1106</td>
+                            <td class="columH" (click)="purposeClick('S1106')">Recreation and sporting
+                                activities services</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1109'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1109')">S1109</td>
+                            <td class="columH" (click)="purposeClick('S1109')">Other Personal, Cultural
+                                & Recreational services</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="2" style="vertical-align: top !important;">12</td>
+                            <td class="pl-4 fw-normal" rowspan="2" style="vertical-align: top !important;">Govt. not
+                                included
+                                elsewhere</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1201'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1201')">S1201</td>
+                            <td class="columH" (click)="purposeClick('S1201')">Maintenance of Indian
+                                embassies abroad
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1202'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1202')">S1202</td>
+                            <td class="columH" (click)="purposeClick('S1202')">Remittances by foreign
+                                embassies in India</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="4" style="vertical-align: top !important;">13</td>
+                            <td class="pl-4 fw-normal" rowspan="4" style="vertical-align: top !important;">Secondary
+                                Income</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1301'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1301')">S1301</td>
+                            <td class="columH" (click)="purposeClick('S1301')">Remittance for family
+                                maintenance and savings
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1304'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1304')">S1304</td>
+                            <td class="columH" (click)="purposeClick('S1304')">Remittance towards grants
+                                and donations to other
+                                governments and charitable
+                                institutions established by the governments.</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1305'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1305')">S1305</td>
+                            <td class="columH" (click)="purposeClick('S1305')">Contributions/donation by
+                                the Government to international
+                                institutions</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1306'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1306')">S1306</td>
+                            <td class="columH" (click)="purposeClick('S1306')">Remittance towards
+                                payment / refund of taxes.</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="9" style="vertical-align: top !important;">14</td>
+                            <td class="pl-4 fw-normal" rowspan="9" style="vertical-align: top !important;">Primary
+                                Income</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1401'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1401')">S1401</td>
+                            <td class="columH" (click)="purposeClick('S1401')">Compensation of employees
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1402'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1402')">S1402</td>
+                            <td class="columH" (click)="purposeClick('S1402')">Remittance towards
+                                interest on Non-Resident deposits
+                                (FCNR(B)/NR(E)RA, etc.)</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1403'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1403')">S1403</td>
+                            <td class="columH" (click)="purposeClick('S1403')">Remittance towards
+                                interest on loans from
+                                Non-Residents(ST/MT/LT loans) e.g.
+                                External Commercial Borrowing, Trade Credits etc.</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1405'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1405')">S1405</td>
+                            <td class="columH" (click)="purposeClick('S1405')">Remittances towards
+                                interest payment by Ads on their own
+                                account (to VOSTRO a/c
+                                holders or the OD on NOSTRO a/c)</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1408'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1408')">S1408</td>
+                            <td class="columH" (click)="purposeClick('S1408')">Remittance of profit by
+                                FDI enterprises in India (by
+                                branches of foreign companies
+                                including bank branches)</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1409'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1409')">S1409</td>
+                            <td class="columH" (click)="purposeClick('S1409')">Remittances of dividends
+                                by FDI enterprises in India
+                                (other than branches) on equity
+                                and investment fund shares</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1410'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1410')">S1410</td>
+                            <td class="columH" (click)="purposeClick('S1410')">Payment of interest by
+                                FDI enterprises in India to their
+                                Parent company abroad</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1411'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1411')">S1411</td>
+                            <td class="columH" (click)="purposeClick('S1411')">Remittance of interest
+                                income on account of Portfolio
+                                Investment in India</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1412'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1412')">S1412</td>
+                            <td class="columH" (click)="purposeClick('S1412')">Remittance of dividends
+                                on account of Portfolio
+                                Investment in India on equity ad
+                                investment fund shares</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="5" style="vertical-align: top !important;">15</td>
+                            <td class="pl-4 fw-normal" rowspan="5" style="vertical-align: top !important;">Others</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1501'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1501')">S1501</td>
+                            <td class="columH" (click)="purposeClick('S1501')">Refunds / rebates /
+                                reduction in invoice value on account
+                                of exports
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1502'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1502')">S1502</td>
+                            <td class="columH" (click)="purposeClick('S1502')">Reversal of wrong
+                                entries, refunds of amount remitted for
+                                non-exports</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1503'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1503')">S1503</td>
+                            <td class="columH" (click)="purposeClick('S1503')">Payments by residents for
+                                international bidding</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1504'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1504')">S1504</td>
+                            <td class="columH" (click)="purposeClick('S1504')">Notional sales when
+                                export bills
+                                negotiated/purchased/discounted are
+                                dishonored/crystallized/cancelled and reversed from suspense account
+                            </td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1505'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1505')">S1505</td>
+                            <td class="columH" (click)="purposeClick('S1505')">Deemed imports (exports
+                                between SEZ, EPZs and Domestic
+                                tariff areas)</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="2" style="vertical-align: top !important;">16</td>
+                            <td class="pl-4 fw-normal" rowspan="2" style="vertical-align: top !important;">Maintenance
+                                and repair
+                                service i.e.</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1601'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1601')">S1601</td>
+                            <td class="columH" (click)="purposeClick('S1601')">Payment on account of
+                                maintenance and repair services
+                                rendered for Vessels, ships,
+                                boats, warships, etc.
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1602'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1602')">S1602</td>
+                            <td class="columH" (click)="purposeClick('S1602')">Payment on account of
+                                maintenance and repair services
+                                rendered for air-crafts, space
+                                shuttles, rockets, military aircrafts, helicopters, etc.</td>
+                        </tr>
+
+                        <tr class="table-row">
+                            <td rowspan="1" style="vertical-align: top !important;">17</td>
+                            <td class="pl-4 fw-normal" rowspan="1" style="vertical-align: top !important;">Manufacturing
+                                services(goods for
+                                processing)</td>
+                            <td style="align-items: center; text-align: center;"><span *ngIf="file =='S1701'"><img
+                                        style="width: 30px; height:30px "
+                                        src="https://img.icons8.com/ios/50/000000/checked-checkbox--v1.png"></span></td>
+                            <td class="sb-no columH" (click)="purposeClick('S1701')">S1701</td>
+                            <td class="columH" (click)="purposeClick('S1701')">Payments for processing
+                                of goods
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br> <br> <br>
+
+        <div *ngIf="!done && checking == 'no'" style="
+                            float: left;
+                            display: block;
+                            width: 78%;
+                            margin-top: 40px;
+                            margin-left: 43px;
+                            ">
+            <div class="button1" style="width: 100px;" title="Share As PDF" (click)="exportAsPDF('MyDIv')">Proceed to
+                Preview</div>
+        </div>
+
+        <div *ngIf="done" style="width: 125%;">
+            <p>Setup: 3 Preview</p>
+            <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+            <button class="button1" style="margin-bottom: 40px;">Send it via Email</button>
+            <div>
+                <div style="float: left; margin-right: 80px;">
+                    <h5>Bank Format</h5>
+                    <iframe [src]="data6" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+                </div>
+                <div style="float: left; margin-right: 80px;">
+                    <h5>Pi/PO document</h5>
+                    <iframe [src]="doc" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+                </div>
+
+            </div><br>
+            <div *ngIf="caDone1 == 'yes'">
+                <h5>CA document</h5>
+                <iframe [src]="caUrl" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+            </div><br>
+            <button *ngIf="caDone1 == 'no'" class="button1" style="margin-right: 10px;" (click)="edit()">Edit</button>
+            <button class="button1" style="margin-right: 10px;  margin-top: 20px;" (click)="submitTask()"
+                *ngIf="caDone1 == 'no'">Request
+                For CA
+                Certificate</button>
+            <button class="button1" style="margin-right: 10px;" (click)="submitTask()" *ngIf="caDone1 == 'yes'">Request
+                Done</button>
+        </div>
+        <div *ngIf="checking == 'yes'" style="width: 125%;">
+            <!-- <p>Setup: 3 Preview</p>
+                                            <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+                                            <button class="button1" style="margin-bottom: 40px;">Send it via Email</button> -->
+            <div>
+                <div style="float: left; margin-right: 80px;">
+                    <h5>Bank Format</h5>
+                    <iframe [src]="data6" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+                </div>
+                <div style="float: left; margin-right: 80px;">
+                    <h5>Pi/PO document</h5>
+                    <iframe [src]="doc" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+                </div>
+
+            </div><br>
+            <div *ngIf="caDone1 == 'yes'" style="float: left; width: 100%;">
+                <h5>CA document</h5>
+                <iframe [src]="caUrl" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+            </div><br>
+
+            <button class="button1" style="margin-right: 10px; margin-top: 20px;" (click)="submitTask()"
+                *ngIf="caDone1 == 'yes'">Done</button>
+            <button class="button1" style="margin-right: 10px; margin-top: 20px;"
+                [routerLink]="['/home/outward-remitance']" *ngIf="caDone1 == 'no'">Back</button>
+
+        </div>
+
+    </main>
+</div>

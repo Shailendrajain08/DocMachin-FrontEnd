@@ -1,0 +1,115 @@
+<div style="margin-left: 0px" class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+
+        <div class="analytics">
+            <div class="flex-container" style="margin-left: 50px;">
+                <div (click)="import1()" [ngClass]="{'my_class': import == true}"> Import</div>
+                <div (click)="export1()" [ngClass]="{'my_class': export == true}"> Export </div>
+            </div>
+            <div *ngIf="!showInvoice" style="width: 100%" class="analytics-side">
+                <div style="width: 100%" class="row">
+                    <div style="width: 100%; margin: 0 -1.5%" class="col-12 mb-lg padding">
+                        <section style="width: 100%; margin-left: 0" class="widget pb-0 box-shadow">
+                            <div style="margin: 0 -2%" class="widget-body p-0 support table-wrapper">
+                                <table style="width: 100%" class="table table-striped mb-0" *ngIf="import">
+                                    <thead style="width: 100%">
+                                        <tr class="text-muted table-heading">
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th scope="col"><span class="pl-3">DATE</span></th>
+                                            <th scope="col">PI/PO No.</th>
+                                            <th scope="col">Purpose Code</th>
+                                            <th scope="col">Bank Name</th>
+                                            <th scope="col" *ngIf="pending || completed">Upload</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let data of item1; let i = index" class="text-dark">
+
+                                        <tr *ngIf="pending && !data.completed" class="table-row" (click)="viewTask(data)">
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th class="pl-4 fw-normal">{{ data.transactionDate}}
+                                            </th>
+                                            <td class="sb-no">{{ data.pi_poNo }}</td>
+                                            <td (click)="viewTask(data)">
+                                                {{ data.file }}
+                                            </td>
+                                            <td>{{ data.bank }}</td>
+                                            <td>
+                                                hshhs
+                                            </td>
+                                        </tr>
+
+                                        <tr *ngIf="completed && data.completed" class="table-row" (click)="viewTask(data)">
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th class="pl-4 fw-normal">{{ data.transactionDate}}</th>
+                                            <td class="sb-no">{{ data.pi_poNo }}</td>
+                                            <td>
+                                                {{ data.file }}
+                                            </td>
+                                            <td>{{ data.bank }}</td>
+                                            <td>Done</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <table style="width: 100%" class="table table-striped mb-0" *ngIf="export">
+                                    <thead style="width: 100%">
+                                        <tr class="text-muted table-heading">
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th scope="col"><span class="pl-3">DATE</span></th>
+                                            <th scope="col">Number of task</th>
+                                            <th scope="col">File Type</th>
+                                            <th scope="col">Bank Name</th>
+                                            <th scope="col">Completed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let data of item2; let i = index" class="text-dark">
+
+                                        <tr class="table-row" *ngIf='data.completed == "yes" && completed' (click)='viewExportTask(data)'>
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th class="pl-4 fw-normal">{{data.date}}</th>
+                                            <td class="sb-no">{{data.task.length }}</td>
+                                            <td>
+                                                {{data.fileType}}
+                                            </td>
+                                            <td>Yes Bank</td>
+                                            <td>
+                                                {{data.completed}}
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row" *ngIf='data.completed == "no" && pending' (click)='viewExportPendingTask(data)'>
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th class="pl-4 fw-normal">{{data.date}}</th>
+                                            <td class="sb-no">{{data.task.length }}</td>
+                                            <td>
+                                                {{data.fileType}}
+                                            </td>
+                                            <td>Yes Bank</td>
+                                            <td>
+                                                {{data.completed}}
+                                            </td>
+                                        </tr>
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

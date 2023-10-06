@@ -1,0 +1,273 @@
+<div style="margin-left: 0px" class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+
+
+
+        <div style="
+                display: flex;
+                flex-direction: rows;
+                justify-content: space-between;
+                align-items: center;
+                padding-top: 0.8%;
+                padding-left: 1%;
+                padding-bottom: 0.8%;
+                /*border: 0.5px solid rgba(0, 0, 0, 0.2);*/
+                margin-left: 40px;
+                width: 85%;
+              " *ngIf="!showInvoice">
+            <div style="display: flex; align-items: center; margin-left: 23px;">
+                <h3 class="heading">Packing Credit Request</h3>
+            </div>
+
+            <div class="dropdown">
+                Date:
+                <select name="subject" id="subject">
+                    <option value="" selected="selected">Today</option>
+                </select> Type:
+                <select name="topic" id="topic">
+                    <option value="" selected="selected">All</option>
+                </select>
+            </div>
+            <div style="padding-top: 0.7%">
+                <button class="upload-button" [routerLink]="['/home/upload']">
+                    Upload New
+                </button>
+            </div>
+        </div>
+
+
+        <div class="analytics" style="margin-left: 50px;">
+
+
+
+            <div>
+                <!-- P0102 -->
+
+
+                <div *ngIf='!isGenerate'>
+                    <!-- <div style="margin: 10px;">
+                        <img src="../../../assets/back.png" [routerLink]="['/home/dashboardTask']"
+                            style="width: 20px; height: 20px; margin-left: 19px;"><span style="margin-left: 10px;"
+                            [routerLink]="['/home/dashboardTask']">Back</span>
+                    </div> -->
+                    <div>
+                        <div class="form-group">
+                            <div class="form-group col-md-12" style="margin-left: 11px;">
+                                <label>Running PCFC?</label>
+                                <input type="radio" name="Question1" [(ngModel)]="Question1" value="yes" style="margin-left: 10px;"> <span style="margin-left: 10px;">Yes</span> <br>
+                                <input type="radio" name="Question1" [(ngModel)]="Question1" value="no" style="margin-left: 10px;"> <span style="margin-left: 10px;">No</span>
+                            </div>
+
+                        </div>
+
+                        <div *ngIf='Question1 == "no"'>
+                            <label style="margin-left:10px"> Select PI/PO numbers*</label>
+                            <div style="margin-left:10px" s class="form-check" *ngFor="let item of item1; let i = index;">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox"
+                                        (change)="changeCheckbox1(item.pi_poNo)">
+                                    {{item.pi_poNo}} [Amount: {{item.amount}}, Date: {{item.date}}, Bene Name:
+                                    {{item.benneName}}, Payment Term: {{item.paymentTerm}} ]
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group col-md-12" style="margin-left: 11px;">
+                                <label>Incoterm</label>
+                                <input type="radio" name="Question2" [(ngModel)]="Question2" value="fob" style="margin-left: 10px;"> <span style="margin-left: 10px;">FOB</span> <br>
+                                <input type="radio" name="Question2" [(ngModel)]="Question2" value="cif" style="margin-left: 10px;"> <span style="margin-left: 10px;">CIF</span>
+                            </div>
+
+                        </div>
+                        <div style="margin-left: 27px">
+                            Select a bank*
+                            <div style="display: flex; align-items: center;">
+                                <input style="flex-direction:row;" type="radio" name="bank" id="options1" class="circular_input" (ngModel)="myRadio" value="yesBank" style="margin-left: 10px;">
+                                <label style="flex-direction:row;" class="label1" for="male">Yes
+                                    Bank</label>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <input type="radio" style="flex-direction:row;" name="bank" id="options2" class="circular_input" (ngModel)="myRadio" value="axisBank" style="margin-left: 10px;">
+                                <label class="label1" style="flex-direction:row;" for="female">Axis Bank</label>
+                            </div>
+
+                            <div style="display: flex; align-items: center;">
+                                <input type="radio" style="flex-direction:row;" name="bank" value="Any Bank" class="circular_input" style="margin-left: 10px;" />
+                                <label class="label1" style="flex-direction:row;" for="female">Any
+                                    Bank</label><br />
+                            </div> <br>
+                        </div>
+
+
+                        <button class="opt" style="margin-right: 25px; line-height: 7px; padding-top: 10px; padding-bottom: 10px; " (click)='generateDoc1()'>
+                            Generate Document
+                        </button>
+
+
+                    </div>
+                </div>
+
+
+                <div *ngIf='isGenerate'>
+                    <div style="margin: 10px;">
+                        <img src="../../../../assets/back.png" (click)="goBack()" style="width: 20px; height: 20px;"><span style="margin-left: 10px;">Back</span>
+                    </div>
+
+                    <div>
+                        <div id="mainId" class="bc" *ngIf="isProceed == false">
+                            <div id="first" class="bc">
+                                <div>
+                                    <p class="heading" style="align-items: center; text-align: center; "> <span style="border-bottom: 1px solid black;">EPC / PCFC request letter (service
+                                            export)</span> </p>
+                                </div>
+                                <div style="margin-left: 40px; margin-top: 20px; width: 90%;" class="bc">
+                                    <div style=" text-align:right">Date: <span style="
+                                                                        outline: none;
+                                                                          display: inline-block;
+                                                                          width: 150px;
+                                                                          border-bottom: 1px solid black;
+                                                                        " contenteditable="true"></span></div>
+                                    <div style="width:80%; margin-top: -20px;">To, <br> The Manager <br> YES Bank Ltd., <br> Branch address</div>
+                                    <span style="outline: none; display: inline-block; width: 150px; border-bottom: 1px solid #000000;" contenteditable="true"></span> <br>
+                                    <div style="margin-top: 10px;">Sub: Request for grant of EPC / PCFC <br> We enclose the following LC / purchase order as underlying for EPC / PCFC and request you to grant us EPC / PCFC of
+                                        <span style="outline: none; display: inline-block; width: 150px; border-bottom: 1px solid #000000;" contenteditable="true">{{totalAmount}}</span> and credit the same to our account number
+                                        <span style="outline: none; display: inline-block; width: 150px; border-bottom: 1px solid #000000;" contenteditable="true"></span>for the purpose of payment to supplier.
+                                        <br>
+
+                                    </div> <br>
+
+                                    <table>
+                                        <tr class="border1">
+                                            <td class="wtd3 border1" style="width: 200px;">LC order no & date:</td>
+                                            <td class="wtd3 border1" style="width: 200px;"></td>
+                                            <td class="wtd3 border1" style="width: 250px;">Loan requested up to (Date):
+                                            </td>
+                                            <td class="wtd3 border1" style="width: 200px;"></td>
+                                        </tr>
+                                        <tr class="wtd3 border1">
+                                            <td class="wtd3 border1" style="width: 200px;">Buyer:</td>
+                                            <td class="wtd3 border1" style="width: 200px;"></td>
+                                            <td class="wtd3 border1" style="width: 200px;">Type of service:</td>
+                                            <td class="wtd3 border1" style="width: 200px;"></td>
+                                        </tr>
+                                        <tr class="wtd3 border1">
+                                            <td class="wtd3 border1" style="width: 200px;">Value</td>
+                                            <td class="wtd3 border1" style="width: 200px;"></td>
+                                            <td class="wtd3 border1" style="width: 200px;">IEC:</td>
+                                            <td class="wtd3 border1" style="width: 200px;"></td>
+                                        </tr>
+                                        <tr class="wtd3 border1">
+                                            <td class="wtd3 border1" style="width: 200px;">Last date of service:</td>
+                                            <td class="wtd3 border1" style="width: 200px;"></td>
+                                            <td class="wtd3 border1" style="width: 270px;">A/c no to be debit for all charges:
+                                            </td>
+                                            <td class="wtd3 border1" style="width: 200px;"></td>
+                                        </tr>
+                                    </table> <br>
+
+
+                                    <p> <b style="border-bottom: 1px solid black;">Declaration – Cum – Undertaking:</b>
+                                    </p>
+                                    <p>
+                                         We undertake to liquidate the above loan by submitting to you the relative export documents bills within the validity of LC / order or within maturity date of advance whichever is earlier. <br>  We are not in
+                                        the caution list of RBI / ECGC. <br>  We will export the services as per the export schedule of the order / LC original copy enclosed without any delay. <br>  We are agreeable for commercial rate of interest in
+                                        case of delay in liquidating the EPC within validity of order/ LC. <br>  We undertake that we have not taken any EPC from any other bank for this particular order. <br>  The proposal is a genuine case of export
+                                        of services. <br>  The item of service export is covered under Appendix 10 of HBPv1. <br>  We are registered with □ Electronic and software EPC □ Services EPC □ Federation of Indian Export Organizations, as applicable.
+                                        <br>  There is an Export Contract for the export of the service. <br>  There is a time lag between the outlay of working capital expense and actual receipt of payment from the service consumer or his principal
+                                        abroad. <br>  There is a valid Working Capital gap i.e. service is provided first while the payment is received some time after an invoice is raised. <br>  Inward remittance would be received in Foreign Exchange.
+                                        <br>  We will raise the invoice as per the contract. Where payment is received from overseas party, we would utilize the funds to repay the export credit availed of from the bank. <br>
+                                    </p>
+                                    <p>
+                                        <b style="border-bottom: 1px solid black;">Enclosed documents:</b> <br> □ Purchase Order □ Letter of credit □ Labor Bill □ Any other
+                                    </p>
+
+                                    <p>
+                                        <b style="border-bottom: 1px solid black;">Declaration – Cum – Undertaking:</b>
+                                        <br> I/We hereby declare that the transaction, details of which are specifically mentioned in this request letter does not involve, and / is not designed for the purpose of any contravention or evasion of the provisions
+                                        of FEMA 1999 or of any rules, regulations, notifications, directions or order made there under. I/We also hereby agree and undertake to give such information / documents as will reasonably satisfy you about this
+                                        transaction in terms of the above declaration. I/We also understand that if I/We refuse to comply with any such requirement or make only unsatisfactory compliance therewith, the bank shall refuse in writing to undertake
+                                        the transaction and shall, if it has reason to believe that any contravention / evasion is contemplated by me / us, report the matter to Reserve Bank of India. I/We further declare that the undersigned has / have
+                                        the authority to give this declaration and undertaking on behalf of the company. <br> <br> I/we also declare that the transaction does not have linkage with any Specially Designated Nationals and Blocked Persons
+                                        (SDN)/countries listed under OFAC in any manner. If the transaction involves linkage with any Specially Designated Nationals and Blocked Persons (SDN)/countries listed under OFAC in any manner, I/we undertake not
+                                        to hold YES Bank Limited responsible for any of its action or inaction in respect of the OFAC-linked transactions. <br> <br> Note – Default GST registration details as updated in the Bank records will be considered
+                                        for the said request. In case the no. to be considered is different, please notify below.
+                                    </p>
+
+
+                                    <p style="margin-bottom: 0px;">
+                                        GSTIN Registration no.
+                                    </p>
+                                    <div *ngIf='arr.length == 15'>
+                                        <span style="outline: none;display: inline-block;width: 20px; border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[0]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                            contenteditable="true">{{arr[1]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[2]}}</span>
+                                        <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[3]}}</span><span style="outline: none;display: inline-block;width: 20px; border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                            contenteditable="true">{{arr[4]}}</span>
+                                        <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[5]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                            contenteditable="true">{{arr[6]}}</span>
+                                        <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[7]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                            contenteditable="true">{{arr[8]}}</span>
+                                        <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[9]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                            contenteditable="true">{{arr[10]}}</span>
+                                        <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[11]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                            contenteditable="true">{{arr[12]}}</span>
+                                        <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[13]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;"
+                                            contenteditable="true">{{arr[14]}}</span>
+                                    </div>
+
+                                    <div style="margin-top: 20px;">
+                                        <p>
+                                            Yours faithfully, <br> Authorized Signatory <br> Company Stamp / Seal
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p style="text-align: end; margin-top: -50px;">
+                                            Date: <span style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;" contenteditable="true"></span> <br> Place: <span style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"
+                                                contenteditable="true"></span>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div *ngIf="isProceed == false" style="
+                                                                            float: left;
+                                                                            display: block;
+                                                                            width: 78%;
+                                                                            margin-top: 40px;
+                                                                            margin-left: 43px;display: flex; align-items: center;">
+                            <div style="flex-direction:row;" class="button1" title="Share As PDF" (click)="exportAsPDF1()">Proceed to Preview
+                            </div>
+                            <Button style="flex-direction:row; margin-left: 10px;" (click)='onBack()' class="button1">Back</Button>
+                        </div>
+                        <div *ngIf="isProceed == true">
+                            <p>Setup: 3 Preview</p>
+                            <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+                            <button class="button1" style="margin-bottom: 40px;">Send it via Email</button><br> Generated Document
+                            <div>
+                                <iframe [src]="data8" height="500px" width="400px"></iframe>
+
+                            </div><br>
+                            <span *ngIf='mainDoc1'>PI/PO Documents</span>
+                            <div style="display: flex; align-items: center;" *ngIf='mainDoc1'>
+                                <iframe style="flex-direction:row;" *ngFor="let pipo of mainDoc1" [src]="pipo" height="500px" width="400px"></iframe>
+                            </div> <br> <br>
+
+                            <button class="button1" style="margin-right: 10px;" (click)="edit()">Edit</button>
+                            <button class="button1" style="margin-right: 10px;" (click)="doneDox()">Done</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </main>
+</div>

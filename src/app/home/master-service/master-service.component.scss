@@ -1,0 +1,126 @@
+#container{
+    overflow: scroll;
+    overflow-x: auto;
+}
+#container::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+.table-padding {
+    background: white !important;
+}
+
+.table_top {
+    display: grid;
+    grid-template-columns: 28.55% 33% 36%;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    align-items: center;
+}
+
+.bcw {
+    background-color: white;
+    color: #323e4a !important;
+}
+
+.heading {
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 23px;
+    color: #323e4a;
+}
+.table thead th{
+    border: none;
+}
+
+.table-heading {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #747474;
+    //opacity: 50%;
+}
+
+table {
+    margin-left: 29px;
+    width: 98% !important;
+}
+
+.dropdown {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.upload-button {
+    color: #ffffff !important;
+    font-weight: 100;
+    font-family: Poppins, sans-serif;
+    padding: 5px 8px;
+    font-size: 14px;
+    background-color: #49A2D7;
+    border: none;
+    border-radius: 5px;
+    margin-left: 2px;
+    margin-right: 1rem;
+}
+
+.box-shadow {
+    box-shadow: none !important;
+}
+
+.rect {
+    text-align: right;
+    min-width: 80px !important;
+}
+
+.table-row {
+    background-color: #ffffff !important;
+    color: #707683;
+}
+
+.table-row:hover {
+    background: #f6f9ff !important;
+    border-left: 5px solid #49a2d7;
+    cursor: pointer;
+}
+
+.sb-no {
+    color: #49a2d7;
+}
+
+.display-6 {
+    text-align: center;
+    // width: 320%;
+    font-weight: 600;
+    color: #606670;
+    font-size: 22px;
+    margin-bottom: 12px;
+    margin-top: 20px
+}
+
+.submitBTN {
+    margin-top: 10px;
+    width: 160px;
+    height: 40px;
+    border: 2px white solid;
+    border-radius: 20px;
+    background-color: #51AEE5;
+    font-size: 12px;
+    color: #ffffff;
+    // justify-content: center;
+}
+
+.tblInput {
+    border: 1px solid #e3e6ee;
+    border-radius: 3px;
+    width: 140px;
+}
+
+.savBtn {
+    background-color: #49A2D7;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    width: 60px;
+}

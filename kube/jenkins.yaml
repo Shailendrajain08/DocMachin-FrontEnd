@@ -1,0 +1,40 @@
+apiVersion: extensions/v1
+kind: Ingress
+metadata:
+  annotations:
+    acme.cert-manager.io/http01-edit-in-place: "true"
+    kubernetes.io/ingress.global-static-ip-name: docmachine-gke-external-ip
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+
+  creationTimestamp: "2021-12-03T07:38:00Z"
+  finalizers:
+    - networking.gke.io/ingress-finalizer-V2
+  generation: 1
+  labels:
+    app.kubernetes.io/component: jenkins-master
+    app.kubernetes.io/name: jenkins
+  name: jenkins-jenkins-ui
+  namespace: default
+  ownerReferences:
+    - apiVersion: networking.k8s.io/v1
+      blockOwnerDeletion: true
+      kind: Application
+      name: jenkins
+      uid: 10565eeb-13a2-42a1-91fa-9d4b3b3a80e4
+  resourceVersion: "788785"
+  uid: ae0ba36b-5e3a-415e-a5bb-e864a1cb630f
+spec:
+  tls: # < placing a host in the TLS config will indicate a certificate should be created
+    - hosts:
+        - jenkins.bharathaxim.com
+      secretName: docmachine-jenkins-cert-secret # < cert-manager will store the created certificate in this secret
+  rules:
+    - host: jenkins.bharathaxim.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: jenkins-jenkins-ui
+              servicePort: 8080
+status:
+  loadBalancer: {}

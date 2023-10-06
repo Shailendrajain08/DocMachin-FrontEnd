@@ -1,0 +1,399 @@
+<div class="content_top_common">
+    <div class="content-wrap">
+        <div class="container-fluid">
+            <div class="import_export_sec">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="Dashbord_sec">
+                            <h2 class="title_dash">PI PO details</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="float_right_page">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a routerLink="/home/view-pipo">Documents</a></li>
+                                    <li class="breadcrumb-item"><a routerLink="home/pipo-new">PI PO</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">PI PO details</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top_invoice_section">
+                <h3 class="invoice_title">Invoice #PO15</h3>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-12 right_border">
+                        <table class="leftshippting_info">
+                            <tbody>
+                                <tr>
+                                    <td><label>Total no. of shipping bill</label></td>
+                                    <td><b>3</b></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Shipping bill number</label></td>
+                                    <td><b>SB15</b></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Shipping bill date</label></td>
+                                    <td><b>17-10-2022</b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-12">
+                        <table class="leftshippting_info">
+                            <tbody>
+                                <tr>
+                                    <td><label>Total no. of inward remittances</label></td>
+                                    <td><b>3</b></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Inward remittance number</label></td>
+                                    <td><b>FIRX01/FIRX02</b></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Inward remittance amount</label></td>
+                                    <td><b>USD 50000</b></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Balance amount</label></td>
+                                    <td><b>USD 30000</b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="content_white_background">
+                <main id="content" class="table-padding" role="main">
+                    <div class="new_document_list">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <b>Upload documents</b>
+                                <label>Select the type of document</label>
+                                <select class="form-select" aria-label="Default select example">
+                                <option selected>New Credit Note</option>
+                                <option value="1">New PI/PO</option>
+                                <option value="2">New Debit Note</option>
+                                <option value="3">New Insurance Document</option>
+                                <option value="3">New Letter of Credit</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="file_uploade">
+                            <img src="assets/new-img/file_add.png" alt="" />
+                        </div>
+                        <div class="new_document_list_add_data">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="ADbill" class="form-label">AD bill number</label>
+                                                <input type="text" class="form-control" id="ADbill" aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="ADbill" class="form-label">SB number</label>
+                                                <input type="text" class="form-control" id="ADbill" aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="ADbill" class="form-label">SB date</label>
+                                                <input class="form-select form-control" type="date" placeholder="Start Date" [(ngModel)]="startDate" required/>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="data_add_buttons">
+                                        <div class="row">
+                                            <div class="col-md-6 col-6"><button type="button" class="btn btn-secondary">EDIT</button></div>
+                                            <div class="col-md-6 col-6"> <button type="submit" class="btn btn-primary">SUBMIT</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </main>
+            </div>
+            <div class="content_white_background" style="margin-top:16px;">
+                <div class="new_document_list_tab">
+                    <mat-tab-group>
+                        <mat-tab label="DETAILS">
+                            <div class="Activity_list">
+                                <div class="new_document_list_tab_info">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-8 col-xs-12 col-12">
+                                            <h5><span class="red">Note:</span> As per payment terms you need create a Inward Remittance Disposal against the Export. Create a transaction to submit swift copy to bank to process the amount</h5>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-12">
+                                            <button type="button" class="btn btn-secondary"> <i class="fa fa-plus" aria-hidden="true"></i> INWARD REMITTANCE DISPOSAL</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-12">
+                                        <h3>Activities</h3>
+                                        <table class="add_files_tab">
+                                            <tbody>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-check-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Uploaded proforma invoice</b><br/>
+                                                        <label>Submitted on 20/10/2022</label>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-check-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Uploaded shipping bill</b><br/>
+                                                        <label>Submitted on 20/10/2022</label>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-check-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Uploaded commercial document</b><br/>
+                                                        <label>Submitted on 20/10/2022</label>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-check-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Uploaded destruction document</b><br/>
+                                                        <label>Submitted on 20/10/2022</label>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-check-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Uploaded bill of exchange</b><br/>
+                                                        <label>Submitted on 20/10/2022</label>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-12">
+                                        <h3>Steps to complete</h3>
+                                        <table class="add_files_tab pending_documents">
+                                            <tbody>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Create Inward Remittance disposal</b>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-upload" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Upload SwiftCopy</b>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-upload" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Upload Bank credit Advice Copy and provide reference number</b>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-upload" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Create bill lodgement</b>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-upload" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Bill lodgement reference number and advice copy</b>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-upload" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>EBRC- Export Realisation certificate.</b>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-upload" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Upload Airway / BLCopy Document</b>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-upload" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                <tr height="10"></tr>
+                                                <tr class="list_one">
+                                                    <td [width]="40"><span class="pass_tick"><i class="fa fa-circle-o" aria-hidden="true"></i></span></td>
+                                                    <td>
+                                                        <b>Upload Packing List Document</b>
+                                                    </td>
+                                                    <td [width]="40" align="right"><a href=""><i class="fa fa-upload" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="payment_info_pipop">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-12 right_border">
+                                            <h3>PI/ PO Master details</h3>
+                                            <table class="leftshippting_info">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><label>Amount</label></td>
+                                                        <td><b>Amount</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label>Incoterm</label></td>
+                                                        <td><b>Unpaid</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label>PC reference number</label></td>
+                                                        <td><b>7635HARI</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label>Last day of shipment</label></td>
+                                                        <td><b>30-10-2022</b></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-12">
+                                            <h3>Commodity</h3>
+                                            <h6>Payment term</h6>
+                                            <table class="leftshippting_info">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><label>Date</label></td>
+                                                        <td><b>20-10-2022</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label>Type</label></td>
+                                                        <td><b>Advance payment</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label>Amount</label></td>
+                                                        <td><b>INR 56789</b></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="DOCUMENTS">
+                            <div class="documents_det">
+                                <div class="table_bottom_section">
+                                    <div class="row">
+                                        <div class="col-md-7 col-12">
+                                            <div class="pdf_invoce_scroll">
+                                                <img src="assets/new-img/pdf_inn.png" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-12">
+                                            <div>
+                                                <table class="add_files_tab">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Detail</th>
+                                                            <th>Status</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="table-row active">
+                                                            <td>Dec 14, 2018</td>
+                                                            <td class="sb-no">Shipping Bill</td>
+                                                            <td>SN565656</td>
+                                                            <td><a href=""><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                        </tr>
+                                                        <tr class="table-row">
+                                                            <td>Dec 14, 2018</td>
+                                                            <td class="sb-no">Bill of Entry</td>
+                                                            <td>454544545</td>
+                                                            <td><a href=""><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="TRANSACTION & TASKS">
+                            <div class="tra_det">
+                                <div class="tab-content form-wrapper" [attr.data-index]="3">
+                                    <div class="table_bottom_section">
+                                        <div class="row">
+                                            <div class="col-md-7 col-12">
+                                                <div class="pdf_invoce_scroll">
+                                                    <img src="assets/new-img/pdf_inn.png" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-12">
+                                                <div>
+                                                    <table class="add_files_tab">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>Detail</th>
+                                                                <th>Status</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="table-row active">
+                                                                <td>Dec 14, 2018</td>
+                                                                <td class="sb-no">Submitted to Bank</td>
+                                                                <td>Emailed</td>
+                                                                <td><a href=""><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                            </tr>
+                                                            <tr class="table-row">
+                                                                <td>Dec 14, 2018</td>
+                                                                <td class="sb-no">Draft waiting for submission</td>
+                                                                <td>Draft</td>
+                                                                <td><a href=""><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+            <div class="space_bottom"></div>
+        </div>
+    </div>
+</div>

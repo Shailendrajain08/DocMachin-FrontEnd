@@ -1,0 +1,54 @@
+<div class="main">
+
+    <h6 class="display-5">
+      Invite your team</h6>
+    <p style="color:#606670;font-size:16px;margin-top:-48px">Add people to your team who would help you on documents
+    </p>
+    <div class="container">
+        <div id="login-container">
+            <p class="heading">Add New Member</p>
+            <div class="content">
+                <div class="button-wrapper">
+                    <form class="form" method="POST">
+                        <span class="label">
+                            <img *ngIf="!toggle" class="img1" src="./assets/ic_mail-2.png">
+                            <img *ngIf="toggle" class="img3" src="{{img}}" style="height: 70px; width: 70px;">
+                        </span>
+                        <div *ngIf="!toggle">
+                            <input name="upload" class="upload-box" placeholder="Upload File" (error)="onUploadError($event)" (init)="onUploadInit($event)" (success)="onUploadSuccess($event)" *ngIf="type === 'directive'" [dropzone]="config" class="dropzone dropzone-container" id="dropzone">
+                        </div>
+                    </form>
+                </div>
+              <form [formGroup]="memeberForm" (ngSubmit)="onSubmit()">
+                <input formControlName="name" class="name" type="text" placeholder="Enter Name"> <br>
+                <input formControlName="email" class="email" type="text" placeholder="Enter EmailId"> <br>
+                <button class="button" type="submit">Add</button>
+              </form>
+            </div>
+        </div>
+        <div *ngFor="let data of item1" id="login-container">
+            <div class="content">
+                <div *ngIf="data.imageUrl">
+                    <img class="img2" src="{{data.imageUrl}}">
+                </div>
+
+                <div *ngIf="!data.imageUrl">
+                    <img class="img4" src="./assets/ic_mail-2.png">
+                </div>
+                <h6 class="name">{{data.name}}</h6>
+                <h6 class="email">{{data.email}}</h6>
+                <div class="bottom" style="float: left; margin-left: 30px; margin-top: 10px;">
+                  <img src="./assets/Shape-4.png" alt="" style="margin-right: 5px;"> Invited
+                </div>
+                <div class="bottom bottom1" style="float: right; margin-right: 15px;">
+                  <img src="./assets/Eye.png" style="margin-right: 5px;"> View
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <button class="button2" [routerLink]="['/home/dashboardTask']">Finish</button>
+    </div>
+</div>
+

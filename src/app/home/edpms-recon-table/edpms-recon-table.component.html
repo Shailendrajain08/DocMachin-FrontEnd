@@ -1,0 +1,193 @@
+<div>
+    <div class="banner">
+        <button type="button" class="drawer-toggle drawer-hamburger">
+            <span class="sr-only">toggle navigation</span>
+            <span class="drawer-hamburger-icon"></span>
+        </button>
+        <nav class="drawer-nav" role="navigation">
+            <ul class="drawer-menu">
+                <li><a class="drawer-brand" href="#">Brand</a></li>
+                <li><a class="drawer-menu-item" href="#">Nav1</a></li>
+                <li><a class="drawer-menu-item" href="#">Nav2</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div style="margin-left: 0px" class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+
+        <div style="
+      display: flex;
+      flex-direction: rows;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.8%;
+      padding-left: 3%;
+      padding-bottom: 0.8%;
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+      margin-left: 40px;
+      width: 85%;
+  ">
+            <!-- *ngIf="!showInvoice" -->
+            <div style="display: flex; align-items: center">
+                <h3 class="heading">EDPMS Recon</h3>
+                <!-- {{doc}} -->
+            </div>
+
+            <!-- <div class="dropdown">
+                Date:
+                <select name="subject" id="subject">
+              <option value="" selected="selected">Today</option>
+          </select> Type:
+                <select name="topic" id="topic">
+              <option value="" selected="selected">All</option>
+          </select>
+            </div> -->
+
+        </div>
+        <div style="
+        display: flex;
+        flex-direction: rows;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0.8%;
+        padding-left: 3%;
+        padding-bottom: 0.8%;
+        margin-left: 40px;
+        width: 85%;">
+            <div style="display: flex; align-items: center">
+                <select style="display: flex; align-items: center;" [(ngModel)]="bankSelection" (ngModelChange)="chooseBank()">
+                    <option value="" disabled hidden>Select Bank</option>
+                    <option *ngFor="let acc of bankAccounts" [value]="acc" style="min-width:100%;">{{acc}}</option>
+                </select>
+            </div>
+
+            <div style="padding-top: 0.7%">
+                <!-- <button style=" color: #ffffff !important; font-weight: 100 ; font-family: Poppins ,sans-serif; padding: 5px 8px; font-size: 14px;
+                      background-color: #49A2D7;
+                      border: none;
+                      border-radius: 5px;">Export To Excel</button> -->
+                <!-- (click)="exportToExcel()" -->
+                <button class="upload-button" (click)="openNew()">
+                    <!-- (click)="newDebit()" -->
+                    Upload New
+                </button>
+            </div>
+        </div>
+
+        <div class="analytics">
+            <div style="width: 100%" class="analytics-side" #debitnotes>
+                <!-- *ngIf="!showInvoice" -->
+                <div style="width: 100%" class="row">
+                    <div style="width: 100%; height:523px" class="col-12 mb-lg padding" id="container">
+                        <!-- *ngIf="!showInvoice" -->
+                        <section style="width: 120%; margin-left: 10px" class="widget pb-0 box-shadow">
+                            <div class="widget-body p-0 support table-wrapper">
+                                <table style="width: 100%" class="table table-striped mb-0">
+                                    <!-- *ngIf='pipo' -->
+                                    <thead style="width: 100%">
+                                        <tr class="text-muted table-heading">
+                                            <!-- <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th> -->
+                                            <th scope="col"><span class="pl-3">Shipping Bill No.</span></th>
+                                            <th scope="col">Shipping Bill Date</th>
+                                            <th scope="col">AD Code</th>
+                                            <th scope="col">Port Code</th>
+                                            <th scope="col">EDPMS STATUS</th>
+                                            <th scope="col">AD Ref No.</th>
+                                            <th scope="col">SB Amount</th>
+                                            <th scope="col">SB Balance amount</th>
+<!--                                            <th scope="col">Status Meaning</th>-->
+                                            <th scope="col">System Status</th>
+                                            <th scope="col">Doc Available</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-dark">
+                                        <tr class="table-row" *ngFor="let row of edpmsData; let i = index">
+                                            <th class="pl-4 fw-normal sb-no">
+                                                {{row?.sbNo}}
+                                            </th>
+
+                                            <td>
+                                                {{row?.sbDate | date: 'dd/MM/yyyy'}}
+                                            </td>
+                                            <td>
+                                                {{row?.adCode}}
+                                            </td>
+                                            <td>
+                                                {{row?.portCode}}
+                                            </td>
+
+                                            <td>
+                                                {{row?.edpmsStatus}}
+                                            </td>
+
+                                            <td>
+                                                {{row?.adRefNo}}
+                                            </td>
+                                            <td>
+                                                {{row?.sbAmount}}
+                                            </td>
+                                            <td>
+                                                {{row?.sbBalanceAmount}}
+                                            </td>
+<!--                                            <td>-->
+<!--                                                {{row?.statusMeaning}}-->
+<!--                                            </td>-->
+                                            <td>
+                                                {{row?.systemStatus}}
+                                            </td>
+                                            <td>
+                                                {{row?.docAvailable}}
+                                            </td>
+                                            <td>
+                                                <div *ngFor="let act of row?.action" [class.active]="act === 'Create Documents' || act === 'Upload Documents'" (click)="actionEvent(act, row?.sbNo)">{{act}}</div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #content let-modal>
+
+            <div class="modal-body">
+                <div class="row no-gutter">
+                    <!-- The image half -->
+                    <!-- <div class="col-md-6 d-none d-md-flex bg-image"></div> -->
+
+
+                    <!-- The content half -->
+                    <div class="col-md-7" style="margin: 10px;">
+                        <div class="login d-flex py-5" style="padding: 0px !important;">
+
+                            <!-- Demo content-->
+                            <div class="container popup">
+                                <div class="row">
+                                    <div class="col-lg-10 col-xl-7 mrg">
+                                        <h6 class="display-6">Debit Note</h6>
+
+                                        <iframe width="315%" height="500px"></iframe>
+                                        <!-- [src]="viewData" -->
+                                        <button type="submit" style="margin-left: 250px;" class="submitBTN" (click)="modal.dismiss('Cross click')">OK</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </ng-template>

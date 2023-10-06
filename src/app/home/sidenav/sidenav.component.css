@@ -1,0 +1,264 @@
+#sidebar {
+    background: #fff;
+    width: 224px !important;
+    overflow-y: hidden;
+    height: 100vh;
+}
+
+* {
+    font-family: "EuropaNuova-Regular", sans-serif;
+}
+
+
+/*
+ *  STYLE 6
+ */
+
+#sidebar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #114b72;
+    background-color: #fff;
+}
+
+#sidebar::-webkit-scrollbar {
+    width: 5px;
+    background-color: #fff;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: #fff;
+}
+
+footer {
+    border-top: 1px solid #323e4a;
+    font-size: 12px !important;
+    font-weight: 400;
+}
+
+.footer-heading {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #fff;
+}
+
+.footer-content {
+    font-family: "europa" !important;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #9ba4b0;
+}
+
+.sidebar-title {
+    padding-left: 6px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #9ba4b0;
+}
+
+.sidebar-content {
+    font-size: 14px;
+    margin-left: 15px !important;
+    padding-left: 35px !important;
+    margin-right: 15px !important;
+    color: #fff !important;
+    border-radius: 5px;
+}
+
+.manage-content {
+    font-size: 14px;
+    margin-left: 15px !important;
+    padding-left: 35px !important;
+    margin-right: 15px !important;
+    color: #fff !important;
+    border-radius: 5px;
+}
+
+.manage-li {
+    border-radius: 5px;
+}
+
+.manage-li a {
+    color: #c2c2c2 !important;
+}
+
+.main1 {
+    font-size: 10px;
+    margin-left: 10px;
+}
+
+.main2 {
+    font-size: 10px;
+    margin-left: 10px;
+}
+
+.main11 a {
+    margin-top: 10px;
+    display: block;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.main11 a:hover {
+    color: #0D3855;
+}
+
+.main1 a {
+    margin-top: 20px;
+}
+
+.side-icon {
+    margin-left: -20px !important;
+    padding-left: 15px;
+}
+
+header {
+    border-bottom: 1px solid #e3e3e3;
+    width: 250px !important;
+    height: 150px !important;
+}
+
+.manager {
+    margin-left: 20px;
+    height: 35px;
+    width: 35px;
+    float: left;
+    border-radius: 50%;
+    align-items: unset !important;
+}
+
+.mlogo {
+    margin-left: 20px;
+}
+
+.sidebar-content:hover {
+    font-family: "Proxima Nova Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: #49a2d7 !important;
+    color: #fff;
+}
+
+input {
+    border: 1px solid #e3e6ee;
+    border-radius: 3px;
+    height: 35px;
+    margin-top: 16px;
+    padding-left: 50px !important;
+    background-image: url("../../../assets//icon/other/search.png");
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: 20px center;
+}
+
+::-moz-placeholder {
+    font-size: 14px;
+    color: #9ba4b0 !important;
+}
+
+:-ms-input-placeholder {
+    font-size: 14px;
+    color: #9ba4b0 !important;
+}
+
+::placeholder {
+    font-size: 14px;
+    color: #9ba4b0 !important;
+}
+
+.dropdown {
+    font-family: "Proxima Nova Condensed", sans-serif !important;
+    font-weight: 400;
+    margin-left: 20px !important;
+    width: 125px;
+    height: 35px;
+    padding-left: 50px;
+    font-size: 14px;
+    color: #323e4a;
+    border: 1px solid #e3e6ee;
+    border-radius: 3px;
+    background-image: url("../../../assets/images/22d8cdbc9a727038a023330be6442eba305532ca.png");
+    background-repeat: no-repeat;
+    background-size: 30px 20px;
+    background-position: 10px center;
+    background-color: #fff;
+}
+
+.contain-fluid {
+    background-color: white !important;
+    padding: 0px;
+    margin: 0px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+.nav-bar {
+    box-shadow: 0px 0px 5px 0px rgba(75, 102, 171, 0.2);
+    height: 65px !important;
+}
+
+.name {
+    color: #ffffff;
+    padding-left: 70px;
+    font-size: 16px;
+    margin-bottom: 0px !important;
+}
+
+.side-name {
+    padding-left: 70px;
+    font-size: 12px;
+    color: #9ba4b0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.icon-bell {
+    padding-left: 20px;
+    border-left: 1px solid #c2c4c7;
+}
+
+#sidebar {
+    width: 250px !important;
+    z-index: 1000;
+}
+
+.list_margin {
+    margin-bottom: 2%;
+}
+
+a {
+    cursor: pointer;
+}
+
+.b-color {
+    background-color: #c5e8ff;
+    color: #49A2D7;
+}
+
+.b-color1 {
+    background-color: #49A2D7;
+}
+
+.hoverClass:hover {
+    color: #4daae0 !important;
+}
+
+
+/*# sourceMappingURL=sidenav.component.css.map */
+
+.main_nave {
+    display: inline-block;
+    width: 100%;
+}
+
+.top_spavce {
+    display: inline-block;
+    width: 100%;
+    min-height: 78px;
+}

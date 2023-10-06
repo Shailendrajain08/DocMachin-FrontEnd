@@ -1,0 +1,111 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: docmachine-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx-ingress.kubernetes.io/cors-reflect-subdomains: "https://bharathexim.com,https://beta.bharathexim.com,https://dev.bharathexim.com,https://api.bharathexim.com,https://betaapi.bharathexim.com,https://devapi.bharathexim.com"
+    # nginx.ingress.kubernetes.io/cors-allow-origin: "https://docmachine.in,https://beta.docmachine.in,https://dev.docmachine.in,https://api.docmachine.in,https://betaapi.docmachine.in,https://devapi.docmachine.in"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS, DELETE"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,X-LANG,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,X-Api-Key,X-Device-Id,Access-Control-Allow-Origin"
+    # specify the name of the global IP address resource to be associated with the HTTP(S) Load Balancer.
+    # kubernetes.io/ingress.global-static-ip-name: dm
+    kubernetes.io/ingress.global-static-ip-name: dm-ip
+    # add an annotation indicating the issuer to use.
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    # controls whether the ingress is modified ‘in-place’,
+    # or a new one is created specifically for the HTTP01 challenge.
+    acme.cert-manager.io/http01-edit-in-place: "true"
+  labels:
+    app: docmachine
+
+  finalizers:
+    - networking.gke.io/ingress-finalizer-V2
+  # ownerReferences:
+  #   - apiVersion: app.k8s.io/v1
+  #     blockOwnerDeletion: true
+  #     kind: Application
+  #     uid: 10565eeb-13a2-42a1-91fa-9d4b3b3a80e4
+spec:
+  tls: # < placing a host in the TLS config will indicate a certificate should be created
+  - hosts:
+    - app.bharathexim.com
+    - beta.bharathexim.com
+    - dev.bharathexim.com
+    - api.bharathexim.com
+    - betaapi.bharathexim.com
+    - devapi.bharathexim.com
+    secretName: docmachine-cert-secret # < cert-manager will store the created certificate in this secret
+
+  rules:
+  - host: beta.bharathexim.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: docmachine-beta-service
+            port:
+              number: 82
+  - host: dev.bharathexim.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: docmachine-dev-service
+            port:
+              number: 83
+  - host: app.bharathexim.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: docmachine-service
+            port:
+              number: 80
+  - host: api.bharathexim.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: docmachinebackend
+            port:
+              number: 3000
+  - host: betaapi.bharathexim.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: docmachinebackendbeta
+            port:
+              number: 3002
+  - host: devapi.bharathexim.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: docmachinebackenddev
+            port:
+              number: 3003
+  - host: chromium.bharathexim.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: chromium
+            port:
+              number: 9222
+

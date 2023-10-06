@@ -1,0 +1,221 @@
+<div class="content-wrap">
+
+    <main id="content" class="content table-padding" role="main">
+        <!-- <h1>hhi</h1> -->
+        <div style="margin-top: -30px; margin-bottom: 5px">
+            <img src="../../../assets/back.png" [routerLink]="['/home/dashboardTask']" style="width: 20px; height: 20px; margin-left: 62px" /><span style="margin-left: 9px" [routerLink]="['/home/dashboardTask']">Back</span
+      >
+    </div>
+    <div *ngIf="file == 'import'">
+      <button class="upload-button" (click)="open(content)">
+        Add New Customer<span>+</span>
+            </button>
+            <h4 class="heading">Beneficiary / Customer details</h4>
+        </div>
+        <div *ngIf="file == 'export'">
+            <button class="upload-button" (click)="open1(content1)">
+        Add Buyer +
+      </button>
+            <h3 class="heading">Buyer details</h3>
+        </div>
+        <div *ngIf="file == 'import'" class="analytics" style="width: 90%">
+            <div style="width: 100%" class="analytics-side">
+                <div class="row">
+                    <div class="col-12 mb-lg padding">
+                        <section class="widget pb-0 box-shadow">
+                            <div class="widget-body p-0 support table-wrapper">
+                                <table class="table table-striped mb-0">
+                                    <thead>
+                                        <tr class="text-muted table-heading">
+                                            <th class="rect"></th>
+                                            <th scope="col"><span class="pl-3">Name</span></th>
+                                            <th scope="col">Bank Name</th>
+                                            <th scope="col">Account Number</th>
+                                            <th scope="col">IBAN</th>
+                                            <th scope="col">Sort Code</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-dark">
+                                        <tr class="table-row" *ngFor="let data of item2">
+                                            <th class="rect"><input type="radio" /></th>
+                                            <th class="pl-4 fw-normal">{{ data.beneName }}</th>
+                                            <td>{{ data.beneBankName }}</td>
+                                            <td>{{ data.beneAccNo }}</td>
+                                            <td>{{ data.iban }}</td>
+                                            <td>{{ data.sortCode }}</td>
+                                            <td class="three">
+                                                <!-- [routerLink]="'/home/editBene/' + data._id" -->
+                                                <img width="18px" src="../../../assets/dot3.png" alt="" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="file == 'export'" class="analytics" style="width: 90%">
+            <div style="width: 100%" class="analytics-side">
+                <div class="row">
+                    <div class="col-12 mb-lg padding">
+                        <section class="widget pb-0 box-shadow">
+                            <div class="widget-body p-0 support table-wrapper">
+                                <table class="table table-striped mb-0">
+                                    <thead>
+                                        <tr class="text-muted table-heading">
+                                            <th class="rect"></th>
+                                            <th scope="col"><span class="pl-3">Name</span></th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-dark">
+                                        <tr class="table-row" *ngFor="let data of item2">
+                                            <th class="rect"><input type="radio" /></th>
+                                            <th class="pl-4 fw-normal">{{ data.buyerName }}</th>
+                                            <td>{{ data.buyerAdrs }}</td>
+                                            <td class="three">
+                                                <!-- [routerLink]="'/home/editBuyer/' + data._id" -->
+                                                <img style="width: 10px; width: 10px" src="../../../assets/3-dots.png" alt="" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<ng-template #content let-modal>
+
+    <div class="modal-body">
+        <div class="row no-gutter">
+            <!-- The image half -->
+            <!-- <div class="col-md-6 d-none d-md-flex bg-image"></div> -->
+
+            <!-- The content half -->
+            <div class="col-md-7 bg-dark" style="margin: 10px">
+                <div class="login d-flex py-5" style="padding: 0px !important">
+                    <!-- Demo content-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 col-xl-7 mrg">
+                                <h6 class="display-5">Create New Beneficiary</h6>
+                                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                    <div class="form-group mb-3">
+                                        <label>Name</label>
+                                        <input style="width: 350px" formControlName="beneName" placeholder="Beneficiary/ Customer name" required="" class="form-control rounded-pill" />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Address</label>
+                                        <input style="width: 350px" formControlName="beneAdrs" placeholder="Ex: street address, City. PIN" required="" class="form-control rounded-pill password password1" />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Bank Name</label>
+                                        <input style="width: 350px" formControlName="beneBankName" id="password1" type="" placeholder="Ex: 23489234324" required="" class="form-control rounded-pill" />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Account No</label>
+                                        <input style="width: 350px" formControlName="beneAccNo" id="password1" type="" placeholder="Ex: 23489234324" required="" class="form-control rounded-pill" />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>IBAN</label>
+                                        <p class="sl">
+                                            * Mandatory for remittances to Middle-East countries and Europe
+                                        </p>
+                                        <input style="width: 350px" formControlName="iban" id="password1" type="" placeholder="Ex: 238923 23423423" required="" class="form-control rounded-pill" />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Beneficiary’s bank’s (any one) SWIFT code**</label>
+                                        <input style="width: 350px" formControlName="beneBankSwiftCode" type="" placeholder="Ex: 1234566" required="" class="form-control rounded-pill" />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Beneficiary’s bank’s address including country</label
+                    >
+                    <input
+                      style="width: 350px"
+                      formControlName="beneBankAdress"
+                      id="inputEmail"
+                      type="text"
+                      placeholder="Ex: street address, City. PIN"
+                      required=""
+                      class="form-control rounded-pill email"
+                    />
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <label
+                      >Intermediary Bank details (if applicable) SWIFT
+                      code**</label
+                    >
+                    <input
+                      style="width: 350px"
+                      formControlName="interBankSwiftCode"
+                      placeholder="Ex: CC/OD/PC/PCFC/EBRD/BP/EEFC-USD/EUR/GBP/CHF/JPY ETC"
+                      required=""
+                      class="form-control rounded-pill"
+                    />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label>Intermediary Bank Name (if any)</label>
+                                        <input style="width: 350px" formControlName="interBankName" id="inputEmail" type="text" placeholder="Ex: Western union" required="" class="form-control rounded-pill" />
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label>Sort Code</label>
+                                        <input style="width: 350px" formControlName="sortCode" placeholder="Ex: ESEIEC." required="" class="form-control rounded-pill" />
+                                    </div>
+
+                                    <button type="submit" class="btn">Create</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #content1 let-modal>
+    <div class="modal-body">
+        <div class="row no-gutter">
+            <!-- The image half -->
+            <!-- <div class="col-md-6 d-none d-md-flex bg-image"></div> -->
+
+            <!-- The content half -->
+            <div class="col-md-7 bg-dark" style="margin: 10px">
+                <div class="login d-flex py-5" style="padding: 0px !important">
+                    <!-- Demo content-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 col-xl-7 mrg">
+                                <h6 class="display-5">Create New Buyer</h6>
+                                <form [formGroup]="buyerForm" (ngSubmit)="onSubmitBuyer()">
+                                    <div class="form-group mb-3">
+                                        <label>Name</label>
+                                        <input style="width: 350px" formControlName="buyerName" placeholder="Buyer’s name" required="" class="form-control rounded-pill" />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Address</label>
+                                        <input style="width: 350px" formControlName="buyerAdrs" placeholder="Ex: street address, City. PIN" required="" class="form-control rounded-pill password password1" />
+                                    </div>
+
+                                    <button type="submit" class="btn">Create</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

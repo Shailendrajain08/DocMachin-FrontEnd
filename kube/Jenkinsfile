@@ -1,0 +1,145 @@
+def label = "kaniko-gcr-${UUID.randomUUID().toString()}"
+
+podTemplate(name: 'kaniko', label: label, yaml: """
+kind: Pod
+metadata:
+  name: kaniko
+spec:
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:debug
+    imagePullPolicy: Always
+    command:
+    - /busybox/cat
+    tty: true
+    volumeMounts:
+      - name: kaniko-secret
+        mountPath: /secret
+    env:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /secret/kaniko-secret.json
+  volumes:
+    - name: kaniko-secret
+      secret:
+        secretName: kaniko-secret
+"""
+  ) {
+
+  node(label) {
+    stages {
+        stage("Checkout") {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'b691328c-a423-4c33-a1ed-12c4ec3594cd', url: 'git@gitlab.com:ranjithsanjeeva/doc-machine-frontend.git']]])
+            }
+        }
+        stage('Build with Kaniko') {
+            git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
+            container(name: 'kaniko', shell: '/busybox/sh') {
+                withEnv(['PATH+EXTRA=/busybox:/kaniko']) {
+                  sh '''#!/busybox/sh
+                  /kaniko/executor -c `pwd` --cache=true --destination=gcr.io/focused-album-308314/doc-machine-frontend:${env.BUILD_ID}
+                  '''
+                }
+            }
+        }
+    }
+  }
+
+
+def label = "kaniko-gcr-${UUID.randomUUID().toString()}"
+
+podTemplate(name: 'kaniko', label: label, yaml: """
+kind: Pod
+metadata:
+  name: kaniko
+spec:
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:debug
+    imagePullPolicy: Always
+    command:
+    - /busybox/cat
+    tty: true
+    volumeMounts:
+      - name: kaniko-secret
+        mountPath: /secret
+    env:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /secret/kaniko-secret.json
+  volumes:
+    - name: kaniko-secret
+      secret:
+        secretName: kaniko-secret
+"""
+  ) {
+
+      node(label) {
+        stage('Build with Kaniko') {
+            git 'https://github.com/jenkinsci/docker-inbound-agent.git'
+            container(name: 'kaniko', shell: '/busybox/sh') {
+                withEnv(['PATH+EXTRA=/busybox:/kaniko']) {
+                  sh '''#!/busybox/sh
+                  /kaniko/executor -c `pwd` --cache=true --destination=gcr.io/focused-album-308314/doc-machine-frontend:${env.BUILD_ID}
+                  '''
+                }
+            }
+        }
+      }
+  }
+
+
+
+  pipeline {
+    agent {
+      kubernetes {
+        //cloud 'kubernetes'
+        label 'kaniko'
+        yaml """
+          ind: Pod
+          metadata:
+            name: kaniko
+          spec:
+            containers:
+            - name: kaniko
+              image: gcr.io/kaniko-project/executor:debug
+              imagePullPolicy: Always
+              command:
+              - /busybox/cat
+              tty: true
+              volumeMounts:
+                - name: kaniko-secret
+                  mountPath: /secret
+              env:
+                - name: GOOGLE_APPLICATION_CREDENTIALS
+                  value: /secret/kaniko-secret.json
+            securityContext:
+              runAsUser: 0
+            volumes:
+              - name: kaniko-secret
+                secret:
+                  secretName: kaniko-secret
+          """
+      }
+    }
+    stages {
+      stage("Checkout") {
+          steps {
+              git branch: 'v2.0', credentialsId: 'b691328c-a423-4c33-a1ed-12c4ec3594cd', url: 'git@gitlab.com:ranjithsanjeeva/doc-machine-frontend.git'
+          }
+      }
+      stage('Build with Kaniko') {
+        environment {
+          PATH = "/busybox:/kaniko:$PATH"
+        }
+        steps {
+          container(name: 'kaniko', shell: '/busybox/sh') {
+              withEnv(['PATH+EXTRA=/busybox:/kaniko']) {
+                sh '''#!/busybox/sh
+                /kaniko/executor -c `pwd` --cache=true --destination=gcr.io/focused-album-308314/doc-machine-frontend:${env.BUILD_ID}
+                '''
+              }
+          }
+        }
+      }
+    }
+  }

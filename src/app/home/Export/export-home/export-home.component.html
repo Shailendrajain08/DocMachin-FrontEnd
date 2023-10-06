@@ -1,0 +1,1469 @@
+<div style="margin-left: 0px" class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+
+
+
+        <div style="
+                display: flex;
+                flex-direction: rows;
+                justify-content: space-between;
+                align-items: center;
+                padding-top: 0.8%;
+                padding-left: 1%;
+                padding-bottom: 0.8%;
+                /*border: 0.5px solid rgba(0, 0, 0, 0.2);*/
+                margin-left: 40px;
+                width: 85%;
+                " *ngIf="!showInvoice">
+            <div style="display: flex; align-items: center">
+                <h3 class="heading" style="margin-left: 24px;">Inward Remittance Disposal</h3>
+            </div>
+
+            <div class="dropdown">
+                Date:
+                <select name="subject" id="subject" style="border: 1px solid #C6CBD4;color: black;padding: 4px;font-weight: 100;margin-right: 5px;font-size: 14px;">
+                                        <option value="" selected="selected">Today</option>
+                                </select> Type:
+                <select name="topic" id="topic" style="border: 1px solid #C6CBD4;color: black;padding: 4px;font-weight: 100;margin-right: 5px;font-size: 14px;">
+                                        <option value="" selected="selected">All</option>
+                                </select>
+            </div>
+            <div style="padding-top: 0.7%">
+                <button class="upload-button" [routerLink]="['/home/upload']">
+                                        Upload New
+                                </button>
+            </div>
+        </div>
+
+        <div class="analytics" *ngIf="proceed">
+            <!-- <div style="margin: 20px 50px;">
+                                <img src="../../../assets/back.png" [routerLink]="['/home/dashboardTask']"
+                                        style="width: 20px; height: 20px;"><span style="margin-left: 10px;"
+                                        [routerLink]="['/home/dashboardTask']">Back</span>
+                        </div> -->
+            <div *ngIf="!selectPurpose" style="margin: 20px 80px;">
+                <p class="stp3">Select a Purpose code*</p>
+
+                <div *ngIf="!purposeSelect">
+                    <input style="width: 50%; margin-top: 20px; margin-bottom: 20px;" placeholder="Search purpose code,group name or description" class="form-control" type="text" (input)="searchData($any($event.target).value)">
+                    <div *ngIf="pgNumber != 0">
+                        Matching Result <br> Number of Purpose Group = {{ pgNumber }} <br> Number of Purpose Code or Description = {{ pcNumber }}
+                    </div>
+
+                    <!-- margin-bottom: 20px; margin-left:3px; -->
+                    <div *ngIf="selectedPurpose.length>0" style="margin: -5px 0px 20px 3px">
+                        Selected Purpose Code
+                        <br>
+
+                        <tr style="margin-top: 15px;" *ngFor="let code of selectedPurpose; let i = index">{{code}} <b (click)="removeClick(i)" style="color: red;">Remove</b>
+                            <br>
+                        </tr>
+                        <button style="margin-top: 10px;" class="button1" (click)="proceedClick()">Proceed</button>
+                    </div>
+                    <table class="table table-striped mb-0" style="margin-left: 0px;border-bottom: 0.5px solid rgb(228, 227, 227);">
+                        <thead style="width: 100%; font-size: 10px; font-weight: 300;">
+                            <tr class="text-muted table-heading">
+                                <th scope="col" style="width: 17%; border: 0.1px solid #d3d3d3;">
+                                    Purpose Group Name
+                                </th>
+                                <th scope="col" style="width: 13%; border: 0.1px solid #d3d3d3;">
+                                    PurposeCode</th>
+                                <th scope="col" style="width: 60%; border: 0.1px solid #d3d3d3;">
+                                    Description</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-dark">
+                            <tr class="table-row" style="font-size: 12px;" *ngFor="let purposeRow of purposeRows; let i = index">
+                                <td class="columH" *ngFor="let column of purposeRow;  let j = index" [ngClass]='onClass(column.text)' [attr.rowSpan]="column.rowSpan" style="vertical-align: top !important;" (click)='purposeClick(purposeRow[j]["text"], purposeRow[j+1]["text"])'>
+                                    {{column.text}}
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="analytics" *ngIf="!proceed" style="margin-left: 50px;">
+
+            <div style="margin-left: 29px;">
+                <img src="../../../assets/back.png" (click)="hide()" style="width: 20px; height: 20px;"><span style="margin-left: 10px;" (click)="hide()">Back</span>
+            </div>
+
+            <div class="flex-container" style="margin-left: 20px;">
+                <div *ngFor="let code of selectedPurpose; let i = index" [ngClass]="{'my_class': c === code}" (click)="tabClick(code,i)">
+                    {{code}}</div>
+
+            </div>
+
+            <div *ngIf='c'>
+
+                <div *ngIf='c == "P0102" || c == "P0104" || c == "P0105" || c == "P0107"'>
+                    <!-- P0102 -->
+                    <div *ngFor="let code of selectedPurpose; let j = index">
+
+                        <div *ngIf='code === c && sbPurpose[j] != code && importPurpose[j] != code && noImportPurpose[j] != code && mailArray[j] != code'>
+                            <div class="form-group">
+
+                                <div class="form-group col-md-12">
+                                    <label style="margin-left: 12px;">Is Lodgement already done?</label>
+                                    <input type="radio" name="Question1" style="margin-left: 25px;" [(ngModel)]="Question1" value="yes">
+                                    <span style="margin-left: 10px;">Yes</span> <br>
+                                    <input type="radio" name="Question1" style="margin-left: 25px;" [(ngModel)]="Question1" value="no">
+                                    <span style="margin-left: 10px;">No</span>
+                                </div>
+
+                            </div>
+                            <div *ngIf='Question1 === "yes"' style="margin-left: 12px;">
+                                <label style="margin-left: 14px;"> bank reference number</label>
+                                <input type="text" (keyup)="change($event)" style="margin-left: 25px;">
+                                <br>
+
+                                <div class="form-group">
+                                    <div class="form-group col-md-12">
+                                        <label style="margin-left: 1px;">Is Buyer remitter
+                                                                                        different?</label>
+                                        <input type="radio" name="Question3" style="margin-left: 15px;" [(ngModel)]="Question3" value="yes"> <span style="margin-left: 10px;">Yes</span>
+                                        <br>
+                                        <input type="radio" name="Question3" style="margin-left: 15px;" [(ngModel)]="Question3" value="no"> <span style="margin-left: 10px;">No</span>
+                                    </div>
+
+                                </div>
+                                <div *ngIf="Question3 == 'yes'" style="margin-left: 12px;">
+
+                                    <label style="margin-left: 4px;">Select Tripartite agreement </label>
+                                    <div style="margin-left:10px" class="form-check" *ngFor="let item of item4; let i = index;">
+                                        <label class="form-check-label">
+                                                                                        <input class="form-check-input"
+                                                                                                type="checkbox"
+                                                                                                (change)=changeCheckbox2(item.triPartyAgreementNumber)>
+                                                                                        {{item.triPartyAgreementNumber}}
+                                                                                        {{item.buyerName}}
+                                                                                </label>
+                                    </div>
+                                    <label style="color: #5dc9e9;text-decoration: underline;margin-left: 24px;" [routerLink]="['/home/upload']">Upload Tripartite agreement</label>
+
+                                    <div class="form-group">
+                                        <div class="form-group col-md-12">
+                                            <label style="margin-left: -7px;">Is Invoice
+                                                                                                reduction?</label>
+                                            <input type="radio" name="Question4" [(ngModel)]="Question4" value="yes" style="margin-left: 5px;">
+                                            <span style="margin-left: 10px;">Yes</span>
+                                            <br>
+                                            <input type="radio" name="Question4" [(ngModel)]="Question4" value="no" style="margin-left: 5px;">
+                                            <span style="margin-left: 10px;">No</span>
+                                        </div>
+
+                                    </div>
+                                    <div *ngIf="Question4 == 'yes'">
+
+
+                                        <button class="opt" style="margin-left: 10px;
+                                                                                        width: 200px;" (click)='generateDoc2(code,j)'>
+                                                                                        Generate Invoice Reduction
+                                                                                </button>
+
+                                    </div>
+                                    <div *ngIf="Question4 == 'no'">
+                                        <button class="opt" style="margin-right: 1%" (click)='generateDoc2(code,j)'>
+                                                                                        Proceed to preview
+                                                                                </button>
+                                    </div>
+                                </div>
+                                <div *ngIf="Question3 == 'no'">
+                                    <Button class="button1" style="margin-bottom: 40px;" (click)="sendMail(j,code)">Send
+                                                                                Mail</Button>
+
+                                </div>
+                            </div>
+                            <div *ngIf='Question1 === "no"'>
+                                <label style="margin-left :25px"> Select Shipping Bill
+                                                                        number*</label>
+                                <div style="margin-left:10px" s class="form-check" *ngFor="let item of item1; let i = index;">
+                                    <label class="form-check-label" style="margin-left :25px">
+                                                                                <input class="form-check-input"
+                                                                                        type="checkbox"
+                                                                                        (change)="changeCheckbox1(item.sbno)">
+                                                                                {{item.sbno}}
+                                                                        </label>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <div class="form-group col-md-12">
+                                        <label style="margin-left: 10px;">Is Buyer remitter
+                                                                                        different?</label>
+                                        <input type="radio" name="Question2" [(ngModel)]="Question2" value="yes" style="margin-left: 25px;"> <span style="margin-left: 10px;">Yes</span>
+                                        <br>
+                                        <input type="radio" name="Question2" [(ngModel)]="Question2" value="no" style="margin-left: 25px;"> <span style="margin-left: 10px;">No</span>
+                                    </div>
+                                </div>
+
+                                <div *ngIf='Question2 === "yes"'>
+
+                                    <label style="margin-left: 25px;">Select Tripartite agreement </label>
+                                    <div style="margin-left:10px" class="form-check" *ngFor="let item of item4; let i = index;">
+                                        <label class="form-check-label" style="margin-left :25px">
+                                                                                        <input class="form-check-input"
+                                                                                                type="checkbox"
+                                                                                                (change)=changeCheckbox2(item.thirdNumber)>
+                                                                                        {{item.triPartyAgreementNumber}}
+                                                                                        {{item.buyerName}}
+                                                                                </label>
+                                    </div>
+                                    <label style="color: #5dc9e9;text-decoration: underline;margin-left: 24px;" [routerLink]="['/home/upload']">Upload Tripartite agreement</label>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-group col-md-12">
+                                        <label style="margin-left:10px">Is Invoice reduction?</label>
+                                        <input type="radio" name="Question5" [(ngModel)]="Question5" value="yes" style="margin-left: 25px;"> <span style="margin-left: 10px;">Yes</span>
+                                        <br>
+                                        <input type="radio" name="Question5" [(ngModel)]="Question5" value="no" style="margin-left: 25px;"> <span style="margin-left: 10px;">No</span>
+                                    </div>
+
+                                </div>
+
+
+                                <div *ngIf='Question2 === "no" || Question2 === "yes" && Question5=="yes" || Question5=="no" '>
+                                    <!-- <span style="margin-left: 28px;"> Select a bank*</span>
+                                    <div *ngFor='let value of bankArray' style="display: flex; align-items: center;">
+                                        <input style="flex-direction:row;" type="radio" id="options1" class="circular_input" (ngModel)="myRadio" value="yesBank" style="margin-left:41">
+                                        <label style="flex-direction:row; " class="label1" for="male">{{value.bank}}</label>
+                                    </div> -->
+                                    <span style="margin-left: 30px;">Select a bank*</span>
+                                    <div *ngFor='let value of bank' style="display: flex; align-items: center; margin-left: 40px;">
+                                        <input style="flex-direction:row;" type="radio" id="options1" class="circular_input" (ngModel)="myRadio" (click)="model.option = value" [checked]="value === model.option" value="value.bank" (click)="setradio(value)" s>
+                                        <label style="flex-direction:row;" class="label1" for="male">{{value}}</label>
+                                    </div>
+                                    <br>
+
+                                    <button class="opt" style="margin-right: 1%" (click)='generateDoc1(code,j)'>
+                                                                                Generate Document
+                                                                        </button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf='code === c && importPurpose[j] == code'>
+                            <div id="mainId1" class="bc" *ngIf="doneImportPurpose[j] != code">
+                                <div id="first" class="bc">
+
+                                    <div style="margin-left: 40px; margin-top: 20px; width: 75%;" class="bc">
+
+                                        <div style="width:80%;">
+                                            <!-- <div style="margin-left: 29px;">
+                                                                                                <img src="../../../assets/back.png" (click)="hide1( code,j)"
+                                                                                                        style="width: 20px; height: 20px;"><span style="margin-left: 10px;" (click)="hide()"
+                                                                                                        >Back</span>
+                                                                                                   </div> -->
+
+                                            Our Ref No.: <span style="outline: none; display: inline-block;width: 150px;" contenteditable="true"></span>
+                                            <br> Date: <span style="outline: none; display: inline-block;width: 150px;" contenteditable="true"></span>
+                                            <br> Dear Sir/ Madam, <br> <br>
+                                            <span style="border-bottom:2px solid black"><b
+                                                                                                        style="font-weight: 600;">Subject:
+                                                                                                        Reduction
+                                                                                                        of Invoice Value
+                                                                                                        in other
+                                                                                                        Case</b> </span>
+                                            <br> We hereby provide C.17 declaration of RBI Master Circular on Exports of Goods and Services dated 01 July 2013 on reduction of invoice value in other cases. We have negotiated/sent the bills for collection
+                                            and details of the bills are as below: <br>
+                                        </div>
+
+
+
+                                        <table>
+                                            <tr class="border1">
+                                                <td class="wtd4 border1">
+                                                    Sr</td>
+                                                <td class="wtd4 border1">
+                                                    Negotiated/Sent
+                                                    <br> on Collection
+                                                </td>
+                                                <td class="wtd4 border1">
+                                                    Bank’s <br> Bill ID </td>
+
+                                                <td class="wtd4 border1">
+                                                    Buyer <br> Name
+                                                </td>
+                                                <td class="wtd4 border1">
+                                                    Invoice <br> No.
+                                                </td>
+                                                <td class="wtd4 border1">
+                                                    Bill <br> Amount
+                                                </td>
+
+                                                <td class="wtd4 border1">
+                                                    Outstanding <br> Amount </td>
+                                                <td class="wtd4 border1">
+                                                    Reason <br> for Reduction <br> of Invoice</td>
+                                            </tr>
+                                            <tr class="border1">
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none; display: inline-block; width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                            </tr>
+                                            <tr class="border1">
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                            </tr>
+                                            <tr class="border1">
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none; display: inline-block; width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                            </tr>
+                                            <tr class="border1">
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                                <td class="wtd3 border1">
+                                                    <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                </td>
+                                            </tr>
+
+                                        </table> <br>
+                                        <p>
+                                            2. We hereby provide the supporting documents for the reduction of invoice value as above. <br> <br> 3. We hereby abide and confirm to the Clause (i) of the above mentioned RBI Circular and reads as: <br> <br>                                            (i) after a bill has been negotiated or sent for collection, its amount is to be reduced for any reason, AD Category - I banks may approve such reduction, if satisfied about genuineness of the request, provided:
+                                            <br> a the reduction does not exceed 25 per cent of invoice value:
+                                            <br> b.It does not relate to export of commodities subject to floor price stipulations <br> c the exporter is not on the exporters caution list of the Reserve Bank, and
+                                            <br> d. the exporter is advised to surrender proportionate export incentives availed of, if any. <br> <br> 4. We request you to kindly knock-off the outstanding amount/s in your books and provide a confirmation
+                                            for the same. <br><br> Thanking you, <br> Yours&#39; Faithfully, <br> Authorised Signatory <br> Name: <br> Designation: <br> Company Seal:
+                                        </p>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                            <div *ngIf="doneImportPurpose[j] != code" style="
+                                                        float: left;
+                                                        display: block;
+                                                        width: 78%;
+                                                        margin-top: 40px;
+                                                        margin-left: 43px;">
+                                <div class="button1" title="Share As PDF" (click)="exportAsPDF2(code,j)">Proceed to Preview
+                                </div>
+                            </div>
+                            <div *ngIf="doneImportPurpose[j] == code">
+                                <p>Setup: 3 Preview</p>
+                                <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+                                <button class="button1" style="margin-bottom: 40px;">Send it via
+                                                                        Email</button><br> Generated Document
+                                <div>
+                                    <iframe [src]="data9[j]" height="500px" width="400px"></iframe>
+                                </div><br> Tri party document
+                                <div style="display: flex; align-items: center;">
+                                    <iframe style="flex-direction:row;" *ngFor="let pipo of mainDoc2[j]" [src]="pipo" height="500px" width="400px"></iframe>
+                                </div> <br> <br>
+
+                                <button class="button1" style="margin-right: 10px;" (click)="edit()">Edit</button>
+                                <button class="button1" style="margin-right: 10px;" *ngIf="isDone" (click)="doneDox()">Done</button>
+
+                            </div>
+                        </div>
+                        <div *ngIf='code === c && sbPurpose[j] == code'>
+                            <div>
+                                <h1 *ngIf="doneSbPurpose[j] != code">Annex 7</h1>
+                                <div id="mainId" class="bc" *ngIf="doneSbPurpose[j] != code">
+                                    <div id="first" class="bc">
+                                        <div style="margin-left: 280px; width: 430px;">
+                                            <p class="heading">Request Letter for Export Bill Processing
+                                            </p>
+                                        </div>
+                                        <div style="margin-left: 40px; margin-top: 20px; width: 75%;" class="bc">
+                                            <div style=" text-align:right">
+                                                Date: <span style="
+                                                        outline: none;
+                                                                display: inline-block;
+                                                                width: 150px;
+                                                                border-bottom: 1px solid black;
+                                                        " contenteditable="true"></span>
+                                            </div>
+                                            <div style="width:80%; margin-top: -20px;">
+                                                To, <br> The Manager <br> YES Bank Ltd., <br> Branch address</div>
+                                            <span style="
+                                                                                                                        outline: none;
+                                                                                                                                display: inline-block;
+                                                                                                                                width: 150px;
+                                                                                                                                border-bottom: 1px solid black;
+                                                                                                                        " contenteditable="true"></span>
+                                            <br>
+                                            <div style="margin-top: 10px;">
+                                                Dear Sir/Madam, <br> Export Documents for □ Purchase □ Negotiation □ Discounting □ Collection □ Rupee Advance <br> Bill amount<span style="
+                                                                                                                                outline: none;
+                                                                                                                                display: inline-block;
+                                                                                                                                width: 150px;
+                                                                                                                                border-bottom: 1px solid black;
+                                                                                                                                " contenteditable="true"></span>Tenor
+                                                <span style="
+                                                                                                                                        outline: none;
+                                                                                                                                                display: inline-block;
+                                                                                                                                                width: 160px;
+                                                                                                                                                border-bottom: 1px solid black;
+                                                                                                                                        " contenteditable="true"></span>
+                                            </div>
+                                            <br>
+                                            <table>
+                                                <tr class="border1">
+                                                    <td class="wtd4 border1">
+                                                        Documents
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Drafts
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Invoice
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Transport
+                                                        <br> Doc.
+                                                        <br> B/L/AWB/
+                                                        <br> LR
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Pkg.
+                                                        <br> List
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Insurance.
+                                                        <br> policy
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Cert. Of
+                                                        <br> Origin
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Test
+                                                        <br> Cert
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Others
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        EDF</td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="wtd3 border1">
+                                                        Original
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="
+                                                                                                                                        outline: none;
+                                                                                                                                        display: inline-block;
+                                                                                                                                        width: 90px;
+                                                                                                                                        " contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="wtd3 border1">
+                                                        Duplicate
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td colspan="10" class="border1">
+                                                        No. of documents to be sent to foreign bank / As per export L/C
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="wtd3 border1">
+                                                        Original
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="wtd3 border1">
+                                                        Duplicate
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                            </table> <br>
+                                            <p>
+                                                <b>Other documents
+                                                                                                        enclosed:</b>
+                                                <br> Original L/C No. <span style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;" contenteditable="true"></span> dated <span style="outline: none;display: inline-block;width: 80px; border-bottom: 1px solid black;"
+                                                    contenteditable="true"></span>of
+                                                <span style="outline: none;display: inline-block;width: 60px; border-bottom: 1px solid black;" contenteditable="true"></span>along with all amendments (no. of amendments ____) and advising letters duly stamped
+                                                with revenue stamp on the reverse. <br> amendments ____) and advising letters duly stamped with revenue stamp on the reverse. EDF form Nos.<span style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                                                    contenteditable="true"></span>
+                                                <br> Date of Transport Doc. (AWB / BL / LR) <span style="outline: none;display: inline-block;width: 200px; border-bottom: 1px solid black;" contenteditable="true"></span> ** If the above mentioned documents
+                                                are being submitted after expiry of 21 days from date of shipment, than please briefly describe the reason for delay in submission of document_______________________________________________________________________________________________
+                                                __________________________________________________________________________________
+                                                <br> Debit account no. <span style="outline: none;display: inline-block;width: 200px; border-bottom: 1px solid black;" contenteditable="true"></span>with your branch <span style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"
+                                                    contenteditable="true"></span>for all necessary charges and Interest.
+                                            </p>
+                                            <p>
+                                                <b>Kindly note our
+                                                                                                        following
+                                                                                                        instructions:
+                                                                                                        (mark X wherever
+                                                                                                        applicable)</b>
+                                            </p>
+                                            <table>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                        1</td>
+                                                    <td class="sl2 border1">
+                                                        Documents to be delivered against
+                                                        <b>PAYMENT
+                                                                                                                        /
+                                                                                                                        ACCEPTANCE
+                                                                                                                        **</b>
+                                                    </td>
+                                                    <td class="sl3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                        2</td>
+                                                    <td class="sl2 border1">
+                                                        All banking charges outside India are for our / their (drawee) A/C
+                                                    </td>
+                                                    <td class="sl3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                        3</td>
+                                                    <td class="wtd1 border1">
+                                                        If unpaid / unaccepted, store and insure goods.
+                                                    </td>
+                                                    <td class="sl3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                        4</td>
+                                                    <td class="sl2 border1">
+                                                        Debit all charges including charges in connection with item 4 to our Account no.
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>with yourselves.
+                                                    </td>
+                                                    <td class="sl3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                        5</td>
+                                                    <td class="sl2 border1">
+                                                        Please forward the documents in one lot by courier / Regd. Air mail** at our cost, risk and responsibility to (name & address of bank)
+                                                    </td>
+                                                    <td class="sl3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                        6</td>
+                                                    <td class="sl2 border1">
+                                                        Other instructions if any:
+                                                    </td>
+                                                    <td class="sl3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+
+
+                                            </table>
+                                            <p style="margin-top: 0px; margin-bottom: 0px;">
+                                                (** Please strike out whichever is not applicable)
+                                            </p>
+                                            <table>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                        7</td>
+                                                    <td class="sl2 border1">
+                                                        <b>Proceeds
+                                                                                                                        disposal
+                                                                                                                        instructions.
+                                                                                                                        (Mark
+                                                                                                                        X
+                                                                                                                        wherever
+                                                                                                                        applicable
+                                                                                                                        )</b>
+                                                    </td>
+                                                    <td class="sl3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                    </td>
+                                                    <td class="sl2 border1">
+                                                        Please credit proceeds (Amount)
+                                                        <span style="outline: none;display: inline-block;width: 90px; border-bottom: 1px solid black;" contenteditable="true"></span>
+                                                        <span style="outline: none;display: inline-block;width: 200px; border-bottom: 1px solid black;" contenteditable="true"></span>to packing credit account no.
+                                                        <span style="outline: none;display: inline-block;width: 90px; border-bottom: 1px solid black;" contenteditable="true"></span> With you and balance to operative account No.
+                                                        <span style="outline: none;display: inline-block;width: 200px; border-bottom: 1px solid black;" contenteditable="true"></span>with you. We confirm that we have not availed packing credit from any
+                                                        other bank for the amount transferred to our operative account with you.
+                                                    </td>
+                                                    <td class="sl3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                    </td>
+                                                    <td class="wtd1 border1">
+                                                        Please credit (Amount)
+                                                        <span style="outline: none;display: inline-block;width: 200px; border-bottom: 1px solid black;" contenteditable="true"></span>to EEFC A/C No.
+                                                        <span style="outline: none;display: inline-block;width: 200px; border-bottom: 1px solid black;" contenteditable="true"></span>With your Bank
+                                                        <br> OR <br>
+                                                        <span style="outline: none;display: inline-block;width: 400px; border-bottom: 1px solid black;" contenteditable="true"></span><br> ( Name of the bank and branch with complete details)
+                                                    </td>
+                                                    <td class="sl3">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                    </td>
+                                                    <td class="sl2 border1">
+                                                        Please remit proceeds in INR by P.O. or remit through T.T. as per instructions enclosed.
+                                                    </td>
+                                                    <td class="sl3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="sl border1">
+                                                    </td>
+                                                    <td class="sl2 border1">
+                                                        Please use the forward contract (s), as given below.....
+                                                    </td>
+                                                    <td class="sl3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+
+
+
+                                            </table>
+                                            <table style="margin-top: 0px;">
+                                                <tr class="border1">
+                                                    <td class="wtd4 border1">
+                                                        Forward Contract No. <br> & Date
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Forward Contract Amount
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Amount to be Utilized for this
+                                                        <br> remittance
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Due Date of the Contract
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="w1 border1">
+                                                        <span style="outline: none;display: inline-block;width: 200px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="w1 border1">
+                                                        <span style="outline: none;display: inline-block;width: 200px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="w1 border1">
+                                                        <span style="outline: none;display: inline-block;width: 200px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="w1 border1">
+                                                        <span style="outline: none;display: inline-block;width: 200px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="w1 border1">
+                                                        <span style="outline: none;display: inline-block;width: 200px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="w1 border1">
+                                                        <span style="outline: none;display: inline-block;width: 200px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="w1 border1">
+                                                        <span style="outline: none;display: inline-block;width: 200px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="w1 border1">
+                                                        <span style="outline: none;display: inline-block;width: 200px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <p> <b>Declaration – Cum –
+                                                                                                        Undertaking</b>
+                                            </p>
+                                            <p>
+                                                I/We hereby declare that the transaction the details of which are specifically mentioned in this request letter does not involve, and is not designed for the purpose of any contravention or evasion of the provisions of the FEMA 1999 or of any rules, regulation,
+                                                notification, direction or order made there under. I /We also hereby agree and undertake to give such information/documents as will reasonably satisfy you about this transaction in terms of the above declaration.
+                                                I/We also understand that if I/We refuse to comply with any such requirement or make only unsatisfactory compliance therewith, the bank shall refuse in writing to undertake the transaction and shall if it
+                                                has reason to believe that any contravention/evasion is contemplated by me/us report the matter to Reserve Bank of India.. I/We further declare that the undersigned has/have the authority to give this declaration
+                                                and undertaking on behalf of the company.
+                                                <br> <br> I/we also declare that the transaction does not have linkage with any Specially Designated Nationals and Blocked Persons (SDN)/countries listed under OFAC in any manner. If the transaction involves
+                                                linkage with any Specially Designated Nationals and Blocked Persons (SDN)/countries listed under OFAC in any manner, I/we undertake not to hold YES Bank Limited responsible for any of its action or inaction
+                                                in respect of the OFAC-linked transactions. <br> <br>
+                                                <b>Note</b> – Default GST registration details as updated in the Bank records will be considered for the said request. In case the no. to be considered is different, please notify below.
+                                            </p>
+                                            <p style="margin-bottom: 0px;">
+                                                GSTIN Registration no.
+                                            </p>
+                                            <div>
+                                                <span style="outline: none;display: inline-block;width: 20px; border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[0]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                                    contenteditable="true">{{arr[1]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[2]}}</span>
+                                                <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[3]}}</span><span style="outline: none;display: inline-block;width: 20px; border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                                    contenteditable="true">{{arr[4]}}</span>
+                                                <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[5]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                                    contenteditable="true">{{arr[6]}}</span>
+                                                <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[7]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                                    contenteditable="true">{{arr[8]}}</span>
+                                                <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[9]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                                    contenteditable="true">{{arr[10]}}</span>
+                                                <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[11]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;"
+                                                    contenteditable="true">{{arr[12]}}</span>
+                                                <span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black;" contenteditable="true">{{arr[13]}}</span><span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black; border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;"
+                                                    contenteditable="true">{{arr[14]}}</span>
+                                            </div>
+
+                                            <div style="margin-top: 20px;">
+                                                <p>
+                                                    Thanking You
+                                                    <br> Warm Regards
+                                                    <br> Authorized Signatory <br> Company Stamp / Seal
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p>
+                                                    Date: <span style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;" contenteditable="true"></span>
+                                                    <br> Place: <span style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;" contenteditable="true"></span>
+                                                </p>
+                                            </div>
+                                            <p> <b>Guidelines /checklist for
+                                                                                                        the exporter for
+                                                                                                        ensuring speedy
+                                                                                                        & error
+                                                                                                        free export bill
+                                                                                                        processing</b>
+                                            </p>
+                                            <div style="margin-left: 30px;">
+                                                <p>
+                                                    1. Request letter to be signed by authorized signatory of the company. <br> 2. Ensure that all columns are filled in the request letter.
+                                                    <br> 3. Declaration cum undertaking is required under sec.10 (5), Chapter III of FEMA 1999), mentioned in the request letter.
+                                                    <br> 4. EDF value to match with invoice amount. If differs, then reason to be stated.
+                                                    <br> 5. If EDF submitted states another bank name then letter to be obtained from concerned bank.
+                                                    <br> 6. Please give clear disposal instructions of credit proceeds.
+                                                    <br> 7. Prior approval from Relationship Officer is taken for direct dispatch of documents or in case of existing overdue bills.
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <h1 *ngIf="sbPurpose1[j] == code && sbPurposeDone1[j] != code">
+                                    Invoice Reduction</h1>
+                                <div id="mainId1" class="bc" *ngIf="sbPurpose1[j] == code && sbPurposeDone1[j] != code">
+                                    <div id="first" class="bc">
+
+                                        <div style="margin-left: 40px; margin-top: 20px; width: 75%;" class="bc">
+
+                                            <div style="width:80%;">
+
+                                                Our Ref No.: <span style="outline: none; display: inline-block;width: 150px;" contenteditable="true"></span>
+                                                <br> Date: <span style="outline: none; display: inline-block;width: 150px;" contenteditable="true"></span>
+                                                <br> Dear Sir/ Madam, <br>
+                                                <br>
+                                                <span style="border-bottom:2px solid black"><b
+                                                                                                                style="font-weight: 600;">Subject:
+                                                                                                                Reduction
+                                                                                                                of
+                                                                                                                Invoice
+                                                                                                                Value in
+                                                                                                                other
+                                                                                                                Case</b>
+                                                                                                </span> <br> We hereby provide C.17 declaration of RBI Master Circular on Exports of Goods and Services dated
+                                                01 July 2013 on reduction of invoice value in other cases. We have negotiated/sent the bills for collection and details of the bills are as below: <br>
+                                            </div>
+
+
+
+                                            <table>
+                                                <tr class="border1">
+                                                    <td class="wtd4 border1">
+                                                        Sr</td>
+                                                    <td class="wtd4 border1">
+                                                        Negotiated/Sent
+                                                        <br> on Collection
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Bank’s
+                                                        <br> Bill ID
+                                                    </td>
+
+                                                    <td class="wtd4 border1">
+                                                        Buyer
+                                                        <br> Name
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Invoice
+                                                        <br> No.
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Bill
+                                                        <br> Amount
+                                                    </td>
+
+                                                    <td class="wtd4 border1">
+                                                        Outstanding
+                                                        <br> Amount
+                                                    </td>
+                                                    <td class="wtd4 border1">
+                                                        Reason
+                                                        <br> for Reduction
+                                                        <br> of Invoice
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none; display: inline-block; width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none; display: inline-block; width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border1">
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                    <td class="wtd3 border1">
+                                                        <span style="outline: none;display: inline-block;width: 90px;" contenteditable="true"></span>
+                                                    </td>
+                                                </tr>
+
+                                            </table> <br>
+                                            <p>
+                                                2. We hereby provide the supporting documents for the reduction of invoice value as above. <br> <br> 3. We hereby abide and confirm to the Clause (i) of the above mentioned RBI Circular and reads as: <br>                                                <br> (i) after a bill has been negotiated or sent for collection, its amount is to be reduced for any reason, AD Category - I banks may approve such reduction, if satisfied about genuineness of the request,
+                                                provided: <br> a the reduction does not exceed 25 per cent of invoice value: <br> b.It does not relate to export of commodities subject to floor price stipulations <br> c the exporter is not on the exporters
+                                                caution list of the Reserve Bank, and
+                                                <br> d. the exporter is advised to surrender proportionate export incentives availed of, if any. <br> <br> 4. We request you to kindly knock-off the outstanding amount/s in your books and provide a confirmation
+                                                for the same. <br><br> Thanking you, <br> Yours&#39; Faithfully,
+                                                <br> Authorised Signatory
+                                                <br> Name: <br> Designation: <br> Company Seal:
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                                <div *ngIf="doneSbPurpose[j] != code" style="
+                                                                float: left;
+                                                                display: block;
+                                                                width: 78%;
+                                                                margin-top: 40px;
+                                                                margin-left: 43px;">
+                                    <div class="button1" title="Share As PDF" (click)="exportAsPDF1(code,j)">Proceed to Preview
+                                    </div>
+                                </div>
+                                <div *ngIf="doneSbPurpose[j] == code">
+                                    <p>Setup: 3 Preview</p>
+                                    <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+                                    <button class="button1" style="margin-bottom: 40px;">Send it via
+                                                                                Email</button><br> Generated Document
+                                    <div>
+                                        <iframe [src]="data8[j]" height="500px" width="400px"></iframe>
+                                        <iframe *ngIf="sbPurposeDone1[j] == code" [src]="dataImport[j]" height="500px" width="400px"></iframe>
+                                    </div><br> SB Documents
+                                    <div style="display: flex; align-items: center;">
+                                        <iframe style="flex-direction:row;" *ngFor="let pipo of mainDoc1[j]" [src]="pipo" height="500px" width="400px"></iframe>
+                                    </div> <br> <br>
+                                    <span *ngIf='mainDoc3[j]'>Tri Party
+                                                                                Documents</span>
+                                    <div *ngIf='mainDoc3[j]' style="display: flex; align-items: center;">
+
+                                        <iframe style="flex-direction:row;" *ngFor="let pipo of mainDoc3[j]" [src]="pipo" height="500px" width="400px"></iframe>
+                                    </div> <br> <br>
+
+                                    <button class="button1" style="margin-right: 10px;" (click)="edit()">Edit</button>
+                                    <button class="button1" style="margin-right: 10px;" (click)="doneDox()" *ngIf="isDone">Done</button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf='code === c && noImportPurpose[j] == code && mailArray[j] != code'>
+                            <span>Tri Party agreement</span> <br>
+                            <div style="display: flex; align-items: center;">
+                                <iframe style="flex-direction:row;" *ngFor="let pipo of mainDoc2[j]" [src]="pipo" height="500px" width="400px"></iframe>
+
+                            </div>
+                            <br><br>
+                            <Button class="button1" style="margin-bottom: 40px;" (click)="sendMail(j,code)">Send
+                                                                Mail</Button>
+
+                        </div>
+                        <div *ngIf='code === c && mailArray[j] == code'>
+                            <span style="margin-bottom: 30px;"> Mail Sent SuccessFully
+                                                        </span> <br>
+                            <button class="button1" style="margin-bottom: 40px;" (click)="doneDox()" *ngIf="isDone">
+                                                                Done</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf='c != "P0102" && c != "P0104" && c != "P0105" && c != "P0107"'>
+                    <!-- other -->
+                    <div *ngFor="let code of selectedPurpose; let j = index">
+                        <div *ngIf='code === c && generatePurpose[j] != code'>
+                            <!-- <div style="margin-left: 29px; margin-top: 10px;">
+                                <img src="../../../assets/back.png" (click)="hide()" style="width: 20px; height: 20px;"><span style="margin-left: 10px;" (click)="hide()">Back</span>
+                            </div> -->
+                            <!-- <div style="display: flex; align-items: center; margin-left: 23px !important; ">
+                                <label style="flex-direction:row; font-size: 20px; color: #303030; margin-right: 50px !important; ">Select PI/PO or Shipping Bill</label>
+                                <div class="customDropdown" style="width: 300px; border: 1px solid #C6CBD4; flex-direction:row; ">
+                                    <span style="color: #323e4a !important; min-width: 250px;">select</span>
+                                    <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+                                                                            <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+                                                                          </span>
+                                    <div class="dropdown-content" style="min-width:200px; margin-right:-26px;">
+                                        <a style="min-width: 100%;" (click)="open(content)">PI/PO</a>
+                                        <a style="min-width:100%;">Shipping Bill</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br> -->
+                            <input style="width: 50%; margin-top: 10px; margin-left: 30px; margin-bottom: 10px;" placeholder="Search for Buyer name or PI/PO Number to select PI/PO" class="form-control" type="text" (input)="searchData2($any($event.target).value)">
+                            <span *ngIf='filterToggle' style="margin-left: 30px;">Select PI/PO numbers*</span>
+                            <div *ngIf='filterToggle' style="margin-left: 30px;">
+                                <div class="form-check" *ngFor="let item of itemArray; let i = index;">
+                                    <label class="form-check-label" style="margin-left: 35px;">
+                                                                                <input  class="form-check-input"
+                                                                                        type="checkbox"
+                                                                                        (change)="changeCheckbox(item.pi_poNo)">
+                                                                                {{item.pi_poNo}} [Amount:
+                                                                                {{item.amount}}, Date:
+                                                                                {{item.date}}, Buyer Name:
+                                                                                {{item.buyerName}}]
+                                                                        </label>
+                                </div>
+                            </div>
+                            <br>
+
+
+                            <span style="margin-left: 30px;">Select a bank*</span>
+                            <div *ngFor='let value of bank' style="display: flex; align-items: center; margin-left: 40px;">
+                                <input style="flex-direction:row;" type="radio" id="options1" class="circular_input" (ngModel)="myRadio" (click)="model.option = value" [checked]="value === model.option" value="value.bank" (click)="setradio(value)" s>
+                                <label style="flex-direction:row;" class="label1" for="male">{{value}}</label>
+                            </div>
+                            <br>
+                            <div *ngIf='bankToggle'>
+                                <span style="margin-left: 30px;"> Credit to {{bankValue}}*</span>
+                                <div *ngFor='let value of newBankArray' style="display: flex; align-items: center; margin-left: 40px;">
+                                    <input style="flex-direction:row;" type="radio" id="options1" (click)="model1.option = value" [checked]="value === model1.option" class="circular_input" (ngModel)="myRadio" value="value.bank" (click)="creditTo(value)">
+                                    <label style="flex-direction:row;" class="label1" for="male">{{value.bank}}-{{value.accType}}</label>
+                                </div> <br>
+                                <span style="margin-left: 30px;"> To {{bankValue}}*</span>
+                                <div *ngFor='let value of newBankArray' style="display: flex; align-items: center; margin-left: 40px;">
+                                    <input style="flex-direction:row;" type="radio" id="options1" (click)="model2.option = value" [checked]="value === model2.option" class="circular_input" (ngModel)="myRadio" value="value.bank" (click)="chargesTo(value)">
+                                    <label style="flex-direction:row;" class="label1" for="male">{{value.bank}}-{{value.accType}}</label>
+                                </div> <br>
+                            </div>
+
+
+                            <button class="opt" style="margin-right: 1%" (click)='generateDoc(code,j)'>
+                                                                Generate Document
+                                                        </button>
+
+
+                        </div>
+                        <div *ngIf='code === c && generatePurpose[j] == code'>
+                            <div *ngFor="let pipo of mainDoc[j]">
+                                <div id="mainId" class="bc" *ngIf="donePurpose[j] != code">
+                                    <iframe style="margin-left: 30px;" [src]="value" frameborder="0" [ngClass]="bgColor ? 'sizes' : 'sizem'"></iframe>
+
+                                </div> <br>
+                                <div style="margin-left: 30px;" *ngIf='newDone'>
+                                    PI/PO Documents <br>
+                                    <div style="display: flex; align-items: center;">
+                                        <iframe style="flex-direction:row;" [src]="pipo" height="600px" width="500px"></iframe>
+                                    </div>
+
+                                </div>
+
+
+                                <div *ngIf="donePurpose[j] != code" style="display: block; width: 78%;  margin-top: 40px; margin-left: 43px;">
+                                    <button *ngIf='newDone' class="button1" style="margin-right: 10px;" title="Share As PDF" (click)="doneDox()">Done
+                                                                </button>
+                                    <button *ngIf='newDone' class="button1" style="margin-right: 10px;" (click)="hidePreview()">Edit</button>
+                                    <button *ngIf='newDone' class="button1" style="margin-right: 10px; width:200px " (click)="openToPdf(content2, pipo)">Send Mail / Download</button>
+                                    <!-- <button *ngIf='newDone' class="button1" style="margin-right: 10px;" (click)="download()">Download</button> -->
+                                    <button *ngIf='!newDone' class="button1" style="margin-right: 10px; margin-bottom: 30px;" (click)="showPreview()">Proceed
+                                                                        to Preview</button>
+                                    <!-- <div *ngIf='!newDone' class="button1"
+                                                                        title="Share As PDF" (click)="showPreview()">
+                                                                        Proceed
+                                                                        to Preview
+                                                                </div> -->
+                                </div>
+                                <!-- <div *ngIf="donePurpose[j] == code">
+                                                                <p>Setup: 3 Preview</p>
+                                                                <button class="button1" style="margin-right: 10px;"
+                                                                        (click)="downloadPDF()">Download</button>
+                                                                <button class="button1"
+                                                                        style="margin-bottom: 40px;">Send it via
+                                                                        Email</button><br>
+                                                                Generated Document
+                                                                <div>
+                                                                        <iframe [src]="data7[j]" height="500px"
+                                                                                width="400px"></iframe>
+                                                                </div><br>
+                                                                PI/PO Documents
+                                                                <div style="display: flex; align-items: center;">
+                                                                        <iframe style="flex-direction:row;"
+                                                                                *ngFor="let pipo of mainDoc[j]"
+                                                                                [src]="pipo" height="600px"
+                                                                                width="500px"></iframe>
+                                                                </div> <br> <br>
+
+                                                                <button class="button1" style="margin-right: 10px;"
+                                                                        (click)="edit()">Edit</button>
+                                                                <button class="button1" style="margin-right: 10px;"
+                                                                        *ngIf="isDone" (click)="doneDox()">Done</button>
+
+                                                        </div> -->
+
+
+                            </div>
+                        </div>
+
+                        <ng-template #content2 let-modal>
+
+                            <div class="modal-body2">
+                                <div class="row no-gutter">
+                                    <!-- The image half -->
+                                    <!-- <div class="col-md-6 d-none d-md-flex bg-image"></div> -->
+
+
+                                    <!-- The content half -->
+                                    <div class="col-md-7" style="margin: 10px;">
+                                        <div class="login d-flex py-5" style="padding: 0px !important;">
+
+                                            <!-- Demo content-->
+                                            <div class="container popup">
+                                                <!--  -->
+                                                <div class="row">
+
+                                                    <div class="col-lg-10 col-xl-7 mrg">
+                                                        <p class="display-5" style="text-align: center; margin-left: 180px;">Select Document To Download</p>
+
+                                                        <div class="docStyle">
+                                                            <p class="display-4" style="margin-top: 10px;width: 6 0px;
+                                                        border-bottom: 4px solid #49A2D7;">Generated Document</p>
+                                                            <input type="checkBox" checked (change)="addPdfToSelectedPdf2($event)">
+                                                            <iframe [src]="value" style="margin-left: 10px;" height="600px" width="700px"></iframe>
+                                                        </div>
+                                                        <div *ngIf='newDone'>
+                                                            <div class="docStyle" *ngFor="let pipo of mainDoc[j]">
+                                                                <h6 class="display-4" style="margin-top: 10px;width: 6 0px;
+                                                    border-bottom: 4px solid #49A2D7;"> PIPO Document</h6>
+                                                                <input type="checkBox" checked (change)="addPdfToSelectedPdf(pipo , $event)">
+                                                                <iframe style="flex-direction:row;" [src]="pipo" style="margin-left: 10px;" height="600px" width="700px"></iframe>
+                                                            </div>
+                                                        </div>
+
+                                                        <div style="display: flex; width:100%; margin-left: 240px; margin-top: 20px; margin-bottom:20px; ">
+                                                            <button type="submit" class="submitBTN" (click)="mergeAllPDFs('download')" (click)="modal.dismiss('Cross click')">Download PDF</button>
+                                                            <button type="submit" class="submitBTN" (click)="mergeAllPDFs('sendMail')" (click)="modal.dismiss('Cross click')">Send Mail</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End -->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </ng-template>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <ng-template #content let-modal>
+
+            <div class="modal-body">
+
+                <div class="container-fluid">
+
+                    <div class="row no-gutter" style="margin-right: -3px !important;">
+                        <button type="button" class="button2 topright" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true">OK</span>
+                                      </button>
+                        <!-- The content half -->
+                        <div class="col-md-7 ">
+                            <div class="login d-flex py-5" style="padding: 0px !important;">
+
+                                <!-- Demo content-->
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-10 col-xl-7 mrg">
+                                            <h6 class="display-5">Select PI/PO</h6>
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <select [(ngModel)]="nameSearch" style="border: 1px solid #C6CBD4;color: black;padding: 0px 2px;font-weight: 100;margin-right: 5px;font-size: 11px;height: 25px;">
+                                                                <option value="">commodity</option>
+                                                                <option *ngFor="let item of commoditydata; let i = index;" style="color: black;"> {{item.como}}</option>
+                                                            </select>
+
+                                                <select [(ngModel)]="nameSearch1" style="border: 1px solid #C6CBD4;color: black;padding: 0px 2px;font-weight: 100;margin-right: 5px;font-size: 11px;height: 25px;">
+                                                                <option value="">location</option>
+                                                                <option *ngFor="let item of locationdata; let i = index;" style="color: black;"> {{item.loc}}</option>
+                                                            </select>
+                                                <select [(ngModel)]="nameSearch2" style="border: 1px solid #C6CBD4;color: black;padding: 0px 2px;font-weight: 100;margin-right: 5px;font-size: 11px;height: 25px;">
+                                                                <option value="">BuyerName</option>
+                                                                <option *ngFor="let item of buyerDetail ; let i = index;" style="color: black;" > {{item.buyerName}}</option>
+                                                            </select>
+
+                                                <input type="date" placeholder="Start Date" style="border: 1px solid #C6CBD4;color: black;padding: 0px 2px;font-weight: 100;margin-right: 5px;font-size: 11px;height: 25px;" [(ngModel)]="startDate" required/>
+
+                                                <input type="date" placeholder="End Date" style="border: 1px solid #C6CBD4;color: black;padding: 0px 2px;font-weight: 100;margin-right: 5px;font-size: 11px;height: 25px;" [(ngModel)]="endDate" required/>
+
+                                                <button class="filter" (click)="startDate = '' ; endDate = '' ;nameSearch = '';nameSearch1 = '';nameSearch2 = '' ">Reset</button>
+                                            </div>
+                                            <section style="width: 157%; " class="box-shadow">
+                                                <table style="margin-left: -2.7rem; width: 250% !important" class="table table-striped mb-0">
+
+                                                    <thead style="width: 100% ;height: 54px;">
+                                                        <tr class="text-muted table-heading" style="opacity: 50%; font-size: 10px; color:black !important; font-weight: 300 !important; padding: 0px; border-bottom: 1px solid #f2f4f8;">
+                                                            <th scope="col"></th>
+                                                            <th scope="col">DATE</th>
+                                                            <th scope="col">INVOICE NUMBER</th>
+                                                            <th scope="col">Amount</th>
+                                                            <th scope="col">CONSIGNEE NAME</th>
+                                                            <th scope="col">COMMODITY</th>
+                                                            <th scope="col">LOCATION</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="text-dark">
+                                                        <tr class="table-row1" *ngFor='let data of item3 | filterb:startDate:endDate | filtera:[{commodity:nameSearch},{location:nameSearch1},{buyerName:nameSearch2}]  let i = index'>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td>
+                                                                {{data.date}}
+                                                            </td>
+                                                            <td>
+                                                                {{data.pi_poNo}}
+                                                            </td>
+                                                            <td>
+                                                                {{data.amount}}
+                                                            </td>
+                                                            <td>
+                                                                {{data.buyerName}}
+                                                            </td>
+                                                            <td>
+                                                                {{data.commodity}}
+                                                            </td>
+                                                            <td>
+                                                                {{data.location}}
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </ng-template>
+    </main>
+</div>

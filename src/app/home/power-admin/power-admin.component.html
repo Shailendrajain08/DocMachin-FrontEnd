@@ -1,0 +1,69 @@
+<div class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+        <div class="analytics" style="width: 90%">
+            <div style="width: 100%" class="analytics-side">
+                <div class="row">
+                    <div class="col-12 mb-lg padding">
+                        <section class="widget pb-0 box-shadow">
+                            <div class="widget-body p-0 support table-wrapper">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr class="text-muted table-heading">
+                                            <th scope="col"><span class="pl-3">Date</span></th>
+                                            <th scope="col">Customer's Name</th>
+                                            <th scope="col">Role</th>
+                                            <th scope="col">Company Name</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <!--  -->
+                                    <tbody *ngIf='pending' class="text-dark">
+                                        <tr class="table-row" *ngFor="let data of value; let i = index">
+                                            <th class="pl-4 fw-normal">{{data.date}}</th>
+                                            <td>{{data.fullName}}</td>
+                                            <td>{{data.role}}</td>
+                                            <td>{{data.companyName}}</td>
+                                            <td> <button class="button" style="margin-right: 10px;"
+                                                    (click)='submit(data._id, i, data.emailId)'>Approve</button> <button
+                                                    class="button" style="background-color: orange; margin-right: 10px;"
+                                                    (click)='decline(data._id, i, data.emailId)'>Decline</button>
+                                                <button class="button" style="background-color: red;"
+                                                    (click)='delete(data._id, i)'>Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody *ngIf='approved' class="text-dark">
+                                        <tr class="table-row" *ngFor="let data of value; let i = index">
+                                            <th class="pl-4 fw-normal">{{data.date}}</th>
+                                            <td>{{data.fullName}}</td>
+                                            <td>{{data.role}}</td>
+                                            <td>{{data.companyName}}</td>
+                                            <td> <button class="button" style="margin-right: 10px;"
+                                                    (click)='submit(data._id, i, data.emailId)'>Revoke</button>
+                                                <button class="button" style="background-color: red;"
+                                                    (click)='delete(data._id, i)'>Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody *ngIf='declined' class="text-dark">
+                                        <tr class="table-row" *ngFor="let data of value; let i = index">
+                                            <th class="pl-4 fw-normal">{{data.date}}</th>
+                                            <td>{{data.fullName}}</td>
+                                            <td>{{data.role}}</td>
+                                            <td>{{data.companyName}}</td>
+                                            <td> <button class="button" style="margin-right: 10px;"
+                                                    (click)='submit(data._id, i, data.emailId)'>Approve</button> <button
+                                                    class="button" style="background-color: red;"
+                                                    (click)='delete(data._id, i)'>Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

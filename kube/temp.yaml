@@ -1,0 +1,51 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: dm-api-server-staging
+  namespace: default
+spec:
+  secretName: dm-api-server-staging-tls
+  issuerRef:
+    name: letsencrypt-staging
+  commonName: dm.uipep.com
+  dnsNames:
+    - dm.uipep.com
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress-ingress-nginx-controller
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: docmachine-gke-external-ip
+spec:
+  tls:
+  - hosts:
+    - prod.dm.uipep.com
+    secretName: dm-website-tls
+  - hosts:
+    - dm.uipep.com
+    secretName: dm-api-server-tls 
+  rules:
+  - host: prod.dm.uipep.com
+    http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: docmachine-service
+            port: 
+              number: 80
+        pathType: Prefix
+  - host: dm.uipep.com
+    http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: docmachinebackend
+            port: 
+              number: 3000
+        pathType: Prefix

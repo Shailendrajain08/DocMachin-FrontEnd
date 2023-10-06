@@ -1,0 +1,123 @@
+<div style="margin-left: 0px" class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+
+
+        <div>
+            <section style="margin-top: 40px; margin-left: 43px;" *ngIf="!step1">
+                <h3 class="heading">Buyers Credit Request </h3>
+                <div style="float: left; margin-top: 20px;">
+                    <span class="at" style="
+                    border-right: 1px solid black;
+                    color: #49a2d7;
+                    ">All Transaction</span>
+                    <span class="at">Tasks</span>
+                </div>
+                <div style="margin-right: 80px;float: right;margin-top: 20px;">
+                    <span class="ctb" (click)="onNewTrans()">Create New Transaction</span>
+                </div>
+            </section>
+            <table class="table table-striped mb-0"
+                style="margin-left: 40px; float: left; margin-top: 20px; width: 92%;" *ngIf="!step1">
+                <thead>
+                    <tr class="text-muted table-heading">
+                        <th scope="col">Date</th>
+                        <th scope="col">Detail</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Download</th>
+                    </tr>
+                </thead>
+                <tbody class="text-dark">
+                    <tr *ngFor="let task of allTransactions" class="table-row" (click)="viewTask(task)">
+                        <th class="pl-4 fw-normal">
+                            {{ task.transactionDate }}
+                        </th>
+                        <td class="sb-no">Submitted to Yes bank</td>
+                        <td *ngIf="task.completed === true">
+                            Completed
+                        </td>
+                        <td *ngIf="task.completed === false">
+                            Pending
+                        </td>
+
+                        <td>Download & Share icon</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="radio1" *ngIf="step1" style="
+                margin-left: 10px;
+                padding: 4% 0;
+                padding-left: 3%;
+            ">
+                <p class="stp1">Setup: 1</p>
+                <p class="stp2">Create Transaction:</p>
+                <p class="stp3">Select a bank*</p>
+
+                <input type="radio" id="options1" class="circular_input" [(ngModel)]="myRadio" value="yesBank">
+                <label class="label1" for="male">Yes Bank</label><br />
+                <input type="radio" id="options2" class="circular_input" [(ngModel)]="myRadio" value="axisBank">
+                <label class="label1" for="female">Axis Bank</label><br />
+                <input type="radio" name="bank" value="Any Bank" class="circular_input" />
+                <label class="label1" for="female">Any Bank</label><br /> <br>
+                <p style="margin-bottom: 2px;">Select a Beneficiary</p>
+                <select style="border: 0.5px solid black" [(ngModel)]="selectedDoc"
+                    (change)="modo($event.target.value)">
+                    <option value="">Select Bene Name</option>
+                    <option *ngFor="let bene of beneDetail" [value]="bene.beneName">
+                        {{ bene.beneName }}
+                    </option>
+                </select>
+
+                <div *ngIf='boe' style="margin-top: 10px;">
+                    <p style="margin-bottom: 2px;">Select a BOE</p>
+                    <select style="border: 0.5px solid black" [(ngModel)]="selectedDoc1">
+                        <option value="">Select BOE Number</option>
+                        <option *ngFor="let i of item" [value]="i.boeNumber">
+                            {{ i.boeNumber }}
+                        </option>
+                    </select>
+                </div>
+
+                <div style="display: flex; align-items: center; margin-top: 10px;" *ngIf='boe'>
+                    <p style="margin-bottom: 2px;">Select
+                        PIPO*</p>
+                    <div class="customDropdown" style="flex-direction:row; ">
+                        <span style="color: #323e4a !important; min-width: 150px;">{{pipoValue}}</span>
+                        <span class="dropIco" style="float: right;"><i id="down3" class="fas fa-angle-down"></i>
+                            <i id="up3" style="display: none" class="fas fa-angle-up"></i>
+                        </span>
+                        <div class="dropdown-content" style="margin-top: -2px;">
+                            <p *ngFor="let bene of item3"
+                                (click)='clickPipo("PI",bene.pi_poNo,bene.benneName, bene.amount, bene)'>
+                                <a> PI-{{bene.pi_poNo}}-{{bene.benneName}}</a>
+                            </p>
+                            <!-- <p style="border: 1px solid #EAEDF3;" (click)="open(content)"><a>Add New Beneficiary</a></p> -->
+                        </div>
+                    </div>
+                    <div *ngIf='alertToggle' style="color: red;">
+                        This PI/PO doesn't contain any BL copy.
+                    </div>
+                </div>
+                <div style="margin-left: 95px;">
+
+                    <p *ngFor='let data of arrayData; let i = index' class="arrayData">
+                        {{data}} <i style="float: right; margin: 4px 10px;" (click)='removePipo(i)'
+                            class="fas fa-times"></i>
+                    </p>
+
+                </div>
+
+                <div style="
+                display: flex;
+                width: 100%;
+                margin-top: 5%;
+                justify-content: left;
+                ">
+                    <button (click)="showThisPdf()" class="opt" style="margin-right: 1%">
+                        Generate Document
+                    </button>
+                    <button class="opt">Assign Task</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

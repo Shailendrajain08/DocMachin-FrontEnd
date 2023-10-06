@@ -1,0 +1,33 @@
+<div *ngIf="!toggle" class="card login-form" style="height: 530px !important; margin-bottom: 60px;">
+    <div class="card-body card-content">
+        <div style="text-align: center;">
+            <img height="60px" width="180px" src="../../assets/images/2df3c6e3b7dcfda591bf650efe2942d54e8aed0e.png"
+                class="card-title text-center">
+            <p class="enter">Enter new password </p>
+        </div>
+
+        <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
+            <label class="lable lable1 " for="">Enter your Password</label> <br>
+            <input formControlName="password" class="input-mail input1" placeholder="Enter the password" type="password"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required" style="margin-left: 15px;">Please enter password</div>
+                <div *ngIf="f.password.errors.minlength" style="margin-left: 15px;">Password should be more than 6
+                    letter</div>
+            </div>
+            <br>
+            <label class="lable lable1" for="">Confirm your Password</label> <br>
+            <input formControlName="confirmPassword" class="input-mail input2" placeholder="Confirm the password"
+                type="password" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required" style="margin-left: 15px;">Please enter password</div>
+                <div *ngIf="f.confirmPassword.errors.minlength" style="margin-left: 15px;">Password should be more than
+                    6
+                    letter</div>
+            </div>
+            <br>
+            <button type="submit" class="button" [class.disable]="isDisabled" [disabled]="isDisabled">Create My
+                Account</button>
+        </form>
+    </div>
+</div>

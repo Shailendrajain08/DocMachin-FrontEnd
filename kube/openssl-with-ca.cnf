@@ -1,0 +1,29 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: dm-web
+  namespace: default
+spec:
+  secretName: dm-web-tls
+  issuerRef:
+    name: ca-issuer
+    kind: Issuer
+  commonName: prod.dm.uipep.com
+  dnsNames:
+    - prod.dm.uipep.com
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: dm-api
+  namespace: default
+spec:
+  secretName: dm-api-tls
+  issuerRef:
+    name: ca-issuer
+    kind: Issuer
+  commonName: dm.api.uipep.com
+  dnsNames:
+    - dm.api.uipep.com

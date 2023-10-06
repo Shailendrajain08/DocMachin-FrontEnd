@@ -1,0 +1,82 @@
+<div style="margin-left: 0px" class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+
+        <div class="analytics">
+            <div *ngIf="!showInvoice" style="width: 100%" class="analytics-side">
+                <div style="width: 100%" class="row">
+                    <div style="width: 100%; margin: 0 -1.5%" *ngIf="!showInvoice" class="col-12 mb-lg padding">
+                        <section style="width: 100%; margin-left: 0" class="widget pb-0 box-shadow">
+                            <div style="margin: 0 -2%" class="widget-body p-0 support table-wrapper">
+                                <table style="width: 100%" class="table table-striped mb-0">
+                                    <thead style="width: 100%">
+                                        <tr class="text-muted table-heading">
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th scope="col"><span class="pl-3">DATE</span></th>
+                                            <th scope="col">PI/PO No.</th>
+                                            <th scope="col">Purpose Code</th>
+                                            <th scope="col">Bank Name</th>
+                                            <th scope="col" *ngIf="pending || completed">Upload</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let data of item1; let i = index" class="text-dark">
+                                        <tr *ngIf="all" class="table-row">
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th class="pl-4 fw-normal">{{ data.transactionDate}}</th>
+                                            <td class="sb-no">{{ data.pi_poNo }}</td>
+                                            <td>
+                                                {{ data.file }}
+                                            </td>
+                                            <td>{{ data.bank }}</td>
+
+                                        </tr>
+                                        <tr *ngIf="pending && data.caDone == 'no'" class="table-row">
+                                            <th class="rect" (click)="viewTask(data)">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th class="pl-4 fw-normal" (click)="viewTask(data)">{{ data.transactionDate}}
+                                            </th>
+                                            <td class="sb-no" (click)="viewTask(data)">{{ data.pi_poNo }}</td>
+                                            <td (click)="viewTask(data)">
+                                                {{ data.file }}
+                                            </td>
+                                            <td (click)="viewTask(data)">{{ data.bank }}</td>
+                                            <td>
+                                                <form method="POST">
+                                                    <div>
+                                                        <input class="customfile1" (error)="onUploadError($event)" placeholder="Choose File" (init)="onUploadInit($event)" (success)="onUploadSuccess($event)" (click)="clicked(data)" *ngIf="type === 'directive'" [dropzone]="config">
+                                                        <!--<p class="choose">Choose File</p> -->
+
+                                                    </div>
+
+
+                                                </form>
+                                            </td>
+                                        </tr>
+
+                                        <tr *ngIf="completed && data.caDone == 'yes'" class="table-row">
+                                            <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th>
+                                            <th class="pl-4 fw-normal">{{ data.transactionDate}}</th>
+                                            <td class="sb-no">{{ data.pi_poNo }}</td>
+                                            <td>
+                                                {{ data.file }}
+                                            </td>
+                                            <td>{{ data.bank }}</td>
+                                            <td>Done</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

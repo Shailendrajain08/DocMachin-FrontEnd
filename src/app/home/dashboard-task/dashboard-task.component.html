@@ -1,0 +1,268 @@
+<div class="content_top_common">
+    <div class="content-wrap">
+        <section class="admin_dashboard_home">
+            <div class="container-fluid">
+                <div class="import_export_sec">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="Dashbord_sec">
+                                <h2>DASHBOARD</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="import_export_button">
+                                <!-- <button type="button" (click)="typeChange('import')"
+                                    [ngClass]="type == 'import' ? 'type_active' : 'type_inactive'">
+                                    <span class="icon_top"></span>Import </button>
+                                <button type="button" (click)="typeChange('export')"
+                                    [ngClass]="type == 'export' ? 'type_active' : 'type_inactive'">
+
+                                    <span class="icon_top "></span>Export
+                                </button> -->
+                                <button type="button" class="type_inactive">
+                                    <span class="icon_top"></span>Import </button>
+                                <button type="button" class="type_active">
+
+                                    <span class="icon_top "></span>Export
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="import_export_sec padding0">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="Total_pipo">
+                                <h5>Total PI/PO</h5>
+                                <!--  <h6>Amount : <b class="PI_green">USD 500000</b>
+                                </h6>
+                                 <img src="./assets/new-img/remittnce.png" alt="images" /> -->
+                                <!-- <apx-chart [series]="pipoChartOptions.series" [chart]="pipoChartOptions.chart"
+                                    [labels]="pipoChartOptions.labels" [responsive]="pipoChartOptions.responsive">
+                                </apx-chart> -->
+                                <div id="pipiChart" class="chart"></div>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="Total_pipo">
+                                <h5>Total shipping bill</h5>
+                                <!-- <h6>Amount : <b class="PI_red">USD 780000</b>
+                                </h6> -->
+                                <!-- <img src="./assets/new-img/way.png" alt="images" /> -->
+                                <!-- <apx-chart [series]="shippingBillChartOptions.series" [chart]="shippingBillChartOptions.chart"
+                                [labels]="shippingBillChartOptions.labels" [responsive]="shippingBillChartOptions.responsive">
+                            </apx-chart> -->
+                                <div id="SBChart" class="chart"></div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="Total_pipo">
+                                <h5>Total inward remittances</h5>
+                                <!-- <h6>Amount : <b class="PI_org">USD 300000</b>
+                                </h6>
+                                <img src="./assets/new-img/PI.png" alt="images" /> -->
+                                <!-- <apx-chart [series]="inwardChartOptions.series" [chart]="inwardChartOptions.chart"
+                                    [labels]="inwardChartOptions.labels" [responsive]="inwardChartOptions.responsive">
+                                </apx-chart> -->
+                                <div id="inwardChart" class="chart"></div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="submission_sec">
+                                <h3>shipment pending for submission</h3>
+                                <h5>>21 Days from shipping bill date</h5>
+                                <div class="submission_sec_table_scroll">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Party Name</th>
+                                                <th scope="col">No. of documents</th>
+                                                <th scope="col" class="right_price_list"
+                                                    style="text-align:right;    padding-right: 9px;">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let row of shipmentPending; let i = index">
+                                                <td>{{row._id}}</td>
+                                                <td>{{row.toTalcount}}</td>
+                                                <td class="INR right_price_list"
+                                                    style="text-align:right;    padding-right: 9px;">{{row.toTalAmount |
+                                                    number : '1.2-2'}}</td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <span class="nodata_table">{{shipmentPending?.length === 0 ? 'No Data' :''}}</span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="submission_sec">
+                                <h3>shipment submitted to bank</h3>
+                                <h5>Reference number awaited</h5>
+                                <div class="submission_sec_table_scroll">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Party Name</th>
+                                                <th>Doc generated</th>
+                                                <th class="right_price_list"
+                                                    style="text-align:right;    padding-right: 9px;">Ref no. awaited
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let row of shipmentSubmit; let i = index">
+                                                <td>{{row._id}}</td>
+                                                <td>{{row.toTalcount}}</td>
+                                                <td class="INR right_price_list"
+                                                    style="text-align:right;    padding-right: 9px;">{{row.awaitSubmit}}
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <span class="nodata_table">{{shipmentSubmit?.length === 0 ? 'No Data' :''}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="submission_sec remittances">
+                                <p>Total inward remittances <br /> pending for document submission </p>
+                                <div class="radio_sec">
+                                    <div>
+                                        <h4>{{inwardRemitancePendingCount}} out of {{inwardRemitanceTotalCount}} pending
+                                            <b>Amount : {{inwardRemitanceAmount | number : '1.2-2'}}</b>
+                                        </h4>
+                                        <!-- <div class="container1">
+                                            <div class="skill1 html1">80%</div>
+                                        </div> -->
+                                        <!-- <progress-bar [progress]="100" [color]="'#488aff'">
+                                        </progress-bar> -->
+                                        <section class="progressBar">
+                                            <mat-progress-bar [mode]="progressBarMode" [value]="progressBarvalue"
+                                                [bufferValue]="bufferValue">
+                                            </mat-progress-bar>
+                                            <div style="position: absolute; padding: 10px; color: white;">
+                                                {{progressBarvalue}}%
+                                            </div>
+                                        </section>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="submission_sec edpms">
+                                <label>Total EDPMS entries</label>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="submission_sec_img">
+                                            <!-- <img src="./assets/new-img/Ring-Chart.png" alt="images" /> -->
+                                            <!-- <b>400</b> -->
+                                            <!-- <apx-chart [series]="edpmsChart.series" [chart]="edpmsChart.chart"
+                                                [plotOptions]="edpmsChart.plotOptions" [labels]="edpmsChart.labels">
+                                            </apx-chart> -->
+                                            <apx-chart [series]="edpmsChart.series" [chart]="edpmsChart.chart"
+                                                [labels]="edpmsChart.labels" [responsive]="edpmsChart.responsive">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-md-8 col-xs-12">
+                                        <!-- <div class="totel_edbms">
+                                            <ul>
+                                                <li>
+                                                    <h4>Shipping bills uploaded <b>300</b>
+                                                    </h4>
+                                                </li>
+                                                <li class="Pending_icon">
+                                                    <h4>Pending for upload <b>100</b>
+                                                    </h4>
+                                                </li>
+                                            </ul>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="submission_sec map_height Pending_realisation">
+                                <b class="bold_titles_common">Pending realisation</b>
+                                <ul>
+                                    <li class="Full_icon">Full</li>
+                                    <li class="Partial_icon">Partial</li>
+                                </ul>
+                                <!-- <img src="./assets/new-img/realised.png" alt="images" /> -->
+                                <apx-chart [series]="PendingrealisationChart.series"
+                                    [chart]="PendingrealisationChart.chart"
+                                    [dataLabels]="PendingrealisationChart.dataLabels"
+                                    [plotOptions]="PendingrealisationChart.plotOptions"
+                                    [yaxis]="PendingrealisationChart.yaxis" [xaxis]="PendingrealisationChart.xaxis"
+                                    [legend]="PendingrealisationChart.legend" [colors]="PendingrealisationChart.colors"
+                                    [grid]="PendingrealisationChart.grid"></apx-chart>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="submission_secs map_height Pending_realisation">
+                                <div class="row">
+                                    <div class="col-md-8 col-8"><strong class="bold_titles_common">
+                                        Order pending for shipment </strong></div>
+                                    <div class="col-md-4 col-4">
+                                        <div>
+                                            <select class="form-select" [(ngModel)]="ospType" (ngModelChange)="ospTypeChange(ospType)">
+                                                <option *ngFor="let data of ospData" >{{ data }} </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <ul>
+                                    <li class="Full_icon">Full</li>
+                                    <li class="Partial_icon">Partial</li>
+                                </ul>
+                                <img src="./assets/new-img/realised.png" alt="images" /> -->
+                                <div id="orderShipmentChart" class="chart"></div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="submission_secs map_height Pending_realisation">
+                                <b class="bold_titles_common">Packing credit availed</b>
+                                <h2>Maturity : 360</h2>
+                                <!-- <img src="./assets/new-img/realised.png" alt="images" /> -->
+                                <apx-chart [series]="packingCreditAvailedChart.series"
+                                    [chart]="packingCreditAvailedChart.chart"
+                                    [dataLabels]="packingCreditAvailedChart.dataLabels"
+                                    [plotOptions]="packingCreditAvailedChart.plotOptions"
+                                    [yaxis]="packingCreditAvailedChart.yaxis" [xaxis]="packingCreditAvailedChart.xaxis"
+                                    [legend]="packingCreditAvailedChart.legend"
+                                    [colors]="packingCreditAvailedChart.colors" [grid]="packingCreditAvailedChart.grid">
+                                </apx-chart>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="submission_sec map_height Pending_realisation">
+                                <b class="bold_titles_common">Total bill lodged</b>
+                                <h2>Maturity : 580</h2>
+                                <!-- <img src="./assets/new-img/realised.png" alt="images" /> -->
+                                <apx-chart [series]="totalBillLodgedChart.series" [chart]="totalBillLodgedChart.chart"
+                                    [dataLabels]="totalBillLodgedChart.dataLabels"
+                                    [plotOptions]="totalBillLodgedChart.plotOptions"
+                                    [yaxis]="totalBillLodgedChart.yaxis" [xaxis]="totalBillLodgedChart.xaxis"
+                                    [legend]="totalBillLodgedChart.legend" [colors]="totalBillLodgedChart.colors"
+                                    [grid]="totalBillLodgedChart.grid"></apx-chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

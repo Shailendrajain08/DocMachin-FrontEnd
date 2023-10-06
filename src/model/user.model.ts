@@ -1,0 +1,72 @@
+export class UserModel {
+  public iniReg;
+  public gid;
+  public fid;
+  public fullName;
+  public last_name;
+  public mobileNo;
+  public companyId;
+  public pricing;
+  public termsAndCondition;
+  public password;
+  public emailId;
+  public emailIdVerified;
+  public phoneVerified;
+  public projectemployersetup;
+  public website;
+  public facebook;
+  public linkedIn;
+  public twitter;
+  public user_name;
+  public companyName;
+  public adress;
+  public pincode;
+  public flat_number;
+  public area;
+  public landmark;
+  public city;
+  public members_list;
+  public location;
+  public role;
+  public verified;
+  public date;
+  public otpDone;
+  public otpDetails;
+
+  constructor(data) {
+    this.iniReg = data["iniReg"] ? data["iniReg"]: "";
+    this.gid = data["gid"] ? data["gid"]: "";
+    this.fid = data["fid"] ? data["fid"]: "";
+    this.fullName = data["fullName"] ? data["fullName"]: "";
+    this.last_name = data["last_name"] ? data["last_name"]: "";
+    this.mobileNo = data["mobileNo"] ? data["mobileNo"]: "";
+    this.companyId = data["companyId"] ? data["companyId"]: "";
+    this.pricing = data["pricing"] ? data["pricing"]: "";
+    this.termsAndCondition = data["termsAndCondition"] ? data["termsAndCondition"]: "";
+    this.password = data["password"] ? data["password"]: "";
+    this.emailId = data["emailId"] ? data["emailId"]: "";
+    this.emailIdVerified = data["emailIdVerified"] ? data["emailIdVerified"]: "";
+    this.phoneVerified = data["phoneVerified"] ? data["phoneVerified"]: "";
+    this.projectemployersetup = data["projectemployersetup"] ? data["projectemployersetup"]: "";
+    this.website = data["website"] ? data["website"]: "";
+    this.facebook = data["facebook"] ? data["facebook"]: "";
+    this.linkedIn = data["linkedIn"] ? data["linkedIn"]: "";
+    this.twitter = data["twitter"] ? data["twitter"]: "";
+    this.user_name = data["user_name"] ? data["user_name"]: "";
+    this.companyName = data["companyName"] ? data["companyName"]: "";
+    this.adress = data["adress"] ? data["adress"]: "";
+    this.pincode = data["pincode"] ? data["pincode"]: "";
+    this.flat_number = data["flat_number"] ? data["flat_number"]: "";
+    this.area = data["area"] ? data["area"]: "";
+    this.landmark = data["landmark"] ? data["landmark"]: "";
+    this.city = data["city"] ? data["city"]: "";
+    this.members_list = data["members_list"] ? data["members_list"]: "";
+    this.location = data["location"] ? data["location"]: "";
+    this.role = data["role"] ? data["role"]: "";
+    this.verified = data["verified"] ? data["verified"]: "";
+    this.date = data["date"] ? data["date"]: "";
+    this.otpDone = data["otpDone"] ? data["otpDone"]: "";
+    this.otpDetails = data["otpDetails"] ? data["otpDetails"]: "";
+  }
+
+}

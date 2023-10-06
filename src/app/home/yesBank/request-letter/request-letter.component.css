@@ -1,0 +1,96 @@
+.heading {
+  border-bottom: 3px solid black;
+  color: black;
+  height: 25px;
+}
+
+tr {
+  border: 1px solid #070707;
+}
+
+td {
+  border-right: 1px solid #070707;
+}
+
+.wtd {
+  width: 441px;
+}
+
+.wtd1 {
+  width: 600px;
+}
+
+.wtd1 input {
+  border: none;
+}
+
+.wtd2 {
+  width: 900px;
+}
+
+span input {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.spli {
+  border-bottom: 1px solid black !important;
+}
+
+.ins {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 400px;
+}
+
+.wtd7 input {
+  width: 100px !important;
+  border: none;
+}
+
+.wtd8 {
+  width: 160px !important;
+}
+
+.ind {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.sl {
+  width: 30px;
+}
+
+.sl3 input {
+  border: none;
+  width: 100px;
+}
+
+.sl3 {
+  width: 120px;
+}
+
+.w1 {
+  width: 500px;
+}
+
+.w1 input {
+  width: 216px;
+  border: none;
+}
+
+.pdf_heading {
+  display: flex;
+}
+
+.button1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  width: 170px;
+  border: none;
+  padding: 5px;
+  background-color: #49a2d7;
+  border-radius: 4px;
+  color: #ffffff;
+  box-shadow: 0px 4px 10px 0px #49a2d7;
+}/*# sourceMappingURL=request-letter.component.css.map */

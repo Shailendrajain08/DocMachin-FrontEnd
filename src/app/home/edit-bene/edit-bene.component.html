@@ -1,0 +1,98 @@
+<div class="content-wrap">
+
+    <main id="content" class="content table-padding" role="main">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <!-- The image half -->
+                <!-- <div class="col-md-6 d-none d-md-flex bg-image"></div> -->
+
+
+                <!-- The content half -->
+                <div class="col-md-7 bg-dark">
+                    <div class="login d-flex py-5" style="padding: 0px !important;">
+
+                        <!-- Demo content-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 col-xl-7 mrg" *ngIf="is">
+                                    <h6 class="display-5">Edit Beneficiary/ Customer</h6>
+                                    <form #values="ngForm" (ngSubmit)="onSubmit(values)">
+                                        <div class="form-group mb-3">
+                                            <label>Name</label>
+                                            <input [(ngModel)]="item.beneName" placeholder="Beneficiary/ Customer name"
+                                                required="" class="form-control rounded-pill" name="beneName">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Address</label>
+                                            <input [(ngModel)]="item.beneAdrs"
+                                                placeholder="Ex: street address, City. PIN" required=""
+                                                class="form-control rounded-pill password password1" name="beneAdrs">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Bank Name</label>
+                                            <input [(ngModel)]="item.beneBankName" id="password1" type=""
+                                                placeholder="Ex: 23489234324" required=""
+                                                class="form-control rounded-pill" name="beneBankName">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Account No</label>
+                                            <input [(ngModel)]="item.beneAccNo" id="password1" type=""
+                                                placeholder="Ex: 23489234324" required=""
+                                                class="form-control rounded-pill" name="beneAccNo">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>IBAN</label>
+                                            <p class="sl">* Mandatory for remittances to Middle-East countries and
+                                                Europe</p>
+                                            <input [(ngModel)]="item.iban" id="password1" type=""
+                                                placeholder="Ex: 238923 23423423" required=""
+                                                class="form-control rounded-pill" name="iban">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Beneficiary’s bank’s (any one) SWIFT code**</label>
+                                            <input [(ngModel)]="item.beneBankSwiftCode" type=""
+                                                placeholder="Ex: 1234566" required="" class="form-control rounded-pill"
+                                                name="beneBankSwiftCode">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Beneficiary’s bank’s address including country</label>
+                                            <input [(ngModel)]="item.beneBankAdress" id="inputEmail" type="text"
+                                                placeholder="Ex: street address, City. PIN" required=""
+                                                class="form-control rounded-pill email" name="beneBankAdress">
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label>Intermediary Bank details (if applicable) SWIFT code**</label>
+                                            <input [(ngModel)]="item.interBankSwiftCode"
+                                                placeholder="Ex: CC/OD/PC/PCFC/EBRD/BP/EEFC-USD/EUR/GBP/CHF/JPY ETC"
+                                                required="" class="form-control rounded-pill" name="interBankSwiftCode">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Intermediary Bank Name (if any)</label>
+                                            <input [(ngModel)]="item.interBankName" id="inputEmail" type="text"
+                                                placeholder="Ex: Western union" required=""
+                                                class="form-control rounded-pill" name="interBankName">
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label>Sort Code</label>
+                                            <input [(ngModel)]="item.sortCode" placeholder="Ex: ESEIEC." required=""
+                                                class="form-control rounded-pill" name="sortCode">
+                                        </div>
+
+                                        <button type="submit" class="btn">Edit</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div><!-- End -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+
+</div>

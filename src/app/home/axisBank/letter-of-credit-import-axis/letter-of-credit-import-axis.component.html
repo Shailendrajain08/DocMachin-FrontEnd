@@ -1,0 +1,608 @@
+<div class="content-wrap">
+
+    <main id="content" class="content table-padding bc" role="main">
+        <div id="mainId" class="bc" *ngIf="!done">
+            <div id="first" class="bc" style="width: 80%;">
+                <div style="text-align: -webkit-center;">
+                    <img style="height: 45px; width: 180px;"
+                        src="https://logos-download.com/wp-content/uploads/2016/12/Axis_Bank_logo_logotype.png">
+                </div>
+
+                <p style="text-align: right;">Annexure</p>
+                <p style="font-weight: 600;">
+                    (This application should be Stamped/ Franked for Rs.100/- or as per the Stamp Act of the place of
+                    issuance of the L/C on
+                    / prior to the application date)
+                </p>
+                <div style="margin-left: 40px;" class="pdf_heading">
+                    <p style="text-align: center; width: 100%;">APPLICATION AND GUARANTEE FOR ISSUE OF IRREVOCABLE
+                        DOCUMENTARY
+                        <br> LETTER OF CREDIT
+                    </p>
+                </div>
+                <p style="display: table; width: 240px; margin-left: 40px;">
+                    The Branch <br>
+                    Head, Axis <br>
+                    BANK LTD, <br>
+                    Branch <br>
+                    Dear Sir,
+                </p>
+
+                <div style="margin-left: 40px; margin-top: 20px; width: 100%;" class="bc">
+
+                    <p style="margin-top: 10px; font-size: 14px;">
+                        I/We request you to establish with your correspondents in (Country) &nbsp; &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Documentary credit as per details below:
+                    </p>
+                    <table>
+                        <tr>
+                            <td class="lc1">40A:***</td>
+                            <td class="lc">TYPE OF L/C</td>
+                            <td class="lc3">IRREVOCABLE </td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">31D : <br>
+                                ***</td>
+                            <td class="lc">DATE &amp; PLACE OF <br>
+                                EXPIRY:</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true">
+                                </span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">50:</td>
+                            <td class="lc">Name and address of the <br>
+                                applicant</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true">{{applicant.fullName}}</span> <br>
+                                <span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span> <br>
+                                <span style="outline: none;display: inline-block;width: 350px;" contenteditable="true">
+                                    {{item3.adress}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">59:</td>
+                            <td class="lc">Name and address of the <br>
+                                beneficiary</td>
+                            <td class="lc3"> <span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true">{{benneDetail.beneName}}</span> <br>
+                                <span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span> <br>
+                                <span style="outline: none;display: inline-block;width: 350px;" contenteditable="true">
+                                    {{ benneDetail.beneAdrs }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">32B: <br>
+                                ***</td>
+                            <td class="lc">CURRENCY &amp; <br>
+                                AMOUNT OF CREDIT <br>
+                                IN FIGURES AND IN</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true">USD</span> <br>
+                                <span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true">{{ item2.amount }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">39 A:#</td>
+                            <td class="lc">PERCENTAGE CREDIT <br>
+                                AMOUNT TOLERANCE</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">39 B:<br>
+                                #</td>
+                            <td class="lc1">MAXIMUM <br>
+                                CREDIT <br>
+                                AMOUNT</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">39C:</td>
+                            <td class="lc">ADDITIONAL <br>
+                                AMOUNTS COVERED <br>
+                                (USANCE INTEREST)</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">41a : <br>
+                                (A/D) <br>
+                                ***</td>
+                            <td class="lc">CREDIT <br>
+                                AVAILABLE <br>
+                                WITH <br>
+                                CREDIT AVAILABLE BY</td>
+                            <td class="lc3">ACCEPTANCE<span
+                                    style="outline: none;display: inline-block;width: 40px;"></span> DEF PAYMENT<span
+                                    style="outline: none;display: inline-block;width: 50px;"></span> NEGOTIATION <span
+                                    style="outline: none;display: inline-block;width: 60px;"></span> SIGHT PAYMENT</td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">42c:</td>
+                            <td class="lc">DRAFTS AT</td>
+                            <td class="lc3">AT SIGHT<span
+                                    style="outline: none;display: inline-block;width: 40px;"></span><span
+                                    style="outline: none;display: inline-block;width: 20px; margin-bottom: 1px solid black;"
+                                    contenteditable="true"></span> DAYS FROM DATE OF SHIPMENT</td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">42a:</td>
+                            <td class="lc">DRAWEE</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">43P:</td>
+                            <td class="lc">PARTIAL SHIPMENTS</td>
+                            <td class="lc3"> Prohibited<span
+                                    style="outline: none;display: inline-block;width: 30px;"></span> Permitted</td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">43 T:</td>
+                            <td class="lc">TRANSHIPMENTS</td>
+                            <td class="lc3"> Prohibited<span
+                                    style="outline: none;display: inline-block;width: 30px;"></span> Permitted</td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">44 A:</td>
+                            <td class="lc">SHIPMENT FROM</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">44 B:</td>
+                            <td class="lc">SHIPMENT TO</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">44 C:</td>
+                            <td class="lc">LATEST DATE OF <br>
+                                SHIPMENT</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+
+                        <tr>
+                            <td class="lc1">45A:</td>
+                            <td class="lc">QUANTITY AND <br>
+                                DESCRIPTION OF <br>
+                                GOODS <br>
+                                (BRIEF DETAILS) </td>
+                            <td class="lc3">CONTRACT TERMS: <span
+                                    style="outline: none;display: inline-block;width: 40px;"></span>
+                                <span style="outline: none;display: inline-block; border: 1px solid black;">FOB</span>
+                                <span style="outline: none;display: inline-block;width: 20px;"></span>
+                                <span style="outline: none;display: inline-block; border: 1px solid black;">CFR</span>
+                                <span style="outline: none;display: inline-block;width: 20px;"></span>
+                                <span style="outline: none;display: inline-block;border: 1px solid black;">CIF</span>
+                                <span style="outline: none;display: inline-block;width: 20px;"></span>
+                                <span style="outline: none;display: inline-block; border: 1px solid black;">Other</span>
+                                <br>
+                                <span style="outline: none;display: inline-block;width: 70px;"></span> <span
+                                    style="font-size: 12px;"> (Please mark)
+                                    Others (Specify
+                                    ( As PER INCOMTERMS 2010)</span> <br>
+                                <span style="outline: none;display: inline-block;width: 70px;"></span> □ Capital Goods
+                                <span style="outline: none;display: inline-block;width: 30px;"></span> □ Non Capital
+                                Goods
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">***</td>
+                            <td class="lc">IMPORT <br>
+                                LICENCE/OGL <br>
+                                DETAILS</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">***</td>
+                            <td class="lc">IMPORT <br>
+                                EXPORT <br>
+                                CODE NO.</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">46A:</td>
+                            <td class="lc">DOCUMENTS <br>
+                                REQUIRED</td>
+                            <td class="lc3">SIGNED DRAFTS FOR 100% OF THE INVOICE VALUE. SIGNED <br> <br>
+                                COMMERCIAL INVOICE (S) IN<span
+                                    style="outline: none;display: inline-block;width: 30px;"></span> COPIES <br> <br>
+                                FULL SET OF SIGNED “CLEAN” &quot;ON BOARD&quot; OCEAN BILLS OF LADING MADE OUT TO ORDER
+                                AND
+                                BLANK ENDORSED MARKED FREIGHT PREPAID/FREIGHT PAYABLE AT DESTINATION EVIDENCING
+                                SHIPMENT OF MERCHANDISE DESCRIBED ABOVE. BILLS OF LADING MUST STATE FULL NAME AND
+                                ADDRESS OF BOTH APPLICANT AND AXIS BANK LIMITED AS PARTIES TO BE NOTIFIED. <br> <br>
+                                <span style="outline: none;display: inline-block;width: 80px;"></span>OR <br> <br>
+                                AIRWAY BILL (ORIGINAL PLUS THREE COPIES) ISSUED BY AIRLINE OR IT’S AGENT MADE IN THE
+                                NAME OF AXIS BANK LIMITED FOR ACCOUNT APPLICANT EVIDENCING THE CURRENT AIRFREIGHT OF
+                                GOODS. AIRWAY BILL SHOULD BE MARKED “FREIGHT PREPAID/TO COLLECT”. AIRWAY BILLS MUST
+                                STATE FULL NAME AND ADDRESS OF APPLICANT AND AXIS BANK LIMITED AS PARTIES TO BE
+                                NOTIFIED.
+                                AIRWAY BILL MUST INDICATE FLIGHT NUMBER AND DATE. <br>
+                                MARINE/AVIATION INSURANCE POLICY OR CERTIFICATE (ORIGINAL PLUS COPY) DATED NOT LATER
+                                THAN THE DATE OF BILLS OF LADING/ AIRWAY BILL SIGNED AND ISSUED BY INSURANCE
+                                COMPANY MADE TO ORDER AND BLANK ENDORSED IN CURRENCY OF THE CREDIT FOR 110 % OF
+                                CIF INVOICE VALUE , COVERING INSTITUTE CARGO CLAUSE (A), WITH EXTENDED COVER FOR
+                                TRANSHIPMENT RISKS, IF APPLICABLE, THEFT, PILFERAGE, BREAKAGE AND NON-DELIVERY,
+                                INSTITUTE
+                                WAR CLAUSE (CARGO) AND INSTITUTE STRIKES CLAUSE (CARGO), INSTITUTE TRANSIT CLAUSES FOR
+                                WAREHOUSE TO WAREHOUSE COVER WITH CLAIMS PAYABLE IN INDIA IRRESPECTIVE OF
+                                PERCENTAGE. <br>
+                                SIGNED PACKING LIST IN TRIPLICATE <br> <br>
+                                CERTIFICATE OF ORIGIN ISSUED BY CHAMBER OF COMMERCE IN TRILICATE CERTIFYING GOODS OF
+                                <span
+                                    style="outline: none;display: inline-block;width: 60px; border-bottom: 1px solid black;"
+                                    contenteditable="true"></span>ORIGIN. <br> <br>
+                                SHIPPING COMPANY’S OR THEIR AGENT’S CERTIFICATE (IN DUPLICATE) STATING THAT THE
+                                CARRYING VESSEL NAMED IN THE BILL OF LADING IS A SEAWORTHY VESSEL, NOT MORE THAN
+                                TWENTY-FIVE YEARS OLD, HAS BEEN APPROVED UNDER INSTITUTE CLASSIFICATION CLAUSE (CLASS
+                                MAINTAINED EQUIVALENT TO LLOYDS 100 A1) AND HAS BEEN REGISTERED WITH AN APPROVED
+                                CLASSIFICATION SOCIETY (CERTIFICATE TO SPECIFY THE NAME OF THE CLASSIFICATION SOCIETY).
+                                <br>
+                                A CERTIFICATE IN DUPLICATE ISSUED BY THE SHIPPING COMPANY OR THEIR AGENT STATING THAT
+                                THE VESSEL MENTIONED IN THE BILL OF LADING AND THE PORTS FROM/TO WHICH THE GOODS
+                                ARE SHIPPED ARE FREE FROM EMBARGOS AND THAT THERE ARE NO SUBSISTING SANCTIONS
+                                IMPOSED ON THE VESSEL/PORT. <br> <br>
+                                BENEFICIARY’S CERTIFICATE TO THE EFFECT THAT ONE ADDITIONAL SET OF NON- NEGOTIABLE
+                                DOCUMENTS INCLUDING ONE COPY EACH OF INVOICE,AWB/BL,INSURANCE DOCUMENTS IF
+                                ANY,CERTIFICATE OF ORIGIN HAS BEEN FORWARDED TO THE APPLICANT BY COURIER AT THE
+                                EARLIEST BUT NOT MORE THAN TWO WORKING DAYS AFTER SHIPMENT. <br> <br>
+                                (ANY OTHER DOCUMENTS AS MAY BE REQUIRED )
+
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="lc1">47 A:T</td>
+                            <td class="lc">ADDITIONAL <br>
+                                CONDITIONS</td>
+                            <td class="lc3">SEPARATE DRAFT AND INVOICE FOR INTEREST AMOUNT REQUIRED <br> <br>
+                                INVOICE SHOULD QUOTE IMPORT LICENCE/OGL REFERENCE AND CERTIFY THAT THE GOODS SUPPLIED
+                                ARE AS PER PURCHASE <br>
+                                ORDER OF THE APPLICANT. GROSS FOB/CIF/CFR VALUE OF THE GOODS BEFORE DEDUCTION OF
+                                AGENT’S COMMISSION, IF ANY, MUST NOT EXCEED THE MAXIMUM CREDIT AMOUNT. <br>
+                                ALL DOCUMENTS MUST BE IN ENGLISH <br> <br>
+                                ALL DOCUMENTS MUST MENTION OUR L/C NUMBER AND DATE AND THAT THE GOODS
+                                ARE FREELY IMPORTABLE UNDER EXIM POLICY 2009-2014 / ARE IMPORTED UNDER LICENSE
+                                NUMBER <br>
+                                <span
+                                    style="outline: none;display: inline-block;width: 90px; border-bottom: 1px solid black;"
+                                    contenteditable="true"></span>(WHICHEVER IS APPLICABLE) <br>
+                                DOCUMENTS PRODUCED BY REPROGRAPIC PROCESS/COMPUTERISED CARBON COPIES ARE
+                                NOT ACCEPTABLE UNLESS MARKED ORIGINAL AND SIGNED. <br> <br>
+                                OTHERS, PLEASE SPECIFY
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">71 B:</td>
+                            <td class="lc">SPECIFY IF <br>
+                                ANY CHARGES <br>
+                                ARE TO <br>
+                                BENEFICIARY’S <br> ACCOUNT</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="lc1">48:</td>
+                            <td class="lc">PERIOD OF <br>
+                                PRESENTATION OF <br>
+                                DOCUMENTS</td>
+                            <td class="lc3"><span
+                                    style="outline: none;display: inline-block;width: 80px;border-bottom: 1px solid black;"
+                                    contenteditable="true"></span> DAYS FROM THE DATE OF<span
+                                    style="outline: none;display: inline-block;width: 100px;border-bottom: 1px solid black;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">49: ***</td>
+                            <td class="lc">CONFIRMATION <br>
+                                INSTRUCTIONS</td>
+                            <td class="lc3">WITH<span style="outline: none;display: inline-block;width: 70px;"></span>
+                                WITHOUT <span style="outline: none;display: inline-block;width: 70px;"></span>CHARGES
+                                PAYABLE BY <span
+                                    style="outline: none;display: inline-block;width: 80px;border-bottom: 1px solid black;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+
+                        <tr>
+                            <td class="lc1">57 a</td>
+                            <td class="lc">“ADVISE THROUGH”<br>
+                                BANK</td>
+                            <td class="lc3"> <span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span> <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lc1">72:</td>
+                            <td class="lc">SENDER TO <br>
+                                RECEIVER <br>
+                                INFORMATION</td>
+                            <td class="lc3"><span style="outline: none;display: inline-block;width: 300px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+
+
+
+                    </table>
+
+                    <p>
+                        <b>*** indicates mandatory fields </b> <span
+                            style="outline: none;display: inline-block;width: 100px;"></span> <b># Only one of the
+                            fields 39A OR 39B is to be filled</b>
+                        <br>
+                        I/We hereby declare that the transaction covered under the credit (the “transaction”) , does not
+                        involve, and is Not
+                        designed for the purpose of any contravention
+                        of the provisions of the Foreign Exchange Management Act 1999 or of any rule, regulation,
+                        notification, direction or
+                        order made thereunder. I/We also hereby
+                        agree and undertake to give such information/documents as will reasonably satisfy you about the
+                        transaction in terms of
+                        above declaration. <br>
+                        We hereby confirm and certify that:
+                    </p>
+                    <p style="margin-left: 20px;">
+                        (a) The goods imported / being imported by us under the Credit are not covered under
+                        Prohibited/Negative List of Imports
+                        as mentioned current Foreign Trade Policy and amendments thereto till date. <br>
+                        (b) The goods imported / being imported by us under the Credit are not covered under Negative
+                        List of Imports as
+                        mentioned in current Foreign Trade Policy and amendments thereto till date and the original
+                        license issued by the DGFT is attached herewith. (Strike out
+                        whichever is not applicable) <br>
+                        (c) We are eligible to import the above mentioned goods under the current Foreign Trade Policy
+                        in place. <br>
+                        (d) The said goods imported / being imported by us are not restricted for import through
+                        specific licensing under the
+                        above mentioned policy and amendments thereto till date. <br>
+                        (e) ITC(HS) Classification Code No.<span
+                            style="outline: none;display: inline-block;width: 80px;border-bottom: 1px dotted black;"
+                            contenteditable="true"></span> <br>
+                        (f) The carrying vessel and the ports from/to which the goods are shipped as mentioned in our
+                        application form and
+                        guarantee for issue of irrevocable documentary letter of credit are free from embargos and that
+                        there are no subsisting sanctions imposed on the vessel/s
+                        and the port/s. <br>
+                        (g) In case if the goods imported are capital in nature, we confirm that the goods are capital
+                        goods as defined in the
+                        Foreign Trade Policy issued by DGFT from time to time <br>
+                        (h) We also confirm that the period of trade credit is well within the operating cycle of the
+                        commodity Trade Credit – Supplier Credit
+                        <br>
+                        □ All in Cost : <span
+                            style="outline: none;display: inline-block;width: 200px;border-bottom: 1px dotted black;"
+                            contenteditable="true"></span> <br>
+                        □ Period of Credit : <span
+                            style="outline: none;display: inline-block;width: 200px;border-bottom: 1px dotted black;"
+                            contenteditable="true"></span> <br>
+                    </p>
+                    <p>
+                        Declaration in line with A.P. (DIR Series) Circular No. 23 dated 13 Mar, 2019 (Tick whichever is
+                        applicable):
+                        We hereby declare that value of each shipment and presentation under the said Foreign Letter of
+                        Credit shall not exceed <br>
+                        ( ) USD 150 Million or equivalent per import transaction. - Applicable in case of importer being
+                        oil/gas refining &amp;
+                        marketing, airline and shipping companies <br>
+                        ( ) USD 50 Million or equivalent per import transaction Applicable in case of importer being
+                        other than oil/gas refining
+                        &amp; marketing, airline and shipping companies <br> <br>
+                        (Any FLC issuance beyond above stated amount will be subject to RBI approval.) <br> <br>
+                        We also undertake to submit the relative Exchange Control Copy of the Bill of Entry / Postal
+                        Wrappers to you immediately
+                        after clearance of the said goods, in
+                        any case within 3 months from the date of remittance / payment. Further, we declare that the
+                        items imported will be used
+                        / disposed of as per the provision
+                        contained in the policy / procedure/We further declare that the undersigned has the authority to
+                        give the declarations,
+                        undertakings and instructions as above,
+                        on behalf of the Company. <br> <br>
+                        This Letter of Credit is subject to UCPDC 2007 Revision ICC No 600 read along with ICC Document
+                        no URR725, ISP98 AND
+                        ISBP <br> <br>
+                        LATEST VERSION. Declaration/Undertaking <br> <br>
+                        In consideration of your opening a Letter of Credit as above . I /we hereby undertake to accept
+                        and pay in due course
+                        all drafts drawn within the terms thereof,
+                        and/ or to take up and pay for all documents negotiated there under on presentation and in
+                        default of my/our so doing
+                        you may sell the goods before or after
+                        arrival and I/We undertake forthwith on demand made by you in writing to deposit with you such
+                        sum or security or
+                        further sum or security as you may from time
+                        to time specify as any security for the due fulfillment of our obligations hereunder and any
+                        security so deposited with
+                        you as may be sold by you on
+                        your giving reasonable notice of sale to us and the said sum or the proceeds of sale of the
+                        security may be appropriated
+                        by you in or towards satisfaction of
+                        our said obligations and any liability of ours arising out of the non fulfillment thereof. <br>
+                        <br>
+                        You are to have lien on all goods, documents and policies and proceeds thereof for any
+                        obligations or liabilities
+                        present or future incurred by you under or
+                        arising out of this credit. <br> <br>
+                        I/ We approve of the negotiation of drafts under this Credit being confined to your branches.
+                        <br> <br>
+                        Wherever, based on reimbursement clause of LC, the negotiating bank has claimed reimbursement
+                        and our Nostro account is
+                        debited before receipt of
+                        documents/payments, we agree to pay applicable interest from the date of Nostro debit till the
+                        date of payment of import
+                        bill. <br> <br>
+                        The relative shipping documents have to be surrendered to me/us against payment /acceptance.
+                        <br> <br>
+                        If at any time and from time to time hereafter and at our request you enhance the amount of the
+                        Letter of Credit or
+                        amend any of the terms thereof (
+                        including extension of the validity of the credit for shipment and/or negotiation of documents)
+                        ,then notwithstanding
+                        the amount and the terms specified in this
+                        application , our guarantee shall cover and be deemed to cover the entire amount of the enhanced
+                        Letter of Credit issued
+                        by you and other amendments
+                        effected thereto and our liability will be for the entire amount of the Letter of Credit to be
+                        enhanced and /or amended
+                        at our request. We shall continue to be
+                        bound by all other terms and conditions of the application and guarantee notwithstanding such
+                        enhancement or amendments
+                        from time to time as you may
+                        make at your request in the value and terms of the letter of credit. <br> <br>
+                        We hereby agree and declare that in the event of my/our failing to retire the bills drawn under
+                        L/C on due dates in case
+                        of usance bills and within 5 banking
+                        days from date of receipt of documents by you in case of sight bills. You shall be at liberty to
+                        crystallize the foreign
+                        currency rupee liability thereunder on the
+                        due date or on the expiry of the 5th banking day as the case may be and contract rate whichever
+                        may be applicable. <br> <br>
+                        I/ We undertake to reimburse to you on demand the rupee equivalent so determined together with
+                        the interest thereon at
+                        normal rate from date of negotiation to
+                        the date of crystallization and thereafter at penal rate as applicable thereof. <br> <br>
+                        You would book forward contracts if, we decide to cover the fluctuations in the exchange rates.
+                        I /We undertake to book
+                        such forward contracts forms part of the
+                        arrangement by you under the L/c. If I/We book forward contracts with other banks against this
+                        Letter of Credit I/we
+                        are/am liable to pay to you commission in
+                        lieu of exchange as per the rates prescribed by the bank from time to time in addition to swap
+                        and interest from the
+                        date of negotiation at the foreign centre
+                        till the date of credit of proceeds in your Nostro account. <br> <br>
+                        In case I /we do not book the forward contract, I/We undertake to buy the relative foreign
+                        exchange in connection with
+                        retirement of bills/documents etc under
+                        the letter of credit from you at the ruling rate of exchange. In case foreign exchange in
+                        connection with retirement is
+                        not being bought from you I/we shall pay
+                        commission in lieu of exchange in addition to swap cost and interest from the date of
+                        negotiation at the foreign center
+                        till the date of credit of proceeds in your
+                        Nostro account. <br> <br>
+                        I/We confirm that we are aware of Axis Bank Ltd’s Sanctions Policy Statement and that Axis Bank,
+                        including its
+                        subsidiaries and affiliates (“the Group”), is firmly
+                        committed to complying with all applicable sanctions laws (as imposed by UN, US, UK, EU or any
+                        other Government and/or
+                        Regulatory authorities) that are
+                        legally binding upon the Group and its businesses. <br> <br>
+                        I/We are further aware that Axis Bank Ltd may be unable to process any transactions that
+                        involves or have
+                        linkages/reference to any sanctioned
+                        countries*/territories*/parties including for cases where transhipment is involved <br> <br>
+                        I/We confirm that shipment and / or transhipment of goods covered under this transaction shall
+                        not involve any
+                        sanctioned countries /territories /parties.
+                        *Sanctioned Countries and Territories include Cuba, Iran, Syria, North Korea (also known as
+                        Democratic People’s Republic
+                        of Korea), Crimea and Sevastopol
+                        (also known as Crimean Autonomous Republic) and Sectorial Sanctioned Countries and Territories
+                        include Russia and
+                        Venezuela <br> <br>
+                        OFAC Declaration: In this connection, we declare, confirm and undertake that:
+                    </p>
+                    <p style="margin-left: 20px;">
+                        i) We are aware that <span
+                            style="outline: none;display: inline-block;width: 80px;border-bottom: 1px dotted black;"
+                            contenteditable="true"></span> (name of the country) is an entity against which sanctions by
+                        the Office of Foreign Assets (OFAC)
+                        of USA
+                        is in place. We undertake not to hold Axis Bank Ltd responsible for in any manner whatsoever in
+                        nature and hold Axis
+                        Bank Ltd fully
+                        indemnified against all losses and damages that may be caused to us on account of the funds
+                        remitted under this
+                        transaction being
+                        confiscated or blocked or seized by any authority/government/agency. <br> <br>
+                        ii) We further declare that we shall furnish any material information relating to this
+                        transaction as required by any
+                        authority/government/agency, now or in future. Also we authorize Axis Bank Ltd to make available
+                        any of the material
+                        information pertains our
+                        transaction to any authority/agency/entity without referring the matter to us.
+                    </p>
+                    <p>
+                        * I/We further declare that the undersigned has/have the authority to give this application,
+                        declaration and undertaking
+                        on behalf of the firm/company. As per the terms of sanction given by the Bank, we have to
+                        provide margin at <span
+                            style="outline: none;display: inline-block;width: 80px;border-bottom: 1px dotted black;"
+                            contenteditable="true"></span> % for the above mentioned LC.<br> <br>
+                        We authorize you to debit the necessary LC commission / other charges to our operating account
+                        number <span
+                            style="outline: none;display: inline-block;width: 80px;border-bottom: 1px dotted black;"
+                            contenteditable="true"></span> with your Bank
+                    </p>
+                    <p>
+                        Yours faithfully, <span style="outline: none;display: inline-block;width: 400px;"></span>
+                        (Signature of the applicant) <br> <br>
+                        Date : <span
+                            style="outline: none;display: inline-block;width: 80px;border-bottom: 1px dotted black;"
+                            contenteditable="true"></span> <span
+                            style="outline: none;display: inline-block;width: 350px;"></span> Account No.: <span
+                            style="outline: none;display: inline-block;width: 80px;border-bottom: 1px dotted black;"
+                            contenteditable="true"></span>
+                        <br> <br>
+                        Place : <span
+                            style="outline: none;display: inline-block;width: 80px;border-bottom: 1px dotted black;"
+                            contenteditable="true"></span> <span
+                            style="outline: none;display: inline-block;width: 350px;"></span> Address:
+                        <span style="outline: none;display: inline-block;width: 80px;border-bottom: 1px dotted black;"
+                            contenteditable="true"></span>
+                        <br> <br>
+                        *Applicable when the application /declaration /undertaking is signed on behalf of the firm /
+                        company
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div *ngIf="!done" style="
+            float: left;
+            display: block;
+            width: 78%;
+            margin-top: 40px;
+            margin-left: 43px;
+            ">
+            <div class="button1" title="Share As PDF" (click)="exportAsPDF('MyDIv')">Proceed to Preview</div>
+        </div>
+
+        <div *ngIf="done">
+            <p>Setup: 3 Preview</p>
+            <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+            <button class="button1" style="margin-bottom: 40px;">Send it via Email</button>
+            <div>
+                <iframe [src]="data6" height="500px" width="400px"></iframe>
+                <iframe [src]="doc" height="500px" width="400px"></iframe>
+            </div><br>
+            <button class="button1" style="margin-right: 10px;" (click)="edit()">Edit</button>
+            <button class="button1" style="margin-right: 10px;" (click)="submitTask()">Done</button>
+            <!-- <button (click)="download()">Download</button> -->
+        </div>
+
+    </main>
+
+</div>

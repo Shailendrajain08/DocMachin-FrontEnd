@@ -1,0 +1,335 @@
+<div class="content-wrap">
+
+    <main id="content" class="content table-padding bc" role="main">
+        <div id="mainId" class="bc" *ngIf="!done">
+            <div id="first" class="bc" style="width: 75%;">
+                <div style="margin-left: 40px;"  class="pdf_heading" >
+                    <p style="text-align: center; width: 100%;">Application for issue of Irrevocable Documentary Letter of Credit – Inland<br> 
+                   (All Pages to be signed along with Company stamp)</p>
+                </div>
+                <div style="text-align: right; margin-left: 40px;">
+                Date: <span
+                style="
+                outline: none;
+                    display: inline-block;
+                    width: 100px;
+                    border-bottom: 1px solid black;
+                    text-align: left;
+                "
+                contenteditable="true"
+                ></span>
+                </div>
+                <p style="display: table; width: 240px; margin-left: 40px;">
+                To, <br>
+                    The Manager <br>
+                    YES Bank Ltd., <br>
+                    Branch address
+                    <span
+                    style="
+                    outline: none;
+                        display: inline-block;
+                        width: 160px;
+                        border-bottom: 1px solid black;
+                    "
+                    contenteditable="true"
+                    ></span>
+                </p>
+                  
+               
+                <div style="margin-left: 40px; margin-top: 20px;" class="bc">
+                    
+                    <p style="margin-top: 10px;">We request you to open an irrevocable letter of credit as per details given below:
+                    </p>
+                    <table>
+                        <tr>
+                            <td class="lc">Date and place of expiry</td>
+                            <td class="wtd1">Date : <span style="outline: none;display: inline-block;width: 80px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span>Place :<span style="outline: none;display: inline-block;width: 80px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc">Name and address of the <br>
+                                    applicant</td>
+                            <td class="wtd1">Name <span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true">   {{applicant.fullName}} </span>  <br>
+                                Adress  <span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true">  {{item3.adress}}</span> <br>
+                                <span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc">Name and address of the <br>
+                                beneficiary</td>
+                            <td class="sl1">Name <span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true">   {{benneDetail.beneName}}</span> <br>
+                                Adress  <span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true">  {{ benneDetail.beneAdrs }}</span> <br>
+                                <span style="outline: none;display: inline-block;width: 350px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc">LC currency and amount</td>
+                            <td class="wtd1">(In figures) <span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span> <br>
+                                (In words)<span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span> <br></td>
+                           
+                        </tr>
+                        <tr >
+                            <td class="lc">Credit amount tolerance</td>
+                            <td class="wtd1">+/-<span style="outline: none;display: inline-block;width: 20px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span> %</td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="lc">LC to be transmitted vide <br>
+                                SFMS</td>
+                            <td class="wtd1">State the IFSC code , Name and Address of Advising Bank) <br>
+                                Bank Name <span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span> <br>
+                                Bank Adress<span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span><br>
+                                IFSC Code: <span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span> <br></td>
+                        </tr>
+                        <tr >
+                            <td class="lc">Credit available by <br>
+                                (Please tick any one) <br>
+                                Credit available with</td>
+                            <td class="wtd1">State the IFSC code , Name and Address of Advising Bank) <br>
+                                □ Any Bank  □ Negotiation restricted to <span style="outline: none;display: inline-block;width: 100px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span>(Bank <br>
+                                Name, Address, IFSC Code)</td>
+                        </tr>
+                        <tr >
+                            <td class="lc">Drafts at (Pls. Tick one)</td>
+                            <td class="wtd1">□ At SIGHT<br> <br>
+                                □ At USANCE <span style="outline: none;display: inline-block;width: 100px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span>(Pls. specify) <br></td>
+                        </tr>
+                        <tr >
+                            <td class="lc">PO/PI/Contract/Indent <br>
+                                reference</td>
+                            <td class="wtd1">Date : <span style="outline: none;display: inline-block;width: 100px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span>Place :<span style="outline: none;display: inline-block;width: 100px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span></td>
+                        </tr>
+                        <tr >
+                            <td class="lc">Partial shipments (Pls. <br>
+                                tick one)</td>
+                            <td class="wtd1">□ Prohibited □ Permitted</td>
+                        </tr>
+                        <tr >
+                            <td class="lc">Transshipments (Pls. <br>
+                                tick one)</td>
+                            <td class="wtd1">□ Prohibited □ Permitted</td>
+                        </tr>
+                        <tr >
+                            <td class="lc">Shipment from</td>
+                            <td class="wtd1"><span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span></td>
+                        </tr>
+                        <tr >
+                            <td class="lc">Shipment to</td>
+                            <td class="wtd1"><span style="outline: none;display: inline-block;width: 200px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span>Via <span style="outline: none;display: inline-block;width: 200px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span></td>
+                        </tr>
+                        <tr >
+                            <td class="lc">Latest date of shipment</td>
+                            <td class="wtd1"><span style="outline: none;display: inline-block;width: 50px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span>dd<span style="outline: none;display: inline-block;width: 50px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span>mm<span style="outline: none;display: inline-block;width: 90px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span>yyyy <br></td>
+                        </tr>
+                        
+    
+                    </table> <br>
+                    <table>
+                        <tr>
+                            <td class="lc">Quantity and description <br>
+                                of goods</td>
+                            <td ><span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc">Contract terms (Pls. tick <br>
+                                one INCO Term) If any <br>
+                                other please specify with <br>
+                                place</td>
+                            <td >□ Ex works □ FOB □ FCA □ CIP □ CFR □ CPT □ CIF □ Any other <br>
+                                <span style="outline: none;display: inline-block;width: 100px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="lc">Presentation Period</td>
+                            <td ><span style="outline: none;display: inline-block;width: 200px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span>days from shipment</td>
+                        </tr>
+                    </table>
+                    <p>
+                        <b>For Margin:</b> □ Account no. <span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>
+                    </p>
+                    <p style="margin-left: 60px;">
+                        □ Existing FD no.<span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span> to be utilized.
+                    </p>
+                    <p>
+                       <b>Line limit to be utilized:</b> <span style="outline: none;display: inline-block;width: 400px;border-bottom: 1px solid black;"
+                       contenteditable="true"></span>
+                    </p>
+                    <p style="margin-left: 20px;">
+                        □ Signed Commercial Invoice(s) in <span style="outline: none;display: inline-block;width: 50px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span> original and <span style="outline: none;display: inline-block;width: 50px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span> copies. <br> <br>
+                        □ Original Lorry receipt/ Railway receipt consigned to YES Bank Ltd account applicant showing
+                        that the goods have been dispatched and marked ‘freight to pay/freight prepaid’ and mentioning
+                        our LC number and date. Lorry receipt /Railway receipt should have two parallel lines across it
+                        in red ink and should contain the words ”the consignee copy of this receipt is intended to be
+                        negotiated with a bank” <br> <br>
+                        □ Inland transit Insurance policy, for at least the invoice value of the goods plus 10 pct endorsed in
+                        blank, covering Inland transit risk as per Inland transit clauses (a), SRCC as per institute strike
+                        clauses (cargo) with claims payable irrespective of percentage, should accompany the transport
+                        documents. Insurance to cover risk from supplier’s warehouse to opener warehouse at<span style="outline: none;display: inline-block;width: 150px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>. <br> <br>
+                        □ Insurance covered by applicant <br> <br>
+                        A certificate from the beneficiary certifying that they have Faxed, immediately on dispatch,
+                        details of dispatch covering (a) Name of the carrier (b) Railway receipt no. or Lorry receipt no.(c)
+                        Place of taking in charge (d) Place of final destination , to <span style="outline: none;display: inline-block;width: 150px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>(Name and
+                        Address of the Insurance company) quoting Insurance policy number <span style="outline: none;display: inline-block;width: 150px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>
+                        dated <span style="outline: none;display: inline-block;width: 150px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>. <br> <br>
+                        □ In case of Open Insurance policy, we hereby confirm that: <br>
+                        “There is sufficient balance available in the Insurance policy no.<span style="outline: none;display: inline-block;width: 150px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>dated
+                        <span style="outline: none;display: inline-block;width: 100px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span>, to cover the shipment under the LC and we will take care of necessary periodic
+                        declarations to be made to the Insurance Company, if any required regarding the shipments
+                        covered under this LC.” <br> <br>
+
+
+
+                    </p>
+                    <p>
+                       <b>Additional conditions:</b>  <br> 
+                       1. Applicant bank charges to applicant account beneficiary bank charges to beneficiary account <br>
+                       2. Any other please specify <span style="outline: none;display: inline-block;width: 400px;border-bottom: 1px solid black;"
+                       contenteditable="true"></span> <br>
+                       Other instructions: <br>
+                       <span style="outline: none;display: inline-block;width: 700px;border-bottom: 1px solid black;"
+                                contenteditable="true"></span><br>
+                       _____________________________________________________________________________________________________________________         
+                    </p>
+                    <p>
+                        <b>We hereby agree and undertake as follows:</b> <br>
+                        1. We hereby agree that the above application and the issuance of Letter of Credit is subject to the
+                            provisions of the Uniform Customs and Practices for Documentary Credits (2007) Revision, ICC
+                            Brochure No 600 or any other modifications or amendments thereof for the time being in force. <br> 
+                        2. In addition, we hereby irrevocably and unconditionally agree to accept the General Conditions of
+                        the continuing agreement and indemnity signed in your favour from time to time. <br>
+                        3. We confirm we have not opened any other letter of credit against the said order with any other
+                          bank. <br>
+                        4. We authorize you to debit our current account no <span style="outline: none;display: inline-block;width: 300px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>for all charges in
+                        connection with the issue of this Letter of Credit (unless otherwise specified elsewhere in this
+                        application) <br>
+                        5. In case of transmission vide SFMS, we shall not hold YES Bank liable for any delay, charges,
+                        costs, etc. incurred post transmission of the LC to the advising bank. <br>
+
+                    </p>
+                    <p>
+                        <b>Declaration:</b> <br>
+                        I/we also declare that the transaction does not have linkage with any Specially Designated Nationals and
+                        Blocked Persons (SDN)/countries listed under OFAC in any manner. If the transaction involves linkage
+                        with any Specially Designated Nationals and Blocked Persons (SDN)/countries listed under OFAC in
+                        any manner, I/we undertake not to hold YES Bank Limited responsible for any of its action or inaction in
+                        respect of the OFAC-linked transactions. <br> <br>
+                        <b> Note</b> – Default GST registration details as updated in the Bank records will be considered for the said
+                        request. In case the no. to be considered is different, please notify below.
+                    </p>
+                    <p style="margin-bottom: 0px;">
+                        GSTIN Registration no.
+                    </p>
+                    <table>
+                        <tr>
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[0]}}</span></td>
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[1]}}</span></td> 
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[2]}}</span></td>
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[3]}}</span></td>
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[4]}}</span></td> 
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[5]}}</span></td>
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[6]}}</span></td>
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[7]}}</span></td> 
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[8]}}</span></td>
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[9]}}</span></td>
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[10]}}</span></td> 
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[11]}}</span></td>
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[12]}}</span></td>
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[13]}}</span></td> 
+                        <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"contenteditable="true">{{arr[14]}}</span></td>
+                        </tr> 
+                    </table>
+                </div>
+               
+                
+            </div>
+    
+           
+    
+            <div id="third" class="bc">
+    
+                <div style="float: left; display: block; width: 78%; margin-left: 43px; margin-top: 20px;" class="bc">
+                    
+                    <div>
+                        <p>
+                            Thanking You <br>
+                            Warm Regards <br>
+                            Authorized Signatory <br>
+                            Company Stamp / Seal
+                        </p>
+                    </div> <br>
+                    <div>
+                        <p>
+                            Date: <span style="outline: none;display: inline-block;width: 100px;border-bottom: 1px solid black;"
+                            contenteditable="true"></span> <br>
+                            Place: <span style="outline: none;display: inline-block;width: 100px;border-bottom: 1px solid black;"
+                            contenteditable="true"></span>
+                        </p>
+                    </div>
+    
+                </div>
+            </div>
+            
+        </div>
+        
+        <div *ngIf="!done"
+            style="
+            float: left;
+            display: block;
+            width: 78%;
+            margin-top: 40px;
+            margin-left: 43px;
+            "
+        >
+        <div class="button1" title="Share As PDF" (click)="exportAsPDF('MyDIv')">Proceed to Preview</div>
+        </div>
+      
+      <div *ngIf="done">
+        <p>Setup: 3 Preview</p>
+        <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+        <button class="button1" style="margin-bottom: 40px;">Send it via Email</button>
+        <div>
+          <iframe [src]="data6" height="500px" width="400px"></iframe>
+          <iframe [src]="doc" height="500px" width="400px"></iframe>
+        </div><br>
+        <button class="button1" style="margin-right: 10px;" (click)="edit()" >Edit</button>
+      <button class="button1" style="margin-right: 10px;" (click)="submitTask()">Done</button>
+        <!-- <button (click)="download()">Download</button> -->
+      </div>
+
+    </main>
+
+</div>

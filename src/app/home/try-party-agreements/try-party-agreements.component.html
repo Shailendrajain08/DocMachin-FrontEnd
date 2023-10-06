@@ -1,0 +1,159 @@
+<div style="margin-left: 0px" class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+
+        <div style="
+    display: flex;
+    flex-direction: rows;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.8%;
+    padding-left: 1%;
+    padding-bottom: 0.8%;
+    /*border: 0.5px solid rgba(0, 0, 0, 0.2);*/
+    margin-left: 40px;
+    width: 85%;
+">
+            <!-- *ngIf="!showInvoice" -->
+            <div style="display: flex; align-items: center">
+                <h3 class="heading">Tri-Party Agreements Documents</h3>
+                <!-- {{doc}} -->
+            </div>
+
+            <div>
+                Date:
+                <select name="subject" id="subject" style="border: 1px solid #C6CBD4;color: black;padding: 4px;font-weight: 100;margin-right: 5px;font-size: 14px;">
+            <option value="" selected="selected">Today</option>
+        </select> Type:
+                <select name="topic" id="topic" style="border: 1px solid #C6CBD4;color: black;padding: 4px;font-weight: 100;margin-right: 5px;font-size: 14px;">
+            <option value="" selected="selected">All</option>
+        </select>
+            </div>
+            <div style="padding-top: 0.7%">
+                <button style=" color: #ffffff !important; font-weight: 100 ; font-family: Poppins ,sans-serif; padding: 5px 8px; font-size: 14px;
+        background-color: #49A2D7;
+        border: none;
+        border-radius: 5px;" (click)="exportToExcel()">Export To Excel</button>
+                <button class="upload-button" (click)="triParty()">
+            Upload New
+        </button>
+            </div>
+        </div>
+
+
+        <div class="analytics" #epltable>
+            <div style="width: 100%" class="analytics-side">
+                <!-- *ngIf="!showInvoice" -->
+                <div style="width: 100%" class="row">
+                    <div style="width: 100%; margin:5%; left: -70px; top:-60px" class="col-12 mb-lg padding" id="container">
+                        <!-- *ngIf="!showInvoice" -->
+                        <section style="width: 200%; margin-left: 70px; margin-top: -12px;" class="pb-0 box-shadow">
+                            <div style="margin-left: -79px; height: 638px;" class="widget-body p-0 support table-wrapper">
+                                <table style="margin-left: 50px;width: 47% !important;margin-top: -1px;" class="table table-striped mb-0">
+                                    <!-- *ngIf='pipo' -->
+                                    <thead style="width: 100%;height: 54px;background: white;position: sticky;top: 0;">
+                                        <tr class="text-muted table-heading" style="opacity: 45%; font-size: 14px; color:black !important; font-weight: 300 !important; padding: 5px; border-bottom: 1px solid #f2f4f8;">
+                                            <!-- <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th> -->
+                                            <th scope="col"><span class="pl-3" style="margin-left: 9px;">DATE</span></th>
+                                            <th scope="col">PI/PO No.</th>
+                                            <th scope="col">T P A No.</th>
+                                            <th scope="col">T P A Amount</th>
+                                            <th scope="col">Currency</th>
+                                            <th scope="col">Buyer Name</th>
+                                            <th scope="col">View</th>
+                                            <th scope="col"></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-dark">
+                                        <tr class="table-row" *ngFor="let data of item1; let i = index">
+
+                                            <!-- (click)="
+                                        getInvoices(data, i) && getTransactions(data.pi_poNo) -->
+                                            <!-- <th class="rect">
+                                                <img src="./assets/Rectangle-13.png" />
+                                            </th> -->
+                                            <td style="padding: 20px 35px;">{{ data.date }}</td>
+
+                                           <td class="sb-no"> {{ getPipoNumbers(data) }} </td>
+
+                                            <td>
+                                                <div *ngIf="!optionsVisibility[i]">
+                                                    {{data.triPartyAgreementNumber}}
+                                                </div>
+
+                                                <div *ngIf="optionsVisibility[i]">
+                                                    <input class="tblInput form-control" name="triPartyAgreement" type="text" placeholder="Tri-Party Agreement Number" [(ngModel)]="data.triPartyAgreementNumber">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div *ngIf="!optionsVisibility[i]">
+                                                    {{data.triPartyAgreementAmount}}
+                                                </div>
+
+                                                <div *ngIf="optionsVisibility[i]">
+                                                    <input class="tblInput form-control" name="triPartyAgreementAmount" type="text" placeholder="Tri Party Agreement Amount" [(ngModel)]="data.triPartyAgreementAmount">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div *ngIf="!optionsVisibility[i]">
+                                                    {{data.currency}}
+                                                </div>
+
+                                                <div *ngIf="optionsVisibility[i]">
+                                                    <input class="tblInput form-control" name="currency" type="text" placeholder="currency" [(ngModel)]="data.currency">
+                                                </div>
+                                            </td>
+                                            <td>{{data.buyerName}}</td>
+                                            <td (click)=" openLetterOfCredit(content); viewLC(data)">
+                                                view
+                                            </td>
+                                            <td>
+                                                <button class="savBtn" *ngIf="optionsVisibility[i]" (click)="toSave(data, i)">Save</button>
+                                                <button class="savBtn" *ngIf="!optionsVisibility[i]" (click)="toEdit(i)">Edit</button>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #content let-modal>
+
+            <div class="modal-body">
+                <div class="row no-gutter">
+                    <!-- The image half -->
+                    <!-- <div class="col-md-6 d-none d-md-flex bg-image"></div> -->
+
+
+                    <!-- The content half -->
+                    <div class="col-md-7" style="margin: 10px;">
+                        <div class="login d-flex py-5" style="padding: 0px !important;">
+
+                            <!-- Demo content-->
+                            <div class="container popup">
+                                <div class="row">
+                                    <div class="col-lg-10 col-xl-7 mrg">
+                                        <h6 class="display-6">Tri-Party Agreement</h6>
+
+                                        <iframe [src]="viewData" width="315%" height="500px"></iframe>
+                                        <button type="submit" style="margin-left: 250px;" class="submitBTN" (click)="modal.dismiss('Cross click')">OK</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </ng-template>

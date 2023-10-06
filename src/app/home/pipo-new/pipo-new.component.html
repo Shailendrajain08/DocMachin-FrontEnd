@@ -1,0 +1,346 @@
+<div class="content_top_common">
+    <div class="content-wrap">
+        <div class="container-fluid">
+            <div class="import_export_sec">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="Dashbord_sec">
+                            <h2 class="title_dash">PI PO</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="float_right_page">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a routerLink="/home/view-pipo">Documents</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">PI PO</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content_white_background">
+                <main id="content" class="table-padding" role="main">
+                    <div class="filter_section_top">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-12"></div>
+                            <div class="col-md-8 col-sm-8 col-12">
+                                <div class="filter_right_new">
+                                    <button type="button" class="btn btn-primary" (click)="exportToExcel()"><span
+                                            class="ex_icon"></span>Export</button>
+                                    <div class="filter_posit">
+                                        <button (click)="onclick()" type="button" class="btn btn-secondary"><span
+                                                class="fi_icon"></span>Filter</button>
+                                        <div *ngIf="filtervisible" class="bg-white filter_main_sec">
+                                            <form class="select_filter_options">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-12">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label">Commodity</label>
+                                                        <select class="form-select form-control"
+                                                            aria-label="Default select example"  [(ngModel)]="commodity" name="com">
+                                                            <option value=""> commodities</option>
+                                                            <option *ngFor="let buyer of commodityArray">{{buyer.como}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label">Location</label>
+                                                        <select class="form-select form-control"
+                                                            aria-label="Default select example"  [(ngModel)]="location" name="location">
+                                                            <option value="">locations</option>
+                                                            <option *ngFor="let bene of locationArray">{{ bene.loc }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label">Buyer</label>
+                                                        <select class="form-select form-control"
+                                                            aria-label="Default select example" [(ngModel)]="buyer" name="banee">
+                                                            <option value="">Buyers</option>
+                                                            <option *ngFor="let bene of benneDetailArray
+                                                            ">{{ bene.buyerName }}
+                                                            </option>
+                                                            
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <label for="exampleFormControlInput1" class="form-label">Start
+                                                            Date</label>
+                                                        <input class="form-select form-control" type="date"
+                                                            placeholder="Start Date" [(ngModel)]="startDate" name="startdate" required />
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <label for="exampleFormControlInput1" class="form-label">End
+                                                            Date</label>
+                                                        <input class="form-select form-control" type="date"
+                                                            placeholder="End Date" [(ngModel)]="endDate" name="enddate" required />
+                                                    </div>
+                                                </div>
+                                                <div class="footer_buttons">
+                                                    <button type="button" class="btn btn-light" (click)="resetFilter()">RESET</button>
+                                                    <button type="submit" class="btn btn-primary" (click)="filter()">APPLY</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success"><span class="add_icon"></span>ADD
+                                        NEW</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data_table_new" #piposummery>
+                        <div class="record-container">
+                            <!-- <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="custom-checkbox">
+                                                <label><input type="checkbox" id="customCheckBox1"></label>
+                                            </div>
+                                        </th>
+                                        <th>Invoice No.</th>
+                                        <th>Invoice Date</th>
+                                        <th>Consignee Name</th>
+                                        <th>Branch</th>
+                                        <th>Commodity</th>
+                                        <th>Amount</th>
+                                        <th>Incoterm</th>
+                                        <th>Payment Term</th>
+                                        <th>
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="custom-checkbox">
+                                                <label><input type="checkbox" id="customCheckBox2"></label>
+                                            </div>
+                                        </td>
+                                        <td>PO15</td>
+                                        <td>08-09-2022</td>
+                                        <td>BRIL LTD</td>
+                                        <td>Mumbai</td>
+                                        <td>Apple</td>
+                                        <td>USD 100000</td>
+                                        <td>FOB/CIF</td>
+                                        <td>Advance - 50% / LC 50%</td>
+                                        <td>
+                                            <div class="action_list">
+                                                <a routerLink="/home/view-pipo"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                <a routerLink="/home/edit-pipo"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                <a routerLink="/home/view-pipo"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="custom-checkbox">
+                                                <label><input type="checkbox" id="customCheckBox3"></label>
+                                            </div>
+                                        </td>
+                                        <td>PO15</td>
+                                        <td>08-09-2022</td>
+                                        <td>BRIL LTD</td>
+                                        <td>Mumbai</td>
+                                        <td>Apple</td>
+                                        <td>USD 100000</td>
+                                        <td>FOB/CIF</td>
+                                        <td>Advance - 50% / LC 50%</td>
+                                        <td>
+                                            <div class="action_list">
+                                                <a routerLink="/dashboard"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                <a routerLink="/dashboard"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                <a routerLink="/dashboard"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="custom-checkbox">
+                                                <label><input type="checkbox" id="customCheckBox4"></label>
+                                            </div>
+                                        </td>
+                                        <td>PO15</td>
+                                        <td>08-09-2022</td>
+                                        <td>BRIL LTD</td>
+                                        <td>Mumbai</td>
+                                        <td>Apple</td>
+                                        <td>USD 100000</td>
+                                        <td>FOB/CIF</td>
+                                        <td>Advance - 50% / LC 50%</td>
+                                        <td>
+                                            <div class="action_list">
+                                                <a routerLink="/dashboard"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                <a routerLink="/dashboard"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                <a routerLink="/dashboard"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="custom-checkbox">
+                                                <label><input type="checkbox" id="customCheckBox4"></label>
+                                            </div>
+                                        </td>
+                                        <td>PO15</td>
+                                        <td>08-09-2022</td>
+                                        <td>BRIL LTD</td>
+                                        <td>Mumbai</td>
+                                        <td>Apple</td>
+                                        <td>USD 100000</td>
+                                        <td>FOB/CIF</td>
+                                        <td>Advance - 50% / LC 50%</td>
+                                        <td>
+                                            <div class="action_list">
+                                                <a routerLink="/dashboard"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                <a routerLink="/dashboard"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                <a routerLink="/dashboard"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="custom-checkbox">
+                                                <label><input type="checkbox" id="customCheckBox4"></label>
+                                            </div>
+                                        </td>
+                                        <td>PO15</td>
+                                        <td>08-09-2022</td>
+                                        <td>BRIL LTD</td>
+                                        <td>Mumbai</td>
+                                        <td>Apple</td>
+                                        <td>USD 100000</td>
+                                        <td>FOB/CIF</td>
+                                        <td>Advance - 50% / LC 50%</td>
+                                        <td>
+                                            <div class="action_list">
+                                                <a routerLink="/dashboard"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                <a routerLink="/dashboard"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                <a routerLink="/dashboard"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="custom-checkbox">
+                                                <label><input type="checkbox" id="customCheckBox4"></label>
+                                            </div>
+                                        </td>
+                                        <td>PO15</td>
+                                        <td>08-09-2022</td>
+                                        <td>BRIL LTD</td>
+                                        <td>Mumbai</td>
+                                        <td>Apple</td>
+                                        <td>USD 100000</td>
+                                        <td>FOB/CIF</td>
+                                        <td>Advance - 50% / LC 50%</td>
+                                        <td>
+                                            <div class="action_list">
+                                                <a routerLink="/dashboard"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                <a routerLink="/dashboard"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                <a routerLink="/dashboard"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="right_pagenation">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div> -->
+
+                            <!-- <th>Invoice No.</th>
+                                        <th>Invoice Date</th>
+                                        <th>Consignee Name</th>
+                                        <th>Branch</th>
+                                        <th>Commodity</th>
+                                        <th>Amount</th>
+                                        <th>Incoterm</th>
+                                        <th>Payment Term</th>
+                                        <th>
+                                            Action
+                                        </th> -->
+
+                            <table mat-table [dataSource]="dataSource">
+
+                                <ng-container matColumnDef="pi_poNo">
+                                    <th mat-header-cell *matHeaderCellDef> Invoice No</th>
+                                    <td mat-cell *matCellDef="let element"> {{element.pi_poNo}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="date">
+                                    <th mat-header-cell *matHeaderCellDef> Invoice Date </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.date}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="buyerName">
+                                    <th mat-header-cell *matHeaderCellDef> Consignee Name </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.buyerName}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="location">
+                                    <th mat-header-cell *matHeaderCellDef> BRANCH </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.location}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="commodity">
+                                    <th mat-header-cell *matHeaderCellDef> Commodity </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.commodity}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="amount">
+                                    <th mat-header-cell *matHeaderCellDef> Amount </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.amount}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="paymentTerm">
+                                    <th mat-header-cell *matHeaderCellDef> Payment Term </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.paymentTerm[0].type}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="actions">
+                                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <a routerLink="/dashboard"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a routerLink="/dashboard"><i class="fa fa-pencil-square-o"
+                                                aria-hidden="true"></i></a>
+                                        <a routerLink="/dashboard"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+
+                            <mat-paginator (page)="handlePage($event)"></mat-paginator>
+
+
+
+                        </div>
+                        <br><br>
+                        <div>
+                            <!-- <button mat-raised-button (click)="logSelection()">Console Log Selected</button> -->
+                        </div>
+                        <!-- Copyright 2018 Google Inc. All Rights Reserved.
+                                Use of this source code is governed by an MIT-style license that
+                                can be found in the LICENSE file at http://angular.io/license -->
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>

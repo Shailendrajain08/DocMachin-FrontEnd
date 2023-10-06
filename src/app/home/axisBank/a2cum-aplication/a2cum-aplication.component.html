@@ -1,0 +1,484 @@
+<div class="content-wrap">
+
+    <main id="content" class="content table-padding bc" role="main">
+        <div id="mainId" *ngIf="!done && checking == 'no'" class="bc">
+            <div id="first" class="bc">
+                <p> <b style="border-bottom: 2px solid black; margin-left: 20px; ">For Office use:</b> </p>
+                <table style="margin-left: 20px;">
+                    <tr>
+                        <td class="wtd4"> <b>AD Code No</b> </td>
+                        <td class="wtd4"> <b>Form No</b></td>
+                        <td class="wtd4"> <b>Currency</b> </td>
+                        <td class="wtd4"> <b>Amount</b></td>
+                        <td class="wtd4"> <b>Equivalent to Rs</b></td>
+                    </tr>
+                    <tr>
+                        <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="wtd4"><b>Customer ID</b></td>
+                        <td class="wtd4"><b>Transaction type</b></td>
+                        <td class="wtd4"><b>TR/ FWC Amount</b></td>
+                        <td class="wtd4"><b>TR/ FWC Rate </b></td>
+                        <td class="wtd4"><b>TR/ FWC Ref no.</b></td>
+                    </tr>
+                    <tr>
+                        <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                </table>
+                <div style="margin-left: 26%; ">
+                    <p style="margin-bottom: 0px !important; border-bottom: 3px solid black; width: 30%; ">FORM A2 cum
+                        Application<br> </p>
+                    <p style="margin-left:-23%"> (For payments other than imports and remittances covering intermediary
+                        trade)</p>
+                </div>
+                <div style="margin-left: 40px; margin-top: 20px; width: 80%;" class="bc">
+                    <p>I/We <span
+                            style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                            contenteditable="true">{{applicant.fullName}}</span>(Name
+                        of applicant remitter) <br><br>
+                        PAN No.<span
+                            style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span>
+                        <br>
+                        (For remittances exceeding USD 25,000 and for all capital account transactions)
+                    </p>
+                    Address <span
+                        style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                        contenteditable="true">{{item3.adress}}</span> <br>
+
+                    authorize <span
+                        style="outline: none;display: inline-block;width: 200px; border-bottom: 1px solid black;"
+                        contenteditable="true"></span> (Name of AD branch) to
+                    debit my <br> Savings Bank/ Current/ RFC/ EEFC A/c. No.<span
+                        style="outline: none;display: inline-block;width: 80px; border-bottom: 1px solid black;"
+                        contenteditable="true"></span> together with their charges*
+                    and
+                    <span>a) Issue a draft : Beneficiary&#39;s Name</span><span
+                        style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                        contenteditable="true">{{benneDetail.beneName}}</span> <br>
+                    <span style="outline: none;display: inline-block;width: 100px;"></span> Address: <span
+                        style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                        contenteditable="true">{{ benneDetail.beneAdrs }}</span> <br>
+                    b) Effect the foreign exchange remittance directly <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) Beneficiary&#39;s Name <span
+                        style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                        contenteditable="true">{{benneDetail.beneName}}</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2) Name and address of the bank <span
+                        style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                        contenteditable="true">{{benneDetail.beneBankName}} {{benneDetail.beneBankAdress}}</span> <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3) Account No. <span
+                        style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                        contenteditable="true"> {{benneDetail.beneAccNo}}</span> <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4) SWIFT/IBAN <span
+                        style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                        contenteditable="true"> {{benneDetail.iban}}</span> <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5) Foreign Bank charges <span
+                        style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"></span>
+                    OUR/BEN/SHA <br>
+                    c) Issue travellers cheques for <span
+                        style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                        contenteditable="true"></span>
+                    d) Issue foreign currency notes for <span
+                        style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                        contenteditable="true"></span>
+                    <br> <br>
+                    Amount ( specify currency) <span
+                        style="outline: none;display: inline-block;width: 300px; border-bottom: 1px solid black;"
+                        contenteditable="true"> {{ item2.amount }}</span>
+                    <p style="margin-top: 10px;">
+                        <b>Rate to be booked of FX Retail Platform YES/NO CCIL Customer ID:</b> <span
+                            style="outline: none;display: inline-block;width: 60px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span>
+                    </p>
+                    <table>
+                        <tr>
+                            <td class="wtd4"> Sr.No </td>
+                            <td class="wtd4"> Whether under LRS(Yes/No)</td>
+                            <td class="wtd4"> Purpose Code </td>
+                            <td class="wtd4"> Description</td>
+                        </tr>
+                        <tr>
+                            <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                    contenteditable="true"></span></td>
+                            <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                    contenteditable="true"></span></td>
+                            <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                    contenteditable="true">{{file}}</span></td>
+                            <td class="wtd4"><span style="outline: none;display: inline-block;"
+                                    contenteditable="true">{{details}}</span></td>
+                        </tr>
+                    </table>
+                    <p>
+                        Payment for import of services (Purpose Group Nos. 02, 03, 05, 06, 07, 08, 09, 10, 11, 15, 16 or
+                        17), please indicate:
+                        Name of the country providing ultimate <br>
+                        services<span
+                            style="outline: none;display: inline-block;width: 200px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span>
+                    </p>
+                    <p>
+                        (Remitter should put a tick (√ ) against an appropriate purpose code. In case of doubt/
+                        difficulty, the AD bank should be consulted).
+                    </p>
+                    <p>
+                        <b>Declaration (Under FEMA 1999):</b>
+                    </p>
+                    <p style="margin-left: 20px; margin-bottom: 0px;">
+                        1) # I, <span
+                            style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"
+                            contenteditable="true">{{applicant.fullName}}</span>(Name), hereby declare
+                        that the total amount of foreign exchange purchased
+                        from or remitted through, all sources in India during the financial year including this
+                        application is within the overall limit of the Liberalised Remittance Scheme prescribed by the
+                        Reserve Bank of India and certify that the source of funds for making the said remittance
+                        belongs to me and the foreign exchange will not be used for prohibited purposes.<br>
+                        <b>Details of the remittances made/transactions effected under the Liberalised Remittance Scheme
+                            in the current financial year (April- March)</b> <br>
+
+                    </p>
+                    <table>
+                        <tr>
+                            <td class="wtd4"> <b>SL No</b> </td>
+                            <td class="wtd4"> <b> Date </b></td>
+                            <td class="wtd4"> <b> Amount </b> </td>
+                            <td class="wtd4"> <b>Name and address of AD branch/FFMC through which <br>
+                                    the transaction has been effected </b> </td>
+                        </tr>
+                        <tr>
+                            <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                    contenteditable="true">1</span></td>
+                            <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                    contenteditable="true">{{ item2.date }}</span></td>
+                            <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                    contenteditable="true">{{ item2.amount }}</span></td>
+                            <td class="wtd4"><span style="outline: none;display: inline-block;width: 150px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+                    </table>
+                    <p style="margin-left: 20px;">
+                        2) # The total amount of foreign exchange purchased from or remitted through, all sources in
+                        India during this calendar year including this application is within USD<span
+                            style="outline: none;display: inline-block;width: 30px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span>(USD<span
+                            style="outline: none;display: inline-block;width: 20px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span>) the
+                        annual limit prescribed by Reserve Bank of India for the said purpose. <br>
+                        3) # Foreign exchange purchased from you is for the purpose indicated above. <br>
+                        4) I / we agree that in case the beneficiary account is maintained in other than remitting
+                        currency, the intermediary bank may convert the currency to beneficiary account designated
+                        currency. <br>
+
+                    </p>
+                    <p style="margin-left: 50px;">
+                        (Signature of the applicant) <br> (Name) <br>Date:
+                    </p>
+                    <p style="margin-left: 50px;">
+                        <b>Certificate by the Authorised Dealer</b> <br>
+                        This is to certify that the remittance is not being made by/ to ineligible entities and that the
+                        remittance is in conformity with the instructions issued by the Reserve Bank from time to time
+                        under the Scheme. <br>
+                        Name and designation of the authorised official: <br> <br>
+                        Signature, Stamp and seal <br>
+                        Date: <span
+                            style="outline: none;display: inline-block;width: 80px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span><br>
+                        Place: <span
+                            style="outline: none;display: inline-block;width: 80px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span>
+                        <br> <br>
+                        # (Strike out whichever is not applicable) <br>
+                        <b>Purpose specific declarations:</b> <br>
+                        □ In case of Import of Services:
+
+                    </p>
+                    <p style="margin-left: 70px;">
+                        ◦ We confirm that the <span
+                            style="outline: none;display: inline-block;width: 50px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span>(specify nature) Services
+                        have been rendered by beneficiary
+                        with respect to invoice number/s <span
+                            style="outline: none;display: inline-block;width: 70px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span>(specify invoice nos.)
+                        and there is no element of advance in it. We confirm that we have not made remittances, with
+                        respect to consultancy for the <span
+                            style="outline: none;display: inline-block;width: 70px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span>(specify name of the
+                        project) exceeding USD<span
+                            style="outline: none;display: inline-block;width: 70px; border-bottom: 1px solid black;"
+                            contenteditable="true"></span>(specify one or ten)
+                        million. <br>
+                    </p>
+                    <p style="margin-left: 50px; margin-bottom: 0px;">
+                        □ We confirm that the services with respect to invoice No/s ( Specify Invoice No.s) are related
+                        to specified services or specified technologies as defined in " The Foreign Trade (Development
+                        And Regulation ) Act ,1992" and hence we attach here with Import Export Code (IEC). <br>
+                    </p>
+                    <p style="margin-left: 70px; margin-bottom: 0px;">
+                        ◦ In case of advance remittance towards import of services, I/ We undertake to produce within
+                        six months to the authorized dealer the evidence of import of services as per below matrix <br>
+                    </p>
+                    <table style="margin-left: 40px;">
+                        <tr>
+                            <td class="ll1"> <b>Sr No</b> </td>
+                            <td class="ll2"> <b> Remittance / <br>
+                                    Import Value</b></td>
+                            <td class="ll3"> <b> Evidence </b> </td>
+                        </tr>
+                        <tr>
+                            <td class="wtd4">1.</td>
+                            <td class="wtd4">Upto USD 100,000 <br> or its equivalent</td>
+                            <td class="wtd4">Self-declaration signed by either CEO/CFO/Director/MD/CS/
+                                GM/Proprietor/Partner confirming that services for which remittance was made have been
+                                availed</td>
+                        </tr>
+                        <tr>
+                            <td class="wtd4">2.</td>
+                            <td class="wtd4">Above USD 100,000 <br> or its equivalent</td>
+                            <td class="wtd4">Certificate issued by Chartered Accountant of the company/firm confirming
+                                that services for which remittance was made have been availed.</td>
+                        </tr>
+                    </table>
+                    <div style="margin-left: 20px; margin-top: 20px;">
+                        <p>
+                            I/We declare that in case the services are not rendered within six months from the date of
+                            remittance, I/We will arrange for repatriation of the proceeds back to India and provide the
+                            details of inward remittance to the Authorized Dealer.
+                        </p>
+                        <p>
+                            □ S0806: <br>
+                            We confirm that the current remittance for subscription vide invoice number/s <span
+                                style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"
+                                contenteditable="true"></span>
+                            (specify invoice nos.) does not involve any banned or proscribed books/ magazines.
+                        </p>
+                        <p>
+                            □ S1002: <br>
+                            We could not declare agency commission on EDF no. <span
+                                style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"
+                                contenteditable="true"></span> due to
+                            <span
+                                style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"
+                                contenteditable="true"></span>(specify reason).
+                            <br>
+                            We confirm that the agency commission with respect to EDF <span
+                                style="outline: none;display: inline-block;width: 50px; border-bottom: 1px solid black;"
+                                contenteditable="true"></span>(specify EDF nos.)
+                            lodged vide Axis Bank bill ref number<span
+                                style="outline: none;display: inline-block;width: 80px; border-bottom: 1px solid black;"
+                                contenteditable="true"></span>have not been paid by
+                            us through any other AD.
+                        </p>
+                        <p>
+                            □ S1501: <br>
+                            We confirm having surrendered the proportionate incentive against export invoice number/s
+                            <span
+                                style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"
+                                contenteditable="true"></span>
+                            (specify invoice nos.). Axis Bank bill ref no<span
+                                style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"
+                                contenteditable="true"></span>.
+                        </p>
+                        <p>
+                            □ S1007 : <br>
+                            The remittance represents charges incurred by the Corporate towards the telecast/
+                            advertisement already been published in foreign countries and not in India alone and the
+                            amount due to the overseas party for the telecast/advertisement
+                        </p>
+                        <p>
+                            □ S0603 : <br>
+                            (a) The Remittance is as per the agreement with the Reinsurance Partner & IRDA guidelines
+                            and (b) reinsurance business is within the overall reinsurance business approved by their
+                            board in consultation with IRDA.
+                        </p>
+                        <p>
+                            <b>OFAC Declaration:</b> <br>
+                            1. In this connection, we declare, confirm and undertake that: <br>
+                            We are aware that (name of the country) is an entity against which sanctions by the Office
+                            of Foreign Assets (OFAC) of USA is in place. We undertake not to hold Axis Bank Ltd
+                            responsible for in any manner whatsoever in nature and hold Axis Bank Ltd fully indemnified
+                            against all losses and damages that may be caused to us on account of the funds remitted
+                            under this transaction being confiscated or blocked or seized by any
+                            authority/government/agency. <br>
+                            2. We further declare that we shall furnish any material information relating to this
+                            transaction as required by any authority/government/agency, now or in future. Also we
+                            authorize Axis Bank Ltd to make available any of the material information pertains our
+                            transaction to any authority/agency/entity without referring the matter to us. <br> <br>
+                            <b>Declaration for FX Retail Customers</b> <br> <br>
+                            I have read and understood the Terms and Conditions regarding FX Retail Services available
+                            at www.fxretail.co.in and hereby agree to abide by them. I undertake to provide further
+                            information required by Axis Bank in this regard and execute any further documents as may be
+                            required. I understand and consent to the fact that Axis Bank reserves the right to refuse
+                            any application without providing a reason therein. I am also aware that Axis bank shall not
+                            be liable for any loss/risk which may arise on account of the transaction executed using
+                            this service. <br>
+                            I understand that the limit and margin on FX retail platform will be set as per the sole
+                            discretion of the bank.
+                            I agree that the bank is at complete and sole liberty to debit my bank account mentioned
+                            herein above or any of my other accounts for the sum that is owed by me to the Bank, towards
+                            registration charges and charges arising out of loss caused/suffered by the bank due to
+                            reversal or modification of transaction rate by me. The Bank shall have the right to debit
+                            my said account held with the Bank or any of my other accounts for the aforesaid amount and
+                            I hereby irrevocably and unconditionally undertake, agree and authorise the bank to debit my
+                            account forthwith without protest, delay or demur and without proof or condition the whole
+                            of such sum debited together with interest, charges, expenses due to the bank and undertake
+                            to keep the bank protected against all losses of the said principal sum, interest, dues and
+                            all cost charges and expenses and I shall not contest the decision of the bank on any
+                            grounds whatsoever. I undertake that I shall at all times keep the account/s funded with
+                            sufficient funds to enable the Bank to debit the account/s to recover the aforesaid dues /
+                            charges. I hereby further confirm that the said provision is irrevocable and unconditional.
+                            <br>
+                            At first instance if any difference, dispute or question shall arise between the Bank and me
+                            as to the interpretation, meaning or effect of this application or as to the rights and
+                            liabilities of the Bank and me arising hereunder or as to any other matter or things
+                            relating to this application or arising out of or in connection herewith either during the
+                            continuance of this application or after any termination or purported termination hereof, I
+                            agree that the same shall be referred to a sole Arbitrator who shall be appointed by mutual
+                            agreement and whose decision shall be final and binding. I agree that the said arbitration
+                            shall be governed by the provisions of Arbitration & Conciliation Act, 1996 or any statutory
+                            modification or reenactment thereof and the venue of the Arbitration shall be Mumbai. I
+                            further agree that the language to be used in the arbitral proceedings shall be English.
+                            <br> <br>
+                            <b>The declaration-cum-undertaking under Sec 10(5), Chapter III of FEMA, 1999 is enclosed as
+                                under</b> <br>
+                            I/We hereby declare that the transaction details of which are mentioned above does not
+                            involve, and is not designed for the purpose of any contravention or evasion of the
+                            provisions of the aforesaid Act or of any rule, regulation, notification, direction or order
+                            made there under. I/We also understand that if I/we refuse to comply with any such
+                            requirement or make only unsatisfactory compliance therewith, the Bank shall refuse in
+                            writing to understand the transaction and shall if it has reason to believe that any
+                            contravention / evasion is contemplated by me / us report the matter to RBI. I/We also
+                            hereby agree and undertake to give such information / documents as will reasonably satisfy
+                            you about this transaction in terms of the above declaration. <br>
+                            **I/We further declare that the undersigned has the authority to give this application,
+                            declaration and undertaking on behalf of the firm/company. <br>
+
+                        </p>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div id="third" class="bc">
+
+                <div style="float: left; display: block; width: 78%; margin-left: 43px; margin-top: 20px;" class="bc">
+
+                    <div style="float: left;">
+                        <p>
+                            <b style="margin-bottom: 1px solid black;">Thanking you.</b> <br>
+                    </div> <br>
+                    <div style="float: right; margin-right: 60px;">
+                        <p style="margin-left: 30px;"><b>Signature:</b></p>
+                        <p>
+                            Date: <span
+                                style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"
+                                contenteditable="true"></span> <br>
+                            Place: <span
+                                style="outline: none;display: inline-block;width: 100px; border-bottom: 1px solid black;"
+                                contenteditable="true"></span>
+                        </p>
+                    </div>
+                    <div style="margin-top: 130px;">
+                        *We agree for levy of charges as per the schedule of charges of the bank (displayed on the
+                        bank’s website: www.axisbank.com) or as per the specific pricing approval/sanction, if
+                        any.**Applicable when the application /declaration /undertaking is signed on behalf of the firm
+                        / company
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div *ngIf="!done && checking == 'no'" style="
+                    float: left;
+                    display: block;
+                    width: 78%;
+                    margin-top: 40px;
+                    margin-left: 43px;
+                    ">
+            <div class="button1" style="width: 100px;" title="Share As PDF" (click)="exportAsPDF('MyDIv')">Proceed to
+                Preview</div>
+        </div>
+
+        <div *ngIf="done">
+            <p>Setup: 3 Preview</p>
+            <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+            <button class="button1" style="margin-bottom: 40px;">Send it via Email</button>
+            <div>
+                <div style="float: left; margin-right: 80px;">
+                    <h5>Bank Format</h5>
+                    <iframe [src]="data6" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+                </div>
+                <div style="float: left; margin-right: 80px;">
+                    <h5>Pi/PO document</h5>
+                    <iframe [src]="doc" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+                </div>
+
+            </div><br>
+            <div *ngIf="caDone1 == 'yes'">
+                <h5>CA document</h5>
+                <iframe [src]="caUrl" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+            </div><br>
+            <button class="button1" style="margin-right: 10px;" (click)="edit()">Edit</button>
+            <button class="button1" style="margin-right: 10px;  margin-top: 20px;" (click)="submitTask()"
+                *ngIf="caDone1 == 'no'">Request
+                For CA
+                Certificate</button>
+            <button class="button1" style="margin-right: 10px;" (click)="submitTask()" *ngIf="caDone1 == 'yes'">Request
+                Done</button>
+        </div>
+        <div *ngIf="checking == 'yes'">
+            <!-- <p>Setup: 3 Preview</p>
+                                    <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+                                    <button class="button1" style="margin-bottom: 40px;">Send it via Email</button> -->
+            <div>
+                <div style="float: left; margin-right: 80px;">
+                    <h5>Bank Format</h5>
+                    <iframe [src]="data6" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+                </div>
+                <div style="float: left; margin-right: 80px;">
+                    <h5>Pi/PO document</h5>
+                    <iframe [src]="doc" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+                </div>
+
+            </div><br>
+            <div *ngIf="caDone1 == 'yes'" style="float: left; width: 100%;">
+                <h5>CA document</h5>
+                <iframe [src]="caUrl" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+            </div><br>
+
+            <button class="button1" style="margin-right: 10px; margin-top: 20px;" (click)="submitTask()"
+                *ngIf="caDone1 == 'yes'">Done</button>
+            <button class="button1" style="margin-right: 10px; margin-top: 20px;"
+                [routerLink]="['/home/outward-remitance']" *ngIf="caDone1 == 'no'">Back</button>
+
+        </div>
+
+    </main>
+
+</div>

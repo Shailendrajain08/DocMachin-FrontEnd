@@ -1,0 +1,618 @@
+[
+    {
+        "groupname": "Capital Account",
+        "purpose": [
+            {
+                "code": "S0017",
+                "description": "Acquisition of non-produced non-financial assets (Purchase of intangible assets likepatents, copyrights, trademarks etc., land acquired by government, use of naturalresources) – Government"
+            },
+            {
+                "code": "S0019",
+                "description": "Acquisition of non-produced non-financial assets (Purchase of intangible assets like patents, copyrights, trademarks etc., use of natural resources) –Non-Government"
+            },
+            {
+                "code": "S0026",
+                "description": "Capital transfers ( Guarantees payments, Investment Grand given by the government/international organization, exceptionally large Non-life insurance claims) – Government"
+            },
+            {
+                "code": "S0027",
+                "description": "Capital transfers ( Guarantees payments, Investment Grand given by the Non-government, exceptionally large Non-life insurance claims) – Non-Government"
+            },
+            {
+                "code": "S0099",
+                "description": "Other capital payments not included elsewhere"
+            }
+        ]
+    },
+    {
+        "groupname": "Foreign Direct Investments",
+        "purpose": [
+            {
+                "code": "S0006",
+                "description": "Repatriation of Foreign Direct Investment made by overseas Investors in India – in equity shares"
+            },
+            {
+                "code": "S0007",
+                "description": "Repatriation of Foreign Direct Investment in made by overseas Investors India – in instruments"
+            },
+            {
+                "code": "S0008",
+                "description": "Repatriation of Foreign Direct Investment made by overseas Investors in India – in real estate"
+            }
+        ]
+    },
+    {
+        "groupname": "Foreign Portfolio Investments",
+        "purpose": [
+            {
+                "code": "S0009",
+                "description": "Repatriation of Foreign Portfolio Investment made by overseas Investors in India – in equity shares"
+            },
+            {
+                "code": "S0010",
+                "description": "Repatriation of Foreign Portfolio Investment made by overseas Investors in India – in debt instruments"
+            }
+        ]
+    },
+    {
+        "groupname": "External Commercial Borrowings",
+        "purpose": [
+            {
+                "code": "S0012",
+                "description": "Repayment of long & medium term loans with original maturity above one year received from Non-Residents"
+            }
+        ]
+    },
+    {
+        "groupname": "Short Terms Loans",
+        "purpose": [
+            {
+                "code": "S0013",
+                "description": "Repayment of short term loans with original maturity up to one year received from on-Residents"
+            }
+        ]
+    },
+    {
+        "groupname": "Banking Capital",
+        "purpose": [
+            {
+                "code": "S0014",
+                "description": "Repatriation of Non-Resident Deposits (FCNR (B)/NR (E)/RA etc.)"
+            },
+            {
+                "code": "S0015",
+                "description": "Repayment of loans & overdrafts taken by Ads on their own account"
+            },
+            {
+                "code": "S0016",
+                "description": "Sale of foreign currency against another foreign currency"
+            }
+        ]
+    },
+    {
+        "groupname": "Financial Derivatives and Others",
+        "purpose": [
+            {
+                "code": "S0020",
+                "description": "Payments made on account of margin payments, premium payment and settlement amount etc. under Financial derivative transactions."
+            }
+        ]
+    },
+    {
+        "groupname": "External Assistance",
+        "purpose": [
+            {
+                "code": "S0024",
+                "description": "External Assistance extended by India e.g. Loans and advances extended by India to Foreign governments under various agreements"
+            },
+            {
+                "code": "S0025",
+                "description": "Repayments made on account of External Assistance received by India"
+            }
+        ]
+    },
+    {
+        "groupname": "Imports",
+        "purpose": [
+            {
+                "code": "S0101",
+                "description": "Advance Payment against import made to countries other than Nepal and Bhutan"
+            },
+            {
+                "code": "S0102",
+                "description": "Payments towards Imports – settlement of invoice other than Nepal and Bhutan"
+            },
+            {
+                "code": "S0103",
+                "description": "Imports by diplomatic missions other than Nepal and Bhutan"
+            },
+            {
+                "code": "S0104",
+                "description": "Intermediary trade/transit trade i.e. third country export passing through India"
+            },
+            {
+                "code": "S0108",
+                "description": "Goods acquired under merchanting / Payment against import leg of merchanting trade"
+            },
+            {
+                "code": "S0109",
+                "description": "Payments made for Imports from Nepal and Bhutan if any"
+            }
+        ]
+    },
+    {
+        "groupname": "Transport",
+        "purpose": [
+            {
+                "code": "S0201",
+                "description": "Payments for surplus freight/passenger fare by foreign shipping companies operating in India"
+            },
+            {
+                "code": "S0202",
+                "description": "Payment for operating expenses of Indian shipping companies operating abroad"
+            },
+            {
+                "code": "S0203",
+                "description": "Freight on imports – Shipping companies"
+            },
+            {
+                "code": "S0204",
+                "description": "Freight on exports – Shipping companies"
+            },
+            {
+                "code": "S0205",
+                "description": "Operational leasing/Rental of Vessels (with crew) –Shipping companies"
+            },
+            {
+                "code": "S0206",
+                "description": "Booking of passages abroad – Shipping companies"
+            },
+            {
+                "code": "S0207",
+                "description": "Payments for surplus freight/passenger fare by foreign Airlines companies operating in India"
+            },
+            {
+                "code": "S0208",
+                "description": "Operating expenses of Indian Airlines companies operating abroad"
+            },
+            {
+                "code": "S0209",
+                "description": "Freight on imports – Airlines companies"
+            },
+            {
+                "code": "S0210",
+                "description": "Freight on exports – Airlines companies"
+            },
+            {
+                "code": "S0211",
+                "description": "Operational leasing / Rental of Vessels (with crew) – Airline companies"
+            },
+            {
+                "code": "S0212",
+                "description": "Booking of passages abroad – Airlines companies"
+            },
+            {
+                "code": "S0214",
+                "description": "Payments on account of stevedoring, demurrage, port handling charges etc. (Shipping Companies)"
+            },
+            {
+                "code": "S0215",
+                "description": "Payments on account of stevedoring, demurrage, port handling charges etc. (Airlines Companies)"
+            },
+            {
+                "code": "S0216",
+                "description": "Payments for Passenger – Shipping companies"
+            },
+            {
+                "code": "S0217",
+                "description": "Other payments by Shipping companies"
+            },
+            {
+                "code": "S0218",
+                "description": "Payments for Passenger – Airlines companies"
+            },
+            {
+                "code": "S0219",
+                "description": "Other payments by Airlines companies"
+            },
+            {
+                "code": "S0220",
+                "description": "Payments on account of freight under other modes of transport (Internal waterways, Roadways, Railways, Pipeline transports and others)"
+            },
+            {
+                "code": "S0221",
+                "description": "Payments on account of passenger fare under other modes of transport (Internal waterways, Roadways, Railways, Pipeline transports and others)"
+            },
+            {
+                "code": "S0222",
+                "description": "Postal & Courier services by Air"
+            },
+            {
+                "code": "S0223",
+                "description": "Postal & Courier services by Sea"
+            },
+            {
+                "code": "S0224",
+                "description": "Postal & Courier services by Others"
+            }
+        ]
+    },
+    {
+        "groupname": "Travel",
+        "purpose": [
+            {
+                "code": "S0301",
+                "description": "Business travel"
+            }
+        ]
+    },
+    {
+        "groupname": "Construction Services",
+        "purpose": [
+            {
+                "code": "S0501",
+                "description": "Construction of projects abroad by Indian companies including import of goods at project site abroad"
+            },
+            {
+                "code": "S0502",
+                "description": "Cost of construction etc. of projects executed by foreign companies in India."
+            }
+        ]
+    },
+    {
+        "groupname": "Insurance and Pension Services",
+        "purpose": [
+            {
+                "code": "S0601",
+                "description": "Life Insurance premium except term insurance"
+            },
+            {
+                "code": "S0602",
+                "description": "Freight insurance – relating to import & export of goods"
+            },
+            {
+                "code": "S0605",
+                "description": "Auxiliary services including commission on insurance"
+            },
+            {
+                "code": "S0607",
+                "description": "Insurance claim Settlement of non-life insurance; and life insurance (only term insurance)"
+            },
+            {
+                "code": "S0608",
+                "description": "Life insurance settlement of Claims"
+            },
+            {
+                "code": "S0609",
+                "description": "Standardized guarantee services"
+            },
+            {
+                "code": "S0610",
+                "description": "Premium of pension funds"
+            },
+            {
+                "code": "S0611",
+                "description": "Periodic pension entitlements e.g. monthly quarterly or yearly payments of pension amounts by Indian Pension Fund Companies"
+            },
+            {
+                "code": "S0612",
+                "description": "Invoking of standardized guarantees"
+            }
+        ]
+    },
+    {
+        "groupname": "Financial Services",
+        "purpose": [
+            {
+                "code": "S0701",
+                "description": "Financial intermediation, except investment banking - Bank charges, collection charges, LC charges etc."
+            },
+            {
+                "code": "S0702",
+                "description": "Investment banking – brokerage, under writing commission etc."
+            },
+            {
+                "code": "S0703",
+                "description": "Auxiliary services – charges on operation & regulatory fees, custodial services, depository services etc."
+            }
+        ]
+    },
+    {
+        "groupname": "Telecommunication, Computer & Information Services",
+        "purpose": [
+            {
+                "code": "S0801",
+                "description": "Hardware consultancy/implementation"
+            },
+            {
+                "code": "S0802",
+                "description": "Software consultancy / implementation"
+            },
+            {
+                "code": "S0803",
+                "description": "Data base, data processing charges"
+            },
+            {
+                "code": "S0804",
+                "description": "Repair and maintenance of computer and software"
+            },
+            {
+                "code": "S0805",
+                "description": "News agency services"
+            },
+            {
+                "code": "S0806",
+                "description": "Other information services- Subscription to newspapers, periodicals"
+            },
+            {
+                "code": "S0807",
+                "description": "Off-site software imports"
+            },
+            {
+                "code": "S0808",
+                "description": "Telecommunication services including electronic mail services and voice mail services"
+            },
+            {
+                "code": "S0809",
+                "description": "Satellite services including space shuttle and rockets etc."
+            }
+        ]
+    },
+    {
+        "groupname": "Charges for the use of intellectual property (not included elsewhere)",
+        "purpose": [
+            {
+                "code": "S0901",
+                "description": "Franchises services"
+            },
+            {
+                "code": "S0902",
+                "description": "Payment for use, through licensing arrangements, of produced originals orprototypes (such as manuscripts and films), patents, copyrights, trademarks andindustrial processes etc."
+            }
+        ]
+    },
+    {
+        "groupname": "Other Business Services",
+        "purpose": [
+            {
+                "code": "S1002",
+                "description": "Trade related services – commission on exports / imports"
+            },
+            {
+                "code": "S1003",
+                "description": "Operational leasing services (other than financial leasing) without operating crew, including charter hire- Airlines companies"
+            },
+            {
+                "code": "S1004",
+                "description": "Legal services"
+            },
+            {
+                "code": "S1005",
+                "description": "Accounting, auditing, book-keeping services"
+            },
+            {
+                "code": "S1006",
+                "description": "Business and management consultancy and public relations services"
+            },
+            {
+                "code": "S1007",
+                "description": "Advertising, trade fair service"
+            },
+            {
+                "code": "S1008",
+                "description": "Research & Development services"
+            },
+            {
+                "code": "S1009",
+                "description": "Architectural services"
+            },
+            {
+                "code": "S1010",
+                "description": "Agricultural services like protection against insects & disease, increasing of harvest yields, forestry services."
+            },
+            {
+                "code": "S1011",
+                "description": "Payments for maintenance of offices abroad"
+            },
+            {
+                "code": "S1012",
+                "description": "Payments for maintenance of offices abroad"
+            },
+            {
+                "code": "S1013",
+                "description": "Environmental Services"
+            },
+            {
+                "code": "S1014",
+                "description": "Engineering Services"
+            },
+            {
+                "code": "S1015",
+                "description": "Tax consulting services"
+            },
+            {
+                "code": "S1016",
+                "description": "Market research and public opinion polling service"
+            },
+            {
+                "code": "S1017",
+                "description": "Publishing and printing services"
+            },
+            {
+                "code": "S1018",
+                "description": "Mining services like on–site processing services analysis of ores etc."
+            },
+            {
+                "code": "S1020",
+                "description": "Commission agent services"
+            },
+            {
+                "code": "S1021",
+                "description": "Wholesale and retailing trade services."
+            },
+            {
+                "code": "S1022",
+                "description": "Operational leasing services (other than financial leasing) without operating crew, including charter hire- Shipping companies"
+            },
+            {
+                "code": "S1023",
+                "description": "Other Technical Services including scientific/space services."
+            },
+            {
+                "code": "S1099",
+                "description": "Other services not included elsewhere"
+            }
+        ]
+    },
+    {
+        "groupname": "Personal, Cultural & Recreational services",
+        "purpose": [
+            {
+                "code": "S1101",
+                "description": "Audio-visual and related services like Motion picture and video tape production, distribution and projection services."
+            },
+            {
+                "code": "S1103",
+                "description": "Radio and television production, distribution and transmission services"
+            },
+            {
+                "code": "S1104",
+                "description": "Entertainment services"
+            },
+            {
+                "code": "S1105",
+                "description": "Museums, library and archival services"
+            },
+            {
+                "code": "S1106",
+                "description": "Recreation and sporting activities services"
+            },
+            {
+                "code": "S1109",
+                "description": "Other Personal, Cultural & Recreational services"
+            }
+        ]
+    },
+    {
+        "groupname": "Govt. not included elsewhere",
+        "purpose": [
+            {
+                "code": "S1201",
+                "description": "Maintenance of Indian embassies abroad"
+            },
+            {
+                "code": "S1202",
+                "description": "Remittances by foreign embassies in India"
+            }
+        ]
+    },
+    {
+        "groupname": "Secondary Income",
+        "purpose": [
+            {
+                "code": "S1301",
+                "description": "Remittance for family maintenance and savings"
+            },
+            {
+                "code": "S1304",
+                "description": "Remittance towards grants and donations to other governments and charitable institutions established by the governments."
+            },
+            {
+                "code": "S1305",
+                "description": "Contributions/donation by the Government to international institutions"
+            },
+            {
+                "code": "S1306",
+                "description": "Remittance towards payment / refund of taxes."
+            }
+        ]
+    },
+    {
+        "groupname": "Primary Income",
+        "purpose": [
+            {
+                "code": "S1401",
+                "description": "Compensation of employees"
+            },
+            {
+                "code": "S1402",
+                "description": "Remittance towards interest on Non-Resident deposits (FCNR(B)/NR(E)RA, etc.)"
+            },
+            {
+                "code": "S1403",
+                "description": "Remittance towards interest on loans from Non-Residents(ST/MT/LT loans) e.g. External Commercial Borrowing, Trade Credits etc."
+            },
+            {
+                "code": "S1405",
+                "description": "Remittances towards interest payment by Ads on their own account (to VOSTRO a/cholders or the OD on NOSTRO a/c)"
+            },
+            {
+                "code": "S1408",
+                "description": "Remittance of profit by FDI enterprises in India (by branches of foreign companies including bank branches)"
+            },
+            {
+                "code": "S1409",
+                "description": "Remittances of dividends by FDI enterprises in India (other than branches) on equity and investment fund shares"
+            },
+            {
+                "code": "S1410",
+                "description": "Payment of interest by FDI enterprises in India to their Parent company abroad"
+            },
+            {
+                "code": "S1411",
+                "description": "Remittance of interest income on account of Portfolio Investment in India"
+            },
+            {
+                "code": "S1412",
+                "description": "Remittance of dividends on account of Portfolio Investment in India on equity ad investment fund shares"
+            }
+        ]
+    },
+    {
+        "groupname": "Others",
+        "purpose": [
+            {
+                "code": "S1501",
+                "description": "Refunds / rebates / reduction in invoice value on account of exports"
+            },
+            {
+                "code": "S1502",
+                "description": "Reversal of wrong entries, refunds of amount remitted for non-exports"
+            },
+            {
+                "code": "S1503",
+                "description": "Payments by residents for international bidding"
+            },
+            {
+                "code": "S1504",
+                "description": "Notional sales when export bills negotiated/purchased/discounted are dishonored/crystallized/cancelled and reversed from suspense account"
+            },
+            {
+                "code": "S1505",
+                "description": "Deemed imports (exports between SEZ, EPZs and Domestic tariff areas)"
+            }
+        ]
+    },
+    {
+        "groupname": "Maintenance and repairservice i.e.",
+        "purpose": [
+            {
+                "code": "S1601",
+                "description": "Payment on account of maintenance and repair services rendered for Vessels, ships, boats, warships, etc."
+            },
+            {
+                "code": "S1602",
+                "description": "Payment on account of maintenance and repair services rendered for air-crafts, space shuttles, rockets, military aircrafts, helicopters, etc."
+            }
+        ]
+    },
+    {
+        "groupname": "Manufacturing services(goods for processing)",
+        "purpose": [
+            {
+                "code": "S1701",
+                "description": "Payments for processing of goods"
+            }
+        ]
+    }
+]

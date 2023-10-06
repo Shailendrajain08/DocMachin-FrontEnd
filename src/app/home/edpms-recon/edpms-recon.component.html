@@ -1,0 +1,37 @@
+<div style="margin-left: 75px;
+    margin-top: 30px;" class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+
+        <h3 class="heading">New EDPMS Data</h3>
+
+        <label style="flex-direction:row; font-size: 20px; margin-top: 10px ;;color: #303030;  ">Select
+            Bank*</label>
+
+        <select style="display: flex; align-items: center;" [(ngModel)]="bankSelection" (ngModelChange)="chooseBank()">
+            <option value="" disabled hidden>Select Bank</option>
+            <option *ngFor="let acc of bankAccounts" [value]="acc" style="min-width:100%;">{{acc}}</option>
+        </select>
+
+        <h3 class="heading2">Upload EDPMS Info</h3>
+
+        <div class="form" method="POST">
+            <input [attr.disabled]="disableUpload ? '' : null" type="file" (error)="onUploadError($event)" (init)="onUploadInit($event)"
+                (success)="onUploadSuccess($event)" (sending)="submit($event)" [dropzone]="config3"
+                class="dropzone dropzone-container" id="dropzone" (click)="fileInputClick($event)"/>
+            <i class="fas fa-file-upload"></i>
+            <h5>Drag and Drop files here to upload</h5>
+            <p>Files Supported: XLSX</p>
+            <button type="submit">Choose File</button>
+            <p>Maximum Size: 5MB</p>
+        </div>
+        <div class="progressbar" *ngIf="uploading">
+            <p class="processheading">EDPMS Upload Progress</p>
+            <div class="meter">
+                <span [style.width]="width + '%'"></span>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top: 20px" *ngIf="uploaded">
+            <button (click)="compareEDPMS()">Compare</button>
+        </div>
+    </main>
+</div>

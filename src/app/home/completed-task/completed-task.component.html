@@ -1,0 +1,50 @@
+<div class="content-wrap">
+
+  <main id="content" class="content table-padding" role="main">
+    <div>
+      <p>Setup: 3 Preview</p>
+      <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+      <button class="button1" style="margin-bottom: 40px;">Send it via Email</button>
+      <div *ngIf="!data4">
+
+        <div style="float: left; margin-right: 80px;">
+          <h5>Bank Format</h5>
+          <iframe [src]="url1" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+        </div>
+        <div style="float: left; margin-right: 80px;">
+          <h5>Pi/PO document</h5>
+          <iframe *ngIf="data5" [src]="pipoUrl" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+        </div>
+      </div>
+      <div *ngIf="!data4 && caDone1 == 'yes'" style="float: left; width: 100%;">
+        <h5>CA document</h5>
+        <iframe [src]="caUrl" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+      </div>
+      <div *ngIf="data4">
+        <div>
+          <div style="float: left; margin-right: 80px;">
+            <h5>Bank Format</h5>
+            <iframe [src]="url1" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+          </div>
+          <div style="float: left; margin-right: 80px;">
+            <h5>FBG Format</h5>
+            <iframe [src]="url2" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+          </div>
+
+        </div><br>
+        <div style="float: left; width: 100%;">
+          <h5>PI/PO Document</h5>
+          <iframe [src]="pipoUrl" height="500px" width="400px" style="margin-bottom: 20px;"></iframe>
+        </div>
+
+
+
+      </div> <br>
+      <br>
+      <button class="button1" style="margin-right: 10px; margin-top: 30px;"
+        [routerLink]="['/home/advance-outward-remittance']" (click)="done()">Done</button>
+    </div>
+  </main>
+
+
+</div>

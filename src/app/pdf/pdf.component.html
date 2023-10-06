@@ -1,0 +1,6 @@
+<p>Click the button to fill form fields in an existing PDF document with <code>pdf-lib</code></p>
+<button (click)="fillForm()">Fill PDF</button>
+<p class="small">(Your browser will download the resulting file)</p>
+<div *ngIf="value">
+    <iframe [src]="value" frameborder="0" height="600px" width="400px"></iframe>
+</div>

@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: chromium
+  name: chromium
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chromium
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: chromium
+    spec:
+      containers:
+        - args:
+            - --remote-debugging-address=0.0.0.0
+            - --remote-debugging-port=9222
+            - --headless
+            - --disable-gpu
+          image: zenika/alpine-chrome
+          ports:
+            - containerPort: 9222
+          livenessProbe:
+            httpGet:
+              path: /json
+              port: 9222
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+          name: zenika-alpine-chrome
+          readinessProbe:
+            httpGet:
+              path: /json
+              port: 9222
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              add:
+                - SYS_ADMIN
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /home/chrome
+              name: chrome
+      restartPolicy: Always
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+      volumes:
+        - emptyDir: {}
+          name: tmp
+        - emptyDir: {}
+          name: chrome
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chromium
+spec:
+  selector:
+    app: chromium
+  ports:
+    - protocol: TCP
+      port: 9222
+      targetPort: 9222
+  type: NodePort

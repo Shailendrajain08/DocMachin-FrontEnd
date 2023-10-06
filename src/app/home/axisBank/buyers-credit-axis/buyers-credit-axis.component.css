@@ -1,0 +1,172 @@
+.content-wrap {
+  width: 70%;
+  padding-bottom: 14%;
+}
+
+.heading5 {
+  border-bottom: 3px solid black;
+  color: black;
+  height: 25px;
+  width: 50%;
+}
+
+tr {
+  border: 1px solid #070707;
+}
+
+td {
+  border-right: 1px solid #070707;
+}
+
+.wtd {
+  width: 441px;
+}
+
+.wtd1 {
+  width: 600px;
+  height: 11px;
+}
+
+.wtd11 {
+  width: 450px;
+}
+
+.wtd12 textarea {
+  width: 290px;
+  border: none;
+}
+
+input {
+  border: none;
+  border-bottom: 0.8px solid black;
+}
+
+.wtd12 {
+  width: 318px;
+}
+
+.wtd10 {
+  line-height: 16px;
+  font-size: 14px;
+}
+
+#downloadButton {
+  border-radius: 7px;
+  background-color: #7f47ba;
+  padding: 0.5% 1%;
+}
+
+#downloadButton:hover {
+  color: white;
+}
+
+input {
+  border: none;
+}
+
+.wtd2 {
+  width: 900px;
+}
+
+.wtd3 input {
+  width: 140px !important;
+  border: none;
+}
+
+span input {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.spli {
+  border-bottom: 1px solid black !important;
+}
+
+.ins {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 400px;
+}
+
+.wtd7 input {
+  width: 100px !important;
+  border: none;
+}
+
+.wtd8 {
+  width: 160px !important;
+}
+
+.ind {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.wtd4 input {
+  width: 170px;
+  border: none;
+}
+
+.ll1 {
+  width: 150px;
+}
+
+.ll2 {
+  width: 200px;
+}
+
+.ll3 {
+  width: 400px;
+}
+
+.rm1 input {
+  width: 120px;
+  border: none;
+}
+
+.rm2 input {
+  width: 80px;
+  border: none;
+}
+
+.check {
+  margin-top: 10px;
+  margin-left: 40px;
+  height: 30px;
+  width: 30px;
+}
+
+.pdf_heading {
+  display: flex;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+}
+
+.flex-child:first-child {
+  margin-right: 20px;
+}
+
+.button1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  width: 170px;
+  border: none;
+  padding: 5px;
+  background-color: #49a2d7;
+  border-radius: 4px;
+  color: #ffffff;
+  box-shadow: 0px 4px 10px 0px #49a2d7;
+}
+
+.check {
+  margin-top: 10px;
+  margin-left: 40px;
+  height: 15px;
+  width: 15px;
+}/*# sourceMappingURL=buyers-credit-axis.component.css.map */

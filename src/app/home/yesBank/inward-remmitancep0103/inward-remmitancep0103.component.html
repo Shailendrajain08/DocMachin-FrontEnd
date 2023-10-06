@@ -1,0 +1,259 @@
+<div class="content-wrap">
+
+    <main id="content" class="content table-padding bc" role="main">
+        <div id="mainId" class="bc" *ngIf="!done">
+            <div id="first" class="bc">
+                <div style="width: 85%;">
+                    <p class="heading" style="text-align: center;">Application for receipt of Export Advance payment</p>
+                    <p class="heading" style="text-align: center;">(to be printed on company letter head and signed by
+                        authorized signatory/ies as per Bank records)</p>
+                </div>
+                <div style="margin-left: 20px; margin-top: 20px; width: 85%;" class="bc">
+                    <div style=" text-align:right">Date: <span style="
+                                outline: none;
+                                  display: inline-block;
+                                  width: 150px;
+                                  border-bottom: 1px solid black;
+                                " contenteditable="true"></span></div>
+                    <div style="width:80%; margin-top: -20px; font-size: 14px;">To, <br>
+                        The Assistant General Manager/Chief Manager/Branch Manager <br>
+                        <span style=" outline: none;display: inline-block;width: 150px;border-bottom: 1px solid black;"
+                            contenteditable="true"></span> Branch (Branch code_______) <br>
+                        State Bank of India<br>
+                        <span style=" outline: none;display: inline-block;width: 150px;border-bottom: 1px solid black;"
+                            contenteditable="true"></span><br>
+                        Bengaluru
+                    </div>
+                    <br>
+                    <div style="margin-top: 10px;">Dear Sir/Madam, <br>
+                        We have received a foreign inward remittance from our buyer, details of which are as under:
+                        <br>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <td style="width: 50%;">Currency and amount of inward remittance</td>
+                            <td style="width: 50%;">{{item2.currency}}, {{item2.amount}}<span
+                                    style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">Remitter name and country
+                                (should match with incoming MT103 payment SWIFT message)</td>
+                            <td style="width: 50%;"><span style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true">{{applicant.fullName}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">(should match with incoming MT103 payment SWIFT message)
+                                Buyer and Consignee details (name and address):
+                                (If this is a Third Party payment, submit requisite documentation such as
+                                Tripartite agreement, documentary evidence showing relationship between
+                                the various entities, etc.)</td>
+                            <td style="width: 50%;">{{item3.adress}}<span
+                                    style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">Sales Contract ref. no., date and validity (both in terms of date
+                                and
+                                amount/s)</td>
+                            <td style="width: 50%;"><span style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;" rowspan="2">If there is no Sales contract in place,</td>
+                            <td style="width: 50%;">Purchase Order ref. no/s. and date/s:<span
+                                    style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td style="width: 50%;">Proforma Invoice ref. no/s. and date/s:<span
+                                    style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 50%;">Commodity description (brief description of goods)</td>
+                            <td style="width: 50%;"><span style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">Country of Origin of Goods</td>
+                            <td style="width: 50%;"><span style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">Port of loading</td>
+                            <td style="width: 50%;"><span style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">Port of discharge</td>
+                            <td style="width: 50%;"><span style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">Expected date of shipment</td>
+                            <td style="width: 50%;"><span style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">Account/s to be credited <br>
+                                (mention A/C type and A/C no.)</td>
+                            <td style="width: 50%;"><span style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">Details of Forward Contract/s to be utilized (if any)</td>
+                            <td style="width: 50%;"><br><br><br><br>If Forward Contract/s is/are being utilized, we
+                                confirm that this/ese
+                                Forward Contract/s was/were booked against the above referenced
+                                Sales Contract/s, and/or Purchase Order/s and for the same
+                                Buyer/Importer
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">Ref. no. of eForex or Dealer Room booking (if any)</td>
+                            <td style="width: 50%;"><span style="outline: none;display: inline-block;width: 200px;"
+                                    contenteditable="true"></span>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <br>
+                    <div>
+                        Further, we submit as under: <br>
+                        1. We confirm that this remittance is towards Advance payment for exports and that goods have
+                        NOT been shipped as on
+                        date. <br>
+                        2. We declare that the remitter has sent the amount for specific purpose of Export of goods as
+                        detailed above and under
+                        the Sales <br>
+                        Contract/s or Purchase Order/s (PO) and Proforma Invoice/s (PI) ref. no/s. as detailed above.
+                        3. We hereby undertake the responsibility to export the goods as per the date/s mentioned above,
+                        and documents related
+                        to the
+                        export would be submitted to your branch within 21 days from the date of shipment. <br>
+                        4. We undertake to ensure that documents are routed through one AD bank only. <br>
+                        5. We confirm that product pricing is in consonance with prevailing International prices. <br>
+                        6. In the event of exporter’s (our) inability to make shipment (partly/fully) within one year
+                        from date of receipt of
+                        the first advance
+                        payment, we shall ensure no remittance towards refund or unutilized portion of advance payment
+                        or towards payment of
+                        interest
+                        will be made without prior approval of the Reserve Bank of India (RBI). <br>
+                        7. We undertake to ensure compliance of all regulatory and other regulations and guidelines in
+                        force issued by RBI,
+                        DGFT, Customs
+                        authorities, FEDAI, SBI, and any other regulatory/government agency as at the time of the
+                        transaction. <br>
+                        8. We agree to accept the rate of exchange ruling on the day that the documents are processed by
+                        your authorized
+                        office/s and
+                        undertake to agree to any consequent adjustment in the rupee equivalent if the proceeds have
+                        been credited/paid to us.
+                        However
+                        the same shall not apply wherein there is utilization of Forward Contract/s and/or booking has
+                        been done on eForex
+                        platform or
+                        through Dealing Room of SBI. <br>
+                        9. We confirm compliance of instructions issued by RBI in Master Directions – Export of Goods
+                        and Services (FED Master
+                        Direction no.
+                        16/2015-16-C2- Receipt of Advance against exports). <br>
+                        10. This is NOT a Merchanting Trade transaction. Goods would be shipped from India only. <br>
+                        <br>
+                        I/We further declare that the undersigned has the authority to give declaration and undertaking
+                        on behalf of the
+                        company. <br>
+                        Thanking you <br>
+                        Yours faithfully
+                    </div>
+
+
+                    <!-- <table>
+                        <tr>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[0]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[1]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[2]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[3]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[4]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[5]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[6]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[7]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[8]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[9]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[10]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[11]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[12]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[13]}}</span></td>
+                            <td class="gst"><span style="outline: none;display: inline-block;width: 20px;"
+                                    contenteditable="true">{{arr[14]}}</span></td>
+                        </tr>
+                    </table> -->
+
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+        <div *ngIf="!done" style="
+                float: left;
+                display: block;
+                width: 78%;
+                margin-top: 40px;
+                margin-left: 43px;
+              ">
+            <div class="button1" title="Share As PDF" (click)="exportAsPDF('MyDIv')">Proceed to Preview</div>
+        </div>
+
+
+        <div *ngIf="done">
+            <p>Setup: 3 Preview</p>
+            <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+            <button class="button1" style="margin-bottom: 40px;">Send it via Email</button>
+            <div>
+                <iframe [src]="data6" height="500px" width="400px"></iframe>
+                <iframe [src]="doc" height="500px" width="400px"></iframe>
+            </div><br>
+            <button class="button1" style="margin-right: 10px;" (click)="edit()">Edit</button>
+            <button class="button1" style="margin-right: 10px;" (click)="submitTask()">Done</button>
+
+        </div>
+
+    </main>
+
+</div>

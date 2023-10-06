@@ -1,0 +1,100 @@
+<div style="margin-left: 0px" class="content-wrap">
+    <main id="content" class="content table-padding" role="main">
+
+        <div *ngIf='data' class="analytics" style="margin-left: 50px;">
+            <div style="margin: 10px;">
+                <img src="../../../assets/back.png" [routerLink]="['/home/dashboardTask']"
+                    style="width: 20px; height: 20px;"><span style="margin-left: 10px;"
+                    [routerLink]="['/home/dashboardTask']">Back</span>
+            </div>
+            <div *ngIf="data.fileType == 'IRD'">
+                <h3>Inward Remittance disposal</h3>
+                <div class="flex-container">
+                    <div *ngFor="let code of this.taskArray; let i = index"
+                        [ngClass]="{'my_class': c === code.purposeCode}" (click)="tabClick(code.purposeCode,i)">
+                        {{code.purposeCode}}</div>
+                </div>
+
+                <div *ngIf='c'>
+                    <div *ngFor="let code of this.taskArray; let j = index">
+                        <div *ngIf='code.purposeCode === c'>
+                            <div *ngIf='docArray1[j] || tryArray[j]'>
+                                <span *ngIf='docArray1[j]'>Generated Document</span>
+                                <div>
+                                    <iframe *ngIf='docArray1[j]' [src]="docArray1[j]" height="500px"
+                                        width="400px"></iframe>
+                                    <iframe *ngIf='docArray2[j]' [src]="docArray2[j]" height="500px"
+                                        width="400px"></iframe>
+                                </div>
+                                <span *ngIf='sbArray[j]'>SB Documents</span>
+                                <div *ngIf='sbArray[j]' style="display: flex; align-items: center;">
+                                    <iframe style="flex-direction:row;" *ngFor="let pipo of sbArray[j]" [src]="pipo"
+                                        height="500px" width="400px"></iframe>
+                                </div> <br *ngIf='sbArray[j]'>
+                                <span *ngIf='tryArray[j]'>Tri Party Documents</span>
+                                <div *ngIf='tryArray[j]' style="display: flex; align-items: center;">
+                                    <iframe style="flex-direction:row;" *ngFor="let pipo of tryArray[j]" [src]="pipo"
+                                        height="500px" width="400px"></iframe>
+                                </div> <br *ngIf='tryArray[j]'>
+                                <span *ngIf='pipoArray[j]'>PI/PO Documents</span>
+                                <div *ngIf='pipoArray[j]' style="display: flex; align-items: center;">
+                                    <iframe style="flex-direction:row;" *ngFor="let pipo of pipoArray[j]" [src]="pipo"
+                                        height="500px" width="400px"></iframe>
+                                </div> <br *ngIf='pipoArray[j]'>
+                                <div *ngIf='code.bankRef'>
+                                    Bank Refrence Number: {{code.bankRef}}
+                                </div>
+                                <button class="button1" style="margin-right: 10px;"
+                                    [routerLink]="['/home/tasks/completed']"> Done </button>
+                            </div>
+                            <div *ngIf='!docArray1[j] && !tryArray[j]'>
+                                <div *ngIf='code.bankRef'>
+                                    Bank Refrence Number: {{code.bankRef}} <br>
+                                    <button class="button1" style="margin-right: 10px;"
+                                        [routerLink]="['/home/tasks/completed']"> Done </button>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div *ngIf="data.fileType == 'BL' || data.fileType == 'PCR'">
+                <div>
+                    <h3 *ngIf="data.fileType == 'BL'">Bill Lodgement</h3>
+                    <h3 *ngIf="data.fileType == 'PCR'">Package Credit Request</h3>
+                    <span *ngIf='docArray1[0]'>Generated Document</span>
+                    <div>
+                        <iframe *ngIf='docArray1[0]' [src]="docArray1[0]" height="500px" width="400px"></iframe>
+                        <iframe *ngIf='docArray2[0]' [src]="docArray2[0]" height="500px" width="400px"></iframe>
+                        <iframe *ngIf='docArray3[0]' [src]="docArray3[0]" height="500px" width="400px"></iframe>
+                    </div><br>
+                    <span *ngIf='sbArray[0]'>SB Documents</span>
+                    <div *ngIf='sbArray[0]' style="display: flex; align-items: center;">
+                        <iframe style="flex-direction:row;" *ngFor="let pipo of sbArray[0]" [src]="pipo" height="500px"
+                            width="400px"></iframe>
+                    </div> <br *ngIf='sbArray[0]'> <br *ngIf='sbArray[0]'>
+                    <span *ngIf='tryArray[0]'>Tri Party Documents</span>
+                    <div *ngIf='tryArray[0]' style="display: flex; align-items: center;">
+                        <iframe style="flex-direction:row;" *ngFor="let pipo of tryArray[0]" [src]="pipo" height="500px"
+                            width="400px"></iframe>
+                    </div> <br *ngIf='tryArray[0]'> <br *ngIf='tryArray[0]'>
+                    <span *ngIf='pipoArray[0]'>PI/PO Documents</span>
+                    <div *ngIf='pipoArray[0]' style="display: flex; align-items: center;">
+                        <iframe style="flex-direction:row;" *ngFor="let pipo of pipoArray[0]" [src]="pipo"
+                            height="500px" width="400px"></iframe>
+                    </div> <br *ngIf='pipoArray[0]'> <br *ngIf='pipoArray[0]'>
+                    <button class="button1" style="margin-right: 10px;" [routerLink]="['/home/tasks/completed']"> Done
+                    </button>
+
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+</div>

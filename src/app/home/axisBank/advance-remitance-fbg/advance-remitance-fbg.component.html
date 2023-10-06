@@ -1,0 +1,559 @@
+<div class="content-wrap">
+    <main id="content" class="content table-padding bc" role="main">
+        <div style="border-bottom: 1px solid black;" *ngIf="!done">
+            FBG DOCUMENT
+        </div>
+
+        <div id="mainId1" class="bc" *ngIf="!done">
+            <div>
+                <div class="pdf_heading">
+
+                    <img src="{{letterHead}}" height="100px" width="100%">
+                </div>
+                <div style="text-align: right">
+                    <p>Annexure- II</p>
+                </div>
+                <p style="display: table; width: 240px">
+                    Date: <br />
+                    <br />
+                    To <br />
+                    The Branch Head
+                    <br />
+                    <span style="
+            outline: none;
+              display: inline-block;
+              width: 160px;
+              border-bottom: 1px solid black;
+            " contenteditable="true"></span>
+                    <label for="">Bank Ltd</label>
+                    <br />
+                    <span style="
+            outline: none;
+              display: inline-block;
+              width: 160px;
+              border-bottom: 1px solid black;
+            " contenteditable="true"></span>
+                    <label for="">Branch</label>
+                </p>
+
+                <br />
+                <div>
+                    <div style="text-align: center">
+                        <br />
+                        <strong style="font-weight: 700">SUB: Request for wavier of FBG towards against Import of
+                            Goods/Services/Rough diamonds/Aircrafts/Helicopters & Aviation
+                            related purchases</strong>
+                    </div>
+                    <div>
+                        <p>Dear Sir/Madam,</p>
+                        <br />
+                        <p>
+                            With reference to our application request dated
+                            <span style="
+                  width: 150px;
+                  outline: none;
+                  border-bottom: 1px solid black;
+                  display: inline-block;
+                  text-align: center;
+                " contenteditable="true">
+                                {{ item2.date }}
+                            </span>
+                            we propose to remit an advance payment of
+                            <span style="
+                outline: none;
+                  display: inline-block;
+                  width: 150px;
+                  border-bottom: 1px solid black;
+                  text-align: center;
+                " contenteditable="true">{{ amount }}</span>
+                            to M/s
+                            <span style="
+                  display: inline-block;
+                  width: 170px;
+                  outline: none;
+                  border-bottom: 1px solid black;
+                  text-align: center;
+                " contenteditable="true">{{ item2.benneName }}</span>
+                            for import of
+                            <span style="
+                  display: inline-block;
+                  width: 160px;
+                  outline: none;
+                  border-bottom: 1px solid black;
+                " contenteditable="true"></span>
+                            (commodity) as per PO/PI Contract No
+                            <span style="
+                  display: inline-block;
+                  width: 170px;
+                  outline: none;
+                  border-bottom: 1px solid black;
+                " contenteditable="true"></span>
+                            dated
+                            <span style="
+                  display: inline-block;
+                  width: 150px;
+                  outline: none;
+                  border-bottom: 1px solid black;
+                " contenteditable="true"></span>
+                            .
+                        </p>
+                    </div>
+                    <br />
+                    <div style="text-align: justify">
+                        <p>
+                            2. In this regard, we wish fo inform you that we are aware of
+                            extant FEMA 1999 regulations vide Para C.1 of RBI Master Circular
+                            on Import of Goods and Services Dated 01.07.2015 and amendments
+                            thereto it any, whereby importers have been advised to obtain an
+                            unconditional, irrevocable Standby Letter of Credit (SBLC) or a
+                            Financial Bank Guarantee (FBG) from an International Bank of
+                            repute situated outside India or an FBG of an AD Category-I Bank
+                            in India, if such an FBG is issued against the Counter-Guarantee
+                            of an International Bank of repute situated Outside India.
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            3. However due to following reasons, we express Our inability to
+                            obtain the FBG/SBLC from the overseas Supplier (Please tick
+                            appropriate option):
+                            <br />
+                            <br />
+                            i. Supplier is Our parent/subsidiary/associate company.
+                            <br />
+                            ii. Long standing relationship with the supplier since
+                            <span style="
+                  display: inline-block;
+                  width: 160px;
+                  outline: none;
+                  border-bottom: 1px solid black;
+                " contenteditable="true">ksjfbakjdbakjbdkj</span>
+                            (copy of latest bill of entry is attached)
+                            <br />
+                            iii. Supplier is a Fortune 50 Company.
+                            <br />
+                            iv. Any other reason (please specify)
+                            <span style="
+                  display: inline-block;
+                  width: 150px;
+                  outline: none;
+                  border-bottom: 1px solid black;
+                " contenteditable="true"></span>
+                        </p>
+                    </div>
+
+                    <br />
+                    <div>
+                        <p>
+                            4. In the event of non-import of Goods/Services/Aircraft,
+                            Helicopters &amp; Aviation related purchases, we shall ensure that
+                            the amount of advance remittance is repatriated to India or Is
+                            utilised tor any other purposes for which release of exchange is
+                            permissible under the Act, Rules or Regulations made thereunder.
+                            Hence, we request you to permit us to remit the captioned advance
+                            remittance without insisting on an FBG/SBLC from the supplier.
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            Thanking you. <br />
+                            Yours faithfully, <br />
+                            Authorised Signatory
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br> <br> <br>
+        <div style="border-bottom: 1px solid black;" *ngIf="!done">
+            ADVANCE Outward
+        </div>
+
+        <div id="mainId2" class="bc" *ngIf="!done">
+            <div id="first" class="bc" style="margin-left: 40px;">
+                <p> <b style="border-bottom: 2px solid black;">For Office use:</b> </p>
+                <table>
+                    <tr>
+                        <td class="wtd4"> <b>AD Code No</b> </td>
+                        <td class="wtd4"> <b>Form No</b></td>
+                        <td class="wtd4"> <b>Currency</b> </td>
+                        <td class="wtd4"> <b>Amount</b></td>
+                        <td class="wtd4"> <b>Equivalent to Rs</b></td>
+                    </tr>
+                    <tr>
+                        <td class="wtd4"><span style="outline: none;display: inline-block; width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block; width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block; width: 150px;"
+                                contenteditable="true">{{ item2.currency}}</span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block; width: 150px;"
+                                contenteditable="true">{{ amount}}</span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block; width: 150px;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="wtd4"><b>Customer ID</b></td>
+                        <td class="wtd4"><b>Transaction type</b></td>
+                        <td class="wtd4"><b>TR/ FWC Amount</b></td>
+                        <td class="wtd4"><b>TR/ FWC Rate </b></td>
+                        <td class="wtd4"><b>TR/ FWC Ref no.</b></td>
+                    </tr>
+                    <tr>
+                        <td class="wtd4"><span style="outline: none;display: inline-block; width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block; width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block; width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block; width: 150px;"
+                                contenteditable="true"></span></td>
+                        <td class="wtd4"><span style="outline: none;display: inline-block; width: 150px;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                </table>
+                <p>
+                    (In case of a Firm / Company obtain this application on their Letterhead) <br>
+                    <b>The Branch Head,</b> <br>
+                    <b>Axis Bank Ltd.<span
+                            style="outline: none;display: inline-block; width: 160px;border-bottom: 1px solid black;"
+                            contenteditable="true"></span>Branch</b> <br>
+                    <br>
+                    Dear Sir, <br>
+
+                </p>
+                <div style="margin-left: 18%; ">
+                    <p class="heading5" style="margin-bottom: 0px !important;"> <span
+                            style="border-bottom: 1px solid black;">Sub: Application for Advance Remittance
+                            against Imports.</span> <br> </p>
+                </div>
+                <p>
+                    I. We hereby request you to remit /issue Demand draft as per the details given below:
+                </p>
+                <table>
+                    <tr>
+                        <td class="lc">Currency and Amount</td>
+                        <td class="wtd1" colspan="5"><span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true">{{ item2.currency}} {{ amount}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="lc">Beneficiary Name, Address and <br>
+                            country</td>
+                        <td class="wtd1" colspan="5"><span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true">{{benneDetail.beneName}}</span> <br>
+                            <span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true">{{benneDetail.beneAdrs}}</span> <br>
+                            <span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lc">Beneficiary Bank Name, <br>
+                            Address and Swift Code</td>
+                        <td class="wtd1" colspan="5"><span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true">{{benneDetail.beneBankName}}</span> <br>
+                            <span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true">{{benneDetail.beneBankAdress}}</span> <br>
+                            <span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true">{{benneDetail.beneBankSwiftCode}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lc">Beneficiary Bank A/c no.</td>
+                        <td class="wtd1" colspan="5"><span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true">{{benneDetail.beneAccNo}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="lc">IBAN NO./ SORT CODE / BSB <br>
+                            NO. / TRANSIT NO.</td>
+                        <td class="wtd1" colspan="5"><span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true">{{benneDetail.iban}} {{benneDetail.sortCode}}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="lc">Correspondent/Intermediary <br> Bank Name and BIC CODE <br> (optional)</td>
+                        <td class="wtd1" colspan="5"><span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="lc">Foreign Bank charges <br> (OUR / BEN / SHA)</td>
+                        <td class="wtd1" colspan="5"><span style="outline: none;display: inline-block; width: 300px;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="wtd4" rowspan="2"> Goods Freely importable (Y / N). <br> If No, enclose original
+                            exchange <br> control copy of license and <br> mention license details</td>
+                        <td class="wtd4"> License No.</td>
+                        <td class="wtd4">Date of issue</td>
+                        <td class="wtd4"> Date of <br> expiry</td>
+                        <td class="wtd4">Face value <br> of license</td>
+                        <td class="wtd4">Amount to <br> be endorsed <br> (Rs.)</td>
+                    </tr>
+                    <tr>
+                        <td class="rm1"><span style="outline: none;display: inline-block; width: 100px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm1"><span style="outline: none;display: inline-block; width: 100px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm1"><span style="outline: none;display: inline-block; width: 100px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm1"><span style="outline: none;display: inline-block; width: 100px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm1"><span style="outline: none;display: inline-block; width: 100px;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    <b>II. DEBIT AUTHORITY:</b> <br>
+                    We request you to debit my/our current/ cash credit/ EEFC Account No.<span
+                        style="outline: none;display: inline-block; width: 300px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>for <br> <span
+                        style="outline: none;display: inline-block; width: 200px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>and the balance amount to my/ our INR Account No.<span
+                        style="outline: none;display: inline-block; width: 200px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span> along with your charges.* <br>
+                    We would like to purchase / utilise forward contract no.<span
+                        style="outline: none;display: inline-block; width: 200px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>and remit (Foreign Currency &amp; Amount) <br> <span
+                        style="outline: none;display: inline-block; width: 100px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span> booked on (date)<span
+                        style="outline: none;display: inline-block; width: 100px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span>as above. <br>
+                    In case of part payment,please specify reasons:<span
+                        style="outline: none;display: inline-block; width: 400px;border-bottom: 1px solid black;"
+                        contenteditable="true"></span> <br>
+                </p>
+                <br>
+                <p>
+                    <b> III. IMPORT PARTICULARS</b>
+                </p>
+                <table>
+                    <tr>
+                        <td class="wtd4" colspan="4"> Invoice Details</td>
+                        <td class="wtd4" rowspan="2"> Qty of <br> Good</td>
+                        <td class="wtd4" rowspan="2">Descp of <br>
+                            Good</td>
+                        <td class="wtd4" rowspan="2"> Harmonized <br> system of <br> classification</td>
+                        <td class="wtd4" rowspan="2">Country of <br> Origin of <br> Goods</td>
+                        <td class="wtd4" rowspan="2">Country from <br> which goods <br> are consigned</td>
+                        <td class="wtd4" rowspan="2">Mode of <br> Shipment <br>
+                            (Air, Sea post, <br> rail, river, <br>
+                            transport port <br> etc)</td>
+                        <td class="wtd4" rowspan="2">Date of <br> shipment <br>(if known) <br> or <br> tentative <br>
+                            date <br>
+                            (approx <br> date)</td>
+                    </tr>
+                    <tr>
+                        <td class="wtd4"> No <br>
+                            and <br>
+                            Date</td>
+                        <td class="wtd4">Terms <br>
+                            (c.i.f, <br>
+                            f.o.b, c&f <br> etc)</td>
+                        <td class="wtd4"> Currency</td>
+                        <td class="wtd4">Amt</td>
+                    </tr>
+                    <tr>
+                        <td class="rm2"><span style="outline: none;display: inline-block; width: 80px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm2"><span style="outline: none;display: inline-block; width: 80px;"
+                                contenteditable="true"></span>
+                        </td>
+                        <td class="rm2" colspan="2"><span style="outline: none;display: inline-block; width: 80px;"
+                                contenteditable="true"> </span></td>
+                        <td class="rm2"><span style="outline: none;display: inline-block; width: 80px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm2"><span style="outline: none;display: inline-block; width: 80px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm2"><span style="outline: none;display: inline-block; width: 80px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm2"><span style="outline: none;display: inline-block; width: 80px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm2"><span style="outline: none;display: inline-block; width: 80px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm2"><span style="outline: none;display: inline-block; width: 80px;"
+                                contenteditable="true"></span></td>
+                        <td class="rm2"><span style="outline: none;display: inline-block; width: 80px;"
+                                contenteditable="true"></span></td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    <b>
+                        IV. FBG Waiver request (applicable if the amount of advance remittance exceeds USD 200000)
+                    </b>
+                </p>
+                <p><b>Yes</b><input type="checkbox" class="check"><input type="checkbox" class="check"></p>
+                <p style="width: 81%;">
+                    We are aware of extant FEMA 1999 regulations vide Para C.1 of RBI Master Circular on Import of Goods
+                    and Services Dated 01.07.2015 and amendments thereto if any, whereby importers have been advised to
+                    obtain an unconditional, Irrevocable Standby Letter of Credit (SBLC) or a Financial Bank Guarantee
+                    (FBG) from an International Bank of repute situated outside India or an FBG of an AD Category – I
+                    Bank in India, if such an FBG is issued against the Counter-Guarantee of an International Bank of
+                    repute situated outside India. <br> <br>
+                    However, due to following reasons, we express our inability to obtain the FBG/SBLC from the overseas
+                    supplier (Please tick appropriate option): <br>
+                    i) Supplier is our parent/subsidiary/associate company. <br>
+                    ii) Long standing relationship with the Supplier since <span
+                        style="outline: none;display: inline-block; border-bottom: 1px solid black; width: 70px;"
+                        contenteditable="true"></span> <br>
+                    iii) Supplier is a Fortune 500 Company. <br>
+                    iv) Any other reason (please specify) <span
+                        style="outline: none;display: inline-block; border-bottom: 1px solid black; width: 70px;"
+                        contenteditable="true"></span><br> <br>
+                    In the event of non-import of Goods/Services/Aircraft, Helicopters & Aviation related purchases, we
+                    shall ensure that the amount of advance remittance is repatriated to India or is utilized for any
+                    other purposes for which release of exchange is permissible under the Act, Rules or Regulations made
+                    thereunder. <br> <br>
+                    <b>V. DECLARATION – CUM - UNDERTAKING</b> <br><br>
+                    I/We hereby declare that the statements made by me/us on this form are true and that I/we have not
+                    applied for the same remittance through any other bank. <br> <br>
+                    All rules and regulations issued under FEMA governing imports has been / will be adhered by me /us.
+                    Further in case of non-import of goods, we undertake to repatriate the proceeds to India. <br> <br>
+                    I/We declare that the import licence/s against which the remittance is sought is/are valid and
+                    has/have not been cancelled by DGFT. <br> <br>
+                    I/We declare that the goods to which this application relates will be imported into India on my/our
+                    own account <br> <br>
+                    I/We declare that the import is on behalf of @<span
+                        style="outline: none;display: inline-block; border-bottom: 1px solid black; width: 300px;"
+                        contenteditable="true"></span> <br> <br>
+                    I/We declare that the invoice value of the goods which is declared on this form is the real value of
+                    the goods to be imported into India. <br> <br>
+                    I/We undertake to produce within three months to the authorised dealer the relative Exchange Control
+                    copy of Bill of Entry/ Post parcel wrapper/ Courier wrapper <br> <br>
+                    I/We declare that the import is in compliance with FTP and all T&C stipulated by DGFT from time to
+                    time are being complied with. <br> <br>
+                    The goods imported/being imported by us are not covered under Negative list of imports as mentioned
+                    in Foreign Trade Policy 2015-2020 and amendments there to till date. We are eligible to import the
+                    above mentioned goods under the current Foreign Trade Policy in Place. The said goods imported/being
+                    imported by us are not restricted for import through specific licensing under the above mentioned
+                    policy and amendments. <br> <br>
+                    I/We confirm that we are aware of Axis Bank Ltd’s Sanctions Policy Statement and that Axis Bank,
+                    including its subsidiaries and affiliates (the “Group”), is firmly committed to complying with all
+                    applicable sanctions laws (as imposed by UN, US, UK, EU or any other Government and/or Regulatory
+                    authorities) that are legally binding upon the Group and its businesses.  <br> <br>
+                    I/We are further aware that Axis Bank Ltd may be unable to process any transactions that involves or
+                    have linkages/reference to any sanctioned countries*/territories*/parties including for cases where
+                    transhipment is involved.  <br> <br>
+                    I/We confirm that shipment and / or transhipment of goods covered under this transaction shall not
+                    involve any sanctioned countries /territories /parties. <br>
+                    *Sanctioned Countries and Territories include Cuba, Iran, Syria, North Korea (also known as
+                    Democratic People’s Republic of Korea), Crimea and Sevastopol (also known as Crimean Autonomous
+                    Republic) and Sectorial Sanctioned Countries and Territories include Russia and Venezuela. <br> <br>
+                    <br>
+                    <b>The declaration-cum-undertaking under Sec 10(5), Chapter III of FEMA, 1999 is enclosed as
+                        under:</b> <br> <br>
+                    I/We declare that the captioned transaction does not involve and is not designed for the purpose of
+                    any contravention or evasion of the provision of the Foreign Exchange management Act 1999 or any
+                    rule, regulations, notification, direction or order issued there under. <br> <br>
+                    I/We also hereby agree and undertake to give such information/documents as will reasonably satisfy
+                    you about this transaction in terms of the above declaration. I/We also understand that if I/We
+                    refuse to comply with any. <br> <br>
+                    such requirement or make only unsatisfactory compliance therewith, the bank shall refuse in writing
+                    to undertake the transaction and shall if it has reason to believe that any contravention/evasion is
+                    contemplated by me/us report the matter to Reserve Bank of India. <br> <br>
+                    I/We declare and also understand that the foreign exchange to be acquired by me/us pursuant to this
+                    application shall be used by me/us only for the purpose for which it is acquired and that the
+                    conditions subject to which the exchange is granted will be complied with <br> <br>
+                    <b>OFAC Declaration: </b> In this connection, we declare, confirm and undertake that: <br> <br>
+                    i) We are aware that <span
+                        style="outline: none;display: inline-block; border-bottom: 1px solid black; width: 80px;"
+                        contenteditable="true"></span> (name of the country) is an entity against which sanctions by the
+                    Office of Foreign Assets (OFAC) of USA is in place. We undertake not to hold Axis Bank Ltd
+                    responsible for in any manner whatsoever in nature and hold Axis Bank Ltd fully indemnified against
+                    all losses and damages that may be caused to us on account of the funds remitted under this
+                    transaction being confiscated or blocked or seized by any authority/government/agency. <br> <br>
+                    ii) We further declare that we shall furnish any material information relating to this transaction
+                    as required by any authority/government/agency, now or in future. Also we authorize Axis Bank Ltd to
+                    make available any of the material information pertains our transaction to any
+                    authority/agency/entity without referring the matter to us. <br> <br>
+                    **I/We further declare that the undersigned has the authority to give this application, declaration
+                    and undertaking on behalf of the firm/company. <br> <br>
+                    I / we agree that in case the beneficiary account is maintained in other than remitting currency,
+                    the intermediary bank may convert the currency to beneficiary account designated currency
+
+
+                </p>
+
+
+            </div>
+
+
+
+            <div id="third" class="bc">
+
+                <div style="float: left; display: block; width: 78%; margin-left: 43px; margin-top: 20px;" class="bc">
+
+                    <div style="float: left;">
+                        <p>Thanking you.<br> <br>
+                            Date: <span
+                                style="outline: none;display: inline-block; border-bottom: 1px solid black; width: 100px;"
+                                contenteditable="true"></span> <br>
+                            Place: <span
+                                style="outline: none;display: inline-block; border-bottom: 1px solid black; width: 100px;"
+                                contenteditable="true"></span></p>
+                    </div> <br>
+                    <div style="float: right; margin-right: 60px;">
+                        <p style="margin-left: 30px;">Yours faithfully,</p>
+                        <p>
+                            Signature: <span
+                                style="outline: none;display: inline-block; border-bottom: 1px solid black; width: 100px;"
+                                contenteditable="true"></span> <br>
+                            Name: <span
+                                style="outline: none;display: inline-block; border-bottom: 1px solid black; width: 100px;"
+                                contenteditable="true"></span> <br>
+                            Address: <span
+                                style="outline: none;display: inline-block; border-bottom: 1px solid black; width: 100px;"
+                                contenteditable="true"></span> <br>
+                            I.E.Code: <span
+                                style="outline: none;display: inline-block; border-bottom: 1px solid black; width: 100px;"
+                                contenteditable="true"></span>
+
+                        </p>
+                    </div>
+                    <div style="margin-top: 160px;">
+                        <p style="margin-left: 20px;">
+                            Encl.: Copy of Proforma Invoice or Contract duly signed by the supplier and countersigned by
+                            the Importer
+                        </p>
+                        *We agree for levy of charges as per the schedule of charges of the bank (displayed on the
+                        bank’s website: www.axisbank.com) or as per the specific pricing approval/sanction, if any. <br>
+                        **Applicable when the application /declaration /undertaking is signed on behalf of the firm /
+                        company
+                        @Where the import is on behalf of Central/State Government Department or a company owned by
+                        Central/State Government/Statutory Corporation, Local Body, etc. the name of the Government
+                        Department, Corporation etc. should be stated.
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div *ngIf="!done" style="
+        float: left;
+        display: block;
+        width: 78%;
+        margin-top: 40px;
+        margin-left: 43px;
+      ">
+            <div class="button1" title="Share As PDF" (click)="exportAsPDF('MyDIv')">Proceed to Preview</div>
+        </div>
+
+
+        <div *ngIf="done">
+            <p>Setup: 3 Preview</p>
+            <button class="button1" style="margin-right: 10px;" (click)="downloadPDF()">Download</button>
+            <button class="button1" style="margin-bottom: 40px;">Send it via Email</button>
+            <div>
+                <iframe [src]="data6" height="500px" width="400px"></iframe>
+                <iframe [src]="data9" height="500px" width="400px"></iframe>
+                <iframe [src]="doc" height="500px" width="400px"></iframe>
+            </div><br>
+            <button class="button1" style="margin-right: 10px;" (click)="edit()">Edit</button>
+            <button class="button1" style="margin-right: 10px;" (click)="submitTask()">Done</button>
+
+        </div>
+
+    </main>
+</div>

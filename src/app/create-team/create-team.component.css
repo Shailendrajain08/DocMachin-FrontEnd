@@ -1,0 +1,75 @@
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url("../../assets/Image.png");
+  background-size: cover;
+  background-position: center center;
+}
+
+.display-5 {
+  width: 472px;
+  font-weight: 700;
+  color: #606670;
+  font-size: 32px;
+  border-bottom: 4px solid #49A2D7;
+  padding-bottom: 10px;
+}
+
+.ft2 {
+  float: left;
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 16px;
+  box-shadow: 0px 2px 4px 0px #E0E2E4;
+  background-image: url("../../assets/ic_mail.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 20px center;
+}
+
+.cx {
+  margin-top: 150px;
+  margin-left: 100px;
+}
+
+.gt1, .gt2, .gt3 {
+  margin-top: 70px;
+}
+
+.ft1 {
+  float: left;
+  margin-left: 10px;
+}
+
+.head1 {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #606670;
+}
+
+.sidehead1 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #606670;
+}
+
+.bg-dark {
+  background-color: white !important;
+}/*# sourceMappingURL=create-team.component.css.map */
