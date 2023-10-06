@@ -2659,8 +2659,11 @@ export class BillLodgementComponent implements OnInit, OnDestroy {
   //   });
   // }
 
+  //For downloading PDF we wrote this code..................
+
   downloadPDF() {
     console.log(JSON.stringify(this.creditNote));
+
     let headers = new HttpHeaders();
     headers = headers.set('Accept', 'application/pdf');
     let data = {
